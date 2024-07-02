@@ -14,6 +14,7 @@ export default function Page() {
       <video 
         className={`fixed top-0 left-0 size-full object-cover z-10 ${ended ? 'fade-out' : 'block'}`} 
         autoPlay 
+        playsInline
         muted 
         onEnded={() => setEnded(true)}>
         <source src='/video/Animation_Intro.mp4' type='video/mp4' />
