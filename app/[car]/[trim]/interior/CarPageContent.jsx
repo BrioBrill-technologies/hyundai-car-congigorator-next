@@ -1,7 +1,6 @@
 'use client'
 
 import { InteriorModel } from '@/components/canvas/Examples'
-import { Sunray } from '@/components/canvas/Examples'
 import { useRouter, useSearchParams } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import { Suspense, useState, useRef, useEffect } from 'react'
