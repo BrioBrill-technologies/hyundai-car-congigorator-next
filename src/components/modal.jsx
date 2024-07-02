@@ -24,7 +24,7 @@ export const Modal = ({ visible, setVisibility, title, description }) => {
 
   return (
     <div
-      className={`absolute w-full z-20 pointer-events-none ${visible ? 'fade-in block' : hasInteracted ? 'fade-out' : 'hidden'} ${showBottom ? 'bottom-10' : 'top-1'}`}
+      className={`absolute w-full z-20 pointer-events-none ${visible ? 'fade-in block' : hasInteracted ? 'fade-out' : 'hidden'} ${showBottom ? 'bottom-24' : 'top-1'}`}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
