@@ -30,25 +30,25 @@ const NebulaComponent = ({ position }) => {
 
         setupNebula();
 
-        const destroyNebula = () => {
-            if (nebula) {
-                // Stop the animation loop
-                isMounted = false;
+        // const destroyNebula = () => {
+        //     if (nebula) {
+        //         // Stop the animation loop
+        //         isMounted = false;
         
-                // Remove all emitters from the scene
-                nebulaRef.current.emitters.forEach((emitter) => {
-                    // Stop emitter's updates
-                    emitter.destroy();
-                    emitter.removeAllParticles();
-                });
+        //         // Remove all emitters from the scene
+        //         nebulaRef.current.emitters.forEach((emitter) => {
+        //             // Stop emitter's updates
+        //             emitter.destroy();
+        //             emitter.removeAllParticles();
+        //         });
         
-                // Destroy the Nebula instance
-                nebula.destroy();
-                nebulaRef.current = null;
-            }
-        };
+        //         // Destroy the Nebula instance
+        //         nebula.destroy();
+        //         nebulaRef.current = null;
+        //     }
+        // };
 
-        return destroyNebula;
+        // return destroyNebula;
     }, [scene]);
 
     useEffect(() => {

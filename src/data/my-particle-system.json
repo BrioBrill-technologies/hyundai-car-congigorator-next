@@ -5,7 +5,7 @@
       {
         "id": "51ca9450-3d8b-11e9-a1e8-4785d9606b75",
         "totalEmitTimes": null,
-        "life": 4,
+        "life": 4.5,
         "cache": { "totalEmitTimes": null, "life": null },
         "rate": {
           "particlesMin": 1,
