@@ -229,13 +229,16 @@ const cars = {
         'SE': {
             'image': 'SE6',
             'description': 'The standard trim with lots of great features',
+            'removables': ['LIMITED', 'SUL'],
             'exteriorModel': {
                 'trimModel': 'ioniq5_SE_Exterior_Trim',
-                'model': 'ioniq5_SE_Exterior',
+                'model': 'Ioniq6_Master_Model',
                 'material': 'Paint',
             },
             'interiorModel': {
-                'model': 'ioniq6SeInterior',
+                'model': {
+                    'Black': 'Ioniq6_Master_Model',
+                },
                 'material': 'Leather',
             },
             'exteriorColors': {
@@ -277,17 +280,46 @@ const cars = {
                     'color': '#000000'
                 },
             },
+            "hotspots": {
+                "exterior": {
+                    "LED Projector headlights": {
+                        "description": "",
+                        "position": [-17, 9, -2],
+                        "rotation": [0, 11, 0],
+                        "scale": [2, 2, 2],
+                        "cameraTarget": [-50, 20, 10],
+                        "showNebulaCharging": false
+                    },
+                    "Ultra-fast charging": {
+                        "description": "With up to 350-kW 800 volt charger, charge your vehicle from 10 - 80 percent in just 80 minutes",
+                        "position": [8.5, 10, -47],
+                        "rotation": [0, 11, 0],
+                        "scale": [2, 2, 2],
+                        "cameraTarget": [8.5, 15, -65],
+                        "showNebulaCharging": true
+                    }
+                },
+                "interior": {
+                    "Interactive touch screen with sounds": {
+                        "description": "The widescreen display dominates the dashboard, seamless integrating with the 12.3 inch digital gauges",
+                    },
+                }
+            }
         },
         'SEL': {
             'image': 'SEL6',
             'description': 'The balance trim with plenty of must-have featuress',
+            'removables': ['LIMITED', 'SE'],
             'exteriorModel': {
                 'trimModel': 'ioniq5_SE_Exterior_Trim',
-                'model': 'ioniq5_Limited_Exterior',
+                'model': 'Ioniq6_Master_Model',
                 'material': 'Paint',
             },
             'interiorModel': {
-                'model': 'ioniq6SeInterior',
+                'model': {
+                    'Black': 'Ioniq6_Master_Model',
+                    'Grey': 'Ioniq6_Master_Model',
+                },
                 'material': 'Leather',
             },
             'exteriorColors': {
@@ -340,17 +372,45 @@ const cars = {
                     'color': '#6D6E6F'
                 }
             },
+            "hotspots": {
+                "exterior": {
+                    "Blind Spot View Monitor": {
+                        "description": "When you signal to change lanes, a live camera feed of the lane will appear on the digital instrument gauge display",
+                    },
+                    "Ultra-fast charging": {
+                        "description": "With up to 350-kW 800 volt charger, charge your vehicle from 10 - 80 percent in just 80 minutes",
+                    },
+                    "Premium front LED accent lighting": {
+                        "description": "Spanning Across the front, between the headlines and bumper, this lighting accents adds a premium touch",
+                    },
+                },
+                "interior": {
+                    "Interactive touch screen with sounds": {
+                        "description": "The widescreen display dominates the dashboard, seamless integrating with the 12.3 inch digital gauges",
+                    },
+                    "Vision Roof": {
+                        "description": "This expansive glass panel across the entire ceiling without a beam going across",
+                    },
+                    "Ambient Lighting": {
+                        "description": "Set the mood with more inviting interior with ambient lighting on the door.",
+                    },
+                }
+            },
         },
         'Limited': {
             'image': 'Limited6',
             'description': 'The premium electric trim that treats you with high end features',
+            'removables': ['SE', 'SUL'],
             'exteriorModel': {
                 'trimModel': 'ioniq5_SE_Exterior_Trim',
-                'model': 'Ioniq_5_D100',
+                'model': 'Ioniq6_Master_Model',
                 'material': 'Paint',
             },
             'interiorModel': {
-                'model': 'ioniq6SeInterior',
+                'model': {
+                    'Black': 'Ioniq6_Master_Model',
+                    'Grey': 'Ioniq6_Master_Model',
+                },
                 'material': 'Leather',
             },
             'exteriorColors': {
@@ -401,6 +461,33 @@ const cars = {
                     'image': 'Limited-Gray',
                     'name': 'Gray',
                     'color': '#6D6E6F'
+                }
+            },
+            "hotspots": {
+                "exterior": {
+                    "Blind Spot View Monitor ": {
+                        "description": "When you signal to change lanes, a live camera feed of the lane will appear on the digital instrument gauge display",
+                    },
+                    "Disney/mickey badges": {
+                        "description": "",
+                    },
+                    "Ultra-fast charging": {
+                        "description": "With up to 350-kW 800 volt charger, charge your vehicle from 10 - 80 percent in just 80 minutes",
+                    },
+                    "Premium front LED accent lighting": {
+                        "description": "Spanning Across the front, between the headlines and bumper, this lighting accents adds a premium touch",
+                    },
+                },
+                "interior": {
+                    "Interactive touch screen with sounds": {
+                        "description": "The widescreen display dominates the dashboard, seamless integrating with the 12.3 inch digital gauges",
+                    },
+                    "Vision Roof": {
+                        "description": "This expansive glass panel across the entire ceiling without a beam going across",
+                    },
+                    "Ambient Lighting": {
+                        "description": "Set the mood with more inviting interior with ambient lighting on the door.",
+                    },
                 }
             },
         },

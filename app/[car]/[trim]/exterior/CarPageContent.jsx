@@ -112,6 +112,7 @@ export default function Page({ car, trim }) {
                 position={[0, 2, 0]}
                 model={cars[car][trim].exteriorModel.model}
                 color={cars[car][trim].exteriorColors[selectedColor].color}
+                removable={cars[car][trim].removables}
               />
               <group position={[-29, 8, 7]}>
                 <Hotspot

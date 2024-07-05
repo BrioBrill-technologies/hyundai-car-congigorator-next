@@ -54,7 +54,7 @@ export function TrimsModel({ model, ...props }) {
   )
 }
 
-export function ExteriorModel({ model, color, ...props }) {
+export function ExteriorModel({ model, color, removable = [], ...props }) {
   const { scene } = useGLTF(`/models/${model}.glb`, configureDRACOLoader)
 
   useEffect(() => {
@@ -63,6 +63,16 @@ export function ExteriorModel({ model, color, ...props }) {
       if (color) {
         scene.traverse((child) => {
           if (child.isMesh) {
+            if (removable) {
+              if (removable.length > 0) {
+                removable.forEach(removable => {
+                  if (child.name.includes(removable)) {
+                    child.visible = false
+                    console.log(child.name, child.visible)
+                  }
+                })
+              }
+            }
             if ((child.name.includes('Paint') || child.name === 'Roof_SE' || child.name === 'Left_Mirror' || child.name === 'Right_Mirror' || child.name === 'Right_Mirrorless_Panel' || child.name === 'Left_Mirrorless_Panel')) {
               child.material = new THREE.MeshStandardMaterial({
                 color,
@@ -102,7 +112,7 @@ export function InteriorModel({ model, playOpenAnimation, color, ...props }) {
         if (child.name.includes('Ambient')) {
           child.material.color = color
           child.material.emissive = color
-          child.material.emissiveIntensity = 7;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+          child.material.emissiveIntensity = 7;
         }
       }
     })
@@ -202,7 +212,7 @@ export function SummaryModel({ model, color, ...props }) {
   )
 }
 
-export function Sunray({...props }) {
+export function Sunray({ ...props }) {
   const { scene } = useGLTF(`/models/Sunray.glb`, configureDRACOLoader)
 
   useEffect(() => {
