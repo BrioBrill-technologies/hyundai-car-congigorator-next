@@ -27,7 +27,7 @@ export default function Page({ car }) {
   const router = useRouter()
 
   const handleSelectClick = (trim) => {
-    router.push(`/${car}/${trim}/exterior`)
+    router.push(`/${car}/${trim}/`)
   }
 
   return (

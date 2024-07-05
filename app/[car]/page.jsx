@@ -11,12 +11,3 @@ export default function Page({ params }) {
     <CarPageContent car={car} />
   )
 }
-
-export async function generateStaticParams() {
-  const params = []
-  for (const car in cars) {
-    const encodedCar = encodeURIComponent(car)
-    params.push({ car: encodedCar})
-  }
-  return params
-}
