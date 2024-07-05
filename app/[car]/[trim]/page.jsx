@@ -121,6 +121,7 @@ export default function Page({ params }) {
                 <ExteriorModel
                     scale={12}
                     position={[0, 2, 0]}
+                    trim={trim}
                     model={cars[car][trim].exteriorModel.model}
                     color={exteriorColor ? cars[car][trim].exteriorColors[exteriorColor].color : cars[car][trim].exteriorColors[selectedColor].color}
                     removable={cars[car][trim].removables}

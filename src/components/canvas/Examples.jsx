@@ -54,13 +54,14 @@ export function TrimsModel({ model, ...props }) {
   )
 }
 
-export function ExteriorModel({ model, color, removable = [], ...props }) {
+export function ExteriorModel({ model, color, trim, removable = [], ...props }) {
   const { scene } = useGLTF(`/models/${model}.glb`, configureDRACOLoader)
 
   useEffect(() => {
     if (scene) {
       // Apply color to all meshes
-      if (color) {
+      if (trim === 'IONIQ6') {
+      } else {
         scene.traverse((child) => {
           if (child.isMesh) {
             if (removable) {
@@ -87,6 +88,7 @@ export function ExteriorModel({ model, color, removable = [], ...props }) {
             }
           }
         })
+
       }
     }
   }, [scene, color])

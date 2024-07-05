@@ -364,12 +364,16 @@ const cars = {
                 'Black': {
                     'image': 'Limited-6-Black',
                     'name': 'Black',
-                    'color': '#000000'
+                    'color': '#000000',
+                    'visibleMesh': 'SUL_B',
+                    'invisibleMesh': 'SUL_G'
                 },
                 'Gray': {
                     'image': 'Limited-Gray',
                     'name': 'Gray',
-                    'color': '#6D6E6F'
+                    'color': '#6D6E6F',
+                    'visibleMesh': 'SUL_G',
+                    'invisibleMesh': 'SUL_B'
                 }
             },
             "hotspots": {
@@ -455,12 +459,16 @@ const cars = {
                 'Black': {
                     'image': 'Limited-6-Black',
                     'name': 'Black',
-                    'color': '#000000'
+                    'color': '#000000',
+                    'visibleMesh': 'LIMITED_B',
+                    'invisibleMesh': 'LIMITED_G'
                 },
                 'Gray': {
                     'image': 'Limited-Gray',
                     'name': 'Gray',
-                    'color': '#6D6E6F'
+                    'color': '#6D6E6F',
+                    'visibleMesh': 'LIMITED_G',
+                    'invisibleMesh': 'LIMITED_B'
                 }
             },
             "hotspots": {
