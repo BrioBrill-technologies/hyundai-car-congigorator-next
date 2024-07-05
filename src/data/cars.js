@@ -229,9 +229,10 @@ const cars = {
         'SE': {
             'image': 'SE6',
             'description': 'The standard trim with lots of great features',
+            'additions': 'SE',
             'removables': ['LIMITED', 'SUL'],
             'exteriorModel': {
-                'trimModel': 'ioniq5_SE_Exterior_Trim',
+                'trimModel': 'Ioniq6_SE_Exterior_Trim',
                 'model': 'Ioniq6_Master_Model',
                 'material': 'Paint',
             },
@@ -245,32 +246,32 @@ const cars = {
                 'Onyx Black': {
                     'image': 'onyx-black',
                     'name': 'Onyx Black',
-                    'color': '#000000'
+                    'color': '#151617'
                 },
                 'Digital Green': {
                     'image': 'digital-green',
                     'name': 'Digital Green',
-                    'color': '#BCBDBE'
+                    'color': '#1C1E1B'
                 },
                 'Curated Silver': {
                     'image': 'curated-silver',
                     'name': 'Curated Silver',
-                    'color': '#707172'
+                    'color': '#868888'
                 },
                 'Ulitmate Red': {
                     'image': 'ultimate-red',
                     'name': 'Ulitmate Red',
-                    'color': '#1E3639'
+                    'color': '#5B0F13'
                 },
                 'Serenity White': {
                     'image': 'serenity-white',
                     'name': 'Serenity White',
-                    'color': '#354450'
+                    'color': '#C3C5C5'
                 },
                 'Transmission Blue': {
                     'image': 'transmission-blue',
                     'name': 'Transmission Blue',
-                    'color': '#354450'
+                    'color': '#5C5F66'
                 },
             },
             'interiorColors': {
@@ -309,9 +310,10 @@ const cars = {
         'SEL': {
             'image': 'SEL6',
             'description': 'The balance trim with plenty of must-have featuress',
+            'additions': 'SUL',
             'removables': ['LIMITED', 'SE'],
             'exteriorModel': {
-                'trimModel': 'ioniq5_SE_Exterior_Trim',
+                'trimModel': 'Ioniq6_SEL_Exterior_Trim',
                 'model': 'Ioniq6_Master_Model',
                 'material': 'Paint',
             },
@@ -326,37 +328,37 @@ const cars = {
                 'Onyx Black': {
                     'image': 'onyx-black',
                     'name': 'Onyx Black',
-                    'color': '#000000'
+                    'color': '#151617'
                 },
                 'Digital Green': {
                     'image': 'digital-green',
                     'name': 'Digital Green',
-                    'color': '#BCBDBE'
+                    'color': '#1C1E1B'
                 },
                 'Curated Silver': {
                     'image': 'curated-silver',
                     'name': 'Curated Silver',
-                    'color': '#707172'
+                    'color': '#868888'
                 },
                 'Ulitmate Red': {
                     'image': 'ultimate-red',
                     'name': 'Ulitmate Red',
-                    'color': '#1E3639'
+                    'color': '#5B0F13'
                 },
                 'Serenity White': {
                     'image': 'serenity-white',
                     'name': 'Serenity White',
-                    'color': '#354450'
+                    'color': '#C3C5C5'
                 },
                 'Transmission Blue': {
                     'image': 'transmission-blue',
                     'name': 'Transmission Blue',
-                    'color': '#354450'
+                    'color': '#5C5F66'
                 },
                 'Gravity Gold Matte': {
                     'image': 'gravity-gold-matte',
                     'name': 'Gravity Gold Matte',
-                    'color': '#A4A3A3'
+                    'color': '#AB9E92'
                 },
 
             },
@@ -406,9 +408,10 @@ const cars = {
         'Limited': {
             'image': 'Limited6',
             'description': 'The premium electric trim that treats you with high end features',
+            'additions': 'LIMITED',
             'removables': ['SE', 'SUL'],
             'exteriorModel': {
-                'trimModel': 'ioniq5_SE_Exterior_Trim',
+                'trimModel': 'Ioniq6_Limited_Exterior_Trim',
                 'model': 'Ioniq6_Master_Model',
                 'material': 'Paint',
             },
@@ -423,37 +426,37 @@ const cars = {
                 'Onyx Black': {
                     'image': 'onyx-black',
                     'name': 'Onyx Black',
-                    'color': '#000000'
+                    'color': '#151617'
                 },
                 'Digital Green': {
                     'image': 'digital-green',
                     'name': 'Digital Green',
-                    'color': '#BCBDBE'
+                    'color': '#1C1E1B'
                 },
                 'Curated Silver': {
                     'image': 'curated-silver',
                     'name': 'Curated Silver',
-                    'color': '#707172'
+                    'color': '#868888'
                 },
                 'Ulitmate Red': {
                     'image': 'ultimate-red',
                     'name': 'Ulitmate Red',
-                    'color': '#1E3639'
+                    'color': '#5B0F13'
                 },
                 'Serenity White': {
                     'image': 'serenity-white',
                     'name': 'Serenity White',
-                    'color': '#354450'
+                    'color': '#C3C5C5'
                 },
                 'Transmission Blue': {
                     'image': 'transmission-blue',
                     'name': 'Transmission Blue',
-                    'color': '#354450'
+                    'color': '#5C5F66'
                 },
                 'Gravity Gold Matte': {
                     'image': 'gravity-gold-matte',
                     'name': 'Gravity Gold Matte',
-                    'color': '#A4A3A3'
+                    'color': '#AB9E92'
                 },
 
             },

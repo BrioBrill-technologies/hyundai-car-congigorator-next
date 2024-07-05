@@ -54,7 +54,7 @@ export function TrimsModel({ model, ...props }) {
   )
 }
 
-export function ExteriorModel({ model, exteriorColor, interiorColor, trim, interior, removable = [], ...props }) {
+export function ExteriorModel({ model, exteriorColor, interiorColor, trim, interior, removable = [], additions, ...props }) {
   const { scene } = useGLTF(`/models/${model}.glb`, configureDRACOLoader)
 
   useEffect(() => {
@@ -73,9 +73,14 @@ export function ExteriorModel({ model, exteriorColor, interiorColor, trim, inter
       } else {
         scene.traverse((child) => {
           if (child.isMesh) {
-            if(trim === 'IONIQ6' && !interior) {
+            if (additions) {
+              if (child.name.includes(additions)) {
+                child.visible = true
+              }
+            }
+            if (trim === 'IONIQ6' && !interior) {
               if (child.name.includes(interiorColor.visibleMesh)) {
-              child.visible = true
+                child.visible = true
               } else if (child.name.includes(interiorColor.invisibleMesh)) {
                 child.visible = false
               }
@@ -106,7 +111,7 @@ export function ExteriorModel({ model, exteriorColor, interiorColor, trim, inter
 
       }
     }
-  }, [scene, exteriorColor, interiorColor,interior])
+  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions])
 
 
   return (

@@ -47,7 +47,7 @@ export default function Page({ car }) {
                   bg-gradient-to-br from-gray-200/40 to-transparent bg-clip-padding backdrop-filter backdrop-blur-sm'>
                   <View className='h-72 pointer-events-none'>
                     <Suspense fallback={null}>
-                      <TrimsModel scale={2} position={[0, 0, 0]} model={cars[car][trim].exteriorModel.trimModel} />
+                      <TrimsModel scale={1.7} position={[0, 1, 0]} model={cars[car][trim].exteriorModel.trimModel} />
                       <Common color={'#c2c2c2'} />
                     </Suspense>
                   </View>
