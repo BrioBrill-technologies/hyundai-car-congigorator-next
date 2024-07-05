@@ -115,7 +115,7 @@ export default function Page({ params }) {
     return (
         <div className='mt-2 w-11/12 mx-auto relative rounded-xl'>
             <Modal visible={showHotspot} setVisibility={setShowHotspot} title={hotspotTitle} description={hotspotDescription} />
-            <View className='h-96 sm:h-48 sm:w-full'>
+            <View className={`w-full ${exteriorColor && interiorColor ? 'h-72 sm:h-48' : 'h-96'}`}>
             <Suspense fallback={null}>
                 <group position={[0, 0.3, 0]}>
                 <ExteriorModel
@@ -207,7 +207,35 @@ export default function Page({ params }) {
                     </div>
                 )}
             </div>
-            <div className='text-center border-2 py-2 flex relative flex-row justify-center border-black w-10/12 mx-auto font-[HyundaiSansHead-Medium] cursor-pointer'
+            {exteriorColor && interiorColor && (
+                <div className="text-left w-11/12 mx-auto mt-5">
+                    <div className="border-b border-black flex flex-row py-1 gap-5">
+                    <img    
+                        src={`/colors/${cars[car][trim].exteriorColors[exteriorColor].image}.png`}
+                        className="w-2/12"
+                        alt="Exterior color"
+                    />
+                    <div className="flex flex-col">
+                        <p>Exterior</p>
+                        <p>{exteriorColor}</p>
+                    </div>
+                    </div>
+                    <div className="border-b border-black flex flex-row py-1 gap-5">
+                    <img
+                        src={`/colors/${cars[car][trim].interiorColors[interiorColor].image}.png`}
+                        className="w-2/12"
+                        alt="Interior color"
+                    />
+                    <div className="flex flex-col">
+                        <p>Interior</p>
+                        <p>{interiorColor}</p>
+                    </div>
+                </div>
+      </div>
+            )}
+            <div className={`text-center border-2 py-2 flex relative flex-row justify-center border-black w-10/12 mx-auto font-[HyundaiSansHead-Medium] cursor-pointer ${
+                exteriorColor && interiorColor ? 'mt-5' : ''
+            }`}
                 onClick={() => handleSelectColor(selectedColor)}>
                 <span>Select {selectedColor}</span>
                 <svg
