@@ -54,18 +54,19 @@ export function TrimsModel({ model, ...props }) {
   )
 }
 
-export function ExteriorModel({ model, color, trim, interior, removable = [], ...props }) {
+export function ExteriorModel({ model, exteriorColor, interiorColor, trim, interior, removable = [], ...props }) {
   const { scene } = useGLTF(`/models/${model}.glb`, configureDRACOLoader)
 
   useEffect(() => {
     if (scene) {
+      console.log('interiorColor', interiorColor, trim)
       // Apply color to all meshes
-      if (trim === 'IONIQ6' && interior) {
+      if (trim === 'IONIQ6' && interiorColor) {
         scene.traverse((child) => {
           if (child.isMesh) {
-            if (child.name.includes(color.visibleMesh)) {
+            if (child.name.includes(interiorColor.visibleMesh)) {
               child.visible = true
-            } else if (child.name.includes(color.invisibleMesh)) {
+            } else if (child.name.includes(interiorColor.invisibleMesh)) {
               child.visible = false
             }
           }
@@ -78,14 +79,13 @@ export function ExteriorModel({ model, color, trim, interior, removable = [], ..
                 removable.forEach(removable => {
                   if (child.name.includes(removable)) {
                     child.visible = false
-                    console.log(child.name, child.visible)
                   }
                 })
               }
             }
             if ((child.name.includes('Paint') || child.name === 'Roof_SE' || child.name === 'Left_Mirror' || child.name === 'Right_Mirror' || child.name === 'Right_Mirrorless_Panel' || child.name === 'Left_Mirrorless_Panel')) {
               child.material = new THREE.MeshStandardMaterial({
-                color,
+                color: exteriorColor,
                 metalness: 0.3,
                 roughness: 0.15,
               })
@@ -100,7 +100,7 @@ export function ExteriorModel({ model, color, trim, interior, removable = [], ..
 
       }
     }
-  }, [scene, color])
+  }, [scene, exteriorColor, interiorColor,interior])
 
 
   return (

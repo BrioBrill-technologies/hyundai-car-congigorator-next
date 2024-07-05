@@ -121,10 +121,13 @@ export default function Page({ params }) {
                 <ExteriorModel
                     scale={12}
                     position={[0, 2, 0]}
-                    trim={trim}
+                    trim={car}
                     interior = {exteriorColor && !interiorColor ? true : false}
                     model={cars[car][trim].exteriorModel.model}
-                    color={exteriorColor ? cars[car][trim].exteriorColors[exteriorColor].color : cars[car][trim].exteriorColors[selectedColor].color}
+                    exteriorColor={exteriorColor ? cars[car][trim].exteriorColors[exteriorColor].color : cars[car][trim].exteriorColors[selectedColor].color}
+                    interiorColor={
+                        interiorColor ? cars[car][trim].interiorColors[interiorColor].color : 
+                        exteriorColor ? cars[car][trim].interiorColors[selectedColor].color : cars[car][trim].interiorColors[Object.keys(cars[car][trim].interiorColors)[0]].color}
                     removable={cars[car][trim].removables}
                 />
                 <group position={[-29, 8, 7]}>
