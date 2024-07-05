@@ -364,16 +364,18 @@ const cars = {
                 'Black': {
                     'image': 'Limited-6-Black',
                     'name': 'Black',
-                    'color': '#000000',
-                    'visibleMesh': 'SUL_B',
-                    'invisibleMesh': 'SUL_G'
+                    'color': {
+                        'visibleMesh': 'SUL_B',
+                        'invisibleMesh': 'SUL_G'
+                    }
                 },
                 'Gray': {
                     'image': 'Limited-Gray',
                     'name': 'Gray',
-                    'color': '#6D6E6F',
-                    'visibleMesh': 'SUL_G',
-                    'invisibleMesh': 'SUL_B'
+                    'color': {
+                        'visibleMesh': 'SUL_G',
+                        'invisibleMesh': 'SUL_B'
+                    }
                 }
             },
             "hotspots": {
