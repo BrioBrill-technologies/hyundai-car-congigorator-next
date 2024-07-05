@@ -61,7 +61,7 @@ export function ExteriorModel({ model, exteriorColor, interiorColor, trim, inter
     if (scene) {
       console.log('interiorColor', interiorColor, trim)
       // Apply color to all meshes
-      if (trim === 'IONIQ6' && interiorColor) {
+      if (trim === 'IONIQ6' && interior) {
         scene.traverse((child) => {
           if (child.isMesh) {
             if (child.name.includes(interiorColor.visibleMesh)) {
@@ -72,6 +72,7 @@ export function ExteriorModel({ model, exteriorColor, interiorColor, trim, inter
           }
         })
       } else {
+        console.log('exteriorColor', exteriorColor)
         scene.traverse((child) => {
           if (child.isMesh) {
             if (removable) {
