@@ -73,6 +73,13 @@ export function ExteriorModel({ model, exteriorColor, interiorColor, trim, inter
       } else {
         scene.traverse((child) => {
           if (child.isMesh) {
+            if(trim === 'IONIQ6' && !interior) {
+              if (child.name.includes(interiorColor.visibleMesh)) {
+              child.visible = true
+              } else if (child.name.includes(interiorColor.invisibleMesh)) {
+                child.visible = false
+              }
+            }
             if (removable) {
               if (removable.length > 0) {
                 removable.forEach(removable => {
