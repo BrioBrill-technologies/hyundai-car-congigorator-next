@@ -74,9 +74,10 @@ export default function Page({ params }) {
     const handleBack = () => {
         if (interiorColor) {
             setInteriorColor('')
-            setSelectedColor(Object.keys(cars[car][trim].exteriorColors)[0])
+            setSelectedColor(Object.keys(cars[car][trim].interiorColors)[0])
         } else if (exteriorColor) {
             setExteriorColor('')
+            setSelectedColor(Object.keys(cars[car][trim].exteriorColors)[0])
         } else {
             router.push(`/${car}`)
         }

@@ -59,7 +59,6 @@ export function ExteriorModel({ model, exteriorColor, interiorColor, trim, inter
 
   useEffect(() => {
     if (scene) {
-      console.log('interiorColor', interiorColor, trim)
       // Apply color to all meshes
       if (trim === 'IONIQ6' && interior) {
         scene.traverse((child) => {
@@ -72,7 +71,6 @@ export function ExteriorModel({ model, exteriorColor, interiorColor, trim, inter
           }
         })
       } else {
-        console.log('exteriorColor', exteriorColor)
         scene.traverse((child) => {
           if (child.isMesh) {
             if (removable) {
