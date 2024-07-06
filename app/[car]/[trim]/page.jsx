@@ -13,7 +13,6 @@ import { NormalBlending, TextureLoader } from 'three'
 import { ContactShadows } from '@react-three/drei'
 import AnimatedCylinder from '@/components/Three/AnimatedCylinder'
 
-
 const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.View), {
     ssr: false,
     loading: () => (
@@ -55,11 +54,13 @@ export default function Page({ params }) {
     const router = useRouter()
     const [exteriorColor, setExteriorColor] = useState('')
     const [interiorColor, setInteriorColor] = useState('')
+    const [selectedAmbientColor, setSelectedAmbientColor] = useState('#4c66f7')
     const [selectedColor, setSelectedColor] = useState(Object.keys(cars[car][trim].exteriorColors)[0])
     const [showHotspot, setShowHotspot] = useState(false)
     const [hotspotTitle, setHotspotTitle] = useState('')
     const [hotspotDescription, setHotspotDescription] = useState('')
     const [showNebula, setShowNebula] = useState(false);
+    const [showAmbient, setShowAmbient] = useState(false)
     const [showCone, setShowCone] = useState(false); // Add state for cone visibility
 
     const handleSelectColor = (color) => {
@@ -202,15 +203,29 @@ export default function Page({ params }) {
                 )}
                 {exteriorColor && !interiorColor && (
                     <div className='flex flex-row justify-evenly overflow-x-auto px-2 py-1 rounded-full gap-5 w-11/12 bg-gray-100/70 mx-auto'>
-                        {Object.keys(cars[car][trim].interiorColors).map((color) => (
-                            <img
-                                key={color}
-                                alt={color}
-                                onClick={() => setSelectedColor(color)}
-                                src={`/colors/${cars[car][trim].interiorColors[color].image}.png`}
-                                className={`w-1/12 lg:w-1/12 ${selectedColor === color ? 'border-2 border-white rounded-full' : ''}`}
-                            />
-                        ))}
+                        {!showAmbient && (
+                            <>
+                                {Object.keys(cars[car][trim].interiorColors).map((color) => (
+                                    <img
+                                        key={color}
+                                        alt={color}
+                                        onClick={() => setSelectedColor(color)}
+                                        src={`/colors/${cars[car][trim].interiorColors[color].image}.png`}
+                                        className={`w-1/12 lg:w-1/12 ${selectedColor === color ? 'border-2 border-white rounded-full' : ''}`}
+                                    />
+                                ))}
+                            </>
+                        )}
+                        {showAmbient && (
+                            <>
+                                <div className={`size-4 bg-[#4c66f7] rounded-full ${selectedAmbientColor === '#4c66f7' ? 'border-2 border-white' : ''}`} onClick={() => setSelectedAmbientColor('#4c66f7')}>
+                                </div>
+                                <div className={`size-4 bg-[#fb7758] rounded-full ${selectedAmbientColor === '#fb7758' ? 'border-2 border-white' : ''}`} onClick={() => setSelectedAmbientColor('#fb7758')}>
+                                </div>
+                                <div className={`size-4 bg-[#daf25b] rounded-full ${selectedAmbientColor === '#daf25b' ? 'border-2 border-white' : ''}`} onClick={() => setSelectedAmbientColor('#daf25b')}>
+                                </div>
+                            </>
+                        )}
                     </div>
                 )}
             </div>
@@ -243,7 +258,7 @@ export default function Page({ params }) {
             <div className={`text-center border-2 py-2 flex relative flex-row justify-center border-black w-10/12 mx-auto font-[HyundaiSansHead-Medium] cursor-pointer ${exteriorColor && interiorColor ? 'mt-5' : ''
                 }`}
                 onClick={() => handleSelectColor(selectedColor)}>
-                <span>Select {selectedColor}</span>
+                <span>{interiorColor && exteriorColor ? 'Finsih Build' : `Select ${selectedColor}`}</span>
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
                     fill='none'
@@ -254,7 +269,8 @@ export default function Page({ params }) {
                     <path strokeLinecap='round' strokeLinejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' />
                 </svg>
             </div>
-            <div className='text-center w-1/5 flex flex-row mx-auto mt-1 items-center justify-evenly font-[HyundaiSansHead-Light]' onClick={handleBack}>
+            <div className={`text-center w-1/5 flex flex-row mx-auto items-center justify-evenly font-[HyundaiSansHead-Light]
+             ${exteriorColor && interiorColor ? 'mt-1' : 'mt-5'}`} onClick={handleBack}>
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
                     fill='none'
