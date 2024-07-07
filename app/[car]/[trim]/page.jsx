@@ -71,13 +71,14 @@ export default function Page({ params }) {
             setSelectedColor(Object.keys(cars[car][trim].interiorColors)[0]);
             setCameraPosition([0.00001, 0, 0]);
             setHasPositionChanged(false); // Reset this when changing position
+            console.log('exteriorColor', exteriorColor)
         } else {
             setCameraPosition([-50, 0, 40]);
             setInteriorColor(color);
             setHasPositionChanged(false); // Reset this when changing position
+            console.log('interiorColor', interiorColor)
         }
     }
-
 
 
     const handleBack = () => {
@@ -131,10 +132,10 @@ export default function Page({ params }) {
             <Modal visible={showHotspot} setVisibility={setShowHotspot} title={hotspotTitle} description={hotspotDescription} />
             <View className={`w-full ${exteriorColor && interiorColor ? 'h-72 sm:h-48' : 'h-96'}`}>
                 <Suspense fallback={null}>
-                    <group position={[0, -2, 0]}>
+                    <group position={[0, 0, 0]}>
                         <ExteriorModel
                             scale={12}
-                            position={[2, 0, 0]}
+                            position={(interiorColor || !exteriorColor) ? [0, 9.5, 0] : [2, -2, 0]}
                             trim={car}
                             interior={exteriorColor && !interiorColor ? true : false}
                             model={cars[car][trim].exteriorModel.model}
