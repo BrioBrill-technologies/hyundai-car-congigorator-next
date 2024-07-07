@@ -65,18 +65,17 @@ export default function Page({ params }) {
     const [cameraPosition, setCameraPosition] = useState([-50, 0, 40])
     const [hasPositionChanged, setHasPositionChanged] = useState(false)
 
+
     const handleSelectColor = (color) => {
         if (!exteriorColor) {
             setExteriorColor(color);
             setSelectedColor(Object.keys(cars[car][trim].interiorColors)[0]);
             setCameraPosition([0.00001, 0, 0]);
             setHasPositionChanged(false); // Reset this when changing position
-            console.log('exteriorColor', exteriorColor)
         } else {
-            setCameraPosition([-50, 0, 40]);
+            setCameraPosition([-40, 0, 40]);
             setInteriorColor(color);
             setHasPositionChanged(false); // Reset this when changing position
-            console.log('interiorColor', interiorColor)
         }
     }
 
@@ -90,7 +89,7 @@ export default function Page({ params }) {
         } else if (exteriorColor) {
             setExteriorColor('')
             setSelectedColor(Object.keys(cars[car][trim].exteriorColors)[0])
-            setCameraPosition([-50, 0, 40]);
+            setCameraPosition([-55, 0, 30]);
             setHasPositionChanged(false); // Reset this when changing position
         } else {
             router.push(`/${car}`)
@@ -135,7 +134,7 @@ export default function Page({ params }) {
                     <group position={[0, 0, 0]}>
                         <ExteriorModel
                             scale={12}
-                            position={(interiorColor || !exteriorColor) ? [0, 9.5, 0] : [2, -2, 0]}
+                            position={(interiorColor || !exteriorColor) ? [0, 9.5, 0] : [1, -2, 1]}
                             trim={car}
                             interior={exteriorColor && !interiorColor ? true : false}
                             model={cars[car][trim].exteriorModel.model}

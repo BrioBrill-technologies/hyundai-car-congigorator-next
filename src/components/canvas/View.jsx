@@ -41,7 +41,7 @@ const Exterior = ({ color, cameraPosition }) => {
       <PerspectiveCamera
         ref={cameraRef}
         makeDefault
-        fov={60}
+        fov={70}
         position={cameraPosition}
       />
       <OrbitControls
@@ -59,7 +59,6 @@ const Exterior = ({ color, cameraPosition }) => {
     </>
   )
 }
-
 
 
 const Summary = ({ color }) => {

@@ -278,7 +278,10 @@ const cars = {
                 'Black': {
                     'image': 'SE-6-Black',
                     'name': 'Black',
-                    'color': '#000000'
+                    'color': {
+                        'visibleMesh': ['SE_B'],
+                        'invisibleMesh': ['SUL_B', 'SUL_G', 'LIMITED_B', 'LIMITED_G']
+                    }
                 },
             },
             "hotspots": {
@@ -367,16 +370,16 @@ const cars = {
                     'image': 'Limited-6-Black',
                     'name': 'Black',
                     'color': {
-                        'visibleMesh': 'SUL_B',
-                        'invisibleMesh': 'SUL_G'
+                        'visibleMesh': ['SUL_B'],
+                        'invisibleMesh': ['SUL_G', 'SE_B', 'LIMITED_B', 'LIMITED_G']
                     }
                 },
                 'Gray': {
                     'image': 'Limited-Gray',
                     'name': 'Gray',
                     'color': {
-                        'visibleMesh': 'SUL_G',
-                        'invisibleMesh': 'SUL_B'
+                        'visibleMesh': ['SUL_G'],
+                        'invisibleMesh': ['SUL_B', 'SE_B', 'LIMITED_B', 'LIMITED_G']
                     }
                 }
             },
@@ -464,16 +467,18 @@ const cars = {
                 'Black': {
                     'image': 'Limited-6-Black',
                     'name': 'Black',
-                    'color': '#000000',
-                    'visibleMesh': 'LIMITED_B',
-                    'invisibleMesh': 'LIMITED_G'
+                    'color': {
+                        'visibleMesh': ['LIMITED_B'],
+                        'invisibleMesh': ['LIMITED_G', 'SE_B', 'SUL_B', 'SUL_G']
+                    }
                 },
                 'Gray': {
                     'image': 'Limited-Gray',
                     'name': 'Gray',
-                    'color': '#6D6E6F',
-                    'visibleMesh': 'LIMITED_G',
-                    'invisibleMesh': 'LIMITED_B'
+                    'color': {
+                        'visibleMesh': ['LIMITED_G','SUL_G'],
+                        'invisibleMesh': ['LIMITED_B', 'SE_B', 'SUL_B']
+                    }
                 }
             },
             "hotspots": {
