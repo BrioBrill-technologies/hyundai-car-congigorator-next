@@ -1,10 +1,10 @@
 'use client'
 
-import { forwardRef, Suspense, useImperativeHandle, useRef, useEffect } from 'react'
+import { forwardRef, Suspense, useImperativeHandle, useRef, useEffect, useState } from 'react'
 import { OrbitControls, Environment, PerspectiveCamera, View as ViewImpl } from '@react-three/drei'
 import { Three } from '@/helpers/components/Three'
-import { useLoader, useThree } from '@react-three/fiber'
-import { TextureLoader, EquirectangularReflectionMapping } from 'three'
+import { useLoader, useThree, useFrame } from '@react-three/fiber'
+import { TextureLoader, EquirectangularReflectionMapping, Vector3 } from 'three'
 
 function Environment1({ texture }) {
   const { scene } = useThree()
@@ -13,26 +13,54 @@ function Environment1({ texture }) {
   return null
 }
 
-const Exterior = ({ color }) => {
+const Exterior = ({ color, cameraPosition }) => {
+  const cameraRef = useRef()
+  const orbitControlsRef = useRef()
   const texture = useLoader(TextureLoader, '/envmaps/images/Environment-Map-Empty-Warehouse2K.jpg')
 
+  const [hasPositionChanged, setHasPositionChanged] = useState(false)
+
+  useEffect(() => {
+    if (cameraRef.current && orbitControlsRef.current && !hasPositionChanged) {
+      const camera = cameraRef.current
+      const controls = orbitControlsRef.current
+
+      camera.position.set(...cameraPosition)
+      controls.target.set(cameraPosition[0], cameraPosition[1], cameraPosition[2])
+      controls.update()
+
+      setHasPositionChanged(true)
+    }
+  }, [cameraPosition, hasPositionChanged])
+
   return (
-    <Suspense fallback={null}>
+    <>
       {color && <color attach='background' args={[color]} />}
       <directionalLight intensity={6} color='white' position={[4, 5, 2]} />
       <ambientLight intensity={2} />
-      <PerspectiveCamera makeDefault fov={60} position={[-50, 0, 40]} />
+      <PerspectiveCamera
+        ref={cameraRef}
+        makeDefault
+        fov={60}
+        position={cameraPosition}
+      />
       <OrbitControls
-        enableZoom={false}
+        ref={orbitControlsRef}
+        enableZoom={true}
         minPolarAngle={Math.PI / 5}
         maxPolarAngle={Math.PI / 2.5}
-        target={[-2, 0.3, 0]}
+        target={[0, 0, 0]}
       />
       <Environment1 texture={texture} />
-      <Environment files="/envmaps/hdr/Environment-Map-Empty-Warehouse2K.hdr" ground={{ height: 35, radius: 100, scale: 200 }} />
-    </Suspense>
+      <Environment
+        files="/envmaps/hdr/Environment-Map-Empty-Warehouse2K.hdr"
+        ground={{ height: 30, radius: 100, scale: 200 }}
+      />
+    </>
   )
 }
+
+
 
 const Summary = ({ color }) => {
   const texture = useLoader(TextureLoader, '/envmaps/images/Environment-Map-Empty-Warehouse2K.jpg')

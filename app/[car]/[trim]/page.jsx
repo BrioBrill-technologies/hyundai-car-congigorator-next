@@ -1,7 +1,7 @@
 'use client'
 import { ExteriorModel } from '@/components/canvas/Examples'
 import dynamic from 'next/dynamic'
-import { Suspense, useState } from 'react'
+import { Suspense, useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { cars } from '@/data/cars'
 import { Hotspot } from '@/components/canvas/Hotspot'
@@ -61,24 +61,36 @@ export default function Page({ params }) {
     const [hotspotDescription, setHotspotDescription] = useState('')
     const [showNebula, setShowNebula] = useState(false);
     const [showAmbient, setShowAmbient] = useState(false)
-    const [showCone, setShowCone] = useState(false); // Add state for cone visibility
+    const [showCone, setShowCone] = useState(false); // Add state for cone 
+    const [cameraPosition, setCameraPosition] = useState([-50, 0, 40])
+    const [hasPositionChanged, setHasPositionChanged] = useState(false)
 
     const handleSelectColor = (color) => {
         if (!exteriorColor) {
-            setExteriorColor(color)
-            setSelectedColor(Object.keys(cars[car][trim].interiorColors)[0])
+            setExteriorColor(color);
+            setSelectedColor(Object.keys(cars[car][trim].interiorColors)[0]);
+            setCameraPosition([0.00001, 0, 0]);
+            setHasPositionChanged(false); // Reset this when changing position
         } else {
-            setInteriorColor(color)
+            setCameraPosition([-50, 0, 40]);
+            setInteriorColor(color);
+            setHasPositionChanged(false); // Reset this when changing position
         }
     }
+
+
 
     const handleBack = () => {
         if (interiorColor) {
             setInteriorColor('')
             setSelectedColor(Object.keys(cars[car][trim].interiorColors)[0])
+            setCameraPosition([0.00001, 0, 0]);
+            setHasPositionChanged(false); // Reset this when changing position
         } else if (exteriorColor) {
             setExteriorColor('')
             setSelectedColor(Object.keys(cars[car][trim].exteriorColors)[0])
+            setCameraPosition([-50, 0, 40]);
+            setHasPositionChanged(false); // Reset this when changing position
         } else {
             router.push(`/${car}`)
         }
@@ -119,10 +131,10 @@ export default function Page({ params }) {
             <Modal visible={showHotspot} setVisibility={setShowHotspot} title={hotspotTitle} description={hotspotDescription} />
             <View className={`w-full ${exteriorColor && interiorColor ? 'h-72 sm:h-48' : 'h-96'}`}>
                 <Suspense fallback={null}>
-                    <group position={[0, 0.3, 0]}>
+                    <group position={[0, -2, 0]}>
                         <ExteriorModel
                             scale={12}
-                            position={[0, 9, 0]}
+                            position={[2, 0, 0]}
                             trim={car}
                             interior={exteriorColor && !interiorColor ? true : false}
                             model={cars[car][trim].exteriorModel.model}
@@ -184,7 +196,12 @@ export default function Page({ params }) {
                         {showNebula && <AnimatedCylinder />}
                     </group>
                     <ContactShadows renderOrder={2} frames={1} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />
-                    <Exterior color={exteriorColor ? cars[car][trim].exteriorColors[exteriorColor].color : cars[car][trim].exteriorColors[selectedColor].color} />
+                    <Exterior
+                        color={exteriorColor ? cars[car][trim].exteriorColors[exteriorColor].color : cars[car][trim].exteriorColors[selectedColor].color}
+                        cameraPosition={cameraPosition}
+                        hasPositionChanged={hasPositionChanged}
+                        setHasPositionChanged={setHasPositionChanged}
+                    />
                 </Suspense>
             </View>
             <div className='relative bottom-11 z-10'>
