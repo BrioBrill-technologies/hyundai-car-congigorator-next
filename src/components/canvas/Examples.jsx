@@ -54,8 +54,12 @@ export function TrimsModel({ model, ...props }) {
   )
 }
 
-export function ExteriorModel({ model, exteriorColor, interiorColor, trim, interior, removable = [], additions, ...props }) {
+export function ExteriorModel({ model, exteriorColor, interiorColor, trim, interior, removable = [], additions, playOpenAnimation, ...props }) {
   const { scene } = useGLTF(`/models/${model}.glb`, configureDRACOLoader)
+  const { animations } = useGLTF(`/models/${model}.glb`)
+  const mixerRef = useRef()
+  const [isOpen, setIsOpen] = useState(false)
+  const actionsRef = useRef({})
 
   useEffect(() => {
     if (scene) {
@@ -114,6 +118,66 @@ export function ExteriorModel({ model, exteriorColor, interiorColor, trim, inter
       }
     }
   }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions])
+
+  useEffect(() => {
+    if (scene) {
+      const mixer = new THREE.AnimationMixer(scene)
+      mixerRef.current = mixer
+
+      // Initialize actions
+      animations.forEach(clip => {
+        const action = mixer.clipAction(clip)
+        action.clampWhenFinished = true
+        action.setLoop(THREE.LoopOnce)
+        actionsRef.current[clip.name] = action
+      })
+
+      // Play initial close animations
+      playCloseAnimations()
+    }
+  }, [scene, animations])
+
+  useEffect(() => {
+    if (playOpenAnimation !== isOpen) {
+      if (playOpenAnimation) {
+        playOpenAnimations()
+      } else {
+        playCloseAnimations()
+      }
+      setIsOpen(playOpenAnimation)
+    }
+  }, [playOpenAnimation])
+
+  useFrame((state, delta) => {
+    if (mixerRef.current) {
+      mixerRef.current.update(delta)
+    }
+  })
+
+  const playCloseAnimations = () => {
+    stopAllAnimations()
+    playAnimation('Back_close')
+    playAnimation('Front_close')
+  }
+
+  const playOpenAnimations = () => {
+    stopAllAnimations()
+    playAnimation('Back_open')
+    playAnimation('Front_open')
+  }
+
+  const stopAllAnimations = () => {
+    Object.values(actionsRef.current).forEach(action => {
+      action.stop()
+    })
+  }
+
+  const playAnimation = (clipName) => {
+    const action = actionsRef.current[clipName]
+    if (action) {
+      action.reset().play()
+    }
+  }
 
 
   return (

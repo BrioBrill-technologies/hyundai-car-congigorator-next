@@ -69,6 +69,7 @@ export default function Page({ params }) {
     const [isAudioPlaying, setIsAudioPlaying] = useState(false)
     const [showInteriorHotspots, setShowInteriorHotspots] = useState(false)
     const [showExteriorHotspots, setShowExteriorHotspots] = useState(true)
+    const [playOpenAnimation, setPlayOpenAnimation] = useState(false)
 
 
     const audioRef = useRef(null)
@@ -178,6 +179,22 @@ export default function Page({ params }) {
         setShowHotspot(true)
     }
 
+    const handleHotspotVisionRoof = () => {
+        console.log('hello')
+        setHotspotTitle('Vision Roof')
+        setHotspotDescription(cars[car][trim].hotspots.interior['Vision Roof'].description)
+        setShowHotspot(true)
+        setTimeout(() => {
+            setPlayOpenAnimation(true)
+        }, 1500)
+    }
+
+    useEffect(() => {
+        if (hotspotTitle === 'Vision Roof') {
+            setPlayOpenAnimation(showHotspot)
+        }
+    }, [showHotspot])
+
     return (
         <div className='mt-2 w-11/12 mx-auto relative rounded-xl'>
             <Modal visible={showHotspot} setVisibility={setShowHotspot} title={hotspotTitle} description={hotspotDescription} />
@@ -255,6 +272,16 @@ export default function Page({ params }) {
                             onClick={handleHotspotAudio}
                             cameraTarget={[1, 0, 0]} // Example target position
                         />
+                        {trim !== 'SE' && (
+                            <Hotspot
+                                position={[8, 4, 0]}
+                                rotation={[0, 11, 0]}
+                                scale={[1, 1, 1]}
+                                visible={showInteriorHotspots && !showHotspot}
+                                onClick={handleHotspotVisionRoof}
+                                cameraTarget={[-10, 0, 0]} // Example target position
+                            />
+                        )}
                     </group>
                     <ContactShadows renderOrder={2} frames={1} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />
                     <Exterior

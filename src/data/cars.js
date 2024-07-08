@@ -379,7 +379,7 @@ const cars = {
                     'image': 'Limited-Gray',
                     'name': 'Gray',
                     'color': {
-                        'visibleMesh': ['SUL_G'],
+                        'visibleMesh': ['SUL_G', 'SGL'],
                         'invisibleMesh': ['SUL_B', 'SE_B', 'LIMITED_B', 'LIMITED_G']
                     }
                 }
@@ -472,7 +472,7 @@ const cars = {
                     'name': 'Black',
                     'color': {
                         'visibleMesh': ['LIMITED_B'],
-                        'invisibleMesh': ['LIMITED_G', 'SE_B', 'SUL_B', 'SUL_G']
+                        'invisibleMesh': ['LIMITED_G', 'SE_B', 'SUL_B', 'SUL_G', 'SGL']
                     }
                 },
                 'Gray': {
@@ -480,7 +480,7 @@ const cars = {
                     'name': 'Gray',
                     'color': {
                         'visibleMesh': ['LIMITED_G','SUL_G'],
-                        'invisibleMesh': ['LIMITED_B', 'SE_B', 'SUL_B']
+                        'invisibleMesh': ['LIMITED_B', 'SE_B', 'SUL_B', 'SGL']
                     }
                 }
             },
