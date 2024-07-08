@@ -64,7 +64,9 @@ export default function Page({ params }) {
     const [showCone, setShowCone] = useState(false); // Add state for cone 
     const [cameraPosition, setCameraPosition] = useState([-50, 0, 40])
     const [hasPositionChanged, setHasPositionChanged] = useState(false)
+    const [isAudioPlaying, setIsAudioPlaying] = useState(false)
 
+    const audioRef = useRef(null)
 
     const handleSelectColor = (color) => {
         if (!exteriorColor) {
@@ -125,6 +127,35 @@ export default function Page({ params }) {
         showHotspot ? setShowHotspot(false) : setShowHotspot(true)
         setShowCone(true)
     };
+
+    // Interior Hotspots 
+    const handleEnded = () => {
+        setIsAudioPlaying(false)
+    }
+
+    useEffect(() => {
+        if (!showHotspot && audioRef.current) {
+            audioRef.current.pause()
+            audioRef.current.currentTime = 0
+            setIsAudioPlaying(false)
+        }
+    }, [showHotspot])
+    
+    const handleHotspotAudio = () => {
+        const audioArray = [
+            '/audio/01_Forest_Sample.mp3',
+            '/audio/03_Rain_Sample.mp3',
+            '/audio/02_Wave_Sample.mp3',
+        ]
+        const audio = new Audio(audioArray[Math.floor(Math.random() * audioArray.length)])
+        audioRef.current = audio
+        audio.addEventListener('ended', handleEnded)
+        audio.play()
+        setIsAudioPlaying(true)
+        setHotspotTitle('Interactive touch screen with sounds')
+        setHotspotDescription(cars[car][trim].hotspots.interior['Interactive touch screen with sounds'].description)
+        setShowHotspot(true)
+    }
 
     return (
         <div className='mt-2 w-11/12 mx-auto relative rounded-xl'>
@@ -194,6 +225,15 @@ export default function Page({ params }) {
                         )}
                         {showNebula && <NebulaComponent />}
                         {showNebula && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
+                        {/* Interior Hotspots */}
+                        <Hotspot
+                            position={[-10, 1, 0]}
+                            rotation={[0, 5, 0]}
+                            scale={[1, 1, 1]}
+                            visible={!showHotspot}
+                            onClick={handleHotspotAudio}
+                            cameraTarget={[1, 0, 0]} // Example target position
+                        />
                     </group>
                     <ContactShadows renderOrder={2} frames={1} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />
                     <Exterior
