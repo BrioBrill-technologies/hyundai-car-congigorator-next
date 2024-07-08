@@ -164,6 +164,20 @@ const cars = {
                         "description": "Set the mood with more inviting interior with ambient lighting on the door.",
                     },
                 }
+            },
+            "ambientLight": {
+                "Ocean Blue " : {
+                    "color1" : "#4C66F7",
+                    "color2" : "#4C66F7"
+                },
+                "Sunrise Red" : {
+                    "color1" : "#FB7758",
+                    "color2" : "#FB7758"
+                },
+                "Orchid Green" : {
+                    "color1" : "#DAF25B",
+                    "color2" : "#DAF25B"
+                },
             }
         },
         'D100 Platinum Edition': {
@@ -221,6 +235,20 @@ const cars = {
                         "description": "Set the mood with more inviting interior with ambient lighting on the door.",
                     },
                 }
+            },
+            "ambientLight": {
+                "Ocean Blue " : {
+                    "color1" : "#4C66F7",
+                    "color2" : "#4C66F7"
+                },
+                "Sunrise Red" : {
+                    "color1" : "#FB7758",
+                    "color2" : "#FB7758"
+                },
+                "Orchid Green" : {
+                    "color1" : "#DAF25B",
+                    "color2" : "#DAF25B"
+                },
             }
         },
     },
@@ -309,7 +337,7 @@ const cars = {
                         "description": "The widescreen display dominates the dashboard, seamless integrating with the 12.3 inch digital gauges",
                     },
                 }
-            }
+            },
         },
         'SEL': {
             'image': 'SEL6',
@@ -410,6 +438,32 @@ const cars = {
                     },
                 }
             },
+            "ambientLight": {
+                "Mind Care" : {
+                    "color1" : "#FC85FB",
+                    "color2" : "#4C1398"
+                },
+                "Concentration" : {
+                    "color1" : "#55B2F8",
+                    "color2" : "#00AF22"
+                },
+                "Healing Forest" : {
+                    "color1" : "#FDF952",
+                    "color2" : "#00EE28"
+                },
+                "WonderFul Day" : {
+                    "color1" : "#FF2128",
+                    "color2" : "#FAD63C"
+                },
+                "Meditation" : {
+                    "color1" : "#212AF0",
+                    "color2" : "#4E95EB"
+                },
+                "Creative Moment" : {
+                    "color1" : "#55FCF8",
+                    "color2" : "#00F631"
+                },
+            }
         },
         'Limited': {
             'image': 'Limited6',
@@ -514,6 +568,32 @@ const cars = {
                     },
                 }
             },
+            "ambientLight": {
+                "Mind Care" : {
+                    "color1" : "#FC85FB",
+                    "color2" : "#4C1398"
+                },
+                "Concentration" : {
+                    "color1" : "#55B2F8",
+                    "color2" : "#00AF22"
+                },
+                "Healing Forest" : {
+                    "color1" : "#FDF952",
+                    "color2" : "#00EE28"
+                },
+                "WonderFul Day" : {
+                    "color1" : "#FF2128",
+                    "color2" : "#FAD63C"
+                },
+                "Meditation" : {
+                    "color1" : "#212AF0",
+                    "color2" : "#4E95EB"
+                },
+                "Creative Moment" : {
+                    "color1" : "#55FCF8",
+                    "color2" : "#00F631"
+                },
+            }
         },
     },
 }
