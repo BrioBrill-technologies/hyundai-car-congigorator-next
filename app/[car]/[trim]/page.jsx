@@ -65,6 +65,9 @@ export default function Page({ params }) {
     const [cameraPosition, setCameraPosition] = useState([-50, 0, 40])
     const [hasPositionChanged, setHasPositionChanged] = useState(false)
     const [isAudioPlaying, setIsAudioPlaying] = useState(false)
+    const [showInteriorHotspots, setShowInteriorHotspots] = useState(false)
+    const [showExteriorHotspots, setShowExteriorHotspots] = useState(true)
+
 
     const audioRef = useRef(null)
 
@@ -74,7 +77,11 @@ export default function Page({ params }) {
             setSelectedColor(Object.keys(cars[car][trim].interiorColors)[0]);
             setCameraPosition([0.00001, 0, 0]);
             setHasPositionChanged(false); // Reset this when changing position
+            setShowExteriorHotspots(false)
+            setShowInteriorHotspots(true)
         } else {
+            setShowExteriorHotspots(false)
+            setShowInteriorHotspots(false)
             setCameraPosition([-40, 0, 40]);
             setInteriorColor(color);
             setHasPositionChanged(false); // Reset this when changing position
@@ -88,11 +95,15 @@ export default function Page({ params }) {
             setSelectedColor(Object.keys(cars[car][trim].interiorColors)[0])
             setCameraPosition([0.00001, 0, 0]);
             setHasPositionChanged(false); // Reset this when changing position
+            setShowExteriorHotspots(false)
+            setShowInteriorHotspots(true)
         } else if (exteriorColor) {
             setExteriorColor('')
             setSelectedColor(Object.keys(cars[car][trim].exteriorColors)[0])
             setCameraPosition([-55, 0, 30]);
             setHasPositionChanged(false); // Reset this when changing position
+            setShowExteriorHotspots(true)
+            setShowInteriorHotspots(false)
         } else {
             router.push(`/${car}`)
         }
@@ -140,7 +151,7 @@ export default function Page({ params }) {
             setIsAudioPlaying(false)
         }
     }, [showHotspot])
-    
+
     const handleHotspotAudio = () => {
         const audioArray = [
             '/audio/01_Forest_Sample.mp3',
@@ -180,7 +191,7 @@ export default function Page({ params }) {
                             <Hotspot
                                 rotation={[0, 15, 0]}
                                 scale={[2, 2, 2]}
-                                visible={!showHotspot}
+                                visible={showExteriorHotspots && !showHotspot}
                                 onClick={handleHotspotHeadLight}
                                 cameraTarget={[-45, 10, 10]}
                                 isHotspotClicked={showHotspot}
@@ -199,7 +210,7 @@ export default function Page({ params }) {
                             position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].position}
                             rotation={[0, 11, 0]}
                             scale={[2, 2, 2]}
-                            visible={!showHotspot}
+                            visible={showExteriorHotspots && !showHotspot}
                             onClick={handleHotspotCharging}
                             cameraTarget={[40, 15, -20]} // Example target position
                             isHotspotClicked={showHotspot}
@@ -209,7 +220,7 @@ export default function Page({ params }) {
                                 <Hotspot
                                     rotation={[0, 11, 0]}
                                     scale={[2, 2, 2]}
-                                    visible={!showHotspot}
+                                    visible={showExteriorHotspots && !showHotspot}
                                     onClick={handleHotspotMirror}
                                     cameraTarget={[50, 15, -20]} // Example target position
                                 />
@@ -230,7 +241,7 @@ export default function Page({ params }) {
                             position={[-10, 1, 0]}
                             rotation={[0, 5, 0]}
                             scale={[1, 1, 1]}
-                            visible={!showHotspot}
+                            visible={showInteriorHotspots && !showHotspot}
                             onClick={handleHotspotAudio}
                             cameraTarget={[1, 0, 0]} // Example target position
                         />
