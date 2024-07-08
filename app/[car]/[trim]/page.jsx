@@ -54,7 +54,7 @@ export default function Page({ params }) {
     const router = useRouter()
     const [exteriorColor, setExteriorColor] = useState('')
     const [interiorColor, setInteriorColor] = useState('')
-    const [selectedAmbientColor, setSelectedAmbientColor] = useState('#4c66f7')
+    const [selectedAmbientColor, setSelectedAmbientColor] = useState(Object.keys(cars[car][trim].ambientLight)[0])
     const [selectedColor, setSelectedColor] = useState(Object.keys(cars[car][trim].exteriorColors)[0])
     const [showHotspot, setShowHotspot] = useState(false)
     const [hotspotTitle, setHotspotTitle] = useState('')
@@ -304,7 +304,7 @@ export default function Page({ params }) {
                         )}
                         <pointLight
                             position={[-7, 0, -4]}
-                            color={pointLightColor}
+                            color={cars[car][trim].ambientLight[selectedAmbientColor]?.color1 || '#ffffff'}
                             intensity={70}
                             distance={200}
                             decay={2}
@@ -313,7 +313,7 @@ export default function Page({ params }) {
 
                         <pointLight
                             position={[-7, 0, 4]}
-                            color={pointLightColor}
+                            color={cars[car][trim].ambientLight[selectedAmbientColor]?.color2 || '#ffffff'}
                             intensity={70}
                             distance={200}
                             decay={2}
