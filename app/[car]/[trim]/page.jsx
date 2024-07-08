@@ -70,7 +70,8 @@ export default function Page({ params }) {
     const [showInteriorHotspots, setShowInteriorHotspots] = useState(false)
     const [showExteriorHotspots, setShowExteriorHotspots] = useState(true)
     const [playOpenAnimation, setPlayOpenAnimation] = useState(false)
-
+    const [pointLightVisible, setPointLightVisible] = useState(false)
+    const [pointLightColor, setPointLightColor] = useState('#ffffff')
 
     const audioRef = useRef(null)
 
@@ -195,6 +196,24 @@ export default function Page({ params }) {
         }
     }, [showHotspot])
 
+    const handleHotspotAmbientLight = () => {
+        setHotspotTitle('Ambient Lighting')
+        setHotspotDescription(cars[car][trim].hotspots.interior['Ambient Lighting'].description)
+        setShowHotspot(true)
+        setPointLightVisible(true)
+        setPointLightColor(selectedAmbientColor)
+    }
+
+    useEffect(() => {
+        if (hotspotTitle === 'Ambient Lighting') {
+            setShowAmbient(showHotspot)
+        }
+    }, [showHotspot])
+
+    useEffect(() => {
+        setPointLightColor(selectedAmbientColor)
+    }, [selectedAmbientColor])
+
     return (
         <div className='mt-2 w-11/12 mx-auto relative rounded-xl'>
             <Modal visible={showHotspot} setVisibility={setShowHotspot} title={hotspotTitle} description={hotspotDescription} />
@@ -228,7 +247,7 @@ export default function Page({ params }) {
                                     imageUrl="/Premium_LED_Image.png"
                                     position={[0, 4, 0]}
                                     rotation={[0, -1.3, 0]}
-                                    scale={[1, 1, 1]}   
+                                    scale={[1, 1, 1]}
                                     visible={showHotspot}
                                 />
                             )}
@@ -282,6 +301,33 @@ export default function Page({ params }) {
                                 cameraTarget={[-10, 0, 0]} // Example target position
                             />
                         )}
+                        {trim !== 'SE' && (
+                            <Hotspot
+                                position={[-10, -3, 8]}
+                                rotation={[0, 5, 0]}
+                                scale={[1.3, 1.3, 1.3]}
+                                visible={showInteriorHotspots && !showHotspot}
+                                onClick={handleHotspotAmbientLight}
+                                cameraTarget={[1, 0, 0]} // Example target position
+                            />
+                        )}
+                        <pointLight
+                            position={[-7, 0, -4]}
+                            color={pointLightColor}
+                            intensity={70}
+                            distance={200}
+                            decay={2}
+                            visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
+                        />
+
+                        <pointLight
+                            position={[-7, 0, 4]}
+                            color={pointLightColor}
+                            intensity={70}
+                            distance={200}
+                            decay={2}
+                            visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
+                        />
                     </group>
                     <ContactShadows renderOrder={2} frames={1} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />
                     <Exterior
