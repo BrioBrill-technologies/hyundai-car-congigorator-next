@@ -1,12 +1,13 @@
 'use client'
 
-import { useGLTF } from '@react-three/drei'
+import { Html, useGLTF } from '@react-three/drei'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 import { useRouter } from 'next/navigation'
 import { Suspense, useRef, useEffect, useState } from 'react'
 import { useThree, useFrame } from '@react-three/fiber'
 import { cars } from '@/data/cars.js'
 import * as THREE from 'three'
+import LoaderScreen from './loader'
 
 // Configure DRACOLoader for useGLTF
 const configureDRACOLoader = loader => {
@@ -54,113 +55,111 @@ export function TrimsModel({ model, ...props }) {
   )
 }
 
-export function ExteriorModel({ model, exteriorColor, interiorColor, trim, interior, removable = [], additions, playOpenAnimation, displayTexture, ...props }) {
-  const { scene } = useGLTF(`/models/${model}.glb`, configureDRACOLoader)
-  const { animations } = useGLTF(`/models/${model}.glb`)
+export function ExteriorModel({
+  model,
+  exteriorColor,
+  interiorColor,
+  trim,
+  interior,
+  removable = [],
+  additions,
+  playOpenAnimation,
+  displayTexture,
+  ...props
+}) {
+  const { scene, animations } = useGLTF(`/models/${model}.glb`)
   const mixerRef = useRef()
   const [isOpen, setIsOpen] = useState(false)
   const actionsRef = useRef({})
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     if (scene) {
-      // Apply color to all meshes
-      if (trim === 'IONIQ6' && interior) {
-        console.log('interior')
-        scene.traverse((child) => {
-          if (child.isMesh) {
-            if (interiorColor.visibleMesh.some(mesh => child.name.includes(mesh))) {
-              child.visible = true
-            } else if (interiorColor.invisibleMesh.some(mesh => child.name.includes(mesh))) {
-              child.visible = false;
-            }
-
-            if (child.name === 'INT_Display2') {
-              child.visible = true;
-              child.material = new THREE.MeshStandardMaterial({
-                map: displayTexture, // Apply the texture
-                metalness: 0.9,
-                roughness: 0,
-              });
-            }
+      scene.traverse((child) => {
+        if (child.isMesh) {
+          if (trim === 'IONIQ6' && interior) {
+            handleInterior(child)
+          } else {
+            handleExterior(child)
           }
-        })
-      } else {
-        scene.traverse((child) => {
-          if (child.isMesh) {
-            if (additions) {
-              if (child.name.includes(additions)) {
-                child.visible = true
-              }
-            }
-            if (trim === 'IONIQ6' && !interior) {
-              if (child.name.includes(interiorColor.visibleMesh)) {
-                child.visible = true
-              } else if (child.name.includes(interiorColor.invisibleMesh)) {
-                child.visible = false
-              }
-            }
-            if (removable) {
-              if (removable.length > 0) {
-                removable.forEach(removable => {
-                  if (child.name.includes(removable)) {
-                    child.visible = false
-                  }
-                })
-              }
-            }
-            if ((child.name.includes('Paint') || child.name === 'Roof_SE' || child.name === 'Left_Mirror' || child.name === 'Right_Mirror' || child.name === 'Right_Mirrorless_Panel' || child.name === 'Left_Mirrorless_Panel')) {
-              child.material = new THREE.MeshStandardMaterial({
-                color: exteriorColor,
-                metalness: 0.3,
-                roughness: 0.15,
-              })
-            }
-            if (child.name.includes('LED')) {
-              child.material.color = new THREE.Color('#9D9C9F')
-              child.material.emissive = new THREE.Color('#9D9C9F')
-              child.material.emissiveIntensity = 10;
-            }
-          }
-        })
-
-      }
+        }
+      })
+      setIsLoaded(true)
     }
   }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture])
 
   useEffect(() => {
-    if (scene) {
+    if (scene && animations.length) {
       const mixer = new THREE.AnimationMixer(scene)
       mixerRef.current = mixer
-
-      // Initialize actions
-      animations.forEach(clip => {
+      animations.forEach((clip) => {
         const action = mixer.clipAction(clip)
         action.clampWhenFinished = true
         action.setLoop(THREE.LoopOnce)
         actionsRef.current[clip.name] = action
       })
-
-      // Play initial close animations
       playCloseAnimations()
     }
   }, [scene, animations])
 
   useEffect(() => {
     if (playOpenAnimation !== isOpen) {
-      if (playOpenAnimation) {
-        playOpenAnimations()
-      } else {
-        playCloseAnimations()
-      }
+      playOpenAnimation ? playOpenAnimations() : playCloseAnimations()
       setIsOpen(playOpenAnimation)
     }
   }, [playOpenAnimation])
 
   useFrame((state, delta) => {
-    if (mixerRef.current) {
-      mixerRef.current.update(delta)
-    }
+    mixerRef.current?.update(delta)
   })
+
+  const handleInterior = (child) => {
+    if (interiorColor.visibleMesh.some(mesh => child.name.includes(mesh))) {
+      child.visible = true
+    } else if (interiorColor.invisibleMesh.some(mesh => child.name.includes(mesh))) {
+      child.visible = false
+    }
+    if (child.name === 'INT_Display2') {
+      child.visible = true
+      child.material = new THREE.MeshStandardMaterial({
+        map: displayTexture,
+        metalness: 0.9,
+        roughness: 0,
+      })
+    }
+  }
+
+  const handleExterior = (child) => {
+    if (additions && child.name.includes(additions)) {
+      child.visible = true
+    }
+    if (trim === 'IONIQ6' && !interior) {
+      if (child.name.includes(interiorColor.visibleMesh)) {
+        child.visible = true
+      } else if (child.name.includes(interiorColor.invisibleMesh)) {
+        child.visible = false
+      }
+    }
+    if (removable.length > 0) {
+      removable.forEach(removable => {
+        if (child.name.includes(removable)) {
+          child.visible = false
+        }
+      })
+    }
+    if (['Paint', 'Roof_SE', 'Left_Mirror', 'Right_Mirror', 'Right_Mirrorless_Panel', 'Left_Mirrorless_Panel'].includes(child.name)) {
+      child.material = new THREE.MeshStandardMaterial({
+        color: exteriorColor,
+        metalness: 0.3,
+        roughness: 0.15,
+      })
+    }
+    if (child.name.includes('LED')) {
+      child.material.color = new THREE.Color('#9D9C9F')
+      child.material.emissive = new THREE.Color('#9D9C9F')
+      child.material.emissiveIntensity = 10
+    }
+  }
 
   const playCloseAnimations = () => {
     stopAllAnimations()
@@ -175,21 +174,16 @@ export function ExteriorModel({ model, exteriorColor, interiorColor, trim, inter
   }
 
   const stopAllAnimations = () => {
-    Object.values(actionsRef.current).forEach(action => {
-      action.stop()
-    })
+    Object.values(actionsRef.current).forEach(action => action.stop())
   }
 
   const playAnimation = (clipName) => {
     const action = actionsRef.current[clipName]
-    if (action) {
-      action.reset().play()
-    }
+    action?.reset().play()
   }
 
-
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<LoaderScreen />}>
       <primitive object={scene} {...props} />
     </Suspense>
   )
