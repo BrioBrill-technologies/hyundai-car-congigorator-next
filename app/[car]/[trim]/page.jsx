@@ -96,7 +96,6 @@ export default function Page({ params }) {
         }
     }
 
-
     const handleBack = () => {
         if (interiorColor) {
             setInteriorColor('')
@@ -156,14 +155,6 @@ export default function Page({ params }) {
         setIsAudioPlaying(false)
     }
 
-    useEffect(() => {
-        if (!showHotspot && audioRef.current) {
-            audioRef.current.pause()
-            audioRef.current.currentTime = 0
-            setIsAudioPlaying(false)
-        }
-    }, [showHotspot])
-
     const handleHotspotAudio = () => {
         const audioArray = [
             '/audio/01_Forest_Sample.mp3',
@@ -190,12 +181,6 @@ export default function Page({ params }) {
         }, 1500)
     }
 
-    useEffect(() => {
-        if (hotspotTitle === 'Vision Roof') {
-            setPlayOpenAnimation(showHotspot)
-        }
-    }, [showHotspot])
-
     const handleHotspotAmbientLight = () => {
         setHotspotTitle('Ambient Lighting')
         setHotspotDescription(cars[car][trim].hotspots.interior['Ambient Lighting'].description)
@@ -205,8 +190,14 @@ export default function Page({ params }) {
     }
 
     useEffect(() => {
-        if (hotspotTitle === 'Ambient Lighting') {
+        if (hotspotTitle === 'Vision Roof') {
+            setPlayOpenAnimation(showHotspot)
+        } else if (hotspotTitle === 'Ambient Lighting') {
             setShowAmbient(showHotspot)
+        } else if (!showHotspot && audioRef.current) {
+            audioRef.current.pause()
+            audioRef.current.currentTime = 0
+            setIsAudioPlaying(false)
         }
     }, [showHotspot])
 
@@ -371,12 +362,15 @@ export default function Page({ params }) {
                         )}
                         {showAmbient && (
                             <>
-                                <div className={`size-4 bg-[#4c66f7] rounded-full ${selectedAmbientColor === '#4c66f7' ? 'border-2 border-white' : ''}`} onClick={() => setSelectedAmbientColor('#4c66f7')}>
-                                </div>
-                                <div className={`size-4 bg-[#fb7758] rounded-full ${selectedAmbientColor === '#fb7758' ? 'border-2 border-white' : ''}`} onClick={() => setSelectedAmbientColor('#fb7758')}>
-                                </div>
-                                <div className={`size-4 bg-[#daf25b] rounded-full ${selectedAmbientColor === '#daf25b' ? 'border-2 border-white' : ''}`} onClick={() => setSelectedAmbientColor('#daf25b')}>
-                                </div>
+                                {Object.keys(cars[car][trim].ambientLight).map((color) => (
+                                    <img
+                                        key={color}
+                                        alt={color}
+                                        onClick={() => setSelectedAmbientColor(color)}
+                                        src={`/colors/ambient/${cars[car][trim].ambientLight[color].image}.png`}
+                                        className={`w-1/12 lg:w-1/12 ${selectedAmbientColor === color ? 'border-2 border-white rounded-full' : ''}`}
+                                    />
+                                ))}
                             </>
                         )}
                     </div>

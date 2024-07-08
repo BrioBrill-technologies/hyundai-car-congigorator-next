@@ -167,14 +167,17 @@ const cars = {
             },
             "ambientLight": {
                 "Ocean Blue " : {
+                    "image": "OceanBlue",
                     "color1" : "#4C66F7",
                     "color2" : "#4C66F7"
                 },
                 "Sunrise Red" : {
+                    "image": "SunriseRed",
                     "color1" : "#FB7758",
                     "color2" : "#FB7758"
                 },
                 "Orchid Green" : {
+                    "image": "OrchidGreen",
                     "color1" : "#DAF25B",
                     "color2" : "#DAF25B"
                 },
@@ -238,14 +241,17 @@ const cars = {
             },
             "ambientLight": {
                 "Ocean Blue " : {
+                    "image": "OceanBlue",
                     "color1" : "#4C66F7",
                     "color2" : "#4C66F7"
                 },
                 "Sunrise Red" : {
+                    "image": "SunriseRed",
                     "color1" : "#FB7758",
                     "color2" : "#FB7758"
                 },
                 "Orchid Green" : {
+                    "image": "OrchidGreen",
                     "color1" : "#DAF25B",
                     "color2" : "#DAF25B"
                 },
@@ -440,26 +446,32 @@ const cars = {
             },
             "ambientLight": {
                 "Mind Care" : {
+                    "image": "MindCare",
                     "color1" : "#FC85FB",
                     "color2" : "#4C1398"
                 },
                 "Concentration" : {
+                    "image": "Concentration",
                     "color1" : "#55B2F8",
                     "color2" : "#00AF22"
                 },
                 "Healing Forest" : {
+                    "image": "HealingForest",
                     "color1" : "#FDF952",
                     "color2" : "#00EE28"
                 },
                 "WonderFul Day" : {
+                    "image": "WonderfulDay",
                     "color1" : "#FF2128",
                     "color2" : "#FAD63C"
                 },
                 "Meditation" : {
+                    "image": "Meditation",
                     "color1" : "#212AF0",
                     "color2" : "#4E95EB"
                 },
                 "Creative Moment" : {
+                    "image": "CreativeMoment",
                     "color1" : "#55FCF8",
                     "color2" : "#00F631"
                 },
@@ -570,26 +582,32 @@ const cars = {
             },
             "ambientLight": {
                 "Mind Care" : {
+                    "image": "MindCare",
                     "color1" : "#FC85FB",
                     "color2" : "#4C1398"
                 },
                 "Concentration" : {
+                    "image": "Concentration",
                     "color1" : "#55B2F8",
                     "color2" : "#00AF22"
                 },
                 "Healing Forest" : {
+                    "image": "HealingForest",
                     "color1" : "#FDF952",
                     "color2" : "#00EE28"
                 },
                 "WonderFul Day" : {
+                    "image": "WonderfulDay",
                     "color1" : "#FF2128",
                     "color2" : "#FAD63C"
                 },
                 "Meditation" : {
+                    "image": "Meditation",
                     "color1" : "#212AF0",
                     "color2" : "#4E95EB"
                 },
                 "Creative Moment" : {
+                    "image": "CreativeMoment",
                     "color1" : "#55FCF8",
                     "color2" : "#00F631"
                 },
