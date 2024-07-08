@@ -63,6 +63,8 @@ export default function Page({ params }) {
     const [showAmbient, setShowAmbient] = useState(false)
     const [showCone, setShowCone] = useState(false); // Add state for cone 
     const [cameraPosition, setCameraPosition] = useState([-50, 0, 40])
+    const [minPolar, setMinPolar] = useState([Math.PI / 5])
+    const [maxPolar, setMaxPolar] = useState([Math.PI / 2.5])
     const [hasPositionChanged, setHasPositionChanged] = useState(false)
     const [isAudioPlaying, setIsAudioPlaying] = useState(false)
     const [showInteriorHotspots, setShowInteriorHotspots] = useState(false)
@@ -76,6 +78,8 @@ export default function Page({ params }) {
             setExteriorColor(color);
             setSelectedColor(Object.keys(cars[car][trim].interiorColors)[0]);
             setCameraPosition([0.00001, 0, 0]);
+            setMinPolar([Math.PI / 10])
+            setMaxPolar([Math.PI / 1.9])
             setHasPositionChanged(false); // Reset this when changing position
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(true)
@@ -85,6 +89,8 @@ export default function Page({ params }) {
             setCameraPosition([-40, 0, 40]);
             setInteriorColor(color);
             setHasPositionChanged(false); // Reset this when changing position
+            setMinPolar([Math.PI / 5])
+            setMaxPolar([Math.PI / 2.5])
         }
     }
 
@@ -97,6 +103,8 @@ export default function Page({ params }) {
             setHasPositionChanged(false); // Reset this when changing position
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(true)
+            setMinPolar([Math.PI / 10])
+            setMaxPolar([Math.PI / 1.9])
         } else if (exteriorColor) {
             setExteriorColor('')
             setSelectedColor(Object.keys(cars[car][trim].exteriorColors)[0])
@@ -104,6 +112,8 @@ export default function Page({ params }) {
             setHasPositionChanged(false); // Reset this when changing position
             setShowExteriorHotspots(true)
             setShowInteriorHotspots(false)
+            setMinPolar([Math.PI / 5])
+            setMaxPolar([Math.PI / 2.5])
         } else {
             router.push(`/${car}`)
         }
@@ -252,6 +262,8 @@ export default function Page({ params }) {
                         cameraPosition={cameraPosition}
                         hasPositionChanged={hasPositionChanged}
                         setHasPositionChanged={setHasPositionChanged}
+                        minPolar={minPolar}
+                        maxPolar={maxPolar}
                     />
                 </Suspense>
             </View>
