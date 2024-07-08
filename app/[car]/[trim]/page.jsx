@@ -1,6 +1,7 @@
 'use client'
 import { ExteriorModel } from '@/components/canvas/Examples'
 import dynamic from 'next/dynamic'
+import * as THREE from 'three'
 import { Suspense, useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { cars } from '@/data/cars'
@@ -12,6 +13,11 @@ import Cone from '@/components/Three/Cone'
 import { NormalBlending, TextureLoader } from 'three'
 import { ContactShadows } from '@react-three/drei'
 import AnimatedCylinder from '@/components/Three/AnimatedCylinder'
+
+// import files
+const textureLoader = new THREE.TextureLoader();
+const menuTexture = textureLoader.load('/img/Menu_Screen.png');
+const audioTexture = textureLoader.load('/img/Audio_Screen.png');
 
 const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.View), {
     ssr: false,
@@ -70,8 +76,6 @@ export default function Page({ params }) {
     const [showInteriorHotspots, setShowInteriorHotspots] = useState(false)
     const [showExteriorHotspots, setShowExteriorHotspots] = useState(true)
     const [playOpenAnimation, setPlayOpenAnimation] = useState(false)
-    const [pointLightVisible, setPointLightVisible] = useState(false)
-    const [pointLightColor, setPointLightColor] = useState('#ffffff')
 
     const audioRef = useRef(null)
 
@@ -185,8 +189,6 @@ export default function Page({ params }) {
         setHotspotTitle('Ambient Lighting')
         setHotspotDescription(cars[car][trim].hotspots.interior['Ambient Lighting'].description)
         setShowHotspot(true)
-        setPointLightVisible(true)
-        setPointLightColor(selectedAmbientColor)
     }
 
     useEffect(() => {
@@ -201,9 +203,6 @@ export default function Page({ params }) {
         }
     }, [showHotspot])
 
-    useEffect(() => {
-        setPointLightColor(selectedAmbientColor)
-    }, [selectedAmbientColor])
 
     return (
         <div className='mt-2 w-11/12 mx-auto relative rounded-xl'>
@@ -223,6 +222,8 @@ export default function Page({ params }) {
                                     exteriorColor ? cars[car][trim].interiorColors[selectedColor].color : cars[car][trim].interiorColors[Object.keys(cars[car][trim].interiorColors)[0]].color}
                             removable={cars[car][trim].removables}
                             additions={cars[car][trim].additions}
+                            playOpenAnimation={playOpenAnimation}
+                            displayTexture={isAudioPlaying ? audioTexture : menuTexture}
                         />
                         <group position={[-29, 8, 7]}>
                             <Hotspot
@@ -280,6 +281,7 @@ export default function Page({ params }) {
                             scale={[1, 1, 1]}
                             visible={showInteriorHotspots && !showHotspot}
                             onClick={handleHotspotAudio}
+                            isAudioPlaying={isAudioPlaying}
                             cameraTarget={[1, 0, 0]} // Example target position
                         />
                         {trim !== 'SE' && (

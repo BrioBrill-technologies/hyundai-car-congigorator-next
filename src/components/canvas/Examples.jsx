@@ -54,7 +54,7 @@ export function TrimsModel({ model, ...props }) {
   )
 }
 
-export function ExteriorModel({ model, exteriorColor, interiorColor, trim, interior, removable = [], additions, playOpenAnimation, ...props }) {
+export function ExteriorModel({ model, exteriorColor, interiorColor, trim, interior, removable = [], additions, playOpenAnimation, displayTexture, ...props }) {
   const { scene } = useGLTF(`/models/${model}.glb`, configureDRACOLoader)
   const { animations } = useGLTF(`/models/${model}.glb`)
   const mixerRef = useRef()
@@ -72,7 +72,15 @@ export function ExteriorModel({ model, exteriorColor, interiorColor, trim, inter
               child.visible = true
             } else if (interiorColor.invisibleMesh.some(mesh => child.name.includes(mesh))) {
               child.visible = false;
-              console.log(child.name);
+            }
+
+            if (child.name === 'INT_Display2') {
+              child.visible = true;
+              child.material = new THREE.MeshStandardMaterial({
+                map: displayTexture, // Apply the texture
+                metalness: 0.9,
+                roughness: 0,
+              });
             }
           }
         })
@@ -117,7 +125,7 @@ export function ExteriorModel({ model, exteriorColor, interiorColor, trim, inter
 
       }
     }
-  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions])
+  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture])
 
   useEffect(() => {
     if (scene) {
