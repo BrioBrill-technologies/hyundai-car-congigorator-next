@@ -4,7 +4,7 @@ import { TextureLoader, Vector3 } from 'three';
 import * as THREE from 'three';
 import CameraController from '@/data/Cameracontroller';
 
-export const Hotspot = ({ position, rotation, scale, onClick, visible, cameraTarget }) => {
+export const Hotspot = ({ position, rotation, scale, onClick, visible, cameraTarget, enableCameraMovement = true }) => {
     const hotspotRef = useRef();
     const { camera } = useThree();
     const [baseScale] = useState(scale); // Initial scale
@@ -16,12 +16,14 @@ export const Hotspot = ({ position, rotation, scale, onClick, visible, cameraTar
     useEffect(() => {
         if (isHotspotClicked && visible) {
             setIsHotspotClicked(false); // Reset the state when the hotspot is not visible
-            setShouldReturn(true); // Trigger return animation after 5 seconds
-            setTimeout(() => {
-                setShouldReturn(false);
-            }, 1500);
+            if (enableCameraMovement) {
+                setShouldReturn(true); // Trigger return animation
+                setTimeout(() => {
+                    setShouldReturn(false);
+                }, 1500);
+            }
         }
-    }, [visible, isHotspotClicked]);
+    }, [visible, isHotspotClicked, enableCameraMovement]);
 
     useFrame((state, delta) => {
         if (hotspotRef.current) {
@@ -46,8 +48,10 @@ export const Hotspot = ({ position, rotation, scale, onClick, visible, cameraTar
     });
 
     const handleHotspotClick = () => {
-        initialCameraPositionRef.current.copy(camera.position); // Store the current camera position
-        setIsHotspotClicked(true); // Set the state to true when the hotspot is clicked
+        if (enableCameraMovement) {
+            initialCameraPositionRef.current.copy(camera.position); // Store the current camera position
+            setIsHotspotClicked(true); // Set the state to true when the hotspot is clicked
+        }
         onClick(); // Call the onClick function passed as a prop
     };
 
@@ -60,16 +64,17 @@ export const Hotspot = ({ position, rotation, scale, onClick, visible, cameraTar
                 rotation={rotation}
                 material={hotspotMaterial}
                 visible={visible} // Use the 'visible' prop to control visibility
+                enableCameraMovement={enableCameraMovement}
             >
                 <boxGeometry args={[1, 1, 1]} />
             </mesh>
-            {isHotspotClicked && !shouldReturn && (
+            {isHotspotClicked && !shouldReturn && enableCameraMovement && (
                 <CameraController
                     targetPosition={cameraTarget}
                     duration={1.5}
                 />
             )}
-            {shouldReturn && (
+            {shouldReturn && enableCameraMovement && (
                 <CameraController
                     targetPosition={initialCameraPositionRef.current.toArray()}
                     duration={1.5}

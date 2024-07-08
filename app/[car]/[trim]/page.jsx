@@ -233,6 +233,7 @@ export default function Page({ params }) {
                                 onClick={handleHotspotHeadLight}
                                 cameraTarget={[-45, 10, 10]}
                                 isHotspotClicked={showHotspot}
+                                enableCameraMovement={true}
                             />
                             {(trim === 'Limited' || trim === 'D100 Platinum Edition' || trim === "SEL") && (
                                 <ImagePlane
@@ -252,6 +253,7 @@ export default function Page({ params }) {
                             onClick={handleHotspotCharging}
                             cameraTarget={[40, 15, -20]} // Example target position
                             isHotspotClicked={showHotspot}
+                            enableCameraMovement={true}
                         />
                         {trim !== 'SE' && (
                             <group position={[-9, 12.3, -12]}>
@@ -261,6 +263,7 @@ export default function Page({ params }) {
                                     visible={showExteriorHotspots && !showHotspot}
                                     onClick={handleHotspotMirror}
                                     cameraTarget={[50, 15, -20]} // Example target position
+                                    enableCameraMovement={true}
                                 />
                                 <Cone position={[4, 0, -1]} rotation={[1.5, 0, 1.1]} scale={[4.5, 9, 4.5]} visible={showHotspot && hotspotTitle === 'Blind Spot View Monitor'} />
                                 <ImagePlane
@@ -283,6 +286,7 @@ export default function Page({ params }) {
                             onClick={handleHotspotAudio}
                             isAudioPlaying={isAudioPlaying}
                             cameraTarget={[1, 0, 0]} // Example target position
+                            enableCameraMovement={true}
                         />
                         {trim !== 'SE' && (
                             <Hotspot
@@ -292,6 +296,7 @@ export default function Page({ params }) {
                                 visible={showInteriorHotspots && !showHotspot}
                                 onClick={handleHotspotVisionRoof}
                                 cameraTarget={[-10, 0, 0]} // Example target position
+                                enableCameraMovement={true}
                             />
                         )}
                         {trim !== 'SE' && (
@@ -302,6 +307,7 @@ export default function Page({ params }) {
                                 visible={showInteriorHotspots && !showHotspot}
                                 onClick={handleHotspotAmbientLight}
                                 cameraTarget={[1, 0, 0]} // Example target position
+                                enableCameraMovement={false}
                             />
                         )}
                         <pointLight
