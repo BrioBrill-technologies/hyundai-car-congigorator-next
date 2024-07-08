@@ -97,7 +97,7 @@ export default function Page({ params }) {
     }
 
     const handleHotspotHeadLight = () => {
-        if ((trim === 'Limited' || trim === 'D100 Platinum Edition') && car === 'IONIQ5') {
+        if (trim === 'Limited' || trim === 'D100 Platinum Edition' || trim === 'SEL') {
             setHotspotTitle('Premium front LED accent lighting')
             setHotspotDescription(cars[car][trim].hotspots.exterior['Premium front LED accent lighting'].description)
         } else {
@@ -154,18 +154,18 @@ export default function Page({ params }) {
                                 cameraTarget={[-45, 10, 10]}
                                 isHotspotClicked={showHotspot}
                             />
-                            {(trim === 'Limited' || trim === 'D100 Platinum Edition') && car === 'IONIQ5' && (
+                            {(trim === 'Limited' || trim === 'D100 Platinum Edition' || trim === "SEL") && (
                                 <ImagePlane
                                     imageUrl="/Premium_LED_Image.png"
                                     position={[0, 4, 0]}
                                     rotation={[0, -1.3, 0]}
-                                    scale={[1, 1, 1]}
+                                    scale={[1, 1, 1]}   
                                     visible={showHotspot}
                                 />
                             )}
                         </group>
                         <Hotspot
-                            position={[21.5, 10, -11]}
+                            position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].position}
                             rotation={[0, 11, 0]}
                             scale={[2, 2, 2]}
                             visible={!showHotspot}
@@ -174,7 +174,7 @@ export default function Page({ params }) {
                             isHotspotClicked={showHotspot}
                         />
                         {trim !== 'SE' && (
-                            <group position={[-7, 12.3, -12]}>
+                            <group position={[-9, 12.3, -12]}>
                                 <Hotspot
                                     rotation={[0, 11, 0]}
                                     scale={[2, 2, 2]}
@@ -193,7 +193,7 @@ export default function Page({ params }) {
                             </group>
                         )}
                         {showNebula && <NebulaComponent />}
-                        {showNebula && <AnimatedCylinder />}
+                        {showNebula && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
                     </group>
                     <ContactShadows renderOrder={2} frames={1} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />
                     <Exterior

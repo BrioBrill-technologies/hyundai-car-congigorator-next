@@ -4,9 +4,10 @@ import { DoubleSide, AdditiveBlending } from 'three'
 import { Sparkles } from '@react-three/drei'
 import Glow from "./Glow";
 
-const AnimatedCylinder = () => {
+const AnimatedCylinder = ({ position = [22, 10, -10.5] }) => {
     const cylinderRef = useRef();
     const [scaleDirection, setScaleDirection] = useState(1);
+    console.log(position)
 
     useFrame(() => {
         if (cylinderRef.current) {
@@ -20,7 +21,7 @@ const AnimatedCylinder = () => {
     });
 
     return (
-        <mesh ref={cylinderRef} position={[22, 10, -10.5]} scale={[1, 0.2, 1]} rotation={[2.5, 11, 0.6]}>
+        <mesh ref={cylinderRef} position={position} scale={[1, 0.2, 1]} rotation={[2.5, 11, 0.6]}>
             <cylinderGeometry args={[1, 1, 10, 32, 1, true]} />
             <meshStandardMaterial
                 color="white"
@@ -37,4 +38,4 @@ const AnimatedCylinder = () => {
     );
 };
 
-export default AnimatedCylinder
+export default AnimatedCylinder;
