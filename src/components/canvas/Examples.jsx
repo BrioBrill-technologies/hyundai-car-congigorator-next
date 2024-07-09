@@ -76,10 +76,11 @@ export function ExteriorModel({
   useEffect(() => {
     if (scene) {
       scene.traverse((child) => {
-        if (child.isMesh) {
+        if (child.isMesh || child.isGroup || child.isObject3D) {
           if (trim === 'IONIQ6' && interior) {
             handleInterior(child)
           } else {
+            handleInterior(child)
             handleExterior(child)
           }
         }
@@ -119,14 +120,6 @@ export function ExteriorModel({
     } else if (interiorColor.invisibleMesh.some(mesh => child.name.includes(mesh))) {
       child.visible = false
     }
-    if (child.name === 'INT_Display2') {
-      child.visible = true
-      child.material = new THREE.MeshStandardMaterial({
-        map: displayTexture,
-        metalness: 0.9,
-        roughness: 0,
-      })
-    }
   }
 
   const handleExterior = (child) => {
@@ -134,9 +127,9 @@ export function ExteriorModel({
       child.visible = true
     }
     if (trim === 'IONIQ6' && !interior) {
-      if (child.name.includes(interiorColor.visibleMesh)) {
+      if (interiorColor.visibleMesh.some(mesh => child.name.includes(mesh))) {
         child.visible = true
-      } else if (child.name.includes(interiorColor.invisibleMesh)) {
+      } else if (interiorColor.invisibleMesh.some(mesh => child.name.includes(mesh))) {
         child.visible = false
       }
     }
@@ -147,7 +140,7 @@ export function ExteriorModel({
         }
       })
     }
-    if (['Paint', 'Roof_SE', 'Left_Mirror', 'Right_Mirror', 'Right_Mirrorless_Panel', 'Left_Mirrorless_Panel'].includes(child.name)) {
+    if (child.name.includes('_Paints')) {
       child.material = new THREE.MeshStandardMaterial({
         color: exteriorColor,
         metalness: 0.3,
@@ -163,13 +156,13 @@ export function ExteriorModel({
 
   const playCloseAnimations = () => {
     stopAllAnimations()
-    playAnimation('Back_close')
+    playAnimation('Sunroof_close')
     playAnimation('Front_close')
   }
 
   const playOpenAnimations = () => {
     stopAllAnimations()
-    playAnimation('Back_open')
+    playAnimation('Sunroof_open')
     playAnimation('Front_open')
   }
 

@@ -76,20 +76,20 @@ const cars = {
                 }
             },
             "ambientLight": {
-                "Ocean Blue " : {
+                "Ocean Blue ": {
                     "image": "OceanBlue",
-                    "color1" : "#4C66F7",
-                    "color2" : "#4C66F7"
+                    "color1": "#4C66F7",
+                    "color2": "#4C66F7"
                 },
-                "Sunrise Red" : {
+                "Sunrise Red": {
                     "image": "SunriseRed",
-                    "color1" : "#FB7758",
-                    "color2" : "#FB7758"
+                    "color1": "#FB7758",
+                    "color2": "#FB7758"
                 },
-                "Orchid Green" : {
+                "Orchid Green": {
                     "image": "OrchidGreen",
-                    "color1" : "#DAF25B",
-                    "color2" : "#DAF25B"
+                    "color1": "#DAF25B",
+                    "color2": "#DAF25B"
                 },
             }
         },
@@ -183,20 +183,20 @@ const cars = {
                 }
             },
             "ambientLight": {
-                "Ocean Blue " : {
+                "Ocean Blue ": {
                     "image": "OceanBlue",
-                    "color1" : "#4C66F7",
-                    "color2" : "#4C66F7"
+                    "color1": "#4C66F7",
+                    "color2": "#4C66F7"
                 },
-                "Sunrise Red" : {
+                "Sunrise Red": {
                     "image": "SunriseRed",
-                    "color1" : "#FB7758",
-                    "color2" : "#FB7758"
+                    "color1": "#FB7758",
+                    "color2": "#FB7758"
                 },
-                "Orchid Green" : {
+                "Orchid Green": {
                     "image": "OrchidGreen",
-                    "color1" : "#DAF25B",
-                    "color2" : "#DAF25B"
+                    "color1": "#DAF25B",
+                    "color2": "#DAF25B"
                 },
             }
         },
@@ -257,20 +257,20 @@ const cars = {
                 }
             },
             "ambientLight": {
-                "Ocean Blue " : {
+                "Ocean Blue ": {
                     "image": "OceanBlue",
-                    "color1" : "#4C66F7",
-                    "color2" : "#4C66F7"
+                    "color1": "#4C66F7",
+                    "color2": "#4C66F7"
                 },
-                "Sunrise Red" : {
+                "Sunrise Red": {
                     "image": "SunriseRed",
-                    "color1" : "#FB7758",
-                    "color2" : "#FB7758"
+                    "color1": "#FB7758",
+                    "color2": "#FB7758"
                 },
-                "Orchid Green" : {
+                "Orchid Green": {
                     "image": "OrchidGreen",
-                    "color1" : "#DAF25B",
-                    "color2" : "#DAF25B"
+                    "color1": "#DAF25B",
+                    "color2": "#DAF25B"
                 },
             }
         },
@@ -280,8 +280,8 @@ const cars = {
         'SE': {
             'image': 'SE6',
             'description': 'The standard trim with lots of great features',
-            'additions': 'SE',
-            'removables': ['LIMITED', 'SUL'],
+            'additions': 'TRIM_SE',
+            'removables': ['TRIM_LMTD', 'TRIM_SUL'],
             'exteriorModel': {
                 'trimModel': 'Ioniq6_SE_Exterior_Trim',
                 'model': 'Ioniq6_Master_Model',
@@ -330,8 +330,8 @@ const cars = {
                     'image': 'SE-6-Black',
                     'name': 'Black',
                     'color': {
-                        'visibleMesh': ['SE_B'],
-                        'invisibleMesh': ['SUL_B', 'SUL_G', 'LIMITED_B', 'LIMITED_G']
+                        'visibleMesh': ['SE_B', 'BLACK_COMMON'],
+                        'invisibleMesh': ['SUL_B', 'SUL_G', 'LIMITED_B', 'LIMITED_G', 'GREY_COMMON']
                     }
                 },
             },
@@ -362,43 +362,43 @@ const cars = {
                 }
             },
             "ambientLight": {
-                "Mind Care" : {
+                "Mind Care": {
                     "image": "MindCare",
-                    "color1" : "#FC85FB",
-                    "color2" : "#4C1398"
+                    "color1": "#FC85FB",
+                    "color2": "#4C1398"
                 },
-                "Concentration" : {
+                "Concentration": {
                     "image": "Concentration",
-                    "color1" : "#55B2F8",
-                    "color2" : "#00AF22"
+                    "color1": "#55B2F8",
+                    "color2": "#00AF22"
                 },
-                "Healing Forest" : {
+                "Healing Forest": {
                     "image": "HealingForest",
-                    "color1" : "#FDF952",
-                    "color2" : "#00EE28"
+                    "color1": "#FDF952",
+                    "color2": "#00EE28"
                 },
-                "WonderFul Day" : {
+                "WonderFul Day": {
                     "image": "WonderfulDay",
-                    "color1" : "#FF2128",
-                    "color2" : "#FAD63C"
+                    "color1": "#FF2128",
+                    "color2": "#FAD63C"
                 },
-                "Meditation" : {
+                "Meditation": {
                     "image": "Meditation",
-                    "color1" : "#212AF0",
-                    "color2" : "#4E95EB"
+                    "color1": "#212AF0",
+                    "color2": "#4E95EB"
                 },
-                "Creative Moment" : {
+                "Creative Moment": {
                     "image": "CreativeMoment",
-                    "color1" : "#55FCF8",
-                    "color2" : "#00F631"
+                    "color1": "#55FCF8",
+                    "color2": "#00F631"
                 },
             }
         },
         'SEL': {
             'image': 'SEL6',
             'description': 'The balance trim with plenty of must-have featuress',
-            'additions': 'SUL',
-            'removables': ['LIMITED', 'SE'],
+            'additions': 'TRIM_SUL',
+            'removables': ['TRIM_LMTD', 'TRIM_SE'],
             'exteriorModel': {
                 'trimModel': 'Ioniq6_SEL_Exterior_Trim',
                 'model': 'Ioniq6_Master_Model',
@@ -454,16 +454,16 @@ const cars = {
                     'image': 'Limited-6-Black',
                     'name': 'Black',
                     'color': {
-                        'visibleMesh': ['SUL_B'],
-                        'invisibleMesh': ['SUL_G', 'SE_B', 'LIMITED_B', 'LIMITED_G']
+                        'visibleMesh': ['SUL_B', 'BLACK_COMMON'],
+                        'invisibleMesh': ['SUL_G', 'SE_B', 'LIMITED_B', 'LIMITED_G', 'GREY_COMMON']
                     }
                 },
                 'Gray': {
                     'image': 'Limited-Gray',
                     'name': 'Gray',
                     'color': {
-                        'visibleMesh': ['SUL_G', 'SGL'],
-                        'invisibleMesh': ['SUL_B', 'SE_B', 'LIMITED_B', 'LIMITED_G']
+                        'visibleMesh': ['SUL_G', 'GREY_COMMON'],
+                        'invisibleMesh': ['SUL_B', 'SE_B', 'LIMITED_B', 'LIMITED_G', 'BLACK_COMMON']
                     }
                 }
             },
@@ -494,43 +494,43 @@ const cars = {
                 }
             },
             "ambientLight": {
-                "Mind Care" : {
+                "Mind Care": {
                     "image": "MindCare",
-                    "color1" : "#FC85FB",
-                    "color2" : "#4C1398"
+                    "color1": "#FC85FB",
+                    "color2": "#4C1398"
                 },
-                "Concentration" : {
+                "Concentration": {
                     "image": "Concentration",
-                    "color1" : "#55B2F8",
-                    "color2" : "#00AF22"
+                    "color1": "#55B2F8",
+                    "color2": "#00AF22"
                 },
-                "Healing Forest" : {
+                "Healing Forest": {
                     "image": "HealingForest",
-                    "color1" : "#FDF952",
-                    "color2" : "#00EE28"
+                    "color1": "#FDF952",
+                    "color2": "#00EE28"
                 },
-                "WonderFul Day" : {
+                "WonderFul Day": {
                     "image": "WonderfulDay",
-                    "color1" : "#FF2128",
-                    "color2" : "#FAD63C"
+                    "color1": "#FF2128",
+                    "color2": "#FAD63C"
                 },
-                "Meditation" : {
+                "Meditation": {
                     "image": "Meditation",
-                    "color1" : "#212AF0",
-                    "color2" : "#4E95EB"
+                    "color1": "#212AF0",
+                    "color2": "#4E95EB"
                 },
-                "Creative Moment" : {
+                "Creative Moment": {
                     "image": "CreativeMoment",
-                    "color1" : "#55FCF8",
-                    "color2" : "#00F631"
+                    "color1": "#55FCF8",
+                    "color2": "#00F631"
                 },
             }
         },
         'Limited': {
             'image': 'Limited6',
             'description': 'The premium electric trim that treats you with high end features',
-            'additions': 'LIMITED',
-            'removables': ['SE', 'SUL'],
+            'additions': 'TRIM_LMTD',
+            'removables': ['TRIM_SE', 'TRIM_SUL'],
             'exteriorModel': {
                 'trimModel': 'Ioniq6_Limited_Exterior_Trim',
                 'model': 'Ioniq6_Master_Model',
@@ -586,16 +586,16 @@ const cars = {
                     'image': 'Limited-6-Black',
                     'name': 'Black',
                     'color': {
-                        'visibleMesh': ['LIMITED_B'],
-                        'invisibleMesh': ['LIMITED_G', 'SE_B', 'SUL_B', 'SUL_G', 'SGL']
+                        'visibleMesh': ['LIMITED_B', 'BLACK_COMMON'],
+                        'invisibleMesh': ['LIMITED_G', 'SE_B', 'SUL_B', 'SUL_G', 'GREY_COMMON']
                     }
                 },
                 'Gray': {
                     'image': 'Limited-Gray',
                     'name': 'Gray',
                     'color': {
-                        'visibleMesh': ['LIMITED_G','SUL_G'],
-                        'invisibleMesh': ['LIMITED_B', 'SE_B', 'SUL_B', 'SGL']
+                        'visibleMesh': ['LIMITED_G', 'GREY_COMMON'],
+                        'invisibleMesh': ['LIMITED_B', 'SE_B', 'SUL_B', 'SUL_G', 'BLACK_COMMON']
                     }
                 }
             },
@@ -630,35 +630,35 @@ const cars = {
                 }
             },
             "ambientLight": {
-                "Mind Care" : {
+                "Mind Care": {
                     "image": "MindCare",
-                    "color1" : "#FC85FB",
-                    "color2" : "#4C1398"
+                    "color1": "#FC85FB",
+                    "color2": "#4C1398"
                 },
-                "Concentration" : {
+                "Concentration": {
                     "image": "Concentration",
-                    "color1" : "#55B2F8",
-                    "color2" : "#00AF22"
+                    "color1": "#55B2F8",
+                    "color2": "#00AF22"
                 },
-                "Healing Forest" : {
+                "Healing Forest": {
                     "image": "HealingForest",
-                    "color1" : "#FDF952",
-                    "color2" : "#00EE28"
+                    "color1": "#FDF952",
+                    "color2": "#00EE28"
                 },
-                "WonderFul Day" : {
+                "WonderFul Day": {
                     "image": "WonderfulDay",
-                    "color1" : "#FF2128",
-                    "color2" : "#FAD63C"
+                    "color1": "#FF2128",
+                    "color2": "#FAD63C"
                 },
-                "Meditation" : {
+                "Meditation": {
                     "image": "Meditation",
-                    "color1" : "#212AF0",
-                    "color2" : "#4E95EB"
+                    "color1": "#212AF0",
+                    "color2": "#4E95EB"
                 },
-                "Creative Moment" : {
+                "Creative Moment": {
                     "image": "CreativeMoment",
-                    "color1" : "#55FCF8",
-                    "color2" : "#00F631"
+                    "color1": "#55FCF8",
+                    "color2": "#00F631"
                 },
             }
         },
