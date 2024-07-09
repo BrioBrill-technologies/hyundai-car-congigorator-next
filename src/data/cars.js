@@ -481,8 +481,8 @@ const cars = {
                         "position": [17, 8.9, -12.3],
                         "cylinderPosition": [17.5, 9, -12.5],
                     },
-                    "Premium front LED accent lighting": {
-                        "description": "Spanning Across the front, between the headlines and bumper, this lighting accents adds a premium touch",
+                    "LED Projector headlights": {
+                        "description": "",
                     },
                     "LED Tail Lights": {
                         "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
@@ -621,8 +621,8 @@ const cars = {
                         "position": [17, 8.9, -12.3],
                         "cylinderPosition": [17.5, 9, -12.5],
                     },
-                    "Premium front LED accent lighting": {
-                        "description": "Spanning Across the front, between the headlines and bumper, this lighting accents adds a premium touch",
+                    "LED Projector headlights": {
+                        "description": "",
                     },
                     "LED Tail Lights": {
                         "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",

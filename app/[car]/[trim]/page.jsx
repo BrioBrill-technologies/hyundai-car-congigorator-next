@@ -118,7 +118,7 @@ export default function Page({ params }) {
     }
 
     const handleHotspotHeadLight = () => {
-        if (trim === 'Limited' || trim === 'D100 Platinum Edition' || trim === 'SEL') {
+        if ((trim === 'Limited' || trim === 'D100 Platinum Edition' || trim === 'SEL') && (car === 'IONIQ5')) {
             setHotspotTitle('Premium front LED accent lighting')
             setHotspotDescription(cars[car][trim].hotspots.exterior['Premium front LED accent lighting'].description)
         } else {
@@ -234,7 +234,7 @@ export default function Page({ params }) {
                                 isHotspotClicked={showHotspot}
                                 enableCameraMovement={true}
                             />
-                            {(trim === 'Limited' || trim === 'D100 Platinum Edition' || trim === "SEL") && (
+                            {(trim === 'Limited' || trim === 'D100 Platinum Edition' || trim === "SEL" || trim === "SE") && (
                                 <ImagePlane
                                     imageUrl={car === 'IONIQ5' ? "/Premium_LED_Image_Ioniq5.png" : "/Premium_LED_Image_Ioniq6.png"}
                                     position={[0, 4, 0]}
