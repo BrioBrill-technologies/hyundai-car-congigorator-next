@@ -8,6 +8,19 @@ import { useThree, useFrame } from '@react-three/fiber'
 import { cars } from '@/data/cars.js'
 import * as THREE from 'three'
 import LoaderScreen from './loader'
+import { EffectComposer, Bloom, BrightnessContrast } from '@react-three/postprocessing'
+import usePostProcess from '@/templates/hooks/usePostprocess'
+
+function Effects() {
+  const { scene, camera } = useThree()
+  return (
+    <EffectComposer renderPriority={2} scene={scene} enabled={true} camera={camera} resolutionScale={1}>
+      <Bloom mipmapBlur luminanceThreshold={1} intensity={0.9} />
+      <BrightnessContrast brightness={0} contrast={0.1} />
+    </EffectComposer>
+  )
+}
+
 
 // Configure DRACOLoader for useGLTF
 const configureDRACOLoader = loader => {
@@ -65,6 +78,9 @@ export function ExteriorModel({
   additions,
   playOpenAnimation,
   displayTexture,
+  bloomStrength = 1.5,
+  bloomRadius = 0.4,
+  bloomThreshold = 0.85,
   ...props
 }) {
   const { scene, animations } = useGLTF(`/models/${model}.glb`)
@@ -72,6 +88,8 @@ export function ExteriorModel({
   const [isOpen, setIsOpen] = useState(false)
   const actionsRef = useRef({})
   const [isLoaded, setIsLoaded] = useState(false)
+
+  // usePostProcess(bloomStrength, bloomRadius, bloomThreshold);
 
   useEffect(() => {
     if (scene) {
@@ -120,6 +138,20 @@ export function ExteriorModel({
     } else if (interiorColor.invisibleMesh.some(mesh => child.name.includes(mesh))) {
       child.visible = false
     }
+
+    if (child.name.includes('led') || child.name === ('LIMITED_B_top_led') || child.name === ('LIMITED_B_bottom_led')) {
+      child.material.color = new THREE.Color('red')
+      child.material.emissive = new THREE.Color('red')
+      child.material.emissiveIntensity = 30
+    }
+
+    if (child.name.includes('Display2')) {
+      child.material = new THREE.MeshStandardMaterial({
+        map: displayTexture, // Apply the passed texture
+        metalness: 0.9,
+        roughness: 0,
+      });
+    }
   }
 
   const handleExterior = (child) => {
@@ -145,8 +177,11 @@ export function ExteriorModel({
         color: exteriorColor,
         metalness: 0.3,
         roughness: 0.15,
+        emissiveIntensity: 1,
+        emissive: new THREE.Color(exteriorColor)
       })
     }
+
     if (child.name.includes('LED')) {
       child.material.color = new THREE.Color('#9D9C9F')
       child.material.emissive = new THREE.Color('#9D9C9F')
@@ -177,7 +212,8 @@ export function ExteriorModel({
 
   return (
     <Suspense fallback={<LoaderScreen />}>
-      <primitive object={scene} {...props} />
+      <primitive object={scene} {...props} >
+      </primitive>
     </Suspense>
   )
 }

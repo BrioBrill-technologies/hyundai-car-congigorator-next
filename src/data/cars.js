@@ -353,7 +353,11 @@ const cars = {
                         "cameraTarget": [8.5, 15, -65],
                         "cylinderPosition": [17.5, 9, -12.5],
                         "showNebulaCharging": true
-                    }
+                    },
+                    "LED Tail Lights": {
+                        "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
+                        "position": [24.8, 8.9, 5],
+                    },
                 },
                 "interior": {
                     "Interactive touch screen with sounds": {
@@ -479,6 +483,10 @@ const cars = {
                     },
                     "Premium front LED accent lighting": {
                         "description": "Spanning Across the front, between the headlines and bumper, this lighting accents adds a premium touch",
+                    },
+                    "LED Tail Lights": {
+                        "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
+                        "position": [24.8, 8.9, 5],
                     },
                 },
                 "interior": {
@@ -615,6 +623,10 @@ const cars = {
                     },
                     "Premium front LED accent lighting": {
                         "description": "Spanning Across the front, between the headlines and bumper, this lighting accents adds a premium touch",
+                    },
+                    "LED Tail Lights": {
+                        "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
+                        "position": [24.8, 8.9, 5],
                     },
                 },
                 "interior": {

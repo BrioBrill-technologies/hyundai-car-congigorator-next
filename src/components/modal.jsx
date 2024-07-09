@@ -11,7 +11,7 @@ export const Modal = ({ visible, setVisibility, title, description }) => {
   }, [visible]);
 
   useEffect(() => {
-    if(title === 'Vision Roof' || title === 'Premium front LED accent lighting' || title === 'Blind Spot View Monitor') {
+    if (title === 'Vision Roof' || title === 'Premium front LED accent lighting' || title === 'Blind Spot View Monitor') {
       setShowBottom(true);
     } else {
       setShowBottom(false);
@@ -35,13 +35,13 @@ export const Modal = ({ visible, setVisibility, title, description }) => {
           <p className="text-sm" id="modal-title">{title}</p>
           <p className="text-xs" id="modal-description">{description}</p>
         </div>
-        <button 
-          className="bg-white w-fit mx-auto text-black rounded-full px-2 py-0.5 pointer-events-auto"
+        <img
+          src="/icons/X_Icon.png"
+          alt="Close"
+          className="w-6 h-6 mx-auto cursor-pointer pointer-events-auto"
           onClick={handleXClick}
           aria-label="Close"
-        >
-          X
-        </button>
+        />
       </div>
     </div>
   );

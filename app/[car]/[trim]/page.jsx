@@ -140,6 +140,12 @@ export default function Page({ params }) {
         }, 5000);
     };
 
+    const handleHotspotTailLight = () => {
+        setHotspotTitle('LED Tail Lights')
+        setHotspotDescription(cars[car][trim].hotspots.exterior['LED Tail Lights'].description)
+        setShowHotspot(true)
+    };
+
     const handleHotspotMirror = () => {
         setHotspotTitle('Blind Spot View Monitor')
         setHotspotDescription(cars[car][trim].hotspots.exterior['Blind Spot View Monitor'].description)
@@ -205,7 +211,7 @@ export default function Page({ params }) {
                     <group position={[0, 0, 0]}>
                         <ExteriorModel
                             scale={12}
-                            position={(interiorColor || !exteriorColor) ? [0, 9.5, 0] : [1, -2, 1]}
+                            position={(interiorColor || !exteriorColor) ? [0, 9.7, 0] : [2.5, -1, 1]}
                             trim={car}
                             interior={exteriorColor && !interiorColor ? true : false}
                             model={cars[car][trim].exteriorModel.model}
@@ -218,7 +224,7 @@ export default function Page({ params }) {
                             playOpenAnimation={playOpenAnimation}
                             displayTexture={isAudioPlaying ? audioTexture : menuTexture}
                         />
-                        <group position={[-29, 8, 7]}>
+                        <group position={[-30.5, 8, 7]}>
                             <Hotspot
                                 rotation={[0, 15, 0]}
                                 scale={[2, 2, 2]}
@@ -230,13 +236,22 @@ export default function Page({ params }) {
                             />
                             {(trim === 'Limited' || trim === 'D100 Platinum Edition' || trim === "SEL") && (
                                 <ImagePlane
-                                    imageUrl="/Premium_LED_Image.png"
+                                    imageUrl={car === 'IONIQ5' ? "/Premium_LED_Image_Ioniq5.png" : "/Premium_LED_Image_Ioniq6.png"}
                                     position={[0, 4, 0]}
                                     rotation={[0, -1.3, 0]}
                                     scale={[1, 1, 1]}
                                     visible={showHotspot}
                                 />
                             )}
+
+                            <ImagePlane
+                                imageUrl='/Tail_LED_Ioniq6.png'
+                                position={[54, 2, -1]}
+                                rotation={[0, -4.7, 0]}
+                                scale={[1, 1, 1]}
+                                visible={showHotspot && hotspotTitle === 'LED Tail Lights'}
+                            />
+
                         </group>
                         <Hotspot
                             position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].position}
@@ -245,6 +260,16 @@ export default function Page({ params }) {
                             visible={showExteriorHotspots && !showHotspot}
                             onClick={handleHotspotCharging}
                             cameraTarget={[40, 15, -20]} // Example target position
+                            isHotspotClicked={showHotspot}
+                            enableCameraMovement={true}
+                        />
+                        <Hotspot
+                            position={cars[car][trim].hotspots.exterior['LED Tail Lights'].position}
+                            rotation={[0, 11, 0]}
+                            scale={[2, 2, 2]}
+                            visible={showExteriorHotspots && !showHotspot}
+                            onClick={handleHotspotTailLight}
+                            cameraTarget={[40, 15, 0]} // Example target position
                             isHotspotClicked={showHotspot}
                             enableCameraMovement={true}
                         />
@@ -272,7 +297,7 @@ export default function Page({ params }) {
                         {showNebula && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
                         {/* Interior Hotspots */}
                         <Hotspot
-                            position={[-10, 1, 0]}
+                            position={[-10, 0, 0]}
                             rotation={[0, 5, 0]}
                             scale={[1, 1, 1]}
                             visible={showInteriorHotspots && !showHotspot}
@@ -281,7 +306,7 @@ export default function Page({ params }) {
                             cameraTarget={[1, 0, 0]} // Example target position
                             enableCameraMovement={true}
                         />
-                        {trim !== 'SE' && (
+                        {(trim !== 'SE' && trim !== 'SEL') && (
                             <Hotspot
                                 position={[8, 4, 0]}
                                 rotation={[0, 11, 0]}

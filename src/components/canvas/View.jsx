@@ -63,7 +63,7 @@ const Exterior = ({ color, cameraPosition, minPolar, maxPolar }) => {
       <Environment1 texture={texture} />
       <Environment
         files="/envmaps/hdr/Environment-Map-Empty-Warehouse2K.hdr"
-        ground={{ height: 30, radius: 100, scale: 200 }}
+        ground={{ height: 25, radius: 100, scale: 200 }}
       />
     </>
   )
