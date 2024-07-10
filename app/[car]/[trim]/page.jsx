@@ -69,6 +69,7 @@ export default function Page({ params }) {
     const [showInteriorHotspots, setShowInteriorHotspots] = useState(false)
     const [showExteriorHotspots, setShowExteriorHotspots] = useState(true)
     const [playOpenAnimation, setPlayOpenAnimation] = useState(false)
+    const [isBloomActive, setIsBloomActive] = useState(false);
 
     const audioRef = useRef(null)
 
@@ -188,6 +189,7 @@ export default function Page({ params }) {
         setHotspotTitle('Ambient Lighting')
         setHotspotDescription(cars[car][trim].hotspots.interior['Ambient Lighting'].description)
         setShowHotspot(true)
+        setIsBloomActive(true)
     }
 
     useEffect(() => {
@@ -195,6 +197,7 @@ export default function Page({ params }) {
             setPlayOpenAnimation(showHotspot)
         } else if (hotspotTitle === 'Ambient Lighting') {
             setShowAmbient(showHotspot)
+            setIsBloomActive(showHotspot)
         } else if (!showHotspot && audioRef.current) {
             audioRef.current.pause()
             audioRef.current.currentTime = 0
@@ -223,6 +226,12 @@ export default function Page({ params }) {
                             additions={cars[car][trim].additions}
                             playOpenAnimation={playOpenAnimation}
                             displayTexture={isAudioPlaying ? audioTexture : menuTexture}
+                            bloomStrength={0.6}
+                            bloomRadius={1.1}
+                            bloomThreshold={1.5}
+                            isBloomActive={isBloomActive}
+                            ambientLedColor1={cars[car][trim].ambientLight[selectedAmbientColor]?.color1}
+                            ambientLedColor2={cars[car][trim].ambientLight[selectedAmbientColor]?.color2}
                         />
                         <group position={[-30.5, 8, 7]}>
                             <Hotspot
@@ -328,21 +337,29 @@ export default function Page({ params }) {
                                 enableCameraMovement={false}
                             />
                         )}
-                        <pointLight
-                            position={[-7, 0, -4]}
-                            color={cars[car][trim].ambientLight[selectedAmbientColor]?.color1 || '#ffffff'}
-                            intensity={70}
-                            distance={200}
-                            decay={2}
-                            visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
-                        />
 
                         <pointLight
-                            position={[-7, 0, 4]}
+                            position={[4, 1, 0]}
+                            color={cars[car][trim].ambientLight[selectedAmbientColor]?.color1 || '#ffffff'}
+                            intensity={3}
+                            distance={500}
+                            decay={0.2}
+                            visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
+                        />
+                        <pointLight
+                            position={[-4, -5, 0]}
                             color={cars[car][trim].ambientLight[selectedAmbientColor]?.color2 || '#ffffff'}
-                            intensity={70}
-                            distance={200}
-                            decay={2}
+                            intensity={3}
+                            distance={500}
+                            decay={0.2}
+                            visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
+                        />
+                        <pointLight
+                            position={[-4, 0, 0]}
+                            color={cars[car][trim].ambientLight[selectedAmbientColor]?.color2 || '#ffffff'}
+                            intensity={10}
+                            distance={500}
+                            decay={0.2}
                             visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
                         />
                     </group>

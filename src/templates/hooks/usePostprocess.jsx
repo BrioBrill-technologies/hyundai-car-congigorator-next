@@ -5,7 +5,7 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
 import { Vector2 } from 'three';
 
-export const usePostProcess = (strength = 0, radius = 0, threshold = 0) => {
+export const usePostProcess = (isBloomActive, strength = 0, radius = 0, threshold = 0) => {
   const { scene, camera, gl, size } = useThree();
 
   const composer = useMemo(() => {
@@ -15,17 +15,18 @@ export const usePostProcess = (strength = 0, radius = 0, threshold = 0) => {
     const renderPass = new RenderPass(scene, camera);
     composer.addPass(renderPass);
 
-    const bloomPass = new UnrealBloomPass(
-      new Vector2(size.width, size.height),
-      strength,    // strength
-      radius,    // radius
-      threshold    // threshold
-    );
-
-    composer.addPass(bloomPass);
+    if (isBloomActive) {
+      const bloomPass = new UnrealBloomPass(
+        new Vector2(size.width, size.height),
+        strength, // strength
+        radius,   // radius
+        threshold // threshold
+      );
+      composer.addPass(bloomPass);
+    }
 
     return composer;
-  }, [scene, camera, gl, size, strength, radius, threshold]);
+  }, [scene, camera, gl, size, strength, radius, threshold, isBloomActive]);
 
   useFrame(() => {
     composer.render();

@@ -78,71 +78,84 @@ export function ExteriorModel({
   additions,
   playOpenAnimation,
   displayTexture,
-  bloomStrength = 1.5,
-  bloomRadius = 0.4,
-  bloomThreshold = 0.85,
+  bloomStrength = 1.2,
+  bloomRadius = 0.8,
+  bloomThreshold = 1,
+  isBloomActive, // Add this prop to control bloom effect
+  ambientLedColor1,
+  ambientLedColor2,
   ...props
 }) {
-  const { scene, animations } = useGLTF(`/models/${model}.glb`)
-  const mixerRef = useRef()
-  const [isOpen, setIsOpen] = useState(false)
-  const actionsRef = useRef({})
-  const [isLoaded, setIsLoaded] = useState(false)
+  const { scene, animations } = useGLTF(`/models/${model}.glb`);
+  const mixerRef = useRef();
+  const [isOpen, setIsOpen] = useState(false);
+  const actionsRef = useRef({});
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  // usePostProcess(bloomStrength, bloomRadius, bloomThreshold);
+  usePostProcess(isBloomActive, bloomStrength, bloomRadius, bloomThreshold)
 
   useEffect(() => {
     if (scene) {
       scene.traverse((child) => {
         if (child.isMesh || child.isGroup || child.isObject3D) {
           if (trim === 'IONIQ6' && interior) {
-            handleInterior(child)
+            handleInterior(child);
           } else {
-            handleInterior(child)
-            handleExterior(child)
+            handleInterior(child);
+            handleExterior(child);
           }
         }
-      })
-      setIsLoaded(true)
+      });
+      setIsLoaded(true);
     }
-  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture])
+  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture, ambientLedColor1, ambientLedColor2]);
 
   useEffect(() => {
     if (scene && animations.length) {
-      const mixer = new THREE.AnimationMixer(scene)
-      mixerRef.current = mixer
+      const mixer = new THREE.AnimationMixer(scene);
+      mixerRef.current = mixer;
       animations.forEach((clip) => {
-        const action = mixer.clipAction(clip)
-        action.clampWhenFinished = true
-        action.setLoop(THREE.LoopOnce)
-        actionsRef.current[clip.name] = action
-      })
-      playCloseAnimations()
+        const action = mixer.clipAction(clip);
+        action.clampWhenFinished = true;
+        action.setLoop(THREE.LoopOnce);
+        actionsRef.current[clip.name] = action;
+      });
+      playCloseAnimations();
     }
-  }, [scene, animations])
+  }, [scene, animations]);
 
   useEffect(() => {
     if (playOpenAnimation !== isOpen) {
-      playOpenAnimation ? playOpenAnimations() : playCloseAnimations()
-      setIsOpen(playOpenAnimation)
+      playOpenAnimation ? playOpenAnimations() : playCloseAnimations();
+      setIsOpen(playOpenAnimation);
     }
-  }, [playOpenAnimation])
+  }, [playOpenAnimation]);
 
   useFrame((state, delta) => {
-    mixerRef.current?.update(delta)
-  })
+    mixerRef.current?.update(delta);
+  });
 
   const handleInterior = (child) => {
     if (interiorColor.visibleMesh.some(mesh => child.name.includes(mesh))) {
-      child.visible = true
+      child.visible = true;
     } else if (interiorColor.invisibleMesh.some(mesh => child.name.includes(mesh))) {
-      child.visible = false
+      child.visible = false;
     }
 
-    if (child.name.includes('led') || child.name === ('LIMITED_B_top_led') || child.name === ('LIMITED_B_bottom_led')) {
-      child.material.color = new THREE.Color('red')
-      child.material.emissive = new THREE.Color('red')
-      child.material.emissiveIntensity = 30
+    // if (child.name.includes('led') || child.name === 'LIMITED_B_top_led' || child.name === 'LIMITED_B_bottom_led') {
+    //   child.material.color = new THREE.Color('red');
+    //   child.material.emissive = new THREE.Color('red');
+    //   child.material.emissiveIntensity = 10;
+    // }
+    if (child.name.includes('_top_led') || child.name.includes('dashboard_led')) {
+      child.material.color = new THREE.Color(ambientLedColor1);
+      child.material.emissive = new THREE.Color(ambientLedColor1);
+      child.material.emissiveIntensity = 10;
+    }
+    if (child.name.includes('_bottom_led')) {
+      child.material.color = new THREE.Color(ambientLedColor2);
+      child.material.emissive = new THREE.Color(ambientLedColor2);
+      child.material.emissiveIntensity = 10;
     }
 
     if (child.name.includes('Display2')) {
@@ -152,25 +165,25 @@ export function ExteriorModel({
         roughness: 0,
       });
     }
-  }
+  };
 
   const handleExterior = (child) => {
     if (additions && child.name.includes(additions)) {
-      child.visible = true
+      child.visible = true;
     }
     if (trim === 'IONIQ6' && !interior) {
       if (interiorColor.visibleMesh.some(mesh => child.name.includes(mesh))) {
-        child.visible = true
+        child.visible = true;
       } else if (interiorColor.invisibleMesh.some(mesh => child.name.includes(mesh))) {
-        child.visible = false
+        child.visible = false;
       }
     }
     if (removable.length > 0) {
       removable.forEach(removable => {
         if (child.name.includes(removable)) {
-          child.visible = false
+          child.visible = false;
         }
-      })
+      });
     }
     if (child.name.includes('_Paints')) {
       child.material = new THREE.MeshStandardMaterial({
@@ -178,44 +191,43 @@ export function ExteriorModel({
         metalness: 0.3,
         roughness: 0.15,
         emissiveIntensity: 1,
-        emissive: new THREE.Color(exteriorColor)
-      })
+        emissive: new THREE.Color(exteriorColor),
+      });
     }
 
     if (child.name.includes('LED')) {
-      child.material.color = new THREE.Color('#9D9C9F')
-      child.material.emissive = new THREE.Color('#9D9C9F')
-      child.material.emissiveIntensity = 10
+      child.material.color = new THREE.Color('#9D9C9F');
+      child.material.emissive = new THREE.Color('#9D9C9F');
+      child.material.emissiveIntensity = 10;
     }
-  }
+  };
 
   const playCloseAnimations = () => {
-    stopAllAnimations()
-    playAnimation('Sunroof_close')
-    playAnimation('Front_close')
-  }
+    stopAllAnimations();
+    playAnimation('Sunroof_close');
+    playAnimation('Front_close');
+  };
 
   const playOpenAnimations = () => {
-    stopAllAnimations()
-    playAnimation('Sunroof_open')
-    playAnimation('Front_open')
-  }
+    stopAllAnimations();
+    playAnimation('Sunroof_open');
+    playAnimation('Front_open');
+  };
 
   const stopAllAnimations = () => {
-    Object.values(actionsRef.current).forEach(action => action.stop())
-  }
+    Object.values(actionsRef.current).forEach(action => action.stop());
+  };
 
   const playAnimation = (clipName) => {
-    const action = actionsRef.current[clipName]
-    action?.reset().play()
-  }
+    const action = actionsRef.current[clipName];
+    action?.reset().play();
+  };
 
   return (
     <Suspense fallback={<LoaderScreen />}>
-      <primitive object={scene} {...props} >
-      </primitive>
+      <primitive object={scene} {...props} />
     </Suspense>
-  )
+  );
 }
 
 export function InteriorModel({ model, playOpenAnimation, color, ...props }) {
