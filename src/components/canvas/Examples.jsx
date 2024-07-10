@@ -108,7 +108,7 @@ export function ExteriorModel({
       });
       setIsLoaded(true);
     }
-  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture, ambientLedColor1, ambientLedColor2]);
+  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture, ambientLedColor1, ambientLedColor2, isBloomActive]);
 
   useEffect(() => {
     if (scene && animations.length) {
@@ -148,11 +148,13 @@ export function ExteriorModel({
     //   child.material.emissiveIntensity = 10;
     // }
     if (child.name.includes('_top_led') || child.name.includes('dashboard_led')) {
+      child.visible = isBloomActive;
       child.material.color = new THREE.Color(ambientLedColor1);
       child.material.emissive = new THREE.Color(ambientLedColor1);
       child.material.emissiveIntensity = 10;
     }
     if (child.name.includes('_bottom_led')) {
+      child.visible = isBloomActive;
       child.material.color = new THREE.Color(ambientLedColor2);
       child.material.emissive = new THREE.Color(ambientLedColor2);
       child.material.emissiveIntensity = 10;

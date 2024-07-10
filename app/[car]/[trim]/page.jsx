@@ -243,19 +243,10 @@ export default function Page({ params }) {
                                 isHotspotClicked={showHotspot}
                                 enableCameraMovement={true}
                             />
-                            {(trim === 'Limited' || trim === 'D100 Platinum Edition' || trim === "SEL" || trim === "SE") && (
-                                <ImagePlane
-                                    imageUrl={car === 'IONIQ5' ? "/Premium_LED_Image_Ioniq5.png" : "/Premium_LED_Image_Ioniq6.png"}
-                                    position={[0, 4, 0]}
-                                    rotation={[0, -1.3, 0]}
-                                    scale={[1, 1, 1]}
-                                    visible={showHotspot}
-                                />
-                            )}
 
                             <ImagePlane
                                 imageUrl='/Tail_LED_Ioniq6.png'
-                                position={[54, 2, -1]}
+                                position={[56, 3, 2.3]}
                                 rotation={[0, -4.7, 0]}
                                 scale={[1, 1, 1]}
                                 visible={showHotspot && hotspotTitle === 'LED Tail Lights'}
@@ -278,7 +269,7 @@ export default function Page({ params }) {
                             scale={[2, 2, 2]}
                             visible={showExteriorHotspots && !showHotspot}
                             onClick={handleHotspotTailLight}
-                            cameraTarget={[40, 15, 0]} // Example target position
+                            cameraTarget={[40, 15, 5]} // Example target position
                             isHotspotClicked={showHotspot}
                             enableCameraMovement={true}
                         />
