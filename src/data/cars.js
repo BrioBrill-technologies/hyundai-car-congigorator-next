@@ -82,20 +82,55 @@ const cars = {
                 }
             },
             "ambientLight": {
-                "Ocean Blue ": {
-                    "image": "OceanBlue",
-                    "color1": "#4C66F7",
-                    "color2": "#4C66F7"
+                "Polar White ": {
+                    "image": "PolarWhite",
+                    "color1": "#D6CAED",
+                    "color2": "#D6CAED"
                 },
-                "Sunrise Red": {
-                    "image": "SunriseRed",
-                    "color1": "#FB7758",
-                    "color2": "#FB7758"
+                "Moon White": {
+                    "image": "MoonWhite",
+                    "color1": "#D9BDB0",
+                    "color2": "#D9BDB0"
+                },
+                "Ice Blue": {
+                    "image": "IceBlue",
+                    "color1": "#7DCEEA",
+                    "color2": "#7DCEEA"
+                },
+                "Ocean blue": {
+                    "image": "OceanBlue",
+                    "color1": "#0180E8",
+                    "color2": "#0180E8"
+                },
+                "Jade Green": {
+                    "image": "JadeGreen",
+                    "color1": "#01C5B0",
+                    "color2": "#01C5B0"
                 },
                 "Orchid Green": {
                     "image": "OrchidGreen",
-                    "color1": "#DAF25B",
-                    "color2": "#DAF25B"
+                    "color1": "#B0D842",
+                    "color2": "#B0D842"
+                },
+                "Freesia Yellow": {
+                    "image": "FreesiaYellow",
+                    "color1": "#F99B3C",
+                    "color2": "#F99B3C"
+                },
+                "Sunrise Red": {
+                    "image": "SunriseRed",
+                    "color1": "#DA1B23",
+                    "color2": "#DA1B23"
+                },
+                "Aurora Purple": {
+                    "image": "AuroraPurple",
+                    "color1": "#AA1AED",
+                    "color2": "#AA1AED"
+                },
+                "Lightining Violet": {
+                    "image": "LightiningViolet",
+                    "color1": "#4121A6",
+                    "color2": "#4121A6"
                 },
             }
         },
@@ -202,20 +237,55 @@ const cars = {
                 }
             },
             "ambientLight": {
-                "Ocean Blue ": {
-                    "image": "OceanBlue",
-                    "color1": "#4C66F7",
-                    "color2": "#4C66F7"
+                "Polar White ": {
+                    "image": "PolarWhite",
+                    "color1": "#D6CAED",
+                    "color2": "#D6CAED"
                 },
-                "Sunrise Red": {
-                    "image": "SunriseRed",
-                    "color1": "#FB7758",
-                    "color2": "#FB7758"
+                "Moon White": {
+                    "image": "MoonWhite",
+                    "color1": "#D9BDB0",
+                    "color2": "#D9BDB0"
+                },
+                "Ice Blue": {
+                    "image": "IceBlue",
+                    "color1": "#7DCEEA",
+                    "color2": "#7DCEEA"
+                },
+                "Ocean blue": {
+                    "image": "OceanBlue",
+                    "color1": "#0180E8",
+                    "color2": "#0180E8"
+                },
+                "Jade Green": {
+                    "image": "JadeGreen",
+                    "color1": "#01C5B0",
+                    "color2": "#01C5B0"
                 },
                 "Orchid Green": {
                     "image": "OrchidGreen",
-                    "color1": "#DAF25B",
-                    "color2": "#DAF25B"
+                    "color1": "#B0D842",
+                    "color2": "#B0D842"
+                },
+                "Freesia Yellow": {
+                    "image": "FreesiaYellow",
+                    "color1": "#F99B3C",
+                    "color2": "#F99B3C"
+                },
+                "Sunrise Red": {
+                    "image": "SunriseRed",
+                    "color1": "#DA1B23",
+                    "color2": "#DA1B23"
+                },
+                "Aurora Purple": {
+                    "image": "AuroraPurple",
+                    "color1": "#AA1AED",
+                    "color2": "#AA1AED"
+                },
+                "Lightining Violet": {
+                    "image": "LightiningViolet",
+                    "color1": "#4121A6",
+                    "color2": "#4121A6"
                 },
             }
         },
@@ -286,20 +356,55 @@ const cars = {
                 }
             },
             "ambientLight": {
-                "Ocean Blue ": {
-                    "image": "OceanBlue",
-                    "color1": "#4C66F7",
-                    "color2": "#4C66F7"
+                "Polar White ": {
+                    "image": "PolarWhite",
+                    "color1": "#D6CAED",
+                    "color2": "#D6CAED"
                 },
-                "Sunrise Red": {
-                    "image": "SunriseRed",
-                    "color1": "#FB7758",
-                    "color2": "#FB7758"
+                "Moon White": {
+                    "image": "MoonWhite",
+                    "color1": "#D9BDB0",
+                    "color2": "#D9BDB0"
+                },
+                "Ice Blue": {
+                    "image": "IceBlue",
+                    "color1": "#7DCEEA",
+                    "color2": "#7DCEEA"
+                },
+                "Ocean blue": {
+                    "image": "OceanBlue",
+                    "color1": "#0180E8",
+                    "color2": "#0180E8"
+                },
+                "Jade Green": {
+                    "image": "JadeGreen",
+                    "color1": "#01C5B0",
+                    "color2": "#01C5B0"
                 },
                 "Orchid Green": {
                     "image": "OrchidGreen",
-                    "color1": "#DAF25B",
-                    "color2": "#DAF25B"
+                    "color1": "#B0D842",
+                    "color2": "#B0D842"
+                },
+                "Freesia Yellow": {
+                    "image": "FreesiaYellow",
+                    "color1": "#F99B3C",
+                    "color2": "#F99B3C"
+                },
+                "Sunrise Red": {
+                    "image": "SunriseRed",
+                    "color1": "#DA1B23",
+                    "color2": "#DA1B23"
+                },
+                "Aurora Purple": {
+                    "image": "AuroraPurple",
+                    "color1": "#AA1AED",
+                    "color2": "#AA1AED"
+                },
+                "Lightining Violet": {
+                    "image": "LightiningViolet",
+                    "color1": "#4121A6",
+                    "color2": "#4121A6"
                 },
             }
         },
