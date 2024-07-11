@@ -15,21 +15,42 @@ import { ContactShadows } from '@react-three/drei'
 import AnimatedCylinder from '@/components/Three/AnimatedCylinder'
 import LoaderScreen from '@/components/canvas/loader'
 
-// import files
+// import texture files
 const textureLoader = new THREE.TextureLoader();
 const menuTexture = textureLoader.load('/img/Menu_Screen.png');
 const audioTexture = textureLoader.load('/img/Audio_Screen.png');
+const ioniq5TailLightTextureOn = textureLoader.load('/img/Tail_Light_On_Ioniq5.jpg');
+const ioniq5TailLightTextureOff = textureLoader.load('/img/Tail_Light_Off_Ioniq5.jpg');
+
+const ioniq6TailLightTextureOn = textureLoader.load('/img/Tail_Light_On_Ioniq6.jpg');
+const ioniq6TailLightTextureOff = textureLoader.load('/img/Tail_Light_Off_Ioniq6.jpg');
+
+const ioniq6CenterTailLightTextureOn = textureLoader.load('/img/Tail_Light_On_Center_Ioniq6.jpg');
+const ioniq6CenterTailLightTextureOff = textureLoader.load('/img/Tail_Light_Off_Center_Ioniq6.jpg');
+
+ioniq5TailLightTextureOn.flipY = false;
+ioniq5TailLightTextureOn.encoding = THREE.sRGBEncoding;
+ioniq5TailLightTextureOff.flipY = false;
+ioniq5TailLightTextureOff.encoding = THREE.sRGBEncoding;
+ioniq6TailLightTextureOn.flipY = false;
+ioniq6TailLightTextureOn.encoding = THREE.sRGBEncoding;
+ioniq6TailLightTextureOff.flipY = false;
+ioniq6TailLightTextureOff.encoding = THREE.sRGBEncoding;
+ioniq6CenterTailLightTextureOn.flipY = false;
+ioniq6CenterTailLightTextureOn.encoding = THREE.sRGBEncoding;
+ioniq6CenterTailLightTextureOff.flipY = false;
+ioniq6CenterTailLightTextureOff.encoding = THREE.sRGBEncoding;
 
 const View = dynamic(
-  () => import('@/components/canvas/View').then((mod) => mod.View),
-  {
-    ssr: false,
-    loading: () => (
-      <div className='fixed inset-0 z-50 flex flex-col items-center justify-center bg-white'>
-        <img src='/logo.png' alt='Loading' className='w-1/2' />
-      </div>
-    ),
-  }
+    () => import('@/components/canvas/View').then((mod) => mod.View),
+    {
+        ssr: false,
+        loading: () => (
+            <div className='fixed inset-0 z-50 flex flex-col items-center justify-center bg-white'>
+                <img src='/logo.png' alt='Loading' className='w-1/2' />
+            </div>
+        ),
+    }
 );
 
 const Exterior = dynamic(() => import('@/components/canvas/View').then((mod) => mod.Exterior), { ssr: false })
@@ -65,7 +86,7 @@ export default function Page({ params }) {
     const [showNebula, setShowNebula] = useState(false);
     const [showAmbient, setShowAmbient] = useState(false)
     const [showCone, setShowCone] = useState(false); // Add state for cone 
-    const [cameraPosition, setCameraPosition] = useState([-50, 0, 40])
+    const [cameraPosition, setCameraPosition] = useState([-60, 0, 0])
     const [minPolar, setMinPolar] = useState([Math.PI / 5])
     const [maxPolar, setMaxPolar] = useState([Math.PI / 2.5])
     const [hasPositionChanged, setHasPositionChanged] = useState(false)
@@ -74,6 +95,34 @@ export default function Page({ params }) {
     const [showExteriorHotspots, setShowExteriorHotspots] = useState(true)
     const [playOpenAnimation, setPlayOpenAnimation] = useState(false)
     const [isBloomActive, setIsBloomActive] = useState(false);
+    const [currentTailLightTexture, setCurrentTailLightTexture] = useState(ioniq6TailLightTextureOff);
+    const [currentTailCenterLightTexture, setCurrentCenterTailLightTexture] = useState(ioniq6CenterTailLightTextureOff);
+
+    useEffect(() => {
+        if (car === 'IONIQ5') {
+            if (showHotspot && hotspotTitle === 'LED Tail Lights') {
+                setTimeout(() => {
+                    setCurrentTailLightTexture(prevTexture => prevTexture === ioniq5TailLightTextureOff ? ioniq5TailLightTextureOn : ioniq5TailLightTextureOff);
+                }, 1200);
+            } else {
+                setTimeout(() => {
+                    setCurrentTailLightTexture(ioniq5TailLightTextureOff);
+                }, 1200)
+            }
+        } else if (car === 'IONIQ6') {
+            if (showHotspot && hotspotTitle === 'LED Tail Lights') {
+                setTimeout(() => {
+                    setCurrentTailLightTexture(prevTexture => prevTexture === ioniq6TailLightTextureOff ? ioniq6TailLightTextureOn : ioniq6TailLightTextureOff);
+                    setCurrentCenterTailLightTexture(prevTexture => prevTexture === ioniq6CenterTailLightTextureOff ? ioniq6CenterTailLightTextureOn : ioniq6CenterTailLightTextureOff);
+                }, 1200);
+            } else {
+                setTimeout(() => {
+                    setCurrentTailLightTexture(ioniq6TailLightTextureOff);
+                    setCurrentCenterTailLightTexture(ioniq6CenterTailLightTextureOff);
+                }, 1200)
+            }
+        }
+    }, [showHotspot, hotspotTitle, ioniq5TailLightTextureOff, ioniq5TailLightTextureOn]);
 
     const audioRef = useRef(null)
 
@@ -142,7 +191,7 @@ export default function Page({ params }) {
         setShowNebula(true);
         setTimeout(() => {
             setShowNebula(false);
-        }, 5000);
+        }, 3500);
     };
 
     const handleHotspotTailLight = () => {
@@ -230,12 +279,14 @@ export default function Page({ params }) {
                             additions={cars[car][trim].additions}
                             playOpenAnimation={playOpenAnimation}
                             displayTexture={isAudioPlaying ? audioTexture : menuTexture}
-                            bloomStrength={0.6}
+                            bloomStrength={0.5}
                             bloomRadius={1.1}
-                            bloomThreshold={1.5}
+                            bloomThreshold={1.8}
                             isBloomActive={isBloomActive}
                             ambientLedColor1={cars[car][trim].ambientLight[selectedAmbientColor]?.color1}
                             ambientLedColor2={cars[car][trim].ambientLight[selectedAmbientColor]?.color2}
+                            tailLightTexture={currentTailLightTexture}
+                            tailLightMiddleTexture={currentTailCenterLightTexture}
                         />
                         <group position={cars[car][trim].hotspots.exterior['LED Projector headlights'].position}>
                             <Hotspot
@@ -247,13 +298,6 @@ export default function Page({ params }) {
                                 isHotspotClicked={showHotspot}
                                 enableCameraMovement={true}
                             />
-                            <ImagePlane
-                                imageUrl='/Tail_LED_Ioniq6.png'
-                                position={[56, 3, 2.3]}
-                                rotation={[0, -4.7, 0]}
-                                scale={[1, 1, 1]}
-                                visible={showHotspot && hotspotTitle === 'LED Tail Lights'}
-                            />
 
                         </group>
                         <Hotspot
@@ -262,23 +306,23 @@ export default function Page({ params }) {
                             scale={[2, 2, 2]}
                             visible={showExteriorHotspots && !showHotspot}
                             onClick={handleHotspotCharging}
-                            cameraTarget={[40, 15, -20]} // Example target position
+                            cameraTarget={[40, 15, -30]} // Example target position
                             isHotspotClicked={showHotspot}
                             enableCameraMovement={true}
                         />
-                        {(car !== 'IONIQ5') && (
-                            <Hotspot
-                                position={cars[car][trim].hotspots.exterior['LED Tail Lights'].position}
-                                rotation={[0, 11, 0]}
-                                scale={[2, 2, 2]}
-                                visible={showExteriorHotspots && !showHotspot}
-                                onClick={handleHotspotTailLight}
-                                cameraTarget={[40, 15, 5]} // Example target position
-                                isHotspotClicked={showHotspot}
-                                enableCameraMovement={true}
-                            />
-                        )}
-                        {trim !== 'SE' && (
+
+                        <Hotspot
+                            position={cars[car][trim].hotspots.exterior['LED Tail Lights'].position}
+                            rotation={[0, 11, 0]}
+                            scale={[2, 2, 2]}
+                            visible={showExteriorHotspots && !showHotspot}
+                            onClick={handleHotspotTailLight}
+                            cameraTarget={[40, 15, 0]} // Example target position
+                            isHotspotClicked={showHotspot}
+                            enableCameraMovement={true}
+                        />
+
+                        {(trim !== 'SE' && trim !== 'SEL') && (
                             <group position={[-9, 12.3, -12]}>
                                 <Hotspot
                                     rotation={[0, 11, 0]}
@@ -324,9 +368,9 @@ export default function Page({ params }) {
                         )}
                         {trim !== 'SE' && (
                             <Hotspot
-                                position={[-10, -3, 8]}
+                                position={[-8.7, -3, 8]}
                                 rotation={[0, 5, 0]}
-                                scale={[1.3, 1.3, 1.3]}
+                                scale={[1.1, 1.1, 1.1]}
                                 visible={showInteriorHotspots && !showHotspot}
                                 onClick={handleHotspotAmbientLight}
                                 cameraTarget={[1, 0, 0]} // Example target position
@@ -335,29 +379,29 @@ export default function Page({ params }) {
                         )}
 
                         <pointLight
-                            position={[4, 1, 0]}
+                            position={[0, 7.7, -10]}
                             color={cars[car][trim].ambientLight[selectedAmbientColor]?.color1 || '#ffffff'}
-                            intensity={3}
+                            intensity={1}
                             distance={500}
                             decay={0.2}
                             visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
                         />
                         <pointLight
-                            position={[-4, -5, 0]}
+                            position={[-4, -7, 0]}
+                            color={cars[car][trim].ambientLight[selectedAmbientColor]?.color2 || '#ffffff'}
+                            intensity={1}
+                            distance={500}
+                            decay={0.2}
+                            visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
+                        />
+                        {/* <pointLight
+                            position={[-4, -2, 0]}
                             color={cars[car][trim].ambientLight[selectedAmbientColor]?.color2 || '#ffffff'}
                             intensity={3}
                             distance={500}
                             decay={0.2}
                             visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
-                        />
-                        <pointLight
-                            position={[-4, 0, 0]}
-                            color={cars[car][trim].ambientLight[selectedAmbientColor]?.color2 || '#ffffff'}
-                            intensity={10}
-                            distance={500}
-                            decay={0.2}
-                            visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
-                        />
+                        /> */}
                     </group>
                     <ContactShadows renderOrder={2} frames={1} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />
                     <Exterior

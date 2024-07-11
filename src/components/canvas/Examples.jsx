@@ -11,6 +11,7 @@ import LoaderScreen from './loader'
 import { EffectComposer, Bloom, BrightnessContrast } from '@react-three/postprocessing'
 import PostProcess from '@/templates/hooks/usePostprocess'
 
+
 function Effects() {
   const { scene, camera } = useThree()
   return (
@@ -78,6 +79,8 @@ export function ExteriorModel({
   additions,
   playOpenAnimation,
   displayTexture,
+  tailLightTexture,
+  tailLightMiddleTexture,
   bloomStrength = 1.2,
   bloomRadius = 0.8,
   bloomThreshold = 1,
@@ -106,7 +109,7 @@ export function ExteriorModel({
       });
       setIsLoaded(true);
     }
-  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture, ambientLedColor1, ambientLedColor2, isBloomActive]);
+  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture, tailLightTexture, tailLightMiddleTexture, ambientLedColor1, ambientLedColor2, isBloomActive]);
 
   useEffect(() => {
     if (scene && animations.length) {
@@ -144,13 +147,13 @@ export function ExteriorModel({
       child.visible = isBloomActive;
       child.material.color = new THREE.Color(ambientLedColor1);
       child.material.emissive = new THREE.Color(ambientLedColor1);
-      child.material.emissiveIntensity = 10;
+      child.material.emissiveIntensity = 8;
     }
     if (child.name.includes('_bottom_led')) {
       child.visible = isBloomActive;
       child.material.color = new THREE.Color(ambientLedColor2);
       child.material.emissive = new THREE.Color(ambientLedColor2);
-      child.material.emissiveIntensity = 10;
+      child.material.emissiveIntensity = 8;
     }
 
     if (child.name.includes('Display2')) {
@@ -166,7 +169,7 @@ export function ExteriorModel({
     if (additions && child.name.includes(additions)) {
       child.visible = true;
     }
-    if (trim === 'IONIQ6' && !interior) {
+    if (!interior) {
       if (interiorColor.visibleMesh.some(mesh => child.name.includes(mesh))) {
         child.visible = true;
       } else if (interiorColor.invisibleMesh.some(mesh => child.name.includes(mesh))) {
@@ -194,6 +197,18 @@ export function ExteriorModel({
       child.material.color = new THREE.Color('#9D9C9F');
       child.material.emissive = new THREE.Color('#9D9C9F');
       child.material.emissiveIntensity = 10;
+    }
+
+    if (child.name.includes('Rear_glass_outer')) {
+      child.material = new THREE.MeshBasicMaterial({
+        map: tailLightTexture,
+      });
+    }
+
+    if (child.name.includes('taillight_middle')) {
+      child.material = new THREE.MeshBasicMaterial({
+        map: tailLightMiddleTexture,
+      });
     }
   };
 

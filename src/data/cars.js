@@ -73,7 +73,11 @@ const cars = {
                         "scale": [2, 2, 2],
                         "cameraTarget": [8.5, 15, -65],
                         "showNebulaCharging": true
-                    }
+                    },
+                    "LED Tail Lights": {
+                        "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
+                        "position": [22, 10, 6],
+                    },
                 },
                 "interior": {
                     "Interactive touch screen with sounds": {
@@ -202,7 +206,7 @@ const cars = {
                     'image': 'gray-green',
                     'name': 'Gray Green 2 Tone',
                     'color': {
-                        'visibleMesh': ['GREY_BLACK'],
+                        'visibleMesh': ['LIMITED_GREY'],
                         'invisibleMesh': ['D100', 'SE_BLACK', 'LIMITED_BLACK', 'BLACK_COMMON']
                     }
                 }
@@ -222,6 +226,10 @@ const cars = {
                     "LED Projector headlights": {
                         "description": "",
                         "position": [-32.5, 8, 7],
+                    },
+                    "LED Tail Lights": {
+                        "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
+                        "position": [22, 10, 6],
                     },
                 },
                 "interior": {
@@ -341,6 +349,10 @@ const cars = {
                     "LED Projector headlights": {
                         "description": "",
                         "position": [-32.5, 8, 7],
+                    },
+                    "LED Tail Lights": {
+                        "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
+                        "position": [22, 10, 6],
                     },
                 },
                 "interior": {
@@ -502,23 +514,23 @@ const cars = {
             "ambientLight": {
                 "Mind Care": {
                     "image": "MindCare",
-                    "color1": "#FC85FB",
-                    "color2": "#4C1398"
+                    "color1": "#e998e8",
+                    "color2": "#5515a9"
                 },
                 "Concentration": {
                     "image": "Concentration",
                     "color1": "#55B2F8",
-                    "color2": "#00AF22"
+                    "color2": "#00a21b"
                 },
                 "Healing Forest": {
                     "image": "HealingForest",
-                    "color1": "#FDF952",
-                    "color2": "#00EE28"
+                    "color1": "#e9c566",
+                    "color2": "#00a21b"
                 },
                 "WonderFul Day": {
                     "image": "WonderfulDay",
-                    "color1": "#FF2128",
-                    "color2": "#FAD63C"
+                    "color1": "#dd4348",
+                    "color2": "#e9c566"
                 },
                 "Meditation": {
                     "image": "Meditation",
@@ -527,8 +539,8 @@ const cars = {
                 },
                 "Creative Moment": {
                     "image": "CreativeMoment",
-                    "color1": "#55FCF8",
-                    "color2": "#00F631"
+                    "color1": "#22a5a3",
+                    "color2": "#00a21b"
                 },
             }
         },
