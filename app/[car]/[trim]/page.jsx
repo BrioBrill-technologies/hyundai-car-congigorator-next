@@ -233,7 +233,7 @@ export default function Page({ params }) {
                             ambientLedColor1={cars[car][trim].ambientLight[selectedAmbientColor]?.color1}
                             ambientLedColor2={cars[car][trim].ambientLight[selectedAmbientColor]?.color2}
                         />
-                        <group position={[-30.5, 8, 7]}>
+                        <group position={cars[car][trim].hotspots.exterior['LED Projector headlights'].position}>
                             <Hotspot
                                 rotation={[0, 15, 0]}
                                 scale={[2, 2, 2]}
@@ -243,7 +243,6 @@ export default function Page({ params }) {
                                 isHotspotClicked={showHotspot}
                                 enableCameraMovement={true}
                             />
-
                             <ImagePlane
                                 imageUrl='/Tail_LED_Ioniq6.png'
                                 position={[56, 3, 2.3]}
@@ -263,16 +262,18 @@ export default function Page({ params }) {
                             isHotspotClicked={showHotspot}
                             enableCameraMovement={true}
                         />
-                        <Hotspot
-                            position={cars[car][trim].hotspots.exterior['LED Tail Lights'].position}
-                            rotation={[0, 11, 0]}
-                            scale={[2, 2, 2]}
-                            visible={showExteriorHotspots && !showHotspot}
-                            onClick={handleHotspotTailLight}
-                            cameraTarget={[40, 15, 5]} // Example target position
-                            isHotspotClicked={showHotspot}
-                            enableCameraMovement={true}
-                        />
+                        {(car !== 'IONIQ5') && (
+                            <Hotspot
+                                position={cars[car][trim].hotspots.exterior['LED Tail Lights'].position}
+                                rotation={[0, 11, 0]}
+                                scale={[2, 2, 2]}
+                                visible={showExteriorHotspots && !showHotspot}
+                                onClick={handleHotspotTailLight}
+                                cameraTarget={[40, 15, 5]} // Example target position
+                                isHotspotClicked={showHotspot}
+                                enableCameraMovement={true}
+                            />
+                        )}
                         {trim !== 'SE' && (
                             <group position={[-9, 12.3, -12]}>
                                 <Hotspot

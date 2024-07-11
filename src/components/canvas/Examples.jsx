@@ -9,7 +9,7 @@ import { cars } from '@/data/cars.js'
 import * as THREE from 'three'
 import LoaderScreen from './loader'
 import { EffectComposer, Bloom, BrightnessContrast } from '@react-three/postprocessing'
-import usePostProcess from '@/templates/hooks/usePostprocess'
+import PostProcess from '@/templates/hooks/usePostprocess'
 
 function Effects() {
   const { scene, camera } = useThree()
@@ -92,8 +92,6 @@ export function ExteriorModel({
   const actionsRef = useRef({});
   const [isLoaded, setIsLoaded] = useState(false);
 
-  usePostProcess(isBloomActive, bloomStrength, bloomRadius, bloomThreshold)
-
   useEffect(() => {
     if (scene) {
       scene.traverse((child) => {
@@ -142,11 +140,6 @@ export function ExteriorModel({
       child.visible = false;
     }
 
-    // if (child.name.includes('led') || child.name === 'LIMITED_B_top_led' || child.name === 'LIMITED_B_bottom_led') {
-    //   child.material.color = new THREE.Color('red');
-    //   child.material.emissive = new THREE.Color('red');
-    //   child.material.emissiveIntensity = 10;
-    // }
     if (child.name.includes('_top_led') || child.name.includes('dashboard_led')) {
       child.visible = isBloomActive;
       child.material.color = new THREE.Color(ambientLedColor1);
@@ -227,6 +220,14 @@ export function ExteriorModel({
 
   return (
     <Suspense fallback={<LoaderScreen />}>
+      {isBloomActive && (
+        <PostProcess
+          isBloomActive={isBloomActive}
+          strength={bloomStrength}
+          radius={bloomRadius}
+          threshold={bloomThreshold}
+        />
+      )}
       <primitive object={scene} {...props} />
     </Suspense>
   );

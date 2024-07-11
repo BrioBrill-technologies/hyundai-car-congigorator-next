@@ -4,15 +4,17 @@ const cars = {
         'SE': {
             'image': 'SE',
             'description': 'The balanced trim with plenty of must-have features',
+            'additions': 'TRIM_SE',
+            'removables': ['TRIM_LIMITED', 'TRIM_D100'],
             'exteriorModel': {
                 'trimModel': 'ioniq5_SE_Exterior_Trim',
-                'model': 'ioniq5_SE_Exterior',
+                'model': 'Ioniq5_Master_Model',
                 'material': 'SE',
                 'removables': ['Limited', 'D100']
             },
             'interiorModel': {
                 'model': {
-                    'Black': 'Ioniq5_Interior_SE',
+                    'Black': 'Ioniq5_Master_Model',
                 },
                 'material': 'Leather',
             },
@@ -47,14 +49,18 @@ const cars = {
                 'Black': {
                     'image': 'SE-5-Black',
                     'name': 'Black',
-                    'color': '#000000'
+                    'color': {
+                        'visibleMesh': ['SE_BLACK', 'BLACK_COMMON'],
+                        'invisibleMesh': ['D100', 'LIMITED_BLACK', 'LIMITED_GREY']
+                    }
                 },
+
             },
             "hotspots": {
                 "exterior": {
                     "LED Projector headlights": {
                         "description": "",
-                        "position": [-17, 9, -2],
+                        "position": [-32.5, 8, 7],
                         "rotation": [0, 11, 0],
                         "scale": [2, 2, 2],
                         "cameraTarget": [-50, 20, 10],
@@ -96,16 +102,18 @@ const cars = {
         'Limited': {
             'image': 'limited',
             'description': 'The premium trim that treats you with high-end features',
+            'additions': 'TRIM_LIMITED',
+            'removables': ['TRIM_SE', 'TRIM_D100'],
             'exteriorModel': {
                 'trimModel': 'ioniq5_Limited_Exterior_Trim',
-                'model': 'ioniq5_Limited_Exterior',
+                'model': 'Ioniq5_Master_Model',
                 'material': 'Limited',
                 'removables': ['SE', 'D100']
             },
             'interiorModel': {
                 'model': {
-                    'Black': 'Ioniq_5_Interior_Limited_Black',
-                    'Gray Green 2 Tone': 'Ioniq_5_Interior_Limited_Grey_Green'
+                    'Black': 'Ioniq5_Master_Model',
+                    'Gray Green 2 Tone': 'Ioniq5_Master_Model'
                 },
                 'material': 'Leather',
             },
@@ -150,12 +158,18 @@ const cars = {
                 'Black': {
                     'image': 'limited-5-Black',
                     'name': 'Black',
-                    'color': '#ffffff'
+                    'color': {
+                        'visibleMesh': ['LIMITED_BLACK', 'BLACK_COMMON'],
+                        'invisibleMesh': ['D100', 'SE_BLACK', 'LIMITED_GREY', 'BLACK_COMMON']
+                    }
                 },
                 'Gray Green 2 Tone': {
                     'image': 'gray-green',
                     'name': 'Gray Green 2 Tone',
-                    'color': '#6D6E6F'
+                    'color': {
+                        'visibleMesh': ['GREY_BLACK'],
+                        'invisibleMesh': ['D100', 'SE_BLACK', 'LIMITED_BLACK', 'BLACK_COMMON']
+                    }
                 }
             },
             "hotspots": {
@@ -168,6 +182,11 @@ const cars = {
                     },
                     "Premium front LED accent lighting": {
                         "description": "Spanning Across the front, between the headlines and bumper, this lighting accents adds a premium touch",
+                        "position": [-32.5, 8, 7],
+                    },
+                    "LED Projector headlights": {
+                        "description": "",
+                        "position": [-32.5, 8, 7],
                     },
                 },
                 "interior": {
@@ -203,15 +222,17 @@ const cars = {
         'D100 Platinum Edition': {
             'image': 'D100PlatinumEdition',
             'description': 'Available in extremely limited quantities',
+            'additions': 'TRIM_D100',
+            'removables': ['TRIM_SE', 'TRIM_LIMITED'],
             'exteriorModel': {
                 'trimModel': 'ioniq5_D100_Exterior_Trim',
-                'model': 'ioniq5_D100_Exterior',
+                'model': 'Ioniq5_Master_Model',
                 'material': 'D100',
                 'removables': ['SE', 'Limited']
             },
             'interiorModel': {
                 'model': {
-                    'Terra Brown 2 Tone': 'Ioniq_5_Interior_D100',
+                    'Terra Brown 2 Tone': 'Ioniq5_Master_Model',
                 },
                 'material': 'Leather',
             },
@@ -226,7 +247,10 @@ const cars = {
                 'Terra Brown 2 Tone': {
                     'image': 'terra-brown-2-tone',
                     'name': 'Terra Brown 2 Tone',
-                    'color': '#6D6E6F'
+                    'color': {
+                        'visibleMesh': ['D100'],
+                        'invisibleMesh': ['LIMITED_BLACK', 'SE_BLACK', 'LIMITED_GREY', 'BLACK_COMMON']
+                    }
                 }
             },
             "hotspots": {
@@ -242,6 +266,11 @@ const cars = {
                     },
                     "Premium front LED accent lighting": {
                         "description": "Spanning Across the front, between the headlines and bumper, this lighting accents adds a premium touch",
+                        "position": [-32.5, 8, 7],
+                    },
+                    "LED Projector headlights": {
+                        "description": "",
+                        "position": [-32.5, 8, 7],
                     },
                 },
                 "interior": {
@@ -339,7 +368,7 @@ const cars = {
                 "exterior": {
                     "LED Projector headlights": {
                         "description": "",
-                        "position": [-17, 9, -2],
+                        "position": [-30.5, 8, 7],
                         "rotation": [0, 11, 0],
                         "scale": [2, 2, 2],
                         "cameraTarget": [-50, 20, 10],
@@ -483,6 +512,7 @@ const cars = {
                     },
                     "LED Projector headlights": {
                         "description": "",
+                        "position": [-30.5, 8, 7],
                     },
                     "LED Tail Lights": {
                         "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
@@ -623,6 +653,7 @@ const cars = {
                     },
                     "LED Projector headlights": {
                         "description": "",
+                        "position": [-30.5, 8, 7],
                     },
                     "LED Tail Lights": {
                         "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",

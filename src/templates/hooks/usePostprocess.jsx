@@ -5,7 +5,7 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
 import { Vector2 } from 'three';
 
-export const usePostProcess = (isBloomActive, strength = 0, radius = 0, threshold = 0) => {
+const PostProcess = ({ isBloomActive, strength, radius, threshold }) => {
   const { scene, camera, gl, size } = useThree();
 
   const composer = useMemo(() => {
@@ -35,4 +35,4 @@ export const usePostProcess = (isBloomActive, strength = 0, radius = 0, threshol
   return null;
 };
 
-export default usePostProcess;
+export default PostProcess;
