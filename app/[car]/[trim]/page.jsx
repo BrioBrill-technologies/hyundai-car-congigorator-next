@@ -13,6 +13,7 @@ import Cone from '@/components/Three/Cone'
 import { NormalBlending, TextureLoader } from 'three'
 import { ContactShadows } from '@react-three/drei'
 import AnimatedCylinder from '@/components/Three/AnimatedCylinder'
+import LoaderScreen from '@/components/canvas/loader'
 
 // import files
 const textureLoader = new THREE.TextureLoader();
@@ -210,7 +211,7 @@ export default function Page({ params }) {
         <div className='mt-2 w-11/12 mx-auto relative rounded-xl'>
             <Modal visible={showHotspot} setVisibility={setShowHotspot} title={hotspotTitle} description={hotspotDescription} />
             <View className={`w-full ${exteriorColor && interiorColor ? 'h-72 sm:h-48' : 'h-96'}`}>
-                <Suspense fallback={null}>
+                <Suspense fallback={<LoaderScreen />}>
                     <group position={[0, 0, 0]}>
                         <ExteriorModel
                             scale={12}

@@ -4,7 +4,7 @@ function LoaderScreen() {
     return (
         // style the loader to be full screen and black
         <Html center>
-                <h1 className="text-white text-4xl text-center">Loading happening</h1>
+            <img src="/logo.png" alt="Loader" className="w-12 h-12" />
         </Html>
     )
 }
