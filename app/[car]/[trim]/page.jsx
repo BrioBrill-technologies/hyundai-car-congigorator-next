@@ -20,14 +20,17 @@ const textureLoader = new THREE.TextureLoader();
 const menuTexture = textureLoader.load('/img/Menu_Screen.png');
 const audioTexture = textureLoader.load('/img/Audio_Screen.png');
 
-const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.View), {
+const View = dynamic(
+  () => import('@/components/canvas/View').then((mod) => mod.View),
+  {
     ssr: false,
     loading: () => (
-        <div className='flex size-full flex-col items-center justify-center'>
-            <img src='/logo.png' alt='Loading' className='w-1/2' />
-        </div>
+      <div className='fixed inset-0 z-50 flex flex-col items-center justify-center bg-white'>
+        <img src='/logo.png' alt='Loading' className='w-1/2' />
+      </div>
     ),
-})
+  }
+);
 
 const Exterior = dynamic(() => import('@/components/canvas/View').then((mod) => mod.Exterior), { ssr: false })
 
