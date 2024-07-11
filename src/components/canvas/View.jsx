@@ -45,7 +45,7 @@ const Exterior = ({ color, cameraPosition, minPolar, maxPolar }) => {
   return (
     <>
       {color && <color attach='background' args={[color]} />}
-      <directionalLight intensity={6} color='white' position={[4, 5, 2]} />
+      <directionalLight intensity={6} color='white' position={[-4, 5, 2]} />
       <ambientLight intensity={2} />
       <PerspectiveCamera
         ref={cameraRef}

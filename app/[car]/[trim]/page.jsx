@@ -15,31 +15,34 @@ import { ContactShadows } from '@react-three/drei'
 import AnimatedCylinder from '@/components/Three/AnimatedCylinder'
 import LoaderScreen from '@/components/canvas/loader'
 
-// import texture files
 const textureLoader = new THREE.TextureLoader();
-const menuTexture = textureLoader.load('/img/Menu_Screen.png');
-const audioTexture = textureLoader.load('/img/Audio_Screen.png');
-const ioniq5TailLightTextureOn = textureLoader.load('/img/Tail_Light_On_Ioniq5.jpg');
-const ioniq5TailLightTextureOff = textureLoader.load('/img/Tail_Light_Off_Ioniq5.jpg');
 
-const ioniq6TailLightTextureOn = textureLoader.load('/img/Tail_Light_On_Ioniq6.jpg');
-const ioniq6TailLightTextureOff = textureLoader.load('/img/Tail_Light_Off_Ioniq6.jpg');
+const loadTexture = (url, flipY = false, encoding = THREE.sRGBEncoding) => {
+    const texture = textureLoader.load(url);
+    texture.flipY = flipY;
+    texture.encoding = encoding;
+    return texture;
+}
 
-const ioniq6CenterTailLightTextureOn = textureLoader.load('/img/Tail_Light_On_Center_Ioniq6.jpg');
-const ioniq6CenterTailLightTextureOff = textureLoader.load('/img/Tail_Light_Off_Center_Ioniq6.jpg');
+// Menu and Audio Textures
+const menuTexture = loadTexture('/img/Menu_Screen.png');
+const audioTexture = loadTexture('/img/Audio_Screen.png');
 
-ioniq5TailLightTextureOn.flipY = false;
-ioniq5TailLightTextureOn.encoding = THREE.sRGBEncoding;
-ioniq5TailLightTextureOff.flipY = false;
-ioniq5TailLightTextureOff.encoding = THREE.sRGBEncoding;
-ioniq6TailLightTextureOn.flipY = false;
-ioniq6TailLightTextureOn.encoding = THREE.sRGBEncoding;
-ioniq6TailLightTextureOff.flipY = false;
-ioniq6TailLightTextureOff.encoding = THREE.sRGBEncoding;
-ioniq6CenterTailLightTextureOn.flipY = false;
-ioniq6CenterTailLightTextureOn.encoding = THREE.sRGBEncoding;
-ioniq6CenterTailLightTextureOff.flipY = false;
-ioniq6CenterTailLightTextureOff.encoding = THREE.sRGBEncoding;
+// Ioniq5 Textures
+const ioniq5TailLightTextureOn = loadTexture('/img/Tail_Light_On_Ioniq5.jpg');
+const ioniq5TailLightTextureOff = loadTexture('/img/Tail_Light_Off_Ioniq5.jpg');
+const ioniq5HeadLightTextureOn = loadTexture('/img/Head_Light_On_Ioniq5.png');
+const ioniq5HeadLightTextureOff = loadTexture('/img/Head_Light_Off_Ioniq5.jpg');
+
+// Ioniq6 Textures
+const ioniq6HeadLightTextureOn = loadTexture('/img/Head_Light_On_Ioniq6.jpg');
+const ioniq6HeadLightTextureOff = loadTexture('/img/Head_Light_Off_Ioniq6.jpg');
+const ioniq6TailLightTextureOn = loadTexture('/img/Tail_Light_On_Ioniq6.jpg');
+const ioniq6TailLightTextureOff = loadTexture('/img/Tail_Light_Off_Ioniq6.jpg');
+const ioniq6CenterTailLightTextureOn = loadTexture('/img/Tail_Light_On_Center_Ioniq6.jpg');
+const ioniq6CenterTailLightTextureOff = loadTexture('/img/Tail_Light_Off_Center_Ioniq6.jpg');
+
+
 
 const View = dynamic(
     () => import('@/components/canvas/View').then((mod) => mod.View),
@@ -97,6 +100,7 @@ export default function Page({ params }) {
     const [isBloomActive, setIsBloomActive] = useState(false);
     const [currentTailLightTexture, setCurrentTailLightTexture] = useState(ioniq6TailLightTextureOff);
     const [currentTailCenterLightTexture, setCurrentCenterTailLightTexture] = useState(ioniq6CenterTailLightTextureOff);
+    const [currentHeadLightTexture, setCurrentHeadLightTexture] = useState(ioniq5HeadLightTextureOff);
 
     useEffect(() => {
         if (car === 'IONIQ5') {
@@ -109,6 +113,16 @@ export default function Page({ params }) {
                     setCurrentTailLightTexture(ioniq5TailLightTextureOff);
                 }, 1200)
             }
+
+            if (showHotspot && hotspotTitle === 'Premium front LED accent lighting') {
+                setTimeout(() => {
+                    setCurrentHeadLightTexture(prevTexture => prevTexture === ioniq5HeadLightTextureOff ? ioniq5HeadLightTextureOn : ioniq5HeadLightTextureOff);
+                }, 1200);
+            } else {
+                setTimeout(() => {
+                    setCurrentHeadLightTexture(ioniq5HeadLightTextureOff);
+                }, 1200)
+            }
         } else if (car === 'IONIQ6') {
             if (showHotspot && hotspotTitle === 'LED Tail Lights') {
                 setTimeout(() => {
@@ -119,6 +133,16 @@ export default function Page({ params }) {
                 setTimeout(() => {
                     setCurrentTailLightTexture(ioniq6TailLightTextureOff);
                     setCurrentCenterTailLightTexture(ioniq6CenterTailLightTextureOff);
+                }, 1200)
+            }
+
+            if (showHotspot && hotspotTitle === 'LED Projector headlights') {
+                setTimeout(() => {
+                    setCurrentHeadLightTexture(prevTexture => prevTexture === ioniq6HeadLightTextureOff ? ioniq6HeadLightTextureOn : ioniq6HeadLightTextureOff);
+                }, 1200);
+            } else {
+                setTimeout(() => {
+                    setCurrentHeadLightTexture(ioniq6HeadLightTextureOff);
                 }, 1200)
             }
         }
@@ -255,6 +279,10 @@ export default function Page({ params }) {
             audioRef.current.pause()
             audioRef.current.currentTime = 0
             setIsAudioPlaying(false)
+        } else if (hotspotTitle === 'Premium front LED accent lighting') {
+            setTimeout(() => {
+                setIsBloomActive(showHotspot)
+            }, 1200)
         }
     }, [showHotspot])
 
@@ -287,6 +315,7 @@ export default function Page({ params }) {
                             ambientLedColor2={cars[car][trim].ambientLight[selectedAmbientColor]?.color2}
                             tailLightTexture={currentTailLightTexture}
                             tailLightMiddleTexture={currentTailCenterLightTexture}
+                            headLightTexture={currentHeadLightTexture}
                         />
                         <group position={cars[car][trim].hotspots.exterior['LED Projector headlights'].position}>
                             <Hotspot
@@ -294,7 +323,7 @@ export default function Page({ params }) {
                                 scale={[2, 2, 2]}
                                 visible={showExteriorHotspots && !showHotspot}
                                 onClick={handleHotspotHeadLight}
-                                cameraTarget={[-45, 10, 10]}
+                                cameraTarget={[-45, 10, 0]}
                                 isHotspotClicked={showHotspot}
                                 enableCameraMovement={true}
                             />

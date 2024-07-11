@@ -81,6 +81,7 @@ export function ExteriorModel({
   displayTexture,
   tailLightTexture,
   tailLightMiddleTexture,
+  headLightTexture,
   bloomStrength = 1.2,
   bloomRadius = 0.8,
   bloomThreshold = 1,
@@ -109,7 +110,7 @@ export function ExteriorModel({
       });
       setIsLoaded(true);
     }
-  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture, tailLightTexture, tailLightMiddleTexture, ambientLedColor1, ambientLedColor2, isBloomActive]);
+  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture, tailLightTexture, tailLightMiddleTexture,headLightTexture, ambientLedColor1, ambientLedColor2, isBloomActive]);
 
   useEffect(() => {
     if (scene && animations.length) {
@@ -188,14 +189,13 @@ export function ExteriorModel({
         color: exteriorColor,
         metalness: 0.3,
         roughness: 0.15,
-        emissiveIntensity: 1,
-        emissive: new THREE.Color(exteriorColor),
+        emissiveIntensity: 0,
       });
     }
 
-    if (child.name.includes('LED')) {
-      child.material.color = new THREE.Color('#9D9C9F');
-      child.material.emissive = new THREE.Color('#9D9C9F');
+    if (child.name === ('LED_Strip')) {
+      child.material.color = new THREE.Color('#ffffff');
+      child.material.emissive = new THREE.Color('#ffffff');
       child.material.emissiveIntensity = 10;
     }
 
@@ -208,6 +208,11 @@ export function ExteriorModel({
     if (child.name.includes('taillight_middle')) {
       child.material = new THREE.MeshBasicMaterial({
         map: tailLightMiddleTexture,
+      });
+    }
+    if (child.name.includes('headlight')) {
+      child.material = new THREE.MeshBasicMaterial({
+        map: headLightTexture,
       });
     }
   };
