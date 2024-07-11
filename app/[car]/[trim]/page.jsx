@@ -23,7 +23,7 @@ const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.
     ssr: false,
     loading: () => (
         <div className='flex size-full flex-col items-center justify-center'>
-            Loading ....
+            <img src='/logo.png' alt='Loading' className='w-1/2' />
         </div>
     ),
 })
