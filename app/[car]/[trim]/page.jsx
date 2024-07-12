@@ -64,7 +64,7 @@ const View = dynamic(
         ssr: false,
         loading: () => (
             <div className='fixed inset-0 z-50 flex flex-col items-center justify-center bg-white'>
-                <img src='/logo.png' alt='Loading' className='w-1/2' />
+                Loading...
             </div>
         ),
     }
@@ -334,7 +334,7 @@ export default function Page({ params }) {
             setTimeout(() => {
                 setIsBloomActive(showHotspot)
             }, 1200)
-        } else if (hotspotTitle === 'D100 Platinum Edition') {
+        } else if (hotspotTitle === 'D100PlatinumEdition') {
             setIsBloomActive(showHotspot)
         }
     }, [showHotspot])
