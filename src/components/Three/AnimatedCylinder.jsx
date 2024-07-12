@@ -7,8 +7,6 @@ import Glow from "./Glow";
 const AnimatedCylinder = ({ position = [22, 10, -10.5] }) => {
     const cylinderRef = useRef();
     const [scaleDirection, setScaleDirection] = useState(1);
-    console.log(position)
-
     useFrame(() => {
         if (cylinderRef.current) {
             cylinderRef.current.scale.y += 0.0004 * scaleDirection; // Slow down the animation

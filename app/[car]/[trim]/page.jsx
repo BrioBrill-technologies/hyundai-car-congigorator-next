@@ -237,10 +237,13 @@ export default function Page({ params }) {
         setShowHotspot(prev => !prev);
 
         // Show NebulaComponent and remove it after 5 seconds
-        setShowNebula(true);
+        setTimeout(()=> {
+            setShowNebula(true);
+        }, 1200)
+
         setTimeout(() => {
             setShowNebula(false);
-        }, 3500);
+        }, 4700);
     };
 
     const handleHotspotTailLight = () => {
@@ -413,7 +416,7 @@ export default function Page({ params }) {
                                 />
                             </group>
                         )}
-                        {showNebula && <NebulaComponent />}
+                        {showNebula && <NebulaComponent position={[0, 0, 0]} />}
                         {showNebula && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
                         {/* Interior Hotspots */}
                         <Hotspot

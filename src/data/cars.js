@@ -68,15 +68,16 @@ const cars = {
                     },
                     "Ultra-fast charging": {
                         "description": "With up to 350-kW 800 volt charger, charge your vehicle from 10 - 80 percent in just 80 minutes",
-                        "position": [8.5, 10, -47],
+                        "position": [19, 10, -11],
                         "rotation": [0, 11, 0],
                         "scale": [2, 2, 2],
                         "cameraTarget": [8.5, 15, -65],
-                        "showNebulaCharging": true
+                        "showNebulaCharging": true,
+                        "cylinderPosition": [19, 10, -11],
                     },
                     "LED Tail Lights": {
                         "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
-                        "position": [22, 10, 6],
+                        "position": [23, 10, 7],
                     },
                 },
                 "interior": {
@@ -218,6 +219,8 @@ const cars = {
                     },
                     "Ultra-fast charging": {
                         "description": "With up to 350-kW 800 volt charger, charge your vehicle from 10 - 80 percent in just 80 minutes",
+                        "position": [19, 10, -11],
+                        "cylinderPosition": [19, 10, -11],
                     },
                     "Premium front LED accent lighting": {
                         "description": "Spanning Across the front, between the headlines and bumper, this lighting accents adds a premium touch",
@@ -229,7 +232,7 @@ const cars = {
                     },
                     "LED Tail Lights": {
                         "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
-                        "position": [22, 10, 6],
+                        "position": [23, 10, 7],
                     },
                 },
                 "interior": {
@@ -341,6 +344,8 @@ const cars = {
                     },
                     "Ultra-fast charging": {
                         "description": "With up to 350-kW 800 volt charger, charge your vehicle from 10 - 80 percent in just 80 minutes",
+                        "position": [19, 10, -11],
+                        "cylinderPosition": [19, 10, -11],
                     },
                     "Premium front LED accent lighting": {
                         "description": "Spanning Across the front, between the headlines and bumper, this lighting accents adds a premium touch",
@@ -352,7 +357,7 @@ const cars = {
                     },
                     "LED Tail Lights": {
                         "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
-                        "position": [22, 10, 6],
+                        "position": [23, 10, 7],
                     },
                 },
                 "interior": {
@@ -500,7 +505,7 @@ const cars = {
                         "rotation": [0, 11, 0],
                         "scale": [2, 2, 2],
                         "cameraTarget": [8.5, 15, -65],
-                        "cylinderPosition": [17.5, 9, -12.5],
+                        "cylinderPosition": [18.7, 9.5, -12.8],
                         "showNebulaCharging": true
                     },
                     "LED Tail Lights": {
@@ -628,7 +633,7 @@ const cars = {
                     "Ultra-fast charging": {
                         "description": "With up to 350-kW 800 volt charger, charge your vehicle from 10 - 80 percent in just 80 minutes",
                         "position": [17, 8.9, -12.3],
-                        "cylinderPosition": [17.5, 9, -12.5],
+                        "cylinderPosition": [18.7, 9.5, -12.8],
                     },
                     "LED Projector headlights": {
                         "description": "",
@@ -769,7 +774,7 @@ const cars = {
                     "Ultra-fast charging": {
                         "description": "With up to 350-kW 800 volt charger, charge your vehicle from 10 - 80 percent in just 80 minutes",
                         "position": [17, 8.9, -12.3],
-                        "cylinderPosition": [17.5, 9, -12.5],
+                        "cylinderPosition": [18.7, 9.5, -12.8],
                     },
                     "LED Projector headlights": {
                         "description": "",
