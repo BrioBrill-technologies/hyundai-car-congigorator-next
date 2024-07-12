@@ -589,8 +589,9 @@ export default function Page({ params }) {
                     </div>
                 </div>
             )}
-            <div className={`text-center border-2 py-2 flex relative flex-row justify-center border-black w-10/12 mx-auto font-[HyundaiSansHead-Medium] cursor-pointer ${exteriorColor && interiorColor ? 'mt-5' : ''
-                }`}
+            <div className={`text-center border-2 py-2 flex relative flex-row justify-center border-black w-10/12 mx-auto font-[HyundaiSansHead-Medium] cursor-pointer
+                ${exteriorColor && interiorColor ? 'mt-5' : ''}
+                ${disable ? 'pointer-events-none opacity-50 ' : 'opacity-100'}`}
                 onClick={() => handleSelectColor(selectedColor)}>
                 <span>{interiorColor && exteriorColor ? 'Finsih Build' : `Select ${selectedColor}`}</span>
                 <svg
@@ -604,7 +605,8 @@ export default function Page({ params }) {
                 </svg>
             </div>
             <div className={`text-center w-1/5 flex flex-row mx-auto items-center justify-evenly font-[HyundaiSansHead-Light]
-             ${exteriorColor && interiorColor ? 'mt-1' : 'mt-5'}`} onClick={handleBack}>
+                ${exteriorColor && interiorColor ? 'mt-1' : 'mt-5'}
+                ${disable ? 'pointer-events-none opacity-50 ' : 'opacity-100'}`} onClick={handleBack}>
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
                     fill='none'
