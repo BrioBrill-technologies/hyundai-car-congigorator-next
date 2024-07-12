@@ -363,7 +363,7 @@ export default function Page({ params }) {
         if (start) {
             setTimeout(() => {
                 setStart(false)
-            }, 5000)
+            }, 10000)
         }
     }, [start])
 
