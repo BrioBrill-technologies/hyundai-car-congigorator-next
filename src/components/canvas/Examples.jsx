@@ -8,20 +8,7 @@ import { useThree, useFrame } from '@react-three/fiber'
 import { cars } from '@/data/cars.js'
 import * as THREE from 'three'
 import LoaderScreen from './loader'
-import { EffectComposer, Bloom, BrightnessContrast } from '@react-three/postprocessing'
 import PostProcess from '@/templates/hooks/usePostprocess'
-
-
-function Effects() {
-  const { scene, camera } = useThree()
-  return (
-    <EffectComposer renderPriority={2} scene={scene} enabled={true} camera={camera} resolutionScale={1}>
-      <Bloom mipmapBlur luminanceThreshold={1} intensity={0.9} />
-      <BrightnessContrast brightness={0} contrast={0.1} />
-    </EffectComposer>
-  )
-}
-
 
 // Configure DRACOLoader for useGLTF
 const configureDRACOLoader = loader => {
@@ -89,6 +76,7 @@ export function ExteriorModel({
   ambientLedColor1,
   ambientLedColor2,
   activateD100,
+  isBubbleHotspotActive,
   ...props
 }) {
   const { scene, animations } = useGLTF(`/models/${model}.glb`);
@@ -98,6 +86,8 @@ export function ExteriorModel({
   const [isLoaded, setIsLoaded] = useState(false);
   const videoRef = useRef();
   const videoTextureRef = useRef();
+  const modelRef = useRef();
+  const targetPosition = useRef(new THREE.Vector3(2.5, -1, 0));
 
   useEffect(() => {
     if (!videoRef.current) {
@@ -117,6 +107,20 @@ export function ExteriorModel({
       videoTextureRef.current = videoTexture;
     }
   }, []);
+
+  useFrame((state, delta) => {
+    mixerRef.current?.update(delta);
+
+    if (modelRef.current) {
+      if (isBubbleHotspotActive) {
+        targetPosition.current.set(5, 0, 0);
+      } else {
+        targetPosition.current.set(-1, 0, 0);
+      }
+
+      modelRef.current.position.lerp(targetPosition.current, 0.1);
+    }
+  });
 
   useEffect(() => {
     if (activateD100) {
@@ -287,7 +291,9 @@ export function ExteriorModel({
           threshold={bloomThreshold}
         />
       )}
-      <primitive object={scene} {...props} />
+      <group ref={modelRef}>
+        <primitive object={scene} {...props} />
+      </group>
     </Suspense>
   );
 }

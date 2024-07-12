@@ -8,7 +8,7 @@ import { cars } from '@/data/cars'
 import { Hotspot } from '@/components/canvas/Hotspot'
 import { Modal } from '@/components/modal'
 import NebulaComponent from '@/components/Three/Nebula'
-import { useLoader } from '@react-three/fiber'
+import { useLoader, useFrame } from '@react-three/fiber'
 import Cone from '@/components/Three/Cone'
 import { NormalBlending, TextureLoader } from 'three'
 import { ContactShadows } from '@react-three/drei'
@@ -72,10 +72,23 @@ const View = dynamic(
 
 const Exterior = dynamic(() => import('@/components/canvas/View').then((mod) => mod.Exterior), { ssr: false })
 
-const ImagePlane = ({ imageUrl, position, rotation, scale, visible }) => {
+const ImagePlane = ({ imageUrl, position, rotation, scale, visible, animate = false}) => {
     const texture = useLoader(TextureLoader, imageUrl);
+    const meshRef = useRef();
+    const [elapsed, setElapsed] = useState(0);
+
+    useFrame((state, delta) => {
+        if (animate) {
+            setElapsed(elapsed + delta);
+            const newY = position[1] + Math.sin(elapsed * 3) * 0.5; // Adjust the values for desired effect
+            meshRef.current.position.set(position[0], newY, position[2]);
+        } else {
+            meshRef.current.position.set(position[0], position[1], position[2]);
+        }
+    });
+
     return (
-        <mesh position={position} rotation={rotation} scale={scale}>
+        <mesh ref={meshRef} rotation={rotation} scale={scale}>
             <planeGeometry attach="geometry" args={[5, 5]} />
             <meshStandardMaterial
                 attach="material"
@@ -119,7 +132,7 @@ export default function Page({ params }) {
     const [activateD100, setActivateD100] = useState(false);
 
     useEffect(() => {
-        if(showHotspot) setDisable(true)
+        if (showHotspot) setDisable(true)
         else setDisable(false)
         if (car === 'IONIQ5') {
             if (showHotspot && hotspotTitle === 'LED Tail Lights') {
@@ -169,7 +182,7 @@ export default function Page({ params }) {
     const audioRef = useRef(null)
 
     const handleSelectColor = (color) => {
-        if(disable) return
+        if (disable) return
         if (!exteriorColor) {
             setExteriorColor(color);
             setSelectedColor(Object.keys(cars[car][trim].interiorColors)[0]);
@@ -311,6 +324,12 @@ export default function Page({ params }) {
         }, 6500)
     }
 
+    const handleHotspotDisneyBubbles = () => {
+        setHotspotTitle('D100 Edition')
+        setHotspotDescription(cars[car][trim].hotspots.interior['D100 Edition'].description)
+        setShowHotspot(true)
+    }
+
     const handleHotspotAmbientLight = () => {
         setHotspotTitle('Ambient Lighting')
         setHotspotDescription(cars[car][trim].hotspots.interior['Ambient Lighting'].description)
@@ -370,6 +389,7 @@ export default function Page({ params }) {
                             tailLightMiddleTexture={currentTailCenterLightTexture}
                             headLightTexture={currentHeadLightTexture}
                             activateD100={activateD100}
+                            isBubbleHotspotActive={showHotspot && hotspotTitle === 'D100 Edition'}
                         />
                         <group position={cars[car][trim].hotspots.exterior['LED Projector headlights'].position}>
                             <Hotspot
@@ -425,6 +445,8 @@ export default function Page({ params }) {
                                 />
                             </group>
                         )}
+
+
                         {showNebula && <NebulaComponent position={[0, 0, 0]} />}
                         {showNebula && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
                         {/* Interior Hotspots */}
@@ -472,6 +494,38 @@ export default function Page({ params }) {
                                 texture='/icons/Purple_Pointer.png'
                             />
                         )}
+
+                        {trim === 'D100PlatinumEdition' && (
+                            <Hotspot
+                                position={[-3, -2, 8]}
+                                rotation={[0, 5, 0]}
+                                scale={[0.8, 0.8, 0.8]}
+                                visible={showInteriorHotspots && !showHotspot}
+                                onClick={handleHotspotDisneyBubbles}
+                                cameraTarget={[-0.1, 0, -8]} // Example target position
+                                enableCameraMovement={true}
+                                texture='/icons/Purple_Pointer.png'
+                            />
+                        )}
+
+                        <group>
+                            <ImagePlane
+                                imageUrl="/img/Micky_badge_Interior_Image.png"
+                                position={[-3.5, -5, 5]}
+                                rotation={[0, 3.4, 0]}
+                                scale={[0.7, 0.7, 0.7]}
+                                animate={true}
+                                visible={showHotspot && hotspotTitle === 'D100 Edition'}
+                            />
+                            <ImagePlane
+                                imageUrl="/img/Micky_Door_Leather_Image.png"
+                                position={[1.5, 1, 8]}
+                                rotation={[0, 3.4, 0]}
+                                scale={[0.85, 0.85, 0.85]}
+                                animate={true}
+                                visible={showHotspot && hotspotTitle === 'D100 Edition'}
+                            />
+                        </group>
 
                         <pointLight
                             position={[0, 7.7, -10]}
