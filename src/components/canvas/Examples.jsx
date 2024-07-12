@@ -292,7 +292,9 @@ export function ExteriorModel({
         />
       )}
       <group ref={modelRef}>
-        <primitive object={scene} {...props} />
+        <Suspense fallback={<LoaderScreen />}>
+          <primitive object={scene} {...props} />
+        </Suspense>
       </group>
     </Suspense>
   );

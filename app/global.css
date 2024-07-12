@@ -61,6 +61,11 @@
   pointer-events: none;
 }
 
+.fade-out-load {
+  animation: fadeOut 7s ease-in-out forwards;
+  pointer-events: none;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
