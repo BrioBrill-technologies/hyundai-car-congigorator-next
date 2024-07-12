@@ -53,14 +53,14 @@ export default function Page({ car }) {
                     </Suspense>
                   </View>
                   <div>
-                    <p className='text-center mt-5'>{trim}</p>
+                    <p className='text-center mt-5'>{trim === 'D100PlatinumEdition' ? 'D100 Platinum Edition' : trim}</p>
                     <p className='text-xs text-center font-[HyundaiSansHead-Light]'>{cars[car][trim].description}</p>
                   </div>
                   <div
                     className={`text-center border-2 py-2 border-black w-full ${trim === 'Limited' ? 'mt-1' :'mt-5'} font-[HyundaiSansHead-Regular] cursor-pointer`}
                     onClick={() => handleSelectClick(trim)}
                   >
-                    Select {trim}
+                    Select {trim === 'D100PlatinumEdition' ? 'D100 Platinum Edition' : trim}
                     <span className='absolute right-5'>
                       <svg
                         xmlns='http://www.w3.org/2000/svg'
