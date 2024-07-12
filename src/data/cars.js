@@ -365,6 +365,9 @@ const cars = {
                     "Ambient Lighting": {
                         "description": "Set the mood with more inviting interior with ambient lighting on the door.",
                     },
+                    "D100 Platinum Edition": {
+                        "description": "",
+                    },
                 }
             },
             "ambientLight": {

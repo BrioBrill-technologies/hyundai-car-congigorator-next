@@ -4,7 +4,7 @@ import { TextureLoader, Vector3 } from 'three';
 import * as THREE from 'three';
 import CameraController from '@/data/Cameracontroller';
 
-export const Hotspot = ({ position, rotation, scale, onClick, visible, cameraTarget, enableCameraMovement = true }) => {
+export const Hotspot = ({ position, rotation, scale, onClick, visible, cameraTarget, enableCameraMovement = true, texture = '/icons/Pointer.png' }) => {
     const hotspotRef = useRef();
     const { camera } = useThree();
     const [baseScale] = useState(scale); // Initial scale
@@ -43,7 +43,7 @@ export const Hotspot = ({ position, rotation, scale, onClick, visible, cameraTar
     });
 
     const hotspotMaterial = new THREE.MeshBasicMaterial({
-        map: new TextureLoader().load('/icons/Pointer.png'),
+        map: new TextureLoader().load(texture),
         transparent: true,
     });
 

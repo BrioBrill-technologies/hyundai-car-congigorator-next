@@ -14,6 +14,7 @@ import { NormalBlending, TextureLoader } from 'three'
 import { ContactShadows } from '@react-three/drei'
 import AnimatedCylinder from '@/components/Three/AnimatedCylinder'
 import LoaderScreen from '@/components/canvas/loader'
+import { Plane } from '@/components/Three/disney-particles'
 
 const textureLoader = new THREE.TextureLoader();
 
@@ -41,6 +42,21 @@ const ioniq6TailLightTextureOn = loadTexture('/img/Tail_Light_On_Ioniq6.jpg');
 const ioniq6TailLightTextureOff = loadTexture('/img/Tail_Light_Off_Ioniq6.jpg');
 const ioniq6CenterTailLightTextureOn = loadTexture('/img/Tail_Light_On_Center_Ioniq6.jpg');
 const ioniq6CenterTailLightTextureOff = loadTexture('/img/Tail_Light_Off_Center_Ioniq6.jpg');
+
+const generatePlanes = () => {
+    return new Array(60).fill().map((_, i) => ({
+        id: i,
+        position: [
+            (Math.random() - 0.5) * 20, // Adjusted range for x coordinate
+            (Math.random() - 0.5) * 10, // Adjusted range for y coordinate
+            (Math.random() - 0.5) * 20, // Adjusted range for z coordinate
+        ],
+        shouldTwinkle: Math.random() < 0.5, // Randomly determine if the plane should twinkle
+        shouldMove: Math.random() < 0.3, // Randomly determine if the plane should move
+    }));
+};
+
+const planes = generatePlanes();
 
 const View = dynamic(
     () => import('@/components/canvas/View').then((mod) => mod.View),
@@ -99,6 +115,7 @@ export default function Page({ params }) {
     const [currentTailLightTexture, setCurrentTailLightTexture] = useState(ioniq6TailLightTextureOff);
     const [currentTailCenterLightTexture, setCurrentCenterTailLightTexture] = useState(ioniq6CenterTailLightTextureOff);
     const [currentHeadLightTexture, setCurrentHeadLightTexture] = useState(ioniq5HeadLightTextureOff);
+    const [activateD100, setActivateD100] = useState(false);
 
     useEffect(() => {
         if (car === 'IONIQ 5') {
@@ -158,6 +175,10 @@ export default function Page({ params }) {
             setHasPositionChanged(false); // Reset this when changing position
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(true)
+            setActivateD100(true)
+            setTimeout(() => {
+                setActivateD100(false)
+            }, 5500)
         } else {
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(false)
@@ -166,6 +187,7 @@ export default function Page({ params }) {
             setHasPositionChanged(false); // Reset this when changing position
             setMinPolar([Math.PI / 5])
             setMaxPolar([Math.PI / 2.5])
+            setActivateD100(false)
         }
     }
 
@@ -179,6 +201,10 @@ export default function Page({ params }) {
             setShowInteriorHotspots(true)
             setMinPolar([Math.PI / 10])
             setMaxPolar([Math.PI / 1.9])
+            setActivateD100(true)
+            setTimeout(() => {
+                setActivateD100(false)
+            }, 5500)
         } else if (exteriorColor) {
             setExteriorColor('')
             setSelectedColor(Object.keys(cars[car][trim].exteriorColors)[0])
@@ -188,6 +214,7 @@ export default function Page({ params }) {
             setShowInteriorHotspots(false)
             setMinPolar([Math.PI / 5])
             setMaxPolar([Math.PI / 2.5])
+            setActivateD100(false)
         } else {
             router.push(`/${car}`)
         }
@@ -260,6 +287,18 @@ export default function Page({ params }) {
         }, 1500)
     }
 
+    const handleHotspotDisneyStartup = () => {
+        setHotspotTitle('D100 Platinum Edition')
+        setHotspotDescription(cars[car][trim].hotspots.interior['D100 Platinum Edition'].description)
+        setShowHotspot(true)
+        setIsBloomActive(true)
+        setActivateD100(false)
+        setActivateD100(true)
+        setTimeout(() => {
+            setActivateD100(false)
+        }, 5500)
+    }
+
     const handleHotspotAmbientLight = () => {
         setHotspotTitle('Ambient Lighting')
         setHotspotDescription(cars[car][trim].hotspots.interior['Ambient Lighting'].description)
@@ -281,6 +320,8 @@ export default function Page({ params }) {
             setTimeout(() => {
                 setIsBloomActive(showHotspot)
             }, 1200)
+        } else if (hotspotTitle === 'D100 Platinum Edition') {
+            setIsBloomActive(showHotspot)
         }
     }, [showHotspot])
 
@@ -293,7 +334,7 @@ export default function Page({ params }) {
                     <group position={[0, 0, 0]}>
                         <ExteriorModel
                             scale={12}
-                            position={(interiorColor || !exteriorColor) ? [0, 9.7, 0] : [2.5, -1, 1]}
+                            position={(interiorColor || !exteriorColor) ? [0, 9.7, 0] : [2.5, -1, 0]}
                             trim={car}
                             interior={exteriorColor && !interiorColor ? true : false}
                             model={cars[car][trim].exteriorModel.model}
@@ -314,6 +355,7 @@ export default function Page({ params }) {
                             tailLightTexture={currentTailLightTexture}
                             tailLightMiddleTexture={currentTailCenterLightTexture}
                             headLightTexture={currentHeadLightTexture}
+                            activateD100={activateD100}
                         />
                         <group position={cars[car][trim].hotspots.exterior['LED Projector headlights'].position}>
                             <Hotspot
@@ -373,7 +415,7 @@ export default function Page({ params }) {
                         {showNebula && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
                         {/* Interior Hotspots */}
                         <Hotspot
-                            position={[-10, 0, 0]}
+                            position={[-10, 0, -0.9]}
                             rotation={[0, 5, 0]}
                             scale={[1, 1, 1]}
                             visible={showInteriorHotspots && !showHotspot}
@@ -405,6 +447,17 @@ export default function Page({ params }) {
                             />
                         )}
 
+                        <Hotspot
+                            position={[-10, 0, 1.3]}
+                            rotation={[0, 5, 0]}
+                            scale={[1, 1, 1]}
+                            visible={showInteriorHotspots && !showHotspot}
+                            onClick={handleHotspotDisneyStartup}
+                            cameraTarget={[1, 0, 0]} // Example target position
+                            enableCameraMovement={true}
+                            texture='/icons/Purple_Pointer.png'
+                        />
+
                         <pointLight
                             position={[0, 7.7, -10]}
                             color={cars[car][trim].ambientLight[selectedAmbientColor]?.color1 || '#ffffff'}
@@ -430,6 +483,14 @@ export default function Page({ params }) {
                             visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
                         /> */}
                     </group>
+                    {hotspotTitle === 'D100 Platinum Edition' && showHotspot && planes.map((plane) => (
+                        <Plane
+                            key={plane.id}
+                            position={plane.position}
+                            shouldTwinkle={plane.shouldTwinkle}
+                            shouldMove={plane.shouldMove}
+                        />
+                    ))}
                     <ContactShadows renderOrder={2} frames={1} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />
                     <Exterior
                         color={exteriorColor ? cars[car][trim].exteriorColors[exteriorColor].color : cars[car][trim].exteriorColors[selectedColor].color}

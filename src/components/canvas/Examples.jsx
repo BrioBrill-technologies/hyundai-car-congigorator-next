@@ -3,7 +3,7 @@
 import { Html, useGLTF } from '@react-three/drei'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 import { useRouter } from 'next/navigation'
-import { Suspense, useRef, useEffect, useState } from 'react'
+import { Suspense, useRef, useEffect, useState, act } from 'react'
 import { useThree, useFrame } from '@react-three/fiber'
 import { cars } from '@/data/cars.js'
 import * as THREE from 'three'
@@ -85,16 +85,49 @@ export function ExteriorModel({
   bloomStrength = 1.2,
   bloomRadius = 0.8,
   bloomThreshold = 1,
-  isBloomActive, // Add this prop to control bloom effect
+  isBloomActive,
   ambientLedColor1,
   ambientLedColor2,
+  activateD100,
   ...props
 }) {
   const { scene, animations } = useGLTF(`/models/${model}.glb`);
   const mixerRef = useRef();
-  const [isOpen, setIsOpen] = useState(false);
   const actionsRef = useRef({});
+  const [isOpen, setIsOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const videoRef = useRef();
+  const videoTextureRef = useRef();
+
+  useEffect(() => {
+    if (!videoRef.current) {
+      // Create a video element
+      const video = document.createElement('video');
+      video.src = '/Hyundai_D100_Video.mp4'; // Replace with your video path
+      video.loop = false;
+      video.muted = false;
+      videoRef.current = video;
+
+      // Create a video texture
+      const videoTexture = new THREE.VideoTexture(video);
+      videoTexture.minFilter = THREE.LinearFilter;
+      videoTexture.magFilter = THREE.LinearFilter;
+      videoTexture.flipY = false;
+      videoTexture.encoding = THREE.sRGBEncoding;
+      videoTextureRef.current = videoTexture;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (activateD100) {
+      videoRef.current.play();
+      videoRef.currentTime = 0
+      console.log('play');
+    } else {
+      videoRef.current.pause();
+      console.log('pause');
+    }
+  }, [activateD100]);
 
   useEffect(() => {
     if (scene) {
@@ -159,7 +192,7 @@ export function ExteriorModel({
 
     if (child.name.includes('Display2')) {
       child.material = new THREE.MeshStandardMaterial({
-        map: displayTexture, // Apply the passed texture
+        map: displayTexture,
         metalness: 0.9,
         roughness: 0,
       });
@@ -213,6 +246,12 @@ export function ExteriorModel({
     if (child.name.includes('headlight')) {
       child.material = new THREE.MeshBasicMaterial({
         map: headLightTexture,
+      });
+    }
+
+    if (child.name === 'D100_Display_1') {
+      child.material = new THREE.MeshBasicMaterial({
+        map: videoTextureRef.current,
       });
     }
   };
