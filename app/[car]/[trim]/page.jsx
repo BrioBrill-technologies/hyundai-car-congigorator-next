@@ -107,6 +107,7 @@ export default function Page({ params }) {
     trim = decodeURIComponent(trim)
     const router = useRouter()
     const [disable, setDisable] = useState(false)
+    const [start, setStart] = useState(true)
     const [exteriorColor, setExteriorColor] = useState('')
     const [interiorColor, setInteriorColor] = useState('')
     const [selectedAmbientColor, setSelectedAmbientColor] = useState(Object.keys(cars[car][trim].ambientLight)[0])
@@ -358,9 +359,33 @@ export default function Page({ params }) {
         }
     }, [showHotspot])
 
+    useEffect(() => {
+        if (start) {
+            setTimeout(() => {
+                setStart(false)
+            }, 5000)
+        }
+    }, [start])
+
 
     return (
         <div className='mt-2 w-11/12 mx-auto relative rounded-xl'>
+            {start && (
+                <div
+                    className={`absolute w-full z-20 pointer-events-none bottom-44 ${start ? 'fade-in block' : 'fade-out'}`}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="modal-title"
+                    aria-describedby="modal-description"
+                    >
+                    <div className="text-white w-9/12 bg-black/35 rounded-lg mx-auto p-2 text-center flex flex-col justify-center pointer-events-none gap-2">
+                        <div className="flex flex-col gap-2">
+                            <img src="/tap.png" alt='tap' className='w-6 mx-auto invert' />
+                            <p className='text-sm'>Tap on the hotspots to reveal more information about the car</p>
+                        </div>
+                    </div>
+                </div>
+            )}
             <Modal visible={showHotspot} setVisibility={setShowHotspot} title={hotspotTitle} description={hotspotDescription} />
             <View className={`w-full ${exteriorColor && interiorColor ? 'h-72 sm:h-48' : 'h-96'}`}>
                 <Suspense fallback={<LoaderScreen />}>
