@@ -13,7 +13,7 @@ function Environment1({ texture }) {
   return null
 }
 
-const Exterior = ({ color, cameraPosition, minPolar, maxPolar }) => {
+const Exterior = ({ color, cameraPosition, minPolar, maxPolar, enableGround }) => {
   const cameraRef = useRef()
   const orbitControlsRef = useRef()
   const texture = useLoader(TextureLoader, '/envmaps/images/Environment-Map-Empty-Warehouse2K.jpg')
@@ -50,7 +50,7 @@ const Exterior = ({ color, cameraPosition, minPolar, maxPolar }) => {
       <PerspectiveCamera
         ref={cameraRef}
         makeDefault
-        fov={70}
+        fov={76}
         position={cameraPosition}
       />
       <OrbitControls
@@ -63,7 +63,7 @@ const Exterior = ({ color, cameraPosition, minPolar, maxPolar }) => {
       <Environment1 texture={texture} />
       <Environment
         files="/envmaps/hdr/Environment-Map-Empty-Warehouse2K.hdr"
-        ground={{ height: 25, radius: 100, scale: 200 }}
+        ground={enableGround ? { height: 25, radius: 100, scale: 200 } : null}
       />
     </>
   )
@@ -105,14 +105,6 @@ const Interior = ({ color = 'white' }) => {
         intensity={10} // Reduced intensity
         color='white'
         position={[0, 8, 0]}
-        shadow-mapSize-width={1024} // Shadow resolution
-        shadow-mapSize-height={1024}
-        shadow-camera-near={0.5}
-        shadow-camera-far={20} // Reduced shadow camera far clipping
-        shadow-camera-left={-10}
-        shadow-camera-right={10}
-        shadow-camera-top={10}
-        shadow-camera-bottom={-10}
       />
       <ambientLight intensity={1.5} />
       <PerspectiveCamera makeDefault fov={70} position={[0.00001, 0, 0]} />

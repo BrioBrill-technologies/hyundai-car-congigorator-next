@@ -258,14 +258,14 @@ export function ExteriorModel({
 
   const playCloseAnimations = () => {
     stopAllAnimations();
-    playAnimation('Sunroof_close');
-    playAnimation('Front_close');
+    playAnimation('BACK_CLOSE');
+    playAnimation('FRONT_CLOSE');
   };
 
   const playOpenAnimations = () => {
     stopAllAnimations();
-    playAnimation('Sunroof_open');
-    playAnimation('Front_open');
+    playAnimation('BACK_OPEN');
+    playAnimation('FRONT_OPEN');
   };
 
   const stopAllAnimations = () => {

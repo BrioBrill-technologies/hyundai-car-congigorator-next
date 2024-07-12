@@ -85,8 +85,8 @@ export default function CarPageContent({ car, trim }) {
 
   const handleHotspotVisionRoof = () => {
     console.log('hello')
-    setHotspotTitle('Vision Roof')
-    setHotspotDescription(cars[car][trim].hotspots.interior['Vision Roof'].description)
+    setHotspotTitle('Power tilt-and-slide wide sunroof')
+    setHotspotDescription(cars[car][trim].hotspots.interior['Power tilt-and-slide wide sunroof'].description)
     setShowHotspot(true)
     setTimeout(() => {
       setPlayOpenAnimation(true)
@@ -94,7 +94,7 @@ export default function CarPageContent({ car, trim }) {
   }
 
   useEffect(() => {
-    if (hotspotTitle === 'Vision Roof') {
+    if (hotspotTitle === 'Power tilt-and-slide wide sunroof') {
       setPlayOpenAnimation(showHotspot)
     }
   }, [showHotspot])

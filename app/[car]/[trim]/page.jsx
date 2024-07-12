@@ -171,7 +171,7 @@ export default function Page({ params }) {
             setSelectedColor(Object.keys(cars[car][trim].interiorColors)[0]);
             setCameraPosition([0.00001, 0, 0]);
             setMinPolar([Math.PI / 10])
-            setMaxPolar([Math.PI / 1.9])
+            setMaxPolar([Math.PI / 1.5])
             setHasPositionChanged(false); // Reset this when changing position
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(true)
@@ -182,7 +182,7 @@ export default function Page({ params }) {
         } else {
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(false)
-            setCameraPosition([-40, 0, 40]);
+            setCameraPosition([-60, 0, 0]);
             setInteriorColor(color);
             setHasPositionChanged(false); // Reset this when changing position
             setMinPolar([Math.PI / 5])
@@ -208,7 +208,7 @@ export default function Page({ params }) {
         } else if (exteriorColor) {
             setExteriorColor('')
             setSelectedColor(Object.keys(cars[car][trim].exteriorColors)[0])
-            setCameraPosition([-55, 0, 30]);
+            setCameraPosition([-60, 0, 0]);
             setHasPositionChanged(false); // Reset this when changing position
             setShowExteriorHotspots(true)
             setShowInteriorHotspots(false)
@@ -279,8 +279,8 @@ export default function Page({ params }) {
 
     const handleHotspotVisionRoof = () => {
         console.log('hello')
-        setHotspotTitle('Vision Roof')
-        setHotspotDescription(cars[car][trim].hotspots.interior['Vision Roof'].description)
+        setHotspotTitle('Power tilt-and-slide wide sunroof')
+        setHotspotDescription(cars[car][trim].hotspots.interior['Power tilt-and-slide wide sunroof'].description)
         setShowHotspot(true)
         setTimeout(() => {
             setPlayOpenAnimation(true)
@@ -307,8 +307,10 @@ export default function Page({ params }) {
     }
 
     useEffect(() => {
-        if (hotspotTitle === 'Vision Roof') {
-            setPlayOpenAnimation(showHotspot)
+        if (hotspotTitle === 'Power tilt-and-slide wide sunroof') {
+            setTimeout(() => {
+                setPlayOpenAnimation(showHotspot)
+            }, 1200)
         } else if (hotspotTitle === 'Ambient Lighting') {
             setShowAmbient(showHotspot)
             setIsBloomActive(showHotspot)
@@ -431,7 +433,7 @@ export default function Page({ params }) {
                                 scale={[1, 1, 1]}
                                 visible={showInteriorHotspots && !showHotspot}
                                 onClick={handleHotspotVisionRoof}
-                                cameraTarget={[-10, 0, 0]} // Example target position
+                                cameraTarget={[-9.2, 0, 0]} // Example target position
                                 enableCameraMovement={true}
                             />
                         )}
@@ -499,6 +501,7 @@ export default function Page({ params }) {
                         setHasPositionChanged={setHasPositionChanged}
                         minPolar={minPolar}
                         maxPolar={maxPolar}
+                        enableGround={(interiorColor || !exteriorColor) ? true : false}
                     />
                 </Suspense>
             </View>

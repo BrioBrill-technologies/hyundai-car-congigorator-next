@@ -236,7 +236,7 @@ const cars = {
                     "Interactive touch screen with sounds": {
                         "description": "The widescreen display dominates the dashboard, seamless integrating with the 12.3 inch digital gauges",
                     },
-                    "Vision Roof": {
+                    "Power tilt-and-slide wide sunroof": {
                         "description": "This expansive glass panel across the entire ceiling without a beam going across",
                     },
                     "Ambient Lighting": {
@@ -359,7 +359,7 @@ const cars = {
                     "Interactive touch screen with sounds": {
                         "description": "The widescreen display dominates the dashboard, seamless integrating with the 12.3 inch digital gauges",
                     },
-                    "Vision Roof": {
+                    "Power tilt-and-slide wide sunroof": {
                         "description": "This expansive glass panel across the entire ceiling without a beam going across",
                     },
                     "Ambient Lighting": {
@@ -643,7 +643,7 @@ const cars = {
                     "Interactive touch screen with sounds": {
                         "description": "The widescreen display dominates the dashboard, seamless integrating with the 12.3 inch digital gauges",
                     },
-                    "Vision Roof": {
+                    "Power tilt-and-slide wide sunroof": {
                         "description": "This expansive glass panel across the entire ceiling without a beam going across",
                     },
                     "Ambient Lighting": {
@@ -784,7 +784,7 @@ const cars = {
                     "Interactive touch screen with sounds": {
                         "description": "The widescreen display dominates the dashboard, seamless integrating with the 12.3 inch digital gauges",
                     },
-                    "Vision Roof": {
+                    "Power tilt-and-slide wide sunroof": {
                         "description": "This expansive glass panel across the entire ceiling without a beam going across",
                     },
                     "Ambient Lighting": {
