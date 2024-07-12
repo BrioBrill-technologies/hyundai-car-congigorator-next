@@ -100,7 +100,7 @@ export function ExteriorModel({
     if (scene) {
       scene.traverse((child) => {
         if (child.isMesh || child.isGroup || child.isObject3D) {
-          if (trim === 'IONIQ6' && interior) {
+          if (trim === 'IONIQ 6' && interior) {
             handleInterior(child);
           } else {
             handleInterior(child);
@@ -110,7 +110,7 @@ export function ExteriorModel({
       });
       setIsLoaded(true);
     }
-  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture, tailLightTexture, tailLightMiddleTexture,headLightTexture, ambientLedColor1, ambientLedColor2, isBloomActive]);
+  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture, tailLightTexture, tailLightMiddleTexture, headLightTexture, ambientLedColor1, ambientLedColor2, isBloomActive]);
 
   useEffect(() => {
     if (scene && animations.length) {

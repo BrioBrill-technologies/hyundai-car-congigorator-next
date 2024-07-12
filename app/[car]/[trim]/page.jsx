@@ -42,8 +42,6 @@ const ioniq6TailLightTextureOff = loadTexture('/img/Tail_Light_Off_Ioniq6.jpg');
 const ioniq6CenterTailLightTextureOn = loadTexture('/img/Tail_Light_On_Center_Ioniq6.jpg');
 const ioniq6CenterTailLightTextureOff = loadTexture('/img/Tail_Light_Off_Center_Ioniq6.jpg');
 
-
-
 const View = dynamic(
     () => import('@/components/canvas/View').then((mod) => mod.View),
     {
@@ -103,7 +101,7 @@ export default function Page({ params }) {
     const [currentHeadLightTexture, setCurrentHeadLightTexture] = useState(ioniq5HeadLightTextureOff);
 
     useEffect(() => {
-        if (car === 'IONIQ5') {
+        if (car === 'IONIQ 5') {
             if (showHotspot && hotspotTitle === 'LED Tail Lights') {
                 setTimeout(() => {
                     setCurrentTailLightTexture(prevTexture => prevTexture === ioniq5TailLightTextureOff ? ioniq5TailLightTextureOn : ioniq5TailLightTextureOff);
@@ -123,7 +121,7 @@ export default function Page({ params }) {
                     setCurrentHeadLightTexture(ioniq5HeadLightTextureOff);
                 }, 1200)
             }
-        } else if (car === 'IONIQ6') {
+        } else if (car === 'IONIQ 6') {
             if (showHotspot && hotspotTitle === 'LED Tail Lights') {
                 setTimeout(() => {
                     setCurrentTailLightTexture(prevTexture => prevTexture === ioniq6TailLightTextureOff ? ioniq6TailLightTextureOn : ioniq6TailLightTextureOff);
@@ -196,7 +194,7 @@ export default function Page({ params }) {
     }
 
     const handleHotspotHeadLight = () => {
-        if ((trim === 'Limited' || trim === 'D100 Platinum Edition' || trim === 'SEL') && (car === 'IONIQ5')) {
+        if ((trim === 'Limited' || trim === 'D100 Platinum Edition' || trim === 'SEL') && (car === 'IONIQ 5')) {
             setHotspotTitle('Premium front LED accent lighting')
             setHotspotDescription(cars[car][trim].hotspots.exterior['Premium front LED accent lighting'].description)
         } else {
