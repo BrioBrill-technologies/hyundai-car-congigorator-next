@@ -11,7 +11,7 @@ export const Modal = ({ visible, setVisibility, title, description }) => {
   }, [visible]);
 
   useEffect(() => {
-    if (title === 'Power tilt-and-slide wide sunroof' || title === 'Premium front LED accent lighting' || title === 'Blind Spot View Monitor') {
+    if (title === 'Power tilt-and-slide wide sunroof' || title === 'Blind Spot View Monitor') {
       setShowBottom(true);
     } else {
       setShowBottom(false);
