@@ -33,7 +33,7 @@ export default function Page({ car }) {
 
   return (
     <div className='overflow-y-scroll size-full flex flex-col gap-2 mx-auto'>
-      <h1 className='text-3xl text-center'>{car}</h1>
+      <h1 className='text-3xl text-center'>{car === 'IONIQ5' ? 'IONIQ 5' : 'IONIQ 6'}</h1>
       <p className='font-[HyundaiSansHead-Medium] text-center'>Choose a Trim</p>
       <div className='flex flex-row gap-5 w-full h-fit overflow-x-scroll justify-evenly px-5'>
         {Object.keys(cars[car]).map((trim) => {

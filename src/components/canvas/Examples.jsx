@@ -43,11 +43,11 @@ export const Logo = ({ route = '/trim', car, ...props }) => {
       role='button'
       tabIndex={0}
       title={`Select ${car}`}>
-      <p className='absolute top-4 left-4 text-2xl'>{car}</p>
+      <p className='absolute top-4 left-4 text-2xl'>{car === 'IONIQ5' ? 'IONIQ 5' : 'IONIQ 6'}</p>
       <div className='flex flex-col justify-center'>
         <img src={`/${cars[car].image}.png`} alt={car} className='rounded-3xl pt-10 w-10/12 mx-auto' />
         <div className='text-center border py-2 w-full mt-5 border-black font-[HyundaiSansHead-Regular]'>
-          Select {car}
+          Select {car === 'IONIQ5' ? 'IONIQ 5' : 'IONIQ 6'}
           <span className='absolute right-5'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="size-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
