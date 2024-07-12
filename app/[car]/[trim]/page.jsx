@@ -175,10 +175,12 @@ export default function Page({ params }) {
             setHasPositionChanged(false); // Reset this when changing position
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(true)
-            setActivateD100(true)
-            setTimeout(() => {
-                setActivateD100(false)
-            }, 5500)
+            if (trim === 'D100 Platinum Edition') {
+                setActivateD100(true)
+                setTimeout(() => {
+                    setActivateD100(false)
+                }, 5500)
+            }
         } else {
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(false)
@@ -201,10 +203,12 @@ export default function Page({ params }) {
             setShowInteriorHotspots(true)
             setMinPolar([Math.PI / 10])
             setMaxPolar([Math.PI / 1.9])
-            setActivateD100(true)
-            setTimeout(() => {
-                setActivateD100(false)
-            }, 5500)
+            if (trim === 'D100 Platinum Edition') {
+                setActivateD100(true)
+                setTimeout(() => {
+                    setActivateD100(false)
+                }, 5500)
+            }
         } else if (exteriorColor) {
             setExteriorColor('')
             setSelectedColor(Object.keys(cars[car][trim].exteriorColors)[0])
@@ -237,7 +241,7 @@ export default function Page({ params }) {
         setShowHotspot(prev => !prev);
 
         // Show NebulaComponent and remove it after 5 seconds
-        setTimeout(()=> {
+        setTimeout(() => {
             setShowNebula(true);
         }, 1200)
 
@@ -420,9 +424,9 @@ export default function Page({ params }) {
                         {showNebula && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
                         {/* Interior Hotspots */}
                         <Hotspot
-                            position={[-10, 0, -0.9]}
+                            position={[-9, 0, -0.9]}
                             rotation={[0, 5, 0]}
-                            scale={[1, 1, 1]}
+                            scale={[0.8, 0.8, 0.8]}
                             visible={showInteriorHotspots && !showHotspot}
                             onClick={handleHotspotAudio}
                             isAudioPlaying={isAudioPlaying}
@@ -442,7 +446,7 @@ export default function Page({ params }) {
                         )}
                         {trim !== 'SE' && (
                             <Hotspot
-                                position={[-8.7, -3, 8]}
+                                position={[-7, -4, 8]}
                                 rotation={[0, 5, 0]}
                                 scale={[1.1, 1.1, 1.1]}
                                 visible={showInteriorHotspots && !showHotspot}
@@ -451,17 +455,18 @@ export default function Page({ params }) {
                                 enableCameraMovement={false}
                             />
                         )}
-
-                        <Hotspot
-                            position={[-10, 0, 1.3]}
-                            rotation={[0, 5, 0]}
-                            scale={[1, 1, 1]}
-                            visible={showInteriorHotspots && !showHotspot}
-                            onClick={handleHotspotDisneyStartup}
-                            cameraTarget={[1, 0, 0]} // Example target position
-                            enableCameraMovement={true}
-                            texture='/icons/Purple_Pointer.png'
-                        />
+                        {trim === 'D100 Platinum Edition' && (
+                            <Hotspot
+                                position={[-9, 0, 1.3]}
+                                rotation={[0, 5, 0]}
+                                scale={[0.8, 0.8, 0.8]}
+                                visible={showInteriorHotspots && !showHotspot}
+                                onClick={handleHotspotDisneyStartup}
+                                cameraTarget={[1, 0, 0]} // Example target position
+                                enableCameraMovement={true}
+                                texture='/icons/Purple_Pointer.png'
+                            />
+                        )}
 
                         <pointLight
                             position={[0, 7.7, -10]}
@@ -496,7 +501,7 @@ export default function Page({ params }) {
                             shouldMove={plane.shouldMove}
                         />
                     ))}
-                    <ContactShadows renderOrder={2} frames={1} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />
+                    {(interiorColor || !exteriorColor) && <ContactShadows renderOrder={2} frames={1} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />}
                     <Exterior
                         color={exteriorColor ? cars[car][trim].exteriorColors[exteriorColor].color : cars[car][trim].exteriorColors[selectedColor].color}
                         cameraPosition={cameraPosition}
