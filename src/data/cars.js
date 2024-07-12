@@ -300,7 +300,7 @@ const cars = {
                 },
             }
         },
-        'D100 Platinum Edition': {
+        'D100PlatinumEdition': {
             'image': 'D100PlatinumEdition',
             'description': 'Available in extremely limited quantities',
             'additions': 'TRIM_D100',

@@ -132,7 +132,7 @@ export default function Page({ params }) {
                 }, 1200)
             }
 
-            if (showHotspot && hotspotTitle === 'Premium front LED accent lighting') {
+            if (showHotspot && (hotspotTitle === 'Premium front LED accent lighting' || hotspotTitle === 'LED Projector headlights')) {
                 setTimeout(() => {
                     setCurrentHeadLightTexture(prevTexture => prevTexture === ioniq5HeadLightTextureOff ? ioniq5HeadLightTextureOn : ioniq5HeadLightTextureOff);
                 }, 1200);
@@ -179,7 +179,7 @@ export default function Page({ params }) {
             setHasPositionChanged(false); // Reset this when changing position
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(true)
-            if (trim === 'D100 Platinum Edition') {
+            if (trim === 'D100PlatinumEdition') {
                 setActivateD100(true)
                 setTimeout(() => {
                     setActivateD100(false)
@@ -208,7 +208,7 @@ export default function Page({ params }) {
             setShowInteriorHotspots(true)
             setMinPolar([Math.PI / 10])
             setMaxPolar([Math.PI / 1.9])
-            if (trim === 'D100 Platinum Edition') {
+            if (trim === 'D100PlatinumEdition') {
                 setActivateD100(true)
                 setTimeout(() => {
                     setActivateD100(false)
@@ -230,7 +230,7 @@ export default function Page({ params }) {
     }
 
     const handleHotspotHeadLight = () => {
-        if ((trim === 'Limited' || trim === 'D100 Platinum Edition' || trim === 'SEL') && (car === 'IONIQ5')) {
+        if ((trim === 'Limited' || trim === 'D100PlatinumEdition' || trim === 'SEL') && (car === 'IONIQ5')) {
             setHotspotTitle('Premium front LED accent lighting')
             setHotspotDescription(cars[car][trim].hotspots.exterior['Premium front LED accent lighting'].description)
         } else {
@@ -300,15 +300,15 @@ export default function Page({ params }) {
     }
 
     const handleHotspotDisneyStartup = () => {
-        setHotspotTitle('D100 Platinum Edition')
-        setHotspotDescription(cars[car][trim].hotspots.interior['D100 Platinum Edition'].description)
+        setHotspotTitle('D100PlatinumEdition')
+        setHotspotDescription(cars[car][trim].hotspots.interior['D100PlatinumEdition'].description)
         setShowHotspot(true)
         setIsBloomActive(true)
         setActivateD100(false)
         setActivateD100(true)
         setTimeout(() => {
             setActivateD100(false)
-        }, 5500)
+        }, 6500)
     }
 
     const handleHotspotAmbientLight = () => {
@@ -334,7 +334,7 @@ export default function Page({ params }) {
             setTimeout(() => {
                 setIsBloomActive(showHotspot)
             }, 1200)
-        } else if (hotspotTitle === 'D100 Platinum Edition') {
+        } else if (hotspotTitle === 'D100PlatinumEdition') {
             setIsBloomActive(showHotspot)
         }
     }, [showHotspot])
@@ -460,7 +460,7 @@ export default function Page({ params }) {
                                 enableCameraMovement={false}
                             />
                         )}
-                        {trim === 'D100 Platinum Edition' && (
+                        {trim === 'D100PlatinumEdition' && (
                             <Hotspot
                                 position={[-9, 0, 1.3]}
                                 rotation={[0, 5, 0]}
@@ -498,7 +498,7 @@ export default function Page({ params }) {
                             visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
                         /> */}
                     </group>
-                    {hotspotTitle === 'D100 Platinum Edition' && showHotspot && planes.map((plane) => (
+                    {hotspotTitle === 'D100PlatinumEdition' && showHotspot && planes.map((plane) => (
                         <Plane
                             key={plane.id}
                             position={plane.position}
