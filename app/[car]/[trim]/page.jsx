@@ -93,6 +93,7 @@ export default function Page({ params }) {
     car = decodeURIComponent(car)
     trim = decodeURIComponent(trim)
     const router = useRouter()
+    const [disable, setDisable] = useState(false)
     const [exteriorColor, setExteriorColor] = useState('')
     const [interiorColor, setInteriorColor] = useState('')
     const [selectedAmbientColor, setSelectedAmbientColor] = useState(Object.keys(cars[car][trim].ambientLight)[0])
@@ -118,6 +119,8 @@ export default function Page({ params }) {
     const [activateD100, setActivateD100] = useState(false);
 
     useEffect(() => {
+        if(showHotspot) setDisable(true)
+        else setDisable(false)
         if (car === 'IONIQ5') {
             if (showHotspot && hotspotTitle === 'LED Tail Lights') {
                 setTimeout(() => {
@@ -166,6 +169,7 @@ export default function Page({ params }) {
     const audioRef = useRef(null)
 
     const handleSelectColor = (color) => {
+        if(disable) return
         if (!exteriorColor) {
             setExteriorColor(color);
             setSelectedColor(Object.keys(cars[car][trim].interiorColors)[0]);
@@ -194,6 +198,7 @@ export default function Page({ params }) {
     }
 
     const handleBack = () => {
+        if (disable) return
         if (interiorColor) {
             setInteriorColor('')
             setSelectedColor(Object.keys(cars[car][trim].interiorColors)[0])
