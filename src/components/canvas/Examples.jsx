@@ -133,7 +133,7 @@ export function ExteriorModel({
     if (scene) {
       scene.traverse((child) => {
         if (child.isMesh || child.isGroup || child.isObject3D) {
-          if (trim === 'IONIQ 6' && interior) {
+          if (trim === 'IONIQ6' && interior) {
             handleInterior(child);
           } else {
             handleInterior(child);

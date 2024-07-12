@@ -1,5 +1,5 @@
 const cars = {
-    'IONIQ 5': {
+    'IONIQ5': {
         'image': 'ioniq5',
         'SE': {
             'image': 'SE',
@@ -336,7 +336,7 @@ const cars = {
             },
             "hotspots": {
                 "exterior": {
-                    "Blind Spot View Monitor ": {
+                    "Blind Spot View Monitor": {
                         "description": "When you signal to change lanes, a live camera feed of the lane will appear on the digital instrument gauge display",
                     },
                     "Disney/mickey badges": {
@@ -429,7 +429,7 @@ const cars = {
             }
         },
     },
-    'IONIQ 6': {
+    'IONIQ6': {
         'image': 'ioniq6',
         'SE': {
             'image': 'SE6',
