@@ -15,6 +15,7 @@ import { ContactShadows } from '@react-three/drei'
 import AnimatedCylinder from '@/components/Three/AnimatedCylinder'
 import LoaderScreen from '@/components/canvas/loader'
 import { Plane } from '@/components/Three/disney-particles'
+import ConeVideo from '@/components/Three/ConeVideo'
 
 const textureLoader = new THREE.TextureLoader();
 
@@ -72,7 +73,7 @@ const View = dynamic(
 
 const Exterior = dynamic(() => import('@/components/canvas/View').then((mod) => mod.Exterior), { ssr: false })
 
-const ImagePlane = ({ imageUrl, position, rotation, scale, visible, animate = false}) => {
+const ImagePlane = ({ imageUrl, position, rotation, scale, visible, animate = false }) => {
     const texture = useLoader(TextureLoader, imageUrl);
     const meshRef = useRef();
     const [elapsed, setElapsed] = useState(0);
@@ -377,7 +378,7 @@ export default function Page({ params }) {
                     aria-modal="true"
                     aria-labelledby="modal-title"
                     aria-describedby="modal-description"
-                    >
+                >
                     <div className="text-white w-9/12 bg-black/35 rounded-lg mx-auto p-2 text-center flex flex-col justify-center pointer-events-none gap-2">
                         <div className="flex flex-col gap-2">
                             <img src="/tap.png" alt='tap' className='w-6 mx-auto invert' />
@@ -476,7 +477,7 @@ export default function Page({ params }) {
                         {showNebula && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
                         {/* Interior Hotspots */}
                         <Hotspot
-                            position={[-9, 0, -0.9]}
+                            position={[-7, 0, -0.9]}
                             rotation={[0, 5, 0]}
                             scale={[0.8, 0.8, 0.8]}
                             visible={showInteriorHotspots && !showHotspot}
@@ -496,9 +497,18 @@ export default function Page({ params }) {
                                 enableCameraMovement={true}
                             />
                         )}
+
+                        {/* <ConeVideo
+                            position={[15, 18, 0]}
+                            rotation={[0, 0, 0]}
+                            scale={[15, 20, 15]}
+                            visible={showHotspot && hotspotTitle === 'Power tilt-and-slide wide sunroof'}
+                            videoUrl="/Sun_Ray.mp4"
+                        /> */}
+
                         {trim !== 'SE' && (
                             <Hotspot
-                                position={[-7, -4, 8]}
+                                position={[-9, -4, 8]}
                                 rotation={[0, 5, 0]}
                                 scale={[1.1, 1.1, 1.1]}
                                 visible={showInteriorHotspots && !showHotspot}
@@ -555,7 +565,7 @@ export default function Page({ params }) {
                         <pointLight
                             position={[0, 7.7, -10]}
                             color={cars[car][trim].ambientLight[selectedAmbientColor]?.color1 || '#ffffff'}
-                            intensity={1}
+                            intensity={car === 'IONIQ5' ? 4 : 1}
                             distance={500}
                             decay={0.2}
                             visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
@@ -563,7 +573,7 @@ export default function Page({ params }) {
                         <pointLight
                             position={[-4, -7, 0]}
                             color={cars[car][trim].ambientLight[selectedAmbientColor]?.color2 || '#ffffff'}
-                            intensity={1}
+                            intensity={car === 'IONIQ5' ? 4 : 1}
                             distance={500}
                             decay={0.2}
                             visible={showHotspot && hotspotTitle === 'Ambient Lighting'}

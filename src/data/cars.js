@@ -89,38 +89,38 @@ const cars = {
             "ambientLight": {
                 "Polar White ": {
                     "image": "PolarWhite",
-                    "color1": "#D6CAED",
-                    "color2": "#D6CAED"
+                    "color1": "#bfade3",
+                    "color2": "#bfade3"
                 },
                 "Moon White": {
                     "image": "MoonWhite",
-                    "color1": "#D9BDB0",
-                    "color2": "#D9BDB0"
+                    "color1": "#d3b2a3",
+                    "color2": "#d3b2a3"
                 },
                 "Ice Blue": {
                     "image": "IceBlue",
-                    "color1": "#7DCEEA",
-                    "color2": "#7DCEEA"
+                    "color1": "#4abbe2",
+                    "color2": "#4abbe2"
                 },
                 "Ocean blue": {
                     "image": "OceanBlue",
-                    "color1": "#0180E8",
-                    "color2": "#0180E8"
+                    "color1": "#0175d4",
+                    "color2": "#0175d4"
                 },
                 "Jade Green": {
                     "image": "JadeGreen",
-                    "color1": "#01C5B0",
-                    "color2": "#01C5B0"
+                    "color1": "#01b19f",
+                    "color2": "#01b19f"
                 },
                 "Orchid Green": {
                     "image": "OrchidGreen",
-                    "color1": "#B0D842",
-                    "color2": "#B0D842"
+                    "color1": "#9fc92a",
+                    "color2": "#9fc92a"
                 },
                 "Freesia Yellow": {
                     "image": "FreesiaYellow",
-                    "color1": "#F99B3C",
-                    "color2": "#F99B3C"
+                    "color1": "#f88716",
+                    "color2": "#f88716"
                 },
                 "Sunrise Red": {
                     "image": "SunriseRed",
@@ -250,38 +250,38 @@ const cars = {
             "ambientLight": {
                 "Polar White ": {
                     "image": "PolarWhite",
-                    "color1": "#D6CAED",
-                    "color2": "#D6CAED"
+                    "color1": "#bfade3",
+                    "color2": "#bfade3"
                 },
                 "Moon White": {
                     "image": "MoonWhite",
-                    "color1": "#D9BDB0",
-                    "color2": "#D9BDB0"
+                    "color1": "#d3b2a3",
+                    "color2": "#d3b2a3"
                 },
                 "Ice Blue": {
                     "image": "IceBlue",
-                    "color1": "#7DCEEA",
-                    "color2": "#7DCEEA"
+                    "color1": "#4abbe2",
+                    "color2": "#4abbe2"
                 },
                 "Ocean blue": {
                     "image": "OceanBlue",
-                    "color1": "#0180E8",
-                    "color2": "#0180E8"
+                    "color1": "#0175d4",
+                    "color2": "#0175d4"
                 },
                 "Jade Green": {
                     "image": "JadeGreen",
-                    "color1": "#01C5B0",
-                    "color2": "#01C5B0"
+                    "color1": "#01b19f",
+                    "color2": "#01b19f"
                 },
                 "Orchid Green": {
                     "image": "OrchidGreen",
-                    "color1": "#B0D842",
-                    "color2": "#B0D842"
+                    "color1": "#9fc92a",
+                    "color2": "#9fc92a"
                 },
                 "Freesia Yellow": {
                     "image": "FreesiaYellow",
-                    "color1": "#F99B3C",
-                    "color2": "#F99B3C"
+                    "color1": "#f88716",
+                    "color2": "#f88716"
                 },
                 "Sunrise Red": {
                     "image": "SunriseRed",
@@ -381,38 +381,38 @@ const cars = {
             "ambientLight": {
                 "Polar White ": {
                     "image": "PolarWhite",
-                    "color1": "#D6CAED",
-                    "color2": "#D6CAED"
+                    "color1": "#bfade3",
+                    "color2": "#bfade3"
                 },
                 "Moon White": {
                     "image": "MoonWhite",
-                    "color1": "#D9BDB0",
-                    "color2": "#D9BDB0"
+                    "color1": "#d3b2a3",
+                    "color2": "#d3b2a3"
                 },
                 "Ice Blue": {
                     "image": "IceBlue",
-                    "color1": "#7DCEEA",
-                    "color2": "#7DCEEA"
+                    "color1": "#4abbe2",
+                    "color2": "#4abbe2"
                 },
                 "Ocean blue": {
                     "image": "OceanBlue",
-                    "color1": "#0180E8",
-                    "color2": "#0180E8"
+                    "color1": "#0175d4",
+                    "color2": "#0175d4"
                 },
                 "Jade Green": {
                     "image": "JadeGreen",
-                    "color1": "#01C5B0",
-                    "color2": "#01C5B0"
+                    "color1": "#01b19f",
+                    "color2": "#01b19f"
                 },
                 "Orchid Green": {
                     "image": "OrchidGreen",
-                    "color1": "#B0D842",
-                    "color2": "#B0D842"
+                    "color1": "#9fc92a",
+                    "color2": "#9fc92a"
                 },
                 "Freesia Yellow": {
                     "image": "FreesiaYellow",
-                    "color1": "#F99B3C",
-                    "color2": "#F99B3C"
+                    "color1": "#f88716",
+                    "color2": "#f88716"
                 },
                 "Sunrise Red": {
                     "image": "SunriseRed",
@@ -662,23 +662,23 @@ const cars = {
             "ambientLight": {
                 "Mind Care": {
                     "image": "MindCare",
-                    "color1": "#FC85FB",
-                    "color2": "#4C1398"
+                    "color1": "#e998e8",
+                    "color2": "#5515a9"
                 },
                 "Concentration": {
                     "image": "Concentration",
                     "color1": "#55B2F8",
-                    "color2": "#00AF22"
+                    "color2": "#00a21b"
                 },
                 "Healing Forest": {
                     "image": "HealingForest",
-                    "color1": "#FDF952",
-                    "color2": "#00EE28"
+                    "color1": "#e9c566",
+                    "color2": "#00a21b"
                 },
                 "WonderFul Day": {
                     "image": "WonderfulDay",
-                    "color1": "#FF2128",
-                    "color2": "#FAD63C"
+                    "color1": "#dd4348",
+                    "color2": "#e9c566"
                 },
                 "Meditation": {
                     "image": "Meditation",
@@ -687,8 +687,8 @@ const cars = {
                 },
                 "Creative Moment": {
                     "image": "CreativeMoment",
-                    "color1": "#55FCF8",
-                    "color2": "#00F631"
+                    "color1": "#22a5a3",
+                    "color2": "#00a21b"
                 },
             }
         },
@@ -803,23 +803,23 @@ const cars = {
             "ambientLight": {
                 "Mind Care": {
                     "image": "MindCare",
-                    "color1": "#FC85FB",
-                    "color2": "#4C1398"
+                    "color1": "#e998e8",
+                    "color2": "#5515a9"
                 },
                 "Concentration": {
                     "image": "Concentration",
                     "color1": "#55B2F8",
-                    "color2": "#00AF22"
+                    "color2": "#00a21b"
                 },
                 "Healing Forest": {
                     "image": "HealingForest",
-                    "color1": "#FDF952",
-                    "color2": "#00EE28"
+                    "color1": "#e9c566",
+                    "color2": "#00a21b"
                 },
                 "WonderFul Day": {
                     "image": "WonderfulDay",
-                    "color1": "#FF2128",
-                    "color2": "#FAD63C"
+                    "color1": "#dd4348",
+                    "color2": "#e9c566"
                 },
                 "Meditation": {
                     "image": "Meditation",
@@ -828,8 +828,8 @@ const cars = {
                 },
                 "Creative Moment": {
                     "image": "CreativeMoment",
-                    "color1": "#55FCF8",
-                    "color2": "#00F631"
+                    "color1": "#22a5a3",
+                    "color2": "#00a21b"
                 },
             }
         },

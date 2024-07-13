@@ -96,6 +96,7 @@ export function ExteriorModel({
       video.src = '/Hyundai_D100_Video.mp4'; // Replace with your video path
       video.loop = false;
       video.muted = false;
+      video.playsInline = true
       videoRef.current = video;
 
       // Create a video texture
@@ -111,7 +112,7 @@ export function ExteriorModel({
   useFrame((state, delta) => {
     mixerRef.current?.update(delta);
 
-    if (modelRef.current) {
+    if (modelRef.current && (trim === 'IONIQ5')){
       if (isBubbleHotspotActive) {
         targetPosition.current.set(5, 0, 0);
       } else {
