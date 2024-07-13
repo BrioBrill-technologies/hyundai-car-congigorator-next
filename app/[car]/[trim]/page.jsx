@@ -183,6 +183,14 @@ export default function Page({ params }) {
 
     const audioRef = useRef(null)
 
+    const toggleActivateD100 = (setActivateD100) => {
+        setActivateD100(false);
+        setTimeout(() => {
+            console.log('activate')
+            setActivateD100(true);
+        }, 100); // Adjust the delay as needed
+    };
+
     const handleSelectColor = (color) => {
         if (disable) return
         if (!exteriorColor) {
