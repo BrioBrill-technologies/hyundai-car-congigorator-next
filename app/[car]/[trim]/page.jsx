@@ -203,10 +203,7 @@ export default function Page({ params }) {
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(true)
             if (trim === 'D100PlatinumEdition') {
-                setActivateD100(true)
-                setTimeout(() => {
-                    setActivateD100(false)
-                }, 5500)
+                toggleActivateD100(setActivateD100);
             }
         } else {
             setShowExteriorHotspots(false)
@@ -232,10 +229,7 @@ export default function Page({ params }) {
             setMinPolar([Math.PI / 10])
             setMaxPolar([Math.PI / 1.9])
             if (trim === 'D100PlatinumEdition') {
-                setActivateD100(true)
-                setTimeout(() => {
-                    setActivateD100(false)
-                }, 5500)
+                toggleActivateD100(setActivateD100);
             }
         } else if (exteriorColor) {
             setExteriorColor('')
@@ -322,6 +316,7 @@ export default function Page({ params }) {
         }, 1500)
     }
 
+
     const handleHotspotDisneyStartup = () => {
         setHotspotTitle('D100PlatinumEdition')
         setHotspotDescription(cars[car][trim].hotspots.interior['D100PlatinumEdition'].description)
@@ -329,9 +324,7 @@ export default function Page({ params }) {
         setIsBloomActive(true)
         setActivateD100(false)
         setActivateD100(true)
-        setTimeout(() => {
-            setActivateD100(false)
-        }, 6500)
+        toggleActivateD100(setActivateD100);
     }
 
     const handleHotspotDisneyBubbles = () => {
@@ -501,7 +494,7 @@ export default function Page({ params }) {
                                 scale={[1, 1, 1]}
                                 visible={showInteriorHotspots && !showHotspot}
                                 onClick={handleHotspotVisionRoof}
-                                cameraTarget={[-9.2, 0, 0]} // Example target position
+                                cameraTarget={car === 'IONIQ5' ? [-9.2, 0, 0] : [-10, 0, 0]} // Example target position
                                 enableCameraMovement={true}
                             />
                         )}

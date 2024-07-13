@@ -2,6 +2,7 @@ const cars = {
     'IONIQ5': {
         'image': 'ioniq5',
         'SE': {
+            'threesixty': 'ioniq5_SE',
             'image': 'SE',
             'description': 'The balanced trim with plenty of must-have features',
             'additions': 'TRIM_SE',
@@ -140,6 +141,7 @@ const cars = {
             }
         },
         'Limited': {
+            'threesixty': 'ioniq5_LMTD',
             'image': 'limited',
             'description': 'The premium trim that treats you with high-end features',
             'additions': 'TRIM_LIMITED',
@@ -301,6 +303,7 @@ const cars = {
             }
         },
         'D100PlatinumEdition': {
+            'threesixty': 'ioniq5_D100',
             'image': 'D100PlatinumEdition',
             'description': 'Available in extremely limited quantities',
             'additions': 'TRIM_D100',
@@ -435,6 +438,7 @@ const cars = {
     'IONIQ6': {
         'image': 'ioniq6',
         'SE': {
+            'threesixty': 'ioniq6_SE',
             'image': 'SE6',
             'description': 'The standard trim with lots of great features',
             'additions': 'TRIM_SE',
@@ -556,6 +560,7 @@ const cars = {
             }
         },
         'SEL': {
+            'threesixty': 'ioniq6_SEL',
             'image': 'SEL6',
             'description': 'The balance trim with plenty of must-have featuress',
             'additions': 'TRIM_SUL',
@@ -693,6 +698,7 @@ const cars = {
             }
         },
         'Limited': {
+            'threesixty': 'ioniq6_LMTD',
             'image': 'Limited6',
             'description': 'The premium electric trim that treats you with high end features',
             'additions': 'TRIM_LMTD',

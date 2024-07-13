@@ -125,12 +125,11 @@ export function ExteriorModel({
 
   useEffect(() => {
     if (activateD100) {
-      videoRef.current.play();
+      videoRef.current.pause();
       videoRef.currentTime = 0
-      console.log('play');
+      videoRef.current.play();
     } else {
       videoRef.current.pause();
-      console.log('pause');
     }
   }, [activateD100]);
 
@@ -234,7 +233,7 @@ export function ExteriorModel({
     if (child.name === ('LED_Strip')) {
       child.material.color = new THREE.Color('#ffffff');
       child.material.emissive = new THREE.Color('#ffffff');
-      child.material.emissiveIntensity = 10;
+      child.material.emissiveIntensity = 6;
     }
 
     if (child.name.includes('Rear_glass_outer')) {
