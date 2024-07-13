@@ -181,7 +181,7 @@ const cars = {
                 'Gravity Gold Matte': {
                     'image': 'gravity-gold-matte',
                     'name': 'Gravity Gold Matte',
-                    'color': '#A4A3A3'
+                    'color': '#aca6a2'
                 },
                 'Cyber Gray': {
                     'image': 'cyber-gray',
@@ -321,7 +321,7 @@ const cars = {
                 'Gravity Gold Matte': {
                     'image': 'gravity-gold-matte',
                     'name': 'Gravity Gold Matte',
-                    'color': '#A4A3A3'
+                    'color': '#aca6a2'
                 },
             },
             'interiorColors': {
@@ -606,7 +606,7 @@ const cars = {
                 'Gravity Gold Matte': {
                     'image': 'gravity-gold-matte',
                     'name': 'Gravity Gold Matte',
-                    'color': '#AB9E92'
+                    'color': '#aca6a2'
                 },
 
             },
@@ -743,7 +743,7 @@ const cars = {
                 'Gravity Gold Matte': {
                     'image': 'gravity-gold-matte',
                     'name': 'Gravity Gold Matte',
-                    'color': '#AB9E92'
+                    'color': '#aca6a2'
                 },
 
             },

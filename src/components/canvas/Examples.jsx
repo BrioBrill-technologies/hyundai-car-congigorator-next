@@ -225,7 +225,7 @@ export function ExteriorModel({
     if (child.name.includes('_Paints')) {
       child.material = new THREE.MeshStandardMaterial({
         color: exteriorColor,
-        metalness: 0.3,
+        metalness: 0.5,
         roughness: 0.15,
         emissiveIntensity: 0,
       });

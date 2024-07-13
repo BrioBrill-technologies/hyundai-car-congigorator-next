@@ -554,9 +554,25 @@ export default function Page({ params }) {
                             />
                             <ImagePlane
                                 imageUrl="/img/Micky_Door_Leather_Image.png"
-                                position={[1.5, 1, 8]}
+                                position={[1, 1, 8]}
                                 rotation={[0, 3.4, 0]}
                                 scale={[0.85, 0.85, 0.85]}
+                                animate={true}
+                                visible={showHotspot && hotspotTitle === 'D100 Edition'}
+                            />
+                            <ImagePlane
+                                imageUrl="/img/Micky_Headrest_Image.png"
+                                position={[5, 4, 5]}
+                                rotation={[0, 3.4, 0]}
+                                scale={[0.7, 0.7, 0.7]}
+                                animate={true}
+                                visible={showHotspot && hotspotTitle === 'D100 Edition'}
+                            />
+                            <ImagePlane
+                                imageUrl="/img/Micky_Armrest_Image.png"
+                                position={[4, -0.5, 0]}
+                                rotation={[0, 3.4, 0]}
+                                scale={[0.45, 0.45, 0.45]}
                                 animate={true}
                                 visible={showHotspot && hotspotTitle === 'D100 Edition'}
                             />
