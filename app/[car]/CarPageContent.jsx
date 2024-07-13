@@ -6,6 +6,7 @@ import { Suspense } from 'react'
 import { useRouter } from 'next/navigation'
 import { cars } from '@/data/cars'
 import LoaderScreen from '@/components/canvas/loader'
+import ThreeSixty from 'react-360-view'
 
 const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.View), {
   ssr: false,
@@ -46,12 +47,23 @@ export default function Page({ car }) {
               {trim === 'image' ? null : (
               <div className='text-black min-w-72 mx-auto py-5 items-center rounded-lg cursor-pointer h-fit mt-5
                   bg-gradient-to-br from-gray-200/40 to-transparent bg-clip-padding backdrop-filter backdrop-blur-sm'>
-                  <View className='h-72 pointer-events-none'>
-                    <Suspense fallback={<LoaderScreen />}>
-                      <TrimsModel scale={1.7} position={[0, 1, 0]} model={cars[car][trim].exteriorModel.trimModel} />
-                      <Common color={'#c2c2c2'} />
-                    </Suspense>
-                  </View>
+                  {trim === 'SE' ? (
+                    <ThreeSixty
+                      amount={40}
+                      imagePath="/ioniq5_SE/"
+                      fileName="ioniq5_SE_00{index}.png"
+                      autoplay='40'
+                      loop='true'
+                      paddingIndex='true'
+                    />
+                  ) : (
+                    <View className='h-72 pointer-events-none'>
+                      <Suspense fallback={<LoaderScreen />}>
+                        <TrimsModel scale={1.7} position={[0, 1, 0]} model={cars[car][trim].exteriorModel.trimModel} />
+                        <Common color={'#c2c2c2'} />
+                      </Suspense>
+                    </View>
+                  )}
                   <div>
                     <p className='text-center mt-5'>{trim === 'D100PlatinumEdition' ? 'D100 Platinum Edition' : trim}</p>
                     <p className='text-xs text-center font-[HyundaiSansHead-Light]'>{cars[car][trim].description}</p>
