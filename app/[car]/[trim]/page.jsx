@@ -278,6 +278,18 @@ export default function Page({ params }) {
         setShowHotspot(true)
     };
 
+    const handleHotspotDisneyBadge = () => {
+        setHotspotTitle('Disney Badge')
+        setHotspotDescription(cars[car][trim].hotspots.exterior['Disney Badge'].description)
+        setShowHotspot(true)
+    };
+
+    const handleHotspotMickyBadge = () => {
+        setHotspotTitle('Micky Badge')
+        setHotspotDescription(cars[car][trim].hotspots.exterior['Micky Badge'].description)
+        setShowHotspot(true)
+    };
+
     const handleHotspotMirror = () => {
         setHotspotTitle('Blind Spot View Monitor')
         setHotspotDescription(cars[car][trim].hotspots.exterior['Blind Spot View Monitor'].description)
@@ -352,7 +364,7 @@ export default function Page({ params }) {
             audioRef.current.pause()
             audioRef.current.currentTime = 0
             setIsAudioPlaying(false)
-        } else if (hotspotTitle === 'Premium front LED accent lighting') {
+        } else if (hotspotTitle === 'Premium front LED accent lighting' || hotspotTitle === 'Micky Badge' || hotspotTitle === 'Disney Badge') {
             setTimeout(() => {
                 setIsBloomActive(showHotspot)
             }, 1200)
@@ -394,7 +406,7 @@ export default function Page({ params }) {
                     <group position={[0, 0, 0]}>
                         <ExteriorModel
                             scale={12}
-                            position={(interiorColor || !exteriorColor) ? [0, 9.7, 0] : [2.5, -1, 0]}
+                            position={(interiorColor || !exteriorColor) ? [0, 10.7, 0] : [2.5, -1, 0]}
                             trim={car}
                             interior={exteriorColor && !interiorColor ? true : false}
                             model={cars[car][trim].exteriorModel.model}
@@ -472,6 +484,30 @@ export default function Page({ params }) {
                                 />
                             </group>
                         )}
+
+                        <Hotspot
+                            position={[-17, 8, -12]}
+                            rotation={[0, 11, 0]}
+                            scale={[2, 2, 2]}
+                            visible={showExteriorHotspots && !showHotspot}
+                            onClick={handleHotspotDisneyBadge}
+                            cameraTarget={[-20, 10, -15]} // Example target position
+                            isHotspotClicked={showHotspot}
+                            enableCameraMovement={true}
+                            texture='/icons/Purple_Pointer.png'
+                        />
+
+                        <Hotspot
+                            position={[-22.3, 5, 12]}
+                            rotation={[0, 11, 0]}
+                            scale={[2, 2, 2]}
+                            visible={showExteriorHotspots && !showHotspot}
+                            onClick={handleHotspotMickyBadge}
+                            cameraTarget={[-35, 5, 20]} // Example target position
+                            isHotspotClicked={showHotspot}
+                            enableCameraMovement={true}
+                            texture='/icons/Purple_Pointer.png'
+                        />
 
 
                         {showNebula && <NebulaComponent position={[0, 0, 0]} />}

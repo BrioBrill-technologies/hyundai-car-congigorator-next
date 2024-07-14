@@ -125,14 +125,19 @@ export function ExteriorModel({
 
     // Update shell_4Shape_D_Badge color animation
     const elapsedTime = clock.current.getElapsedTime();
-    const colorValue = (Math.sin(elapsedTime * 2) + 1) / 2; // Generates a value between 0 and 1
-    const color = new THREE.Color(colorValue, colorValue, colorValue);
+    const greyish = new THREE.Color(0x808080); // RGB for greyish color
+    const lightWhite = new THREE.Color(0xF5F5F5); // RGB for light white color
+    const t = (Math.sin(elapsedTime * 2) + 1) / 2; // Generates a value between 0 and 1
+
+    // Interpolate between greyish and light white
+    const color = new THREE.Color().lerpColors(greyish, lightWhite, t);
+
     if (additions === 'TRIM_D100') {
       scene.traverse((child) => {
-        if (child.name === 'shell_4Shape_D_Badge') {
+        if (child.name === 'shell_4Shape_D_Badge' || child.name === 'Micky_RIM') {
           child.material.color = color;
           child.material.emissive = color;
-          child.material.emissiveIntensity = 20;
+          child.material.emissiveIntensity = 15;
         }
       });
     }
@@ -250,6 +255,12 @@ export function ExteriorModel({
       child.material.emissive = new THREE.Color('#ffffff');
       child.material.emissiveIntensity = 6;
     }
+
+    // if (child.name === ('Micky_RIM')) {
+    //   child.material.color = new THREE.Color('#ffffff');
+    //   child.material.emissive = new THREE.Color('#ffffff');
+    //   child.material.emissiveIntensity = 6;
+    // }
 
     if (child.name.includes('Rear_glass_outer')) {
       child.material = new THREE.MeshBasicMaterial({
