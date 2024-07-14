@@ -88,6 +88,7 @@ export function ExteriorModel({
   const videoTextureRef = useRef();
   const modelRef = useRef();
   const targetPosition = useRef(new THREE.Vector3(2.5, -1, 0));
+  const clock = useRef(new THREE.Clock());
 
   useEffect(() => {
     if (!videoRef.current) {
@@ -96,7 +97,7 @@ export function ExteriorModel({
       video.src = '/Hyundai_D100_Video.mp4'; // Replace with your video path
       video.loop = false;
       video.muted = false;
-      video.playsInline = true
+      video.playsInline = true;
       videoRef.current = video;
 
       // Create a video texture
@@ -112,7 +113,7 @@ export function ExteriorModel({
   useFrame((state, delta) => {
     mixerRef.current?.update(delta);
 
-    if (modelRef.current && (trim === 'IONIQ5')){
+    if (modelRef.current && (trim === 'IONIQ5')) {
       if (isBubbleHotspotActive) {
         targetPosition.current.set(5, 0, 0);
       } else {
@@ -121,12 +122,26 @@ export function ExteriorModel({
 
       modelRef.current.position.lerp(targetPosition.current, 0.1);
     }
+
+    // Update shell_4Shape_D_Badge color animation
+    const elapsedTime = clock.current.getElapsedTime();
+    const colorValue = (Math.sin(elapsedTime * 2) + 1) / 2; // Generates a value between 0 and 1
+    const color = new THREE.Color(colorValue, colorValue, colorValue);
+    if (additions === 'TRIM_D100') {
+      scene.traverse((child) => {
+        if (child.name === 'shell_4Shape_D_Badge') {
+          child.material.color = color;
+          child.material.emissive = color;
+          child.material.emissiveIntensity = 20;
+        }
+      });
+    }
   });
 
   useEffect(() => {
     if (activateD100) {
       videoRef.current.pause();
-      videoRef.currentTime = 0
+      videoRef.current.currentTime = 0;
       videoRef.current.play();
     } else {
       videoRef.current.pause();
@@ -297,6 +312,7 @@ export function ExteriorModel({
     </Suspense>
   );
 }
+
 
 export function InteriorModel({ model, playOpenAnimation, color, ...props }) {
   const { scene } = useGLTF(`/models/${model}.glb`, configureDRACOLoader)
