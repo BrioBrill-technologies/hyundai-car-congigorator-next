@@ -77,6 +77,7 @@ export function ExteriorModel({
   ambientLedColor2,
   activateD100,
   isBubbleHotspotActive,
+  showNatureDisplay,
   ...props
 }) {
   const { scene, animations } = useGLTF(`/models/${model}.glb`);
@@ -167,7 +168,7 @@ export function ExteriorModel({
       });
       setIsLoaded(true);
     }
-  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture, tailLightTexture, tailLightMiddleTexture, headLightTexture, ambientLedColor1, ambientLedColor2, isBloomActive]);
+  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture, showNatureDisplay, tailLightTexture, tailLightMiddleTexture, headLightTexture, ambientLedColor1, ambientLedColor2, isBloomActive]);
 
   useEffect(() => {
     if (scene && animations.length) {
@@ -220,6 +221,15 @@ export function ExteriorModel({
         metalness: 0.9,
         roughness: 0,
       });
+    }
+
+    if (child.name.includes('D100_Nature_Display')) {
+      child.material = new THREE.MeshStandardMaterial({
+        map: displayTexture,
+        metalness: 0.9,
+        roughness: 0,
+      });
+      child.visible = showNatureDisplay;
     }
   };
 
@@ -283,6 +293,7 @@ export function ExteriorModel({
       child.material = new THREE.MeshBasicMaterial({
         map: videoTextureRef.current,
       });
+      child.visible = !showNatureDisplay;
     }
   };
 

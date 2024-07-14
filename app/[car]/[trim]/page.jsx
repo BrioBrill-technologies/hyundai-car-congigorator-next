@@ -132,6 +132,7 @@ export default function Page({ params }) {
     const [currentTailCenterLightTexture, setCurrentCenterTailLightTexture] = useState(ioniq6CenterTailLightTextureOff);
     const [currentHeadLightTexture, setCurrentHeadLightTexture] = useState(ioniq5HeadLightTextureOff);
     const [activateD100, setActivateD100] = useState(false);
+    const [isNatureDisplayActive, setIsNatureDisplayActive] = useState(false);
 
     useEffect(() => {
         if (showHotspot) setDisable(true)
@@ -202,9 +203,6 @@ export default function Page({ params }) {
             setHasPositionChanged(false); // Reset this when changing position
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(true)
-            if (trim === 'D100PlatinumEdition') {
-                toggleActivateD100(setActivateD100);
-            }
         } else {
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(false)
@@ -228,9 +226,6 @@ export default function Page({ params }) {
             setShowInteriorHotspots(true)
             setMinPolar([Math.PI / 10])
             setMaxPolar([Math.PI / 1.9])
-            if (trim === 'D100PlatinumEdition') {
-                toggleActivateD100(setActivateD100);
-            }
         } else if (exteriorColor) {
             setExteriorColor('')
             setSelectedColor(Object.keys(cars[car][trim].exteriorColors)[0])
@@ -300,6 +295,7 @@ export default function Page({ params }) {
     // Interior Hotspots 
     const handleEnded = () => {
         setIsAudioPlaying(false)
+        if (trim === 'D100PlatinumEdition') setIsNatureDisplayActive(false)
     }
 
     const handleHotspotAudio = () => {
@@ -316,6 +312,7 @@ export default function Page({ params }) {
         setHotspotTitle('Interactive touch screen with sounds')
         setHotspotDescription(cars[car][trim].hotspots.interior['Interactive touch screen with sounds'].description)
         setShowHotspot(true)
+        if (trim === 'D100PlatinumEdition') setIsNatureDisplayActive(true)
     }
 
     const handleHotspotVisionRoof = () => {
@@ -364,11 +361,14 @@ export default function Page({ params }) {
             audioRef.current.pause()
             audioRef.current.currentTime = 0
             setIsAudioPlaying(false)
+            if (trim === 'D100PlatinumEdition') setIsNatureDisplayActive(false)
         } else if (hotspotTitle === 'Premium front LED accent lighting' || hotspotTitle === 'Micky Badge' || hotspotTitle === 'Disney Badge') {
             setTimeout(() => {
                 setIsBloomActive(showHotspot)
             }, 1200)
         } else if (hotspotTitle === 'D100PlatinumEdition') {
+            setIsBloomActive(showHotspot)
+        } else if (hotspotTitle === 'D100 Edition') {
             setIsBloomActive(showHotspot)
         }
     }, [showHotspot])
@@ -428,6 +428,7 @@ export default function Page({ params }) {
                             tailLightMiddleTexture={currentTailCenterLightTexture}
                             headLightTexture={currentHeadLightTexture}
                             activateD100={activateD100}
+                            showNatureDisplay={isNatureDisplayActive}
                             isBubbleHotspotActive={showHotspot && hotspotTitle === 'D100 Edition'}
                         />
                         <group position={cars[car][trim].hotspots.exterior['LED Projector headlights'].position}>
