@@ -382,6 +382,11 @@ const cars = {
                 }
             },
             "ambientLight": {
+                "D Special": {
+                    "image": "DSpecial",
+                    "color1": "#4121A6",
+                    "color2": "#4121A6"
+                },
                 "Polar White ": {
                     "image": "PolarWhite",
                     "color1": "#bfade3",
