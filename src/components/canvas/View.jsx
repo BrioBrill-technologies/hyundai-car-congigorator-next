@@ -13,7 +13,7 @@ function Environment1({ texture }) {
   return null
 }
 
-const Exterior = ({ color, cameraPosition, minPolar, maxPolar, enableGround }) => {
+const Exterior = ({ color, cameraPosition, minPolar, maxPolar, enableGround, enableAutoRotate }) => {
   const cameraRef = useRef()
   const orbitControlsRef = useRef()
   const texture = useLoader(TextureLoader, '/envmaps/images/Environment-Map-Empty-Warehouse2K.jpg')
@@ -38,6 +38,7 @@ const Exterior = ({ color, cameraPosition, minPolar, maxPolar, enableGround }) =
       const controls = orbitControlsRef.current
       controls.minPolarAngle = minPolar
       controls.maxPolarAngle = maxPolar
+      controls.autoRotate = enableAutoRotate
       controls.update()
     }
   }, [minPolar, maxPolar])
@@ -56,9 +57,11 @@ const Exterior = ({ color, cameraPosition, minPolar, maxPolar, enableGround }) =
       <OrbitControls
         ref={orbitControlsRef}
         enableZoom={true}
+        autoRotateSpeed={3.0}
         minPolarAngle={minPolar}
         maxPolarAngle={maxPolar}
         target={[0, 0, 0]}
+        autoRotate={enableAutoRotate}
       />
       <Environment1 texture={texture} />
       <Environment

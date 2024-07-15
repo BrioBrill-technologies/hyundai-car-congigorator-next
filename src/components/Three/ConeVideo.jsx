@@ -6,27 +6,33 @@ import { useVideoTexture } from '@react-three/drei';
 const ConeVideo = ({ position, rotation, scale, visible, videoUrl }) => {
     const meshRef = useRef(null);
 
+    const { opacity } = useSpring({
+        opacity: visible ? 0.8 : 0,
+        config: { duration: 2700 },
+        delay: 700,
+    });
+
     const { animatedScale } = useSpring({
         animatedScale: visible ? scale : [0, 0, 0],
-        config: { duration: 1200 },
+        config: { duration: 1700 },
         delay: 700,
     });
 
     const videoTexture = useVideoTexture(videoUrl, {
-        loop: true, // Ensures the video loops
-        start: true, // Starts the video automatically
+        loop: true,
+        start: true,
     });
 
     return (
         <animated.mesh ref={meshRef} position={position} rotation={rotation} scale={animatedScale}>
             <coneGeometry args={[1, 2, 32]} />
-            <meshStandardMaterial
+            <animated.meshStandardMaterial
                 color={'orange'}
                 map={videoTexture}
                 side={DoubleSide}
                 blending={AdditiveBlending}
-                opacity={0.9}
-                transparent={false}
+                opacity={opacity}
+                transparent={true}
             />
         </animated.mesh>
     );

@@ -16,6 +16,7 @@ import AnimatedCylinder from '@/components/Three/AnimatedCylinder'
 import LoaderScreen from '@/components/canvas/loader'
 import { Plane } from '@/components/Three/disney-particles'
 import ConeVideo from '@/components/Three/ConeVideo'
+import ExplosionConfetti from '@/components/Three/Confetti'
 import Image from 'next/image'
 
 const textureLoader = new THREE.TextureLoader();
@@ -134,6 +135,7 @@ export default function Page({ params }) {
     const [currentHeadLightTexture, setCurrentHeadLightTexture] = useState(ioniq5HeadLightTextureOff);
     const [activateD100, setActivateD100] = useState(false);
     const [isNatureDisplayActive, setIsNatureDisplayActive] = useState(false);
+    const [isenableAutoRotate, setEnableAutoRotate] = useState(false);
 
     useEffect(() => {
         if (showHotspot) setDisable(true)
@@ -204,15 +206,17 @@ export default function Page({ params }) {
             setHasPositionChanged(false); // Reset this when changing position
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(true)
+            setEnableAutoRotate(false)
         } else {
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(false)
-            setCameraPosition([-60, 0, 0]);
+            setCameraPosition([-50, 0, 0]);
             setInteriorColor(color);
             setHasPositionChanged(false); // Reset this when changing position
             setMinPolar([Math.PI / 5])
             setMaxPolar([Math.PI / 2.5])
             setActivateD100(false)
+            setEnableAutoRotate(true)
         }
     }
 
@@ -227,6 +231,7 @@ export default function Page({ params }) {
             setShowInteriorHotspots(true)
             setMinPolar([Math.PI / 10])
             setMaxPolar([Math.PI / 1.9])
+            setEnableAutoRotate(false)
         } else if (exteriorColor) {
             setExteriorColor('')
             setSelectedColor(Object.keys(cars[car][trim].exteriorColors)[0])
@@ -237,6 +242,7 @@ export default function Page({ params }) {
             setMinPolar([Math.PI / 5])
             setMaxPolar([Math.PI / 2.5])
             setActivateD100(false)
+            setEnableAutoRotate(false)
         } else {
             router.push(`/${car}`)
         }
@@ -438,6 +444,7 @@ export default function Page({ params }) {
                             showNatureDisplay={isNatureDisplayActive}
                             isBubbleHotspotActive={showHotspot && hotspotTitle === 'D100 Edition'}
                         />
+                        <ExplosionConfetti isExploding={isenableAutoRotate}  />
                         <group position={cars[car][trim].hotspots.exterior['LED Projector headlights'].position}>
                             <Hotspot
                                 rotation={[0, 15, 0]}
@@ -545,19 +552,19 @@ export default function Page({ params }) {
                         )}
 
                         <ConeVideo
-                            position={[10, 15, 0]}
+                            position={[2, 15, 0]}
                             rotation={[0, 0, 0]}
-                            scale={[20, 20, 20]}
+                            scale={[7, 25, 20]}
                             visible={showHotspot && hotspotTitle === 'Power tilt-and-slide wide sunroof'}
                             videoUrl="/Sun_Ray.mp4"
                         />
-                        <ConeVideo
+                        {/* <ConeVideo
                             position={[15, 20, 0]}
                             rotation={[0, 0, 0]}
                             scale={[20, 25, 20]}
                             visible={showHotspot && hotspotTitle === 'Power tilt-and-slide wide sunroof'}
                             videoUrl="/Sun_Ray.mp4"
-                        />
+                        /> */}
 
                         {trim !== 'SE' && (
                             <Hotspot
@@ -673,6 +680,7 @@ export default function Page({ params }) {
                         minPolar={minPolar}
                         maxPolar={maxPolar}
                         enableGround={(interiorColor || !exteriorColor) ? true : false}
+                        enableAutoRotate={isenableAutoRotate}
                     />
                 </Suspense>
             </View>
@@ -790,7 +798,7 @@ export default function Page({ params }) {
                 ${exteriorColor && interiorColor ? 'mt-5' : ''}
                 ${disable ? 'pointer-events-none opacity-50 ' : 'opacity-100'}`}
                 onClick={() => handleSelectColor(selectedColor)}>
-                <span>{interiorColor && exteriorColor ? 'Finsih Build' : `Select ${selectedColor}`}</span>
+                <span>{interiorColor && exteriorColor ? 'Finish Build' : `Select ${selectedColor}`}</span>
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
                     fill='none'
