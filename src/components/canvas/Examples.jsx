@@ -79,6 +79,7 @@ export function ExteriorModel({
   activateD100,
   isBubbleHotspotActive,
   showNatureDisplay,
+  enableMickyBadge,
   ...props
 }) {
   const { scene, animations } = useGLTF(`/models/${model}.glb`);
@@ -144,7 +145,8 @@ export function ExteriorModel({
           child.material.emissive = colorA;
           child.material.emissiveIntensity = 10;
         }
-        if (child.name === 'Micky_Badge') {
+        if (child.name.includes('Micky_Badge')) {
+          child.visible = enableMickyBadge
           child.material.color = colorB;
           child.material.emissive = colorB;
           child.material.emissiveIntensity = 2;

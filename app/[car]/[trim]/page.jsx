@@ -443,6 +443,7 @@ export default function Page({ params }) {
                             activateD100={activateD100}
                             showNatureDisplay={isNatureDisplayActive}
                             isBubbleHotspotActive={showHotspot && hotspotTitle === 'D100 Edition'}
+                            enableMickyBadge={showHotspot && hotspotTitle === 'Micky Badge'}
                         />
                         <ExplosionConfetti isExploding={isenableAutoRotate}  />
                         <group position={cars[car][trim].hotspots.exterior['LED Projector headlights'].position}>
