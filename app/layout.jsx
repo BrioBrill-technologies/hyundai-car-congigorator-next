@@ -1,5 +1,6 @@
 import { Layout } from '@/components/dom/Layout'
 import '@/global.css'
+import Image from 'next/image'
 
 export const metadata = {
   title: 'Hyundai - 3D Configurator',
@@ -17,7 +18,13 @@ export default function RootLayout({ children }) {
       <head />
       <body>
         <div className='mx-auto flex h-screen w-full flex-col gap-2 overflow-y-scroll'>
-          <img src='/logo.png' alt='logo' className='mx-auto mt-2 w-2/12' />
+          <Image 
+            src='/logo.png'
+            alt='logo' 
+            width={75}
+            height={75}
+            className='mx-auto mt-2'
+          />
           {/* To avoid FOUT with styled-components wrap Layout with StyledComponentsRegistry https://beta.nextjs.org/docs/styling/css-in-js#styled-components */}
           <Layout>{children}</Layout>
         </div>

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 export const Modal = ({ visible, setVisibility, title, description }) => {
@@ -35,13 +36,25 @@ export const Modal = ({ visible, setVisibility, title, description }) => {
           <p className="text-sm" id="modal-title">{title}</p>
           <p className="text-xs" id="modal-description">{description}</p>
         </div>
-        <img
+        <div onClick={handleXClick}
+        className='pointer-events-auto mx-auto w-fit cursor-pointer'>
+          <Image
+            src="/icons/X_Icon.png"
+            alt="Close"
+            width={25}
+            height={25}
+            className="mx-auto"
+            aria-label="Close"
+          />
+        </div>
+
+        {/* <img
           src="/icons/X_Icon.png"
           alt="Close"
           className="pointer-events-auto mx-auto size-6 cursor-pointer"
           onClick={handleXClick}
           aria-label="Close"
-        />
+        /> */}
       </div>
     </div>
   );

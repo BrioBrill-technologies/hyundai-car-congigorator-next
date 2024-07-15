@@ -16,6 +16,7 @@ import AnimatedCylinder from '@/components/Three/AnimatedCylinder'
 import LoaderScreen from '@/components/canvas/loader'
 import { Plane } from '@/components/Three/disney-particles'
 import ConeVideo from '@/components/Three/ConeVideo'
+import Image from 'next/image'
 
 const textureLoader = new THREE.TextureLoader();
 
@@ -390,11 +391,17 @@ export default function Page({ params }) {
                     role="dialog"
                     aria-modal="true"
                     aria-labelledby="modal-title"
-                    aria-describedby="modal-description"
-                >
+                    aria-describedby="modal-description">
                     <div className="pointer-events-none mx-auto flex w-9/12 flex-col justify-center gap-2 rounded-lg bg-black/35 p-2 text-center text-white">
                         <div className="flex flex-col gap-2">
-                            <img src="/tap.png" alt='tap' className='mx-auto w-6 invert' />
+                            <Image 
+                                src='/tap.png'
+                                alt='tap'
+                                width={25}
+                                height={25}
+                                className='mx-auto invert'
+                            />
+                            {/* <img src="/tap.png" alt='tap' className='mx-auto w-6 invert' /> */}
                             <p className='text-sm'>Tap on the hotspots to reveal more information about the car</p>
                         </div>
                     </div>
@@ -666,13 +673,22 @@ export default function Page({ params }) {
                 {!exteriorColor && (
                     <div className='mx-auto flex w-11/12 flex-row justify-evenly gap-5 overflow-x-auto rounded-full bg-gray-100/70 px-2 py-1'>
                         {Object.keys(cars[car][trim].exteriorColors).map((color) => (
-                            <img
+                            <Image
                                 key={color}
-                                alt={color}
-                                onClick={() => setSelectedColor(color)}
                                 src={`/colors/${cars[car][trim].exteriorColors[color].image}.png`}
-                                className={`w-1/12 lg:w-1/12 ${selectedColor === color ? 'rounded-full border-2 border-white' : ''}`}
+                                alt={color}
+                                width={25}
+                                height={25}
+                                onClick={() => setSelectedColor(color)}
+                                className={`${selectedColor === color ? 'rounded-full border-2 border-white' : ''}`}
                             />
+                            // <img
+                            //     key={color}
+                            //     alt={color}
+                            //     onClick={() => setSelectedColor(color)}
+                            //     src={`/colors/${cars[car][trim].exteriorColors[color].image}.png`}
+                            //     className={`w-1/12 lg:w-1/12 ${selectedColor === color ? 'rounded-full border-2 border-white' : ''}`}
+                            // />
                         ))}
                     </div>
                 )}
@@ -681,26 +697,44 @@ export default function Page({ params }) {
                         {!showAmbient && (
                             <>
                                 {Object.keys(cars[car][trim].interiorColors).map((color) => (
-                                    <img
+                                    <Image
                                         key={color}
-                                        alt={color}
-                                        onClick={() => setSelectedColor(color)}
                                         src={`/colors/${cars[car][trim].interiorColors[color].image}.png`}
-                                        className={`w-1/12 lg:w-1/12 ${selectedColor === color ? 'rounded-full border-2 border-white' : ''}`}
+                                        alt={color}
+                                        width={25}
+                                        height={25}
+                                        onClick={() => setSelectedColor(color)}
+                                        className={`${selectedColor === color ? 'rounded-full border-2 border-white' : ''}`}
                                     />
+                                    // <img
+                                    //     key={color}
+                                    //     alt={color}
+                                    //     onClick={() => setSelectedColor(color)}
+                                    //     src={`/colors/${cars[car][trim].interiorColors[color].image}.png`}
+                                    //     className={`w-1/12 lg:w-1/12 ${selectedColor === color ? 'rounded-full border-2 border-white' : ''}`}
+                                    // />
                                 ))}
                             </>
                         )}
                         {showAmbient && (
                             <>
                                 {Object.keys(cars[car][trim].ambientLight).map((color) => (
-                                    <img
+                                    <Image
                                         key={color}
-                                        alt={color}
-                                        onClick={() => setSelectedAmbientColor(color)}
                                         src={`/colors/ambient/${cars[car][trim].ambientLight[color].image}.png`}
-                                        className={`w-1/12 lg:w-1/12 ${selectedAmbientColor === color ? 'rounded-full border-2 border-white' : ''}`}
+                                        alt={color}
+                                        width={25}
+                                        height={25}
+                                        onClick={() => setSelectedAmbientColor(color)}
+                                        className={`${selectedAmbientColor === color ? 'rounded-full border-2 border-white' : ''}`}
                                     />
+                                    // <img
+                                    //     key={color}
+                                    //     alt={color}
+                                    //     onClick={() => setSelectedAmbientColor(color)}
+                                    //     src={`/colors/ambient/${cars[car][trim].ambientLight[color].image}.png`}
+                                    //     className={`w-1/12 lg:w-1/12 ${selectedAmbientColor === color ? 'rounded-full border-2 border-white' : ''}`}
+                                    // />
                                 ))}
                             </>
                         )}
@@ -710,22 +744,34 @@ export default function Page({ params }) {
             {exteriorColor && interiorColor && (
                 <div className="mx-auto mt-5 w-11/12 text-left">
                     <div className="flex flex-row gap-5 border-b border-black py-1">
-                        <img
+                        <Image
+                            src={`/colors/${cars[car][trim].exteriorColors[exteriorColor].image}.png`}
+                            alt="Exterior color"
+                            width={50}
+                            height={50}
+                        />
+                        {/* <img
                             src={`/colors/${cars[car][trim].exteriorColors[exteriorColor].image}.png`}
                             className="w-2/12"
                             alt="Exterior color"
-                        />
+                        /> */}
                         <div className="flex flex-col">
                             <p>Exterior</p>
                             <p>{exteriorColor}</p>
                         </div>
                     </div>
                     <div className="flex flex-row gap-5 border-b border-black py-1">
-                        <img
+                        <Image
+                            src={`/colors/${cars[car][trim].interiorColors[interiorColor].image}.png`}
+                            alt="Interior color"
+                            width={50}
+                            height={50}
+                        />
+                        {/* <img
                             src={`/colors/${cars[car][trim].interiorColors[interiorColor].image}.png`}
                             className="w-2/12"
                             alt="Interior color"
-                        />
+                        /> */}
                         <div className="flex flex-col">
                             <p>Interior</p>
                             <p>{interiorColor}</p>
