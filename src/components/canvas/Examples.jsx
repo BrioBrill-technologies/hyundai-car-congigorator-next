@@ -26,22 +26,15 @@ export const Logo = ({ route = '/trim', car, ...props }) => {
       router.push(`/${car}/`)
     }}
       key={car}
-      className='mx-auto mb-5 flex w-10/12 cursor-pointer items-center rounded-lg bg-gradient-to-br
-          from-gray-200/40 to-[#dfdfdf] bg-clip-padding text-black shadow-lg shadow-white drop-shadow backdrop-blur-sm'
+      className='text-black w-10/12 mx-auto items-center flex rounded-lg cursor-pointer mb-5
+          bg-gradient-to-br from-gray-200/40 to-[#dfdfdf] bg-clip-padding backdrop-filter backdrop-blur-sm drop-shadow shadow-lg shadow-white'
       role='button'
       tabIndex={0}
       title={`Select ${car}`}>
-      <p className='absolute left-4 top-4 text-2xl'>{car === 'IONIQ5' ? 'IONIQ 5' : 'IONIQ 6'}</p>
+      <p className='absolute top-4 left-4 text-2xl'>{car === 'IONIQ5' ? 'IONIQ 5' : 'IONIQ 6'}</p>
       <div className='flex flex-col justify-center'>
-        <Image
-          src={`/${cars[car].image}.png`}
-          alt={car}
-          width={200}
-          height={200}
-          className='mx-auto w-10/12 rounded-3xl pt-10'
-        />
-        {/* <img src={`/${cars[car].image}.png`} alt={car} className='mx-auto w-10/12 rounded-3xl pt-10' /> */}
-        <div className='mt-5 w-full border border-black py-2 text-center font-[HyundaiSansHead-Regular]'>
+        <img src={`/${cars[car].image}.png`} alt={car} className='rounded-3xl pt-10 w-10/12 mx-auto' />
+        <div className='text-center border py-2 w-full mt-5 border-black font-[HyundaiSansHead-Regular]'>
           Select {car === 'IONIQ5' ? 'IONIQ 5' : 'IONIQ 6'}
           <span className='absolute right-5'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="size-6">
@@ -134,19 +127,27 @@ export function ExteriorModel({
 
     // Update shell_4Shape_D_Badge color animation
     const elapsedTime = clock.current.getElapsedTime();
-    const greyish = new THREE.Color(0x808080); // RGB for greyish color
-    const lightWhite = new THREE.Color(0xF5F5F5); // RGB for light white color
+    const greyishA = new THREE.Color(0x808080); // RGB for greyish color
+    const lightWhiteA = new THREE.Color(0xF5F5F5); // RGB for light white color
+    const greyishB = new THREE.Color(0xc3c7c2); // RGB for greyish color
+    const lightWhiteB = new THREE.Color(0xdcdedb); // RGB for light white color
     const t = (Math.sin(elapsedTime * 2) + 1) / 2; // Generates a value between 0 and 1
 
     // Interpolate between greyish and light white
-    const color = new THREE.Color().lerpColors(greyish, lightWhite, t);
+    const colorA = new THREE.Color().lerpColors(greyishA, lightWhiteA, t);
+    const colorB = new THREE.Color().lerpColors(lightWhiteB, greyishB, t);
 
     if (additions === 'TRIM_D100') {
       scene.traverse((child) => {
-        if (child.name === 'shell_4Shape_D_Badge' || child.name === 'Micky_RIM') {
-          child.material.color = color;
-          child.material.emissive = color;
-          child.material.emissiveIntensity = 15;
+        if (child.name === 'shell_4Shape_D_Badge') {
+          child.material.color = colorA;
+          child.material.emissive = colorA;
+          child.material.emissiveIntensity = 10;
+        }
+        if (child.name === 'Micky_Badge') {
+          child.material.color = colorB;
+          child.material.emissive = colorB;
+          child.material.emissiveIntensity = 2;
         }
       });
     }

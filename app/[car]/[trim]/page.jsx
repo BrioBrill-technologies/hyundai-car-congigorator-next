@@ -523,7 +523,7 @@ export default function Page({ params }) {
                         {showNebula && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
                         {/* Interior Hotspots */}
                         <Hotspot
-                            position={[-7, 0, -0.9]}
+                            position={[-8, 0, -0.9]}
                             rotation={[0, 5, 0]}
                             scale={[0.8, 0.8, 0.8]}
                             visible={showInteriorHotspots && !showHotspot}
@@ -544,13 +544,20 @@ export default function Page({ params }) {
                             />
                         )}
 
-                        {/* <ConeVideo
-                            position={[15, 18, 0]}
+                        <ConeVideo
+                            position={[10, 15, 0]}
                             rotation={[0, 0, 0]}
-                            scale={[15, 20, 15]}
+                            scale={[20, 20, 20]}
                             visible={showHotspot && hotspotTitle === 'Power tilt-and-slide wide sunroof'}
                             videoUrl="/Sun_Ray.mp4"
-                        /> */}
+                        />
+                        <ConeVideo
+                            position={[15, 20, 0]}
+                            rotation={[0, 0, 0]}
+                            scale={[20, 25, 20]}
+                            visible={showHotspot && hotspotTitle === 'Power tilt-and-slide wide sunroof'}
+                            videoUrl="/Sun_Ray.mp4"
+                        />
 
                         {trim !== 'SE' && (
                             <Hotspot

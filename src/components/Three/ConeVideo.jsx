@@ -8,7 +8,8 @@ const ConeVideo = ({ position, rotation, scale, visible, videoUrl }) => {
 
     const { animatedScale } = useSpring({
         animatedScale: visible ? scale : [0, 0, 0],
-        config: { duration: 1000 },
+        config: { duration: 1200 },
+        delay: 700,
     });
 
     const videoTexture = useVideoTexture(videoUrl, {
@@ -24,7 +25,7 @@ const ConeVideo = ({ position, rotation, scale, visible, videoUrl }) => {
                 map={videoTexture}
                 side={DoubleSide}
                 blending={AdditiveBlending}
-                opacity={1}
+                opacity={0.9}
                 transparent={false}
             />
         </animated.mesh>
