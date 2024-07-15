@@ -485,31 +485,32 @@ export default function Page({ params }) {
                                 />
                             </group>
                         )}
-
-                        <Hotspot
-                            position={[-17, 8, -12]}
-                            rotation={[0, 11, 0]}
-                            scale={[2, 2, 2]}
-                            visible={showExteriorHotspots && !showHotspot}
-                            onClick={handleHotspotDisneyBadge}
-                            cameraTarget={[-20, 10, -15]} // Example target position
-                            isHotspotClicked={showHotspot}
-                            enableCameraMovement={true}
-                            texture='/icons/Purple_Pointer.png'
-                        />
-
-                        <Hotspot
-                            position={[-22.3, 5, 12]}
-                            rotation={[0, 11, 0]}
-                            scale={[2, 2, 2]}
-                            visible={showExteriorHotspots && !showHotspot}
-                            onClick={handleHotspotMickyBadge}
-                            cameraTarget={[-35, 5, 20]} // Example target position
-                            isHotspotClicked={showHotspot}
-                            enableCameraMovement={true}
-                            texture='/icons/Purple_Pointer.png'
-                        />
-
+                        {trim === 'D100PlatinumEdition' && (
+                            <Hotspot
+                                position={[-17, 8, -12]}
+                                rotation={[0, 11, 0]}
+                                scale={[2, 2, 2]}
+                                visible={showExteriorHotspots && !showHotspot}
+                                onClick={handleHotspotDisneyBadge}
+                                cameraTarget={[-20, 10, -15]} // Example target position
+                                isHotspotClicked={showHotspot}
+                                enableCameraMovement={true}
+                                texture='/icons/Purple_Pointer.png'
+                            />
+                        )}
+                        {trim === 'D100PlatinumEdition' && (
+                            <Hotspot
+                                position={[-22.3, 5, 12]}
+                                rotation={[0, 11, 0]}
+                                scale={[2, 2, 2]}
+                                visible={showExteriorHotspots && !showHotspot}
+                                onClick={handleHotspotMickyBadge}
+                                cameraTarget={[-35, 5, 20]} // Example target position
+                                isHotspotClicked={showHotspot}
+                                enableCameraMovement={true}
+                                texture='/icons/Purple_Pointer.png'
+                            />
+                        )}
 
                         {showNebula && <NebulaComponent position={[0, 0, 0]} />}
                         {showNebula && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
