@@ -383,18 +383,18 @@ export default function Page({ params }) {
 
 
     return (
-        <div className='mt-2 w-11/12 mx-auto relative rounded-xl'>
+        <div className='relative mx-auto mt-2 w-11/12 rounded-xl'>
             {start && (
                 <div
-                    className={`absolute w-full z-20 pointer-events-none bottom-44 ${start ? 'fade-in block' : 'fade-out'}`}
+                    className={`pointer-events-none absolute bottom-44 z-20 w-full ${start ? 'fade-in block' : 'fade-out'}`}
                     role="dialog"
                     aria-modal="true"
                     aria-labelledby="modal-title"
                     aria-describedby="modal-description"
                 >
-                    <div className="text-white w-9/12 bg-black/35 rounded-lg mx-auto p-2 text-center flex flex-col justify-center pointer-events-none gap-2">
+                    <div className="pointer-events-none mx-auto flex w-9/12 flex-col justify-center gap-2 rounded-lg bg-black/35 p-2 text-center text-white">
                         <div className="flex flex-col gap-2">
-                            <img src="/tap.png" alt='tap' className='w-6 mx-auto invert' />
+                            <img src="/tap.png" alt='tap' className='mx-auto w-6 invert' />
                             <p className='text-sm'>Tap on the hotspots to reveal more information about the car</p>
                         </div>
                     </div>
@@ -664,20 +664,20 @@ export default function Page({ params }) {
             </View>
             <div className='relative bottom-11 z-10'>
                 {!exteriorColor && (
-                    <div className='flex flex-row justify-evenly overflow-x-auto px-2 py-1 rounded-full gap-5 w-11/12 bg-gray-100/70 mx-auto'>
+                    <div className='mx-auto flex w-11/12 flex-row justify-evenly gap-5 overflow-x-auto rounded-full bg-gray-100/70 px-2 py-1'>
                         {Object.keys(cars[car][trim].exteriorColors).map((color) => (
                             <img
                                 key={color}
                                 alt={color}
                                 onClick={() => setSelectedColor(color)}
                                 src={`/colors/${cars[car][trim].exteriorColors[color].image}.png`}
-                                className={`w-1/12 lg:w-1/12 ${selectedColor === color ? 'border-2 border-white rounded-full' : ''}`}
+                                className={`w-1/12 lg:w-1/12 ${selectedColor === color ? 'rounded-full border-2 border-white' : ''}`}
                             />
                         ))}
                     </div>
                 )}
                 {exteriorColor && !interiorColor && (
-                    <div className='flex flex-row justify-evenly overflow-x-auto px-2 py-1 rounded-full gap-5 w-11/12 bg-gray-100/70 mx-auto'>
+                    <div className='mx-auto flex w-11/12 flex-row justify-evenly gap-5 overflow-x-auto rounded-full bg-gray-100/70 px-2 py-1'>
                         {!showAmbient && (
                             <>
                                 {Object.keys(cars[car][trim].interiorColors).map((color) => (
@@ -686,7 +686,7 @@ export default function Page({ params }) {
                                         alt={color}
                                         onClick={() => setSelectedColor(color)}
                                         src={`/colors/${cars[car][trim].interiorColors[color].image}.png`}
-                                        className={`w-1/12 lg:w-1/12 ${selectedColor === color ? 'border-2 border-white rounded-full' : ''}`}
+                                        className={`w-1/12 lg:w-1/12 ${selectedColor === color ? 'rounded-full border-2 border-white' : ''}`}
                                     />
                                 ))}
                             </>
@@ -699,7 +699,7 @@ export default function Page({ params }) {
                                         alt={color}
                                         onClick={() => setSelectedAmbientColor(color)}
                                         src={`/colors/ambient/${cars[car][trim].ambientLight[color].image}.png`}
-                                        className={`w-1/12 lg:w-1/12 ${selectedAmbientColor === color ? 'border-2 border-white rounded-full' : ''}`}
+                                        className={`w-1/12 lg:w-1/12 ${selectedAmbientColor === color ? 'rounded-full border-2 border-white' : ''}`}
                                     />
                                 ))}
                             </>
@@ -708,8 +708,8 @@ export default function Page({ params }) {
                 )}
             </div>
             {exteriorColor && interiorColor && (
-                <div className="text-left w-11/12 mx-auto mt-5">
-                    <div className="border-b border-black flex flex-row py-1 gap-5">
+                <div className="mx-auto mt-5 w-11/12 text-left">
+                    <div className="flex flex-row gap-5 border-b border-black py-1">
                         <img
                             src={`/colors/${cars[car][trim].exteriorColors[exteriorColor].image}.png`}
                             className="w-2/12"
@@ -720,7 +720,7 @@ export default function Page({ params }) {
                             <p>{exteriorColor}</p>
                         </div>
                     </div>
-                    <div className="border-b border-black flex flex-row py-1 gap-5">
+                    <div className="flex flex-row gap-5 border-b border-black py-1">
                         <img
                             src={`/colors/${cars[car][trim].interiorColors[interiorColor].image}.png`}
                             className="w-2/12"
@@ -733,7 +733,7 @@ export default function Page({ params }) {
                     </div>
                 </div>
             )}
-            <div className={`text-center border-2 py-2 flex relative flex-row justify-center border-black w-10/12 mx-auto font-[HyundaiSansHead-Medium] cursor-pointer
+            <div className={`relative mx-auto flex w-10/12 cursor-pointer flex-row justify-center border-2 border-black py-2 text-center font-[HyundaiSansHead-Medium]
                 ${exteriorColor && interiorColor ? 'mt-5' : ''}
                 ${disable ? 'pointer-events-none opacity-50 ' : 'opacity-100'}`}
                 onClick={() => handleSelectColor(selectedColor)}>
@@ -744,11 +744,11 @@ export default function Page({ params }) {
                     viewBox='0 0 24 24'
                     strokewtrimth='2.5'
                     stroke='currentColor'
-                    className='size-6 absolute right-0'>
+                    className='absolute right-0 size-6'>
                     <path strokeLinecap='round' strokeLinejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' />
                 </svg>
             </div>
-            <div className={`text-center w-1/5 flex flex-row mx-auto items-center justify-evenly font-[HyundaiSansHead-Light]
+            <div className={`mx-auto flex w-1/5 flex-row items-center justify-evenly text-center font-[HyundaiSansHead-Light]
                 ${exteriorColor && interiorColor ? 'mt-1' : 'mt-5'}
                 ${disable ? 'pointer-events-none opacity-50 ' : 'opacity-100'}`} onClick={handleBack}>
                 <svg

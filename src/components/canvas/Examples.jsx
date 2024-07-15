@@ -25,15 +25,15 @@ export const Logo = ({ route = '/trim', car, ...props }) => {
       router.push(`/${car}/`)
     }}
       key={car}
-      className='text-black w-10/12 mx-auto items-center flex rounded-lg cursor-pointer mb-5
-          bg-gradient-to-br from-gray-200/40 to-[#dfdfdf] bg-clip-padding backdrop-filter backdrop-blur-sm drop-shadow shadow-lg shadow-white'
+      className='mx-auto mb-5 flex w-10/12 cursor-pointer items-center rounded-lg bg-gradient-to-br
+          from-gray-200/40 to-[#dfdfdf] bg-clip-padding text-black shadow-lg shadow-white drop-shadow backdrop-blur-sm'
       role='button'
       tabIndex={0}
       title={`Select ${car}`}>
-      <p className='absolute top-4 left-4 text-2xl'>{car === 'IONIQ5' ? 'IONIQ 5' : 'IONIQ 6'}</p>
+      <p className='absolute left-4 top-4 text-2xl'>{car === 'IONIQ5' ? 'IONIQ 5' : 'IONIQ 6'}</p>
       <div className='flex flex-col justify-center'>
-        <img src={`/${cars[car].image}.png`} alt={car} className='rounded-3xl pt-10 w-10/12 mx-auto' />
-        <div className='text-center border py-2 w-full mt-5 border-black font-[HyundaiSansHead-Regular]'>
+        <img src={`/${cars[car].image}.png`} alt={car} className='mx-auto w-10/12 rounded-3xl pt-10' />
+        <div className='mt-5 w-full border border-black py-2 text-center font-[HyundaiSansHead-Regular]'>
           Select {car === 'IONIQ5' ? 'IONIQ 5' : 'IONIQ 6'}
           <span className='absolute right-5'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="size-6">

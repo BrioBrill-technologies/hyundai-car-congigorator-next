@@ -19,10 +19,10 @@ export default function Page() {
   }, []);
 
   return (
-    <div className='h-full flex flex-col justify-evenly overflow-y-scroll mt-2'>
+    <div className='mt-2 flex h-full flex-col justify-evenly overflow-y-scroll'>
       {showVideo && (
         <video
-          className={`fixed top-0 left-0 size-full object-cover z-10 ${ended ? 'fade-out' : 'block'}`}
+          className={`fixed left-0 top-0 z-10 size-full object-cover ${ended ? 'fade-out' : 'block'}`}
           autoPlay
           muted
           playsInline

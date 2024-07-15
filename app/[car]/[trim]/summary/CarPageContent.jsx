@@ -36,9 +36,9 @@ export default function CarPageContent({ car, trim }) {
 
   return (
     <div>
-      <h1 className='text-3xl text-center'>{car}</h1>
+      <h1 className='text-center text-3xl'>{car}</h1>
       <p className='text-center text-lg'>{trim}</p>
-      <div className='mt-2 w-11/12 mx-auto relative rounded-xl'>
+      <div className='relative mx-auto mt-2 w-11/12 rounded-xl'>
         <View className='h-72 sm:h-48 sm:w-full'>
           <Suspense fallback={null}>
             <SummaryModel
@@ -54,8 +54,8 @@ export default function CarPageContent({ car, trim }) {
         <div className='relative bottom-11 z-10'>
         </div>
       </div>
-      <div className="text-left w-11/12 mx-auto mt-5">
-        <div className="border-b border-black flex flex-row py-1 gap-5">
+      <div className="mx-auto mt-5 w-11/12 text-left">
+        <div className="flex flex-row gap-5 border-b border-black py-1">
           <img    
             src={`/colors/${cars[car][trim].exteriorColors[exteriorColor].image}.png`}
             className="w-2/12"
@@ -66,7 +66,7 @@ export default function CarPageContent({ car, trim }) {
             <p>{exteriorColor}</p>
           </div>
         </div>
-        <div className="border-b border-black flex flex-row py-1 gap-5">
+        <div className="flex flex-row gap-5 border-b border-black py-1">
           <img
             src={`/colors/${cars[car][trim].interiorColors[interiorColor].image}.png`}
             className="w-2/12"
@@ -79,7 +79,7 @@ export default function CarPageContent({ car, trim }) {
         </div>
       </div>
       <div
-        className='text-center border-2 py-2 mt-2 flex relative flex-row justify-center border-black w-10/12 mx-auto font-[HyundaiSansHead-Medium] cursor-pointer'>
+        className='relative mx-auto mt-2 flex w-10/12 cursor-pointer flex-row justify-center border-2 border-black py-2 text-center font-[HyundaiSansHead-Medium]'>
         <span>Finish Build</span>
         <span>
           <svg
@@ -88,13 +88,13 @@ export default function CarPageContent({ car, trim }) {
             viewBox='0 0 24 24'
             strokeWidth='2.5'
             stroke='currentColor'
-            className='size-6 absolute right-0'
+            className='absolute right-0 size-6'
           >
             <path strokeLinecap='round' strokeLinejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' />
           </svg>
         </span>
       </div>
-      <div className='text-center w-1/5 flex flex-row mx-auto mt-5 items-center justify-evenly font-[HyundaiSansHead-Light]'
+      <div className='mx-auto mt-5 flex w-1/5 flex-row items-center justify-evenly text-center font-[HyundaiSansHead-Light]'
         onClick={handleBackClick}>
         <svg
           xmlns='http://www.w3.org/2000/svg'

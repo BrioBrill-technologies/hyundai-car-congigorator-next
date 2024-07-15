@@ -13,10 +13,10 @@ export default function Page({ car }) {
   }
 
   return (
-    <div className='overflow-y-scroll size-full flex flex-col gap-2 mx-auto'>
-      <h1 className='text-3xl text-center'>{car === 'IONIQ5' ? 'IONIQ 5' : 'IONIQ 6'}</h1>
-      <p className='font-[HyundaiSansHead-Medium] text-center'>Choose a Trim</p>
-      <div className='flex flex-row gap-5 w-full h-fit overflow-x-scroll justify-evenly px-5'>
+    <div className='mx-auto flex size-full flex-col gap-2 overflow-y-scroll'>
+      <h1 className='text-center text-3xl'>{car === 'IONIQ5' ? 'IONIQ 5' : 'IONIQ 6'}</h1>
+      <p className='text-center font-[HyundaiSansHead-Medium]'>Choose a Trim</p>
+      <div className='flex h-fit w-full flex-row justify-evenly gap-5 overflow-x-scroll px-5'>
         {Object.keys(cars[car]).map((trim) => {
           // return only if trim is image
           if (trim === 'image') {
@@ -25,8 +25,8 @@ export default function Page({ car }) {
           return (
             <div key={trim} className='h-fit'>
               {trim === 'image' ? null : (
-                <div className='text-black min-w-72 mx-auto py-5 items-center rounded-lg cursor-pointer h-fit mt-5
-                  bg-gradient-to-br from-gray-200/40 to-transparent bg-clip-padding backdrop-filter backdrop-blur-sm'>
+                <div className='mx-auto mt-5 h-fit min-w-72 cursor-pointer items-center rounded-lg bg-gradient-to-br from-gray-200/40
+                  to-transparent bg-clip-padding py-5 text-black backdrop-blur-sm'>
                   <ThreeSixty
                     amount={40}
                     imagePath={`/${cars[car][trim].threesixty}/`}
@@ -37,11 +37,11 @@ export default function Page({ car }) {
                     style={{ backgroundColor: '#c5c5c5' }}
                   />
                   <div>
-                    <p className='text-center mt-5'>{trim === 'D100PlatinumEdition' ? 'D100 Platinum Edition' : trim}</p>
-                    <p className='text-xs text-center font-[HyundaiSansHead-Light]'>{cars[car][trim].description}</p>
+                    <p className='mt-5 text-center'>{trim === 'D100PlatinumEdition' ? 'D100 Platinum Edition' : trim}</p>
+                    <p className='text-center font-[HyundaiSansHead-Light] text-xs'>{cars[car][trim].description}</p>
                   </div>
                   <div
-                    className={`text-center border-2 py-2 border-black w-full ${trim === 'Limited' ? 'mt-1' : 'mt-5'} font-[HyundaiSansHead-Regular] cursor-pointer`}
+                    className={`w-full border-2 border-black py-2 text-center ${trim === 'Limited' ? 'mt-1' : 'mt-5'} cursor-pointer font-[HyundaiSansHead-Regular]`}
                     onClick={() => handleSelectClick(trim)}
                   >
                     Select {trim === 'D100PlatinumEdition' ? 'D100 Platinum Edition' : trim}
@@ -64,7 +64,7 @@ export default function Page({ car }) {
           )
         })}
       </div>
-      <div className='text-center w-1/5 flex flex-row mx-auto mt-5 items-center justify-evenly font-[HyundaiSansHead-Light]' onClick={() => router.push('/')}>
+      <div className='mx-auto mt-5 flex w-1/5 flex-row items-center justify-evenly text-center font-[HyundaiSansHead-Light]' onClick={() => router.push('/')}>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           fill='none'
