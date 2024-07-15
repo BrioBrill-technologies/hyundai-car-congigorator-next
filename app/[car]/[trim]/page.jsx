@@ -672,7 +672,7 @@ export default function Page({ params }) {
                             shouldMove={plane.shouldMove}
                         />
                     ))}
-                    {(interiorColor || !exteriorColor) && <ContactShadows renderOrder={2} frames={1} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />}
+                    {(interiorColor || !exteriorColor) && <ContactShadows renderOrder={2} frames={2} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />}
                     <Exterior
                         color={exteriorColor ? cars[car][trim].exteriorColors[exteriorColor].color : cars[car][trim].exteriorColors[selectedColor].color}
                         cameraPosition={cameraPosition}
