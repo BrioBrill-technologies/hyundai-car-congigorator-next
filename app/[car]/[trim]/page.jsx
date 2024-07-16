@@ -504,26 +504,24 @@ export default function Page({ params }) {
                             <Hotspot
                                 position={[-17, 8.2, -12.2]}
                                 rotation={[0, 11, 0]}
-                                scale={[2.5, 2.5, 2.5]}
+                                scale={[2, 2, 2]}
                                 visible={showExteriorHotspots && !showHotspot}
                                 onClick={handleHotspotDisneyBadge}
                                 cameraTarget={[-20, 10, -15]} // Example target position
                                 isHotspotClicked={showHotspot}
                                 enableCameraMovement={true}
-                                texture='/colors/ambient/DSpecial.png'
                             />
                         )}
                         {trim === 'D100PlatinumEdition' && (
                             <Hotspot
                                 position={[-22.6, 5, 12]}
                                 rotation={[0, 11, 0]}
-                                scale={[2.5, 2.5, 2.5]}
+                                scale={[2, 2, 2]}
                                 visible={showExteriorHotspots && !showHotspot}
                                 onClick={handleHotspotMickyBadge}
                                 cameraTarget={[-35, 5, 20]} // Example target position
                                 isHotspotClicked={showHotspot}
                                 enableCameraMovement={true}
-                                texture='/colors/ambient/DSpecial.png'
                             />
                         )}
 
@@ -582,12 +580,11 @@ export default function Page({ params }) {
                             <Hotspot
                                 position={[-9, 0, 1.3]}
                                 rotation={[0, 5, 0]}
-                                scale={[1.2, 1.2, 1.2]}
+                                scale={[0.8, 0.8, 0.8]}
                                 visible={showInteriorHotspots && !showHotspot}
                                 onClick={handleHotspotDisneyStartup}
                                 cameraTarget={[1, 0, 0]} // Example target position
                                 enableCameraMovement={true}
-                                texture='/colors/ambient/DSpecial.png'
                             />
                         )}
 
@@ -595,12 +592,11 @@ export default function Page({ params }) {
                             <Hotspot
                                 position={[-3, -2, 8]}
                                 rotation={[0, 5, 0]}
-                                scale={[1.2, 1.2, 1.2]}
+                                scale={[0.8, 0.8, 0.8]}
                                 visible={showInteriorHotspots && !showHotspot}
                                 onClick={handleHotspotDisneyBubbles}
                                 cameraTarget={[-0.1, 0, -8]} // Example target position
                                 enableCameraMovement={true}
-                                texture='/colors/ambient/DSpecial.png'
                             />
                         )}
 
