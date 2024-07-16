@@ -67,7 +67,6 @@ export default function Head() {
           }(window, document, 'ttq');
         `}
       </Script>
-      
     </>
   )
 }
