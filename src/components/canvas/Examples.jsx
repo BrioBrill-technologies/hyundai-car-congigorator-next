@@ -22,22 +22,6 @@ export const Logo = ({ route = '/trim', car, ...props }) => {
 
   return (
     <div onClick={() => {
-      ttq.track("AddToCart",
-        {
-          contents: [
-            {
-              content_id: "IONIQ5-selection", //Dynamic value reflecting user selection
-              content_name: "IONIQ5 Selection", //Dynamic value reflecting user selection
-              content_type: "product", //Hard coded
-              content_category: "3d configurator", //Hard coded
-              quantity: 1, //Hard coded
-              price: 50000, //Dynamic value reflecting user selection
-            },
-          ],
-          value: 50000, //Dynamic value reflecting user selection
-          currency: "USD",
-        }
-      );
       router.push(`/${car}/`)
     }}
       key={car}

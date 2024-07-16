@@ -11,20 +11,6 @@ export default function Page() {
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    ttq.track("ViewContent",
-      {
-        contents: [
-          {
-            content_id: "hyundai-configurator-viewcontent", //Hard coded
-            content_name: "Hyundai Configurator Home Page Load", //Hard coded
-            content_type: "product", //Hard coded
-            content_category: "3d configurator", //Hard coded
-            quantity: 1
-          },
-        ],
-        currency: "USD"
-      }
-    );
     const hasVisited = sessionStorage.getItem('hasVisited');
     if (!hasVisited) {
       setShowVideo(true);
