@@ -1,11 +1,7 @@
 import { Layout } from '@/components/dom/Layout'
 import '@/global.css'
 import Image from 'next/image'
-
-export const metadata = {
-  title: 'Hyundai - 3D Configurator',
-  description: 'Hyundai 3D Configurator',
-}
+import Head from './head'
 
 export default function RootLayout({ children }) {
   return (
@@ -15,7 +11,7 @@ export default function RootLayout({ children }) {
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <link rel="icon" href="/icons/favicon.ico" sizes="any" />
-      <head />
+      <Head />
       <body>
         <div className='mx-auto flex h-screen w-full flex-col gap-2 overflow-y-scroll'>
           <Image 

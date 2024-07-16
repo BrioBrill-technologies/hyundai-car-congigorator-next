@@ -1,6 +1,6 @@
-const title = 'React Three Next Starter'
-const url = 'https://react-three-next.vercel.app/'
-const description = 'The easiest and fastest way to create a 3D website using React Three Fiber and NextJS'
+const title = 'Hyundai - 3D Configurator'
+const url = 'https://hyundai-3dconfigurator.com/'
+const description = 'Hyundai 3D Configurator'
 const author = 'Author'
 const twitter = '@pmndrs'
 
