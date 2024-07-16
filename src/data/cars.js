@@ -61,7 +61,7 @@ const cars = {
                 "exterior": {
                     "LED Projector headlights": {
                         "description": "",
-                        "position": [-32.5, 8, 7],
+                        "position": [-32.5, 9, 7],
                         "rotation": [0, 11, 0],
                         "scale": [2, 2, 2],
                         "cameraTarget": [-50, 20, 10],
@@ -226,11 +226,11 @@ const cars = {
                     },
                     "Premium front LED accent lighting": {
                         "description": "Spanning Across the front, between the headlines and bumper, this lighting accents adds a premium touch",
-                        "position": [-32.5, 8, 7],
+                        "position": [-32.5, 9, 7],
                     },
                     "LED Projector headlights": {
                         "description": "",
-                        "position": [-32.5, 8, 7],
+                        "position": [-32.5, 9, 7],
                     },
                     "LED Tail Lights": {
                         "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
@@ -352,11 +352,11 @@ const cars = {
                     },
                     "Premium front LED accent lighting": {
                         "description": "Spanning Across the front, between the headlines and bumper, this lighting accents adds a premium touch",
-                        "position": [-32.5, 8, 7],
+                        "position": [-32.5, 9, 7],
                     },
                     "LED Projector headlights": {
                         "description": "",
-                        "position": [-32.5, 8, 7],
+                        "position": [-32.5, 9, 7],
                     },
                     "LED Tail Lights": {
                         "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
@@ -511,7 +511,7 @@ const cars = {
                 "exterior": {
                     "LED Projector headlights": {
                         "description": "",
-                        "position": [-30.5, 8, 7],
+                        "position": [-30.5, 9, 7.5],
                         "rotation": [0, 11, 0],
                         "scale": [2, 2, 2],
                         "cameraTarget": [-50, 20, 10],
@@ -656,7 +656,7 @@ const cars = {
                     },
                     "LED Projector headlights": {
                         "description": "",
-                        "position": [-30.5, 8, 7],
+                        "position": [-30.5, 9, 7.5],
                     },
                     "LED Tail Lights": {
                         "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
@@ -798,7 +798,7 @@ const cars = {
                     },
                     "LED Projector headlights": {
                         "description": "",
-                        "position": [-30.5, 8, 7],
+                        "position": [-30.5, 9, 7.5],
                     },
                     "LED Tail Lights": {
                         "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",

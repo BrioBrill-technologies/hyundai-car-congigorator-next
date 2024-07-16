@@ -8,14 +8,8 @@ const ConeVideo = ({ position, rotation, scale, visible, videoUrl }) => {
     const [videoTexture, setVideoTexture] = useState(null);
 
     const { opacity } = useSpring({
-        opacity: visible ? 0.8 : 0,
-        config: { duration: 2700 },
-        delay: 700,
-    });
-
-    const { animatedScale } = useSpring({
-        animatedScale: visible ? scale : [0, 0, 0],
-        config: { duration: 1700 },
+        opacity: visible ? 0.55 : 0,
+        config: { duration: 1400 },
         delay: 700,
     });
 
@@ -46,14 +40,14 @@ const ConeVideo = ({ position, rotation, scale, visible, videoUrl }) => {
     }, [videoUrl, visible]);
 
     return (
-        <animated.mesh ref={meshRef} position={position} rotation={rotation} scale={animatedScale}>
+        <animated.mesh ref={meshRef} position={position} rotation={rotation} scale={scale}>
             <coneGeometry args={[1, 2, 32]} />
             {videoTexture && (
                 <animated.meshStandardMaterial
-                    color={'orange'}
                     map={videoTexture}
                     side={DoubleSide}
                     blending={AdditiveBlending}
+                    depthWrite={false}
                     opacity={opacity}
                     transparent={true}
                 />

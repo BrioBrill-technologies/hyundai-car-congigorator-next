@@ -431,9 +431,9 @@ export default function Page({ params }) {
                             additions={cars[car][trim].additions}
                             playOpenAnimation={playOpenAnimation}
                             displayTexture={isAudioPlaying ? audioTexture : menuTexture}
-                            bloomStrength={0.5}
-                            bloomRadius={1.1}
-                            bloomThreshold={1.8}
+                            bloomStrength={0.4}
+                            bloomRadius={1.05}
+                            bloomThreshold={1.9}
                             isBloomActive={isBloomActive}
                             ambientLedColor1={cars[car][trim].ambientLight[selectedAmbientColor]?.color1}
                             ambientLedColor2={cars[car][trim].ambientLight[selectedAmbientColor]?.color2}
