@@ -510,7 +510,6 @@ export default function Page({ params }) {
                                 cameraTarget={[-20, 10, -15]} // Example target position
                                 isHotspotClicked={showHotspot}
                                 enableCameraMovement={true}
-                                texture='/icons/Purple_Pointer.png'
                             />
                         )}
                         {trim === 'D100PlatinumEdition' && (
@@ -523,7 +522,6 @@ export default function Page({ params }) {
                                 cameraTarget={[-35, 5, 20]} // Example target position
                                 isHotspotClicked={showHotspot}
                                 enableCameraMovement={true}
-                                texture='/icons/Purple_Pointer.png'
                             />
                         )}
 
