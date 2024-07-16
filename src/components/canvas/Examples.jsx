@@ -1,15 +1,14 @@
 'use client'
 
-import { Html, useGLTF } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 import { useRouter } from 'next/navigation'
-import { Suspense, useRef, useEffect, useState, act } from 'react'
-import { useThree, useFrame } from '@react-three/fiber'
+import { Suspense, useRef, useEffect, useState } from 'react'
+import { useFrame } from '@react-three/fiber'
 import { cars } from '@/data/cars.js'
 import * as THREE from 'three'
 import LoaderScreen from './loader'
 import PostProcess from '@/templates/hooks/usePostprocess'
-import Image from 'next/image'
 
 // Configure DRACOLoader for useGLTF
 const configureDRACOLoader = loader => {
@@ -44,16 +43,6 @@ export const Logo = ({ route = '/trim', car, ...props }) => {
         </div>
       </div>
     </div>
-  )
-}
-
-export function TrimsModel({ model, ...props }) {
-  const { scene } = useGLTF(`/models/${model}.glb`, configureDRACOLoader)
-
-  return (
-    <Suspense fallback={null}>
-      <primitive object={scene} {...props} />
-    </Suspense>
   )
 }
 
@@ -94,76 +83,20 @@ export function ExteriorModel({
   const clock = useRef(new THREE.Clock());
 
   useEffect(() => {
-    if (!videoRef.current) {
-      // Create a video element
-      const video = document.createElement('video');
-      video.src = '/Hyundai_D100_Video.mp4'; // Replace with your video path
-      video.loop = false;
-      video.muted = false;
-      video.playsInline = true;
-      videoRef.current = video;
+    const video = document.createElement('video');
+    video.src = '/Hyundai_D100_Video.mp4'; // Replace with your video path
+    video.loop = false;
+    video.muted = false;
+    video.playsInline = true;
+    videoRef.current = video;
 
-      // Create a video texture
-      const videoTexture = new THREE.VideoTexture(video);
-      videoTexture.minFilter = THREE.LinearFilter;
-      videoTexture.magFilter = THREE.LinearFilter;
-      videoTexture.flipY = false;
-      videoTexture.encoding = THREE.sRGBEncoding;
-      videoTextureRef.current = videoTexture;
-    }
+    const videoTexture = new THREE.VideoTexture(video);
+    videoTexture.minFilter = THREE.LinearFilter;
+    videoTexture.magFilter = THREE.LinearFilter;
+    videoTexture.flipY = false;
+    videoTexture.encoding = THREE.sRGBEncoding;
+    videoTextureRef.current = videoTexture;
   }, []);
-
-  useFrame((state, delta) => {
-    mixerRef.current?.update(delta);
-
-    if (modelRef.current && (trim === 'IONIQ5')) {
-      if (isBubbleHotspotActive) {
-        targetPosition.current.set(5, 0, 0);
-      } else {
-        targetPosition.current.set(-1, 0, 0);
-      }
-
-      modelRef.current.position.lerp(targetPosition.current, 0.1);
-    }
-
-    // Update shell_4Shape_D_Badge color animation
-    const elapsedTime = clock.current.getElapsedTime();
-    const greyishA = new THREE.Color(0x808080); // RGB for greyish color
-    const lightWhiteA = new THREE.Color(0xF5F5F5); // RGB for light white color
-    const greyishB = new THREE.Color(0xc3c7c2); // RGB for greyish color
-    const lightWhiteB = new THREE.Color(0xdcdedb); // RGB for light white color
-    const t = (Math.sin(elapsedTime * 2) + 1) / 2; // Generates a value between 0 and 1
-
-    // Interpolate between greyish and light white
-    const colorA = new THREE.Color().lerpColors(greyishA, lightWhiteA, t);
-    const colorB = new THREE.Color().lerpColors(lightWhiteB, greyishB, t);
-
-    if (additions === 'TRIM_D100') {
-      scene.traverse((child) => {
-        if (child.name === 'shell_4Shape_D_Badge') {
-          child.material.color = colorA;
-          child.material.emissive = colorA;
-          child.material.emissiveIntensity = 10;
-        }
-        if (child.name.includes('Micky_Badge')) {
-          child.visible = enableMickyBadge
-          child.material.color = colorB;
-          child.material.emissive = colorB;
-          child.material.emissiveIntensity = 2;
-        }
-      });
-    }
-  });
-
-  useEffect(() => {
-    if (activateD100) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-      videoRef.current.play();
-    } else {
-      videoRef.current.pause();
-    }
-  }, [activateD100]);
 
   useEffect(() => {
     if (scene) {
@@ -179,7 +112,23 @@ export function ExteriorModel({
       });
       setIsLoaded(true);
     }
-  }, [scene, exteriorColor, interiorColor, interior, trim, removable, additions, displayTexture, showNatureDisplay, tailLightTexture, tailLightMiddleTexture, headLightTexture, ambientLedColor1, ambientLedColor2, isBloomActive]);
+  }, [
+    scene,
+    exteriorColor,
+    interiorColor,
+    interior,
+    trim,
+    removable,
+    additions,
+    displayTexture,
+    showNatureDisplay,
+    tailLightTexture,
+    tailLightMiddleTexture,
+    headLightTexture,
+    ambientLedColor1,
+    ambientLedColor2,
+    isBloomActive,
+  ]);
 
   useEffect(() => {
     if (scene && animations.length) {
@@ -202,14 +151,56 @@ export function ExteriorModel({
     }
   }, [playOpenAnimation]);
 
+  useEffect(() => {
+    if (activateD100) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+      videoRef.current.play();
+    } else {
+      videoRef.current.pause();
+    }
+  }, [activateD100]);
+
   useFrame((state, delta) => {
     mixerRef.current?.update(delta);
+
+    if (modelRef.current && trim === 'IONIQ5') {
+      targetPosition.current.set(isBubbleHotspotActive ? 5 : -1, 0, 0);
+      modelRef.current.position.lerp(targetPosition.current, 0.1);
+    }
+
+    const elapsedTime = clock.current.getElapsedTime();
+    const t = (Math.sin(elapsedTime * 2) + 1) / 2;
+
+    const greyishA = new THREE.Color(0x808080);
+    const lightWhiteA = new THREE.Color(0xF5F5F5);
+    const greyishB = new THREE.Color(0xc3c7c2);
+    const lightWhiteB = new THREE.Color(0xdcdedb);
+
+    const colorA = new THREE.Color().lerpColors(greyishA, lightWhiteA, t);
+    const colorB = new THREE.Color().lerpColors(lightWhiteB, greyishB, t);
+
+    if (additions === 'TRIM_D100') {
+      scene.traverse((child) => {
+        if (child.name === 'shell_4Shape_D_Badge') {
+          child.material.color = colorA;
+          child.material.emissive = colorA;
+          child.material.emissiveIntensity = 10;
+        }
+        if (child.name.includes('Micky_Badge')) {
+          child.visible = enableMickyBadge;
+          child.material.color = colorB;
+          child.material.emissive = colorB;
+          child.material.emissiveIntensity = 2;
+        }
+      });
+    }
   });
 
   const handleInterior = (child) => {
-    if (interiorColor.visibleMesh.some(mesh => child.name.includes(mesh))) {
+    if (interiorColor.visibleMesh.some((mesh) => child.name.includes(mesh))) {
       child.visible = true;
-    } else if (interiorColor.invisibleMesh.some(mesh => child.name.includes(mesh))) {
+    } else if (interiorColor.invisibleMesh.some((mesh) => child.name.includes(mesh))) {
       child.visible = false;
     }
 
@@ -226,21 +217,15 @@ export function ExteriorModel({
       child.material.emissiveIntensity = 8;
     }
 
-    if (child.name.includes('Display2')) {
+    if (child.name.includes('Display2') || child.name.includes('D100_Nature_Display')) {
       child.material = new THREE.MeshStandardMaterial({
         map: displayTexture,
         metalness: 0.9,
         roughness: 0,
       });
-    }
-
-    if (child.name.includes('D100_Nature_Display')) {
-      child.material = new THREE.MeshStandardMaterial({
-        map: displayTexture,
-        metalness: 0.9,
-        roughness: 0,
-      });
-      child.visible = showNatureDisplay;
+      if (child.name.includes('D100_Nature_Display')) {
+        child.visible = showNatureDisplay;
+      }
     }
   };
 
@@ -249,19 +234,17 @@ export function ExteriorModel({
       child.visible = true;
     }
     if (!interior) {
-      if (interiorColor.visibleMesh.some(mesh => child.name.includes(mesh))) {
+      if (interiorColor.visibleMesh.some((mesh) => child.name.includes(mesh))) {
         child.visible = true;
-      } else if (interiorColor.invisibleMesh.some(mesh => child.name.includes(mesh))) {
+      } else if (interiorColor.invisibleMesh.some((mesh) => child.name.includes(mesh))) {
         child.visible = false;
       }
     }
-    if (removable.length > 0) {
-      removable.forEach(removable => {
-        if (child.name.includes(removable)) {
-          child.visible = false;
-        }
-      });
-    }
+    removable.forEach((removable) => {
+      if (child.name.includes(removable)) {
+        child.visible = false;
+      }
+    });
     if (child.name.includes('_Paints')) {
       child.material = new THREE.MeshStandardMaterial({
         color: exteriorColor,
@@ -270,25 +253,16 @@ export function ExteriorModel({
         emissiveIntensity: 0,
       });
     }
-
-    if (child.name === ('LED_Strip')) {
+    if (child.name === 'LED_Strip') {
       child.material.color = new THREE.Color('#ffffff');
       child.material.emissive = new THREE.Color('#ffffff');
       child.material.emissiveIntensity = 6;
     }
-
-    // if (child.name === ('Micky_RIM')) {
-    //   child.material.color = new THREE.Color('#ffffff');
-    //   child.material.emissive = new THREE.Color('#ffffff');
-    //   child.material.emissiveIntensity = 6;
-    // }
-
     if (child.name.includes('Rear_glass_outer')) {
       child.material = new THREE.MeshBasicMaterial({
         map: tailLightTexture,
       });
     }
-
     if (child.name.includes('taillight_middle')) {
       child.material = new THREE.MeshBasicMaterial({
         map: tailLightMiddleTexture,
@@ -299,7 +273,6 @@ export function ExteriorModel({
         map: headLightTexture,
       });
     }
-
     if (child.name === 'D100_Display_1') {
       child.material = new THREE.MeshBasicMaterial({
         map: videoTextureRef.current,
@@ -321,7 +294,7 @@ export function ExteriorModel({
   };
 
   const stopAllAnimations = () => {
-    Object.values(actionsRef.current).forEach(action => action.stop());
+    Object.values(actionsRef.current).forEach((action) => action.stop());
   };
 
   const playAnimation = (clipName) => {
@@ -345,6 +318,7 @@ export function ExteriorModel({
     </Suspense>
   );
 }
+
 
 
 export function InteriorModel({ model, playOpenAnimation, color, ...props }) {
