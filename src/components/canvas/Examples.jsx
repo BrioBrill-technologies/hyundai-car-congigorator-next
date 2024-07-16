@@ -174,7 +174,7 @@ export function ExteriorModel({
 
     const greyishA = new THREE.Color(0x808080);
     const lightWhiteA = new THREE.Color(0xF5F5F5);
-    const greyishB = new THREE.Color(0xc3c7c2);
+    const greyishB = new THREE.Color(0xcdcec6);
     const lightWhiteB = new THREE.Color(0xdcdedb);
 
     const colorA = new THREE.Color().lerpColors(greyishA, lightWhiteA, t);
@@ -191,7 +191,7 @@ export function ExteriorModel({
           child.visible = enableMickyBadge;
           child.material.color = colorB;
           child.material.emissive = colorB;
-          child.material.emissiveIntensity = 1.8;
+          child.material.emissiveIntensity = 1.9;
         }
       });
     }
