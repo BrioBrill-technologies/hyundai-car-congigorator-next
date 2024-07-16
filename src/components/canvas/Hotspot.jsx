@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
-import { TextureLoader, Vector3 } from 'three';
+import { TextureLoader, sRGBEncoding, MeshBasicMaterial } from 'three';
 import * as THREE from 'three';
 import CameraController from '@/data/Cameracontroller';
 
@@ -12,6 +12,7 @@ export const Hotspot = ({ position, rotation, scale, onClick, visible, cameraTar
     const [isHotspotClicked, setIsHotspotClicked] = useState(false); // State to track hotspot click
     const [shouldReturn, setShouldReturn] = useState(false); // State to handle return animation
     const initialCameraPositionRef = useRef(camera.position.clone()); // Store initial camera position
+    const [hotspotMaterial, setHotspotMaterial] = useState(null);
 
     useEffect(() => {
         if (isHotspotClicked && visible) {
@@ -24,6 +25,31 @@ export const Hotspot = ({ position, rotation, scale, onClick, visible, cameraTar
             }
         }
     }, [visible, isHotspotClicked, enableCameraMovement]);
+
+    useEffect(() => {
+        const loader = new TextureLoader();
+        loader.load(
+            texture,
+            (loadedTexture) => {
+                // Apply gamma correction to the texture
+                loadedTexture.encoding = sRGBEncoding;
+                loadedTexture.anisotropy = 16;
+                loadedTexture.needsUpdate = true;
+                loadedTexture.minFilter = THREE.LinearFilter;
+                setHotspotMaterial(new MeshBasicMaterial({
+                    map: loadedTexture,
+                    transparent: true, // Ensure transparency is turned on
+                    opacity: 1.0, // Ensure full opacity
+                    depthWrite: false, // Prevents writing to the depth buffer
+                    side: THREE.DoubleSide,
+                }));
+            },
+            undefined,
+            (err) => {
+                console.error('An error occurred loading the texture:', err);
+            }
+        );
+    }, [texture]);
 
     useFrame((state, delta) => {
         if (hotspotRef.current) {
@@ -42,11 +68,6 @@ export const Hotspot = ({ position, rotation, scale, onClick, visible, cameraTar
         }
     });
 
-    const hotspotMaterial = new THREE.MeshBasicMaterial({
-        map: new TextureLoader().load(texture),
-        transparent: true,
-    });
-
     const handleHotspotClick = () => {
         if (enableCameraMovement) {
             initialCameraPositionRef.current.copy(camera.position); // Store the current camera position
@@ -57,17 +78,19 @@ export const Hotspot = ({ position, rotation, scale, onClick, visible, cameraTar
 
     return (
         <>
-            <mesh
-                onClick={handleHotspotClick}
-                ref={hotspotRef}
-                position={position}
-                rotation={rotation}
-                material={hotspotMaterial}
-                visible={visible} // Use the 'visible' prop to control visibility
-                enableCameraMovement={enableCameraMovement}
-            >
-                <boxGeometry args={[1, 1, 1]} />
-            </mesh>
+            {hotspotMaterial && (
+                <mesh
+                    onClick={handleHotspotClick}
+                    ref={hotspotRef}
+                    position={position}
+                    rotation={rotation}
+                    material={hotspotMaterial}
+                    visible={visible} // Use the 'visible' prop to control visibility
+                    enableCameraMovement={enableCameraMovement}
+                >
+                    <circleGeometry args={[0.5, 32]} />
+                </mesh>
+            )}
             {isHotspotClicked && !shouldReturn && enableCameraMovement && (
                 <CameraController
                     targetPosition={cameraTarget}

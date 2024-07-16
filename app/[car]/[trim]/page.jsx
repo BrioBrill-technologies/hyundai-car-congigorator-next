@@ -190,6 +190,7 @@ export default function Page({ params }) {
     const toggleActivateD100 = (setActivateD100) => {
         setActivateD100(false);
         setTimeout(() => {
+            console.log('activate')
             setActivateD100(true);
         }, 100); // Adjust the delay as needed
     };
@@ -322,6 +323,7 @@ export default function Page({ params }) {
     }
 
     const handleHotspotVisionRoof = () => {
+        console.log('hello')
         setHotspotTitle('Power tilt-and-slide wide sunroof')
         setHotspotDescription(cars[car][trim].hotspots.interior['Power tilt-and-slide wide sunroof'].description)
         setShowHotspot(true)
@@ -398,7 +400,7 @@ export default function Page({ params }) {
                     aria-describedby="modal-description">
                     <div className="pointer-events-none mx-auto flex w-9/12 flex-col justify-center gap-2 rounded-lg bg-black/35 p-2 text-center text-white">
                         <div className="flex flex-col gap-2">
-                            <Image 
+                            <Image
                                 src='/tap.png'
                                 alt='tap'
                                 width={25}
@@ -443,7 +445,7 @@ export default function Page({ params }) {
                             isBubbleHotspotActive={showHotspot && hotspotTitle === 'D100 Edition'}
                             enableMickyBadge={showHotspot && hotspotTitle === 'Micky Badge'}
                         />
-                        <ExplosionConfetti isExploding={isenableAutoRotate}  />
+                        <ExplosionConfetti isExploding={isenableAutoRotate} />
                         <group position={cars[car][trim].hotspots.exterior['LED Projector headlights'].position}>
                             <Hotspot
                                 rotation={[0, 15, 0]}
@@ -500,26 +502,28 @@ export default function Page({ params }) {
                         )}
                         {trim === 'D100PlatinumEdition' && (
                             <Hotspot
-                                position={[-17, 8, -12]}
+                                position={[-17, 8.2, -12.2]}
                                 rotation={[0, 11, 0]}
-                                scale={[2, 2, 2]}
+                                scale={[2.5, 2.5, 2.5]}
                                 visible={showExteriorHotspots && !showHotspot}
                                 onClick={handleHotspotDisneyBadge}
                                 cameraTarget={[-20, 10, -15]} // Example target position
                                 isHotspotClicked={showHotspot}
                                 enableCameraMovement={true}
+                                texture='/colors/ambient/DSpecial.png'
                             />
                         )}
                         {trim === 'D100PlatinumEdition' && (
                             <Hotspot
-                                position={[-22.3, 5, 12]}
+                                position={[-22.6, 5, 12]}
                                 rotation={[0, 11, 0]}
-                                scale={[2, 2, 2]}
+                                scale={[2.5, 2.5, 2.5]}
                                 visible={showExteriorHotspots && !showHotspot}
                                 onClick={handleHotspotMickyBadge}
                                 cameraTarget={[-35, 5, 20]} // Example target position
                                 isHotspotClicked={showHotspot}
                                 enableCameraMovement={true}
+                                texture='/colors/ambient/DSpecial.png'
                             />
                         )}
 
@@ -578,12 +582,12 @@ export default function Page({ params }) {
                             <Hotspot
                                 position={[-9, 0, 1.3]}
                                 rotation={[0, 5, 0]}
-                                scale={[0.8, 0.8, 0.8]}
+                                scale={[1.2, 1.2, 1.2]}
                                 visible={showInteriorHotspots && !showHotspot}
                                 onClick={handleHotspotDisneyStartup}
                                 cameraTarget={[1, 0, 0]} // Example target position
                                 enableCameraMovement={true}
-                                texture='/icons/Purple_Pointer.png'
+                                texture='/colors/ambient/DSpecial.png'
                             />
                         )}
 
@@ -591,12 +595,12 @@ export default function Page({ params }) {
                             <Hotspot
                                 position={[-3, -2, 8]}
                                 rotation={[0, 5, 0]}
-                                scale={[0.8, 0.8, 0.8]}
+                                scale={[1.2, 1.2, 1.2]}
                                 visible={showInteriorHotspots && !showHotspot}
                                 onClick={handleHotspotDisneyBubbles}
                                 cameraTarget={[-0.1, 0, -8]} // Example target position
                                 enableCameraMovement={true}
-                                texture='/icons/Purple_Pointer.png'
+                                texture='/colors/ambient/DSpecial.png'
                             />
                         )}
 
