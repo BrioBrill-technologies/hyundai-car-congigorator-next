@@ -191,7 +191,7 @@ export function ExteriorModel({
           child.visible = enableMickyBadge;
           child.material.color = colorB;
           child.material.emissive = colorB;
-          child.material.emissiveIntensity = 2;
+          child.material.emissiveIntensity = 1.8;
         }
       });
     }
