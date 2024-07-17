@@ -22,6 +22,28 @@ export const Logo = ({ route = '/trim', car, ...props }) => {
 
   return (
     <div onClick={() => {
+        const trackClick = () => {
+          if (typeof window.ttq !== 'undefined') {
+            console.log('Tracking page view');
+            window.ttq.track("AddToCart",
+            {
+              contents: [
+                {
+                  content_id: `${car}-selection`, //Dynamic value reflecting user selection
+                  content_name: `${car} Selection`, //Dynamic value reflecting user selection
+                  content_type: "product", //Hard coded
+                  content_category: "3d configurator", //Hard coded
+                  quantity: 1, //Hard coded
+                  price: 50000, //Dynamic value reflecting user selection
+                },
+              ],
+              value: 50000, //Dynamic value reflecting user selection
+              currency: "USD",
+            }
+          );
+          }
+        };
+        setTimeout(trackClick, 100);
       router.push(`/${car}/`)
     }}
       key={car}

@@ -9,6 +9,22 @@ export default function Page({ car }) {
   const router = useRouter()
 
   const handleSelectClick = (trim) => {
+    window.ttq.track("ClickButton",
+      {
+        contents: [
+          {
+            content_id: "IONIQ5-limited-trim-selection", //Dynamic value reflecting user selection
+            content_name: "IONIQ5 Limited Trim Selection", //Dynamic value reflecting user selection
+            content_type: "product", //Hard coded
+            content_category: "3d configurator", //Hard coded
+            quantity: 1, //Hard coded
+            price: 50000, //Dynamic value reflecting user selection
+          },
+        ],
+        value: 50000, //Dynamic value reflecting user selection
+        currency: "USD",
+      }
+    );
     router.push(`/${car}/${trim}/`)
   }
 

@@ -31,12 +31,12 @@ export default function Page() {
         });
       }
     };
+    setTimeout(trackPageView, 500);
 
     if (!hasVisited) {
       setShowVideo(true);
       sessionStorage.setItem('hasVisited', 'true');
     }
-    setTimeout(trackPageView, 500);
   }, [hasVisited]);
 
   return (
