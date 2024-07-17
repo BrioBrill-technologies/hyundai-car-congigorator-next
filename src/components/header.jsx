@@ -1,5 +1,3 @@
-import { useState } from "react";
-import logo from '../assets/logo.png'
 import Image from "next/image";
 
 export default function Header() {
@@ -7,7 +5,7 @@ export default function Header() {
     <div className="sticky top-0 z-10 flex items-center justify-between px-8">
       <a href="/">
         <Image
-          src={logo}
+          src='/logo.png'
           alt="logo"
           width={75}
           height={75}

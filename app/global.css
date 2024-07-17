@@ -67,6 +67,12 @@
   pointer-events: none;
 }
 
+.fade-out-trim-load {
+  animation: fadeOut 2s ease-in-out forwards;
+  animation-delay: 2s;
+  pointer-events: none;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
