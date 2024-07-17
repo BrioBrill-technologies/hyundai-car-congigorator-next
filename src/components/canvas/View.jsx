@@ -41,7 +41,7 @@ const Exterior = ({ color, cameraPosition, minPolar, maxPolar, enableGround, ena
       controls.autoRotate = enableAutoRotate
       controls.update()
     }
-  }, [minPolar, maxPolar])
+  }, [minPolar, maxPolar, enableAutoRotate])
 
   return (
     <>

@@ -411,7 +411,7 @@ export default function Page({ params }) {
         } else if (hotspotTitle === 'D100 Edition') {
             setIsBloomActive(showHotspot)
         }
-    }, [showHotspot])
+    }, [showHotspot, hotspotTitle, trim])
 
     useEffect(() => {
         if (start) {
