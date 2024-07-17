@@ -44,7 +44,7 @@ export default function Page({ car }) {
                 <div className='mx-auto mt-5 h-fit min-w-72 cursor-pointer items-center rounded-lg bg-gradient-to-br from-gray-200/40
                   to-transparent bg-clip-padding py-5 text-black backdrop-blur-sm'>
                     <video
-                      className='w-full h-full object-cover rounded-lg'
+                      className='size-full rounded-lg object-cover'
                       autoPlay
                       loop
                       muted
