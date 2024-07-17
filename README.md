@@ -1,3 +1,12 @@
 # hyundai-car-congigorator-next
 
-This project was bootstrapped with [`create-r3f-app`](https://github.com/utsuboco/create-r3f-app)
+Steps to Run Project on EC2
+
+```
+git pull
+
+npm run build
+
+pm2 restart <processid>
+
+```
