@@ -16,7 +16,6 @@ export default function Page() {
   useEffect(() => {
     const trackPageView = () => {
       if (typeof window.ttq !== 'undefined') {
-        console.log('Tracking page view');
         window.ttq.track("ViewContent", {
           contents: [
             {
