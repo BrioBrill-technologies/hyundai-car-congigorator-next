@@ -13,8 +13,8 @@ export default function Page({ car }) {
       {
         contents: [
           {
-            content_id: "IONIQ5-limited-trim-selection", //Dynamic value reflecting user selection
-            content_name: "IONIQ5 Limited Trim Selection", //Dynamic value reflecting user selection
+            content_id: `${car}-${trim}-trim-selection`, //Dynamic value reflecting user selection
+            content_name: `${car} ${trim} Trim Selection`, //Dynamic value reflecting user selection
             content_type: "product", //Hard coded
             content_category: "3d configurator", //Hard coded
             quantity: 1, //Hard coded
