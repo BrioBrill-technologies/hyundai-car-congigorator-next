@@ -190,7 +190,6 @@ export default function Page({ params }) {
     const toggleActivateD100 = (setActivateD100) => {
         setActivateD100(false);
         setTimeout(() => {
-            console.log('activate')
             setActivateD100(true);
         }, 100); // Adjust the delay as needed
     };
@@ -356,7 +355,6 @@ export default function Page({ params }) {
     }
 
     const handleHotspotVisionRoof = () => {
-        console.log('hello')
         setHotspotTitle('Power tilt-and-slide wide sunroof')
         setHotspotDescription(cars[car][trim].hotspots.interior['Power tilt-and-slide wide sunroof'].description)
         setShowHotspot(true)
