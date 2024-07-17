@@ -13,8 +13,8 @@ export default function Page({ car }) {
       {
         contents: [
           {
-            content_id: "IONIQ5-limited-trim-selection", //Dynamic value reflecting user selection
-            content_name: "IONIQ5 Limited Trim Selection", //Dynamic value reflecting user selection
+            content_id: `${car}-${trim}-trim-selection`, //Dynamic value reflecting user selection
+            content_name: `${car} ${trim} Trim Selection`, //Dynamic value reflecting user selection
             content_type: "product", //Hard coded
             content_category: "3d configurator", //Hard coded
             quantity: 1, //Hard coded
@@ -44,7 +44,7 @@ export default function Page({ car }) {
                 <div className='mx-auto mt-5 h-fit min-w-72 cursor-pointer items-center rounded-lg bg-gradient-to-br from-gray-200/40
                   to-transparent bg-clip-padding py-5 text-black backdrop-blur-sm'>
                     <video
-                      className='w-full h-full object-cover rounded-lg'
+                      className='size-full rounded-lg object-cover'
                       autoPlay
                       loop
                       muted
