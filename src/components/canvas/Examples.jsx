@@ -23,9 +23,9 @@ export const Logo = ({ route = '/trim', car, ...props }) => {
 
   return (
     <div onClick={() => {
-        const trackClick = () => {
-          if (typeof window.ttq !== 'undefined') {
-            window.ttq.track("AddToCart",
+      const trackClick = () => {
+        if (typeof window.ttq !== 'undefined') {
+          window.ttq.track("AddToCart",
             {
               contents: [
                 {
@@ -41,9 +41,9 @@ export const Logo = ({ route = '/trim', car, ...props }) => {
               currency: "USD",
             }
           );
-          }
-        };
-        setTimeout(trackClick, 100);
+        }
+      };
+      setTimeout(trackClick, 100);
       router.push(`/${car}/`)
     }}
       key={car}
@@ -81,7 +81,7 @@ export function ExteriorModel({
   trim,
   interior,
   removable = [],
-  additions,
+  additions = [],
   playOpenAnimation,
   displayTexture,
   tailLightTexture,
@@ -207,22 +207,23 @@ export function ExteriorModel({
 
     const colorA = new THREE.Color().lerpColors(greyishA, lightWhiteA, t);
     const colorB = new THREE.Color().lerpColors(lightWhiteB, greyishB, t);
-
-    if (additions === 'TRIM_D100') {
-      scene.traverse((child) => {
-        if (child.name === 'shell_4Shape_D_Badge') {
-          child.material.color = colorA;
-          child.material.emissive = colorA;
-          child.material.emissiveIntensity = 10;
-        }
-        if (child.name.includes('Micky_Badge')) {
-          child.visible = enableMickyBadge;
-          child.material.color = colorB;
-          child.material.emissive = colorB;
-          child.material.emissiveIntensity = 1.9;
-        }
-      });
-    }
+    additions.forEach((additions) => {
+      if (additions === 'TRIM_D100') {
+        scene.traverse((child) => {
+          if (child.name === 'shell_4Shape_D_Badge') {
+            child.material.color = colorA;
+            child.material.emissive = colorA;
+            child.material.emissiveIntensity = 10;
+          }
+          if (child.name.includes('Micky_Badge')) {
+            child.visible = enableMickyBadge;
+            child.material.color = colorB;
+            child.material.emissive = colorB;
+            child.material.emissiveIntensity = 1.9;
+          }
+        });
+      }
+    });
   });
 
   const handleInterior = (child) => {
@@ -258,9 +259,12 @@ export function ExteriorModel({
   };
 
   const handleExterior = (child) => {
-    if (additions && child.name.includes(additions)) {
-      child.visible = true;
-    }
+    additions.forEach((additions) => {
+      if (child.name.includes(additions)) {
+        child.visible = true;
+      }
+    });
+
     if (!interior) {
       if (interiorColor.visibleMesh.some((mesh) => child.name.includes(mesh))) {
         child.visible = true;

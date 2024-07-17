@@ -2,13 +2,13 @@ import React, { useRef, useEffect, useState } from 'react';
 import { DoubleSide, AdditiveBlending, VideoTexture } from 'three';
 import { useSpring, animated } from '@react-spring/three';
 
-const ConeVideo = ({ position, rotation, scale, visible, videoUrl }) => {
+const ConeVideo = ({ position, rotation, scale, visible, videoUrl, opacityValue }) => {
     const meshRef = useRef(null);
     const videoRef = useRef(null);
     const [videoTexture, setVideoTexture] = useState(null);
 
     const { opacity } = useSpring({
-        opacity: visible ? 0.55 : 0,
+        opacity: visible ? opacityValue : 0,
         config: { duration: 1400 },
         delay: 700,
     });

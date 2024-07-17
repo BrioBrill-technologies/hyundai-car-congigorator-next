@@ -5,7 +5,7 @@ const cars = {
             'threesixty': 'ioniq5_SE',
             'image': 'SE',
             'description': 'The balanced trim with plenty of must-have features',
-            'additions': 'TRIM_SE',
+            'additions': ['TRIM_SE'],
             'removables': ['TRIM_LIMITED', 'TRIM_D100'],
             'exteriorModel': {
                 'trimModel': 'ioniq5_SE_Exterior_Trim',
@@ -144,7 +144,7 @@ const cars = {
             'threesixty': 'ioniq5_LMTD',
             'image': 'limited',
             'description': 'The premium trim that treats you with high-end features',
-            'additions': 'TRIM_LIMITED',
+            'additions': ['TRIM_LIMITED'],
             'removables': ['TRIM_SE', 'TRIM_D100'],
             'exteriorModel': {
                 'trimModel': 'ioniq5_Limited_Exterior_Trim',
@@ -201,7 +201,7 @@ const cars = {
                     'image': 'limited-5-Black',
                     'name': 'Black',
                     'color': {
-                        'visibleMesh': ['LIMITED_BLACK', 'BLACK_COMMON'],
+                        'visibleMesh': ['LIMITED_BLACK', 'BLACK_COMMON', 'limited'],
                         'invisibleMesh': ['D100', 'SE_BLACK', 'LIMITED_GREY', 'BLACK_COMMON']
                     }
                 },
@@ -209,7 +209,7 @@ const cars = {
                     'image': 'gray-green',
                     'name': 'Gray Green 2 Tone',
                     'color': {
-                        'visibleMesh': ['LIMITED_GREY'],
+                        'visibleMesh': ['LIMITED_GREY', 'limited'],
                         'invisibleMesh': ['D100', 'SE_BLACK', 'LIMITED_BLACK', 'BLACK_COMMON']
                     }
                 }
@@ -306,7 +306,7 @@ const cars = {
             'threesixty': 'ioniq5_D100',
             'image': 'D100PlatinumEdition',
             'description': 'Available in extremely limited quantities',
-            'additions': 'TRIM_D100',
+            'additions': ['TRIM_D100', 'eo_roof'],
             'removables': ['TRIM_SE', 'TRIM_LIMITED'],
             'exteriorModel': {
                 'trimModel': 'ioniq5_D100_Exterior_Trim',
@@ -452,7 +452,7 @@ const cars = {
             'threesixty': 'ioniq6_SE',
             'image': 'SE6',
             'description': 'The standard trim with lots of great features',
-            'additions': 'TRIM_SE',
+            'additions': ['TRIM_SE'],
             'removables': ['TRIM_LMTD', 'TRIM_SUL'],
             'exteriorModel': {
                 'trimModel': 'Ioniq6_SE_Exterior_Trim',
@@ -574,7 +574,7 @@ const cars = {
             'threesixty': 'ioniq6_SEL',
             'image': 'SEL6',
             'description': 'The balance trim with plenty of must-have featuress',
-            'additions': 'TRIM_SUL',
+            'additions': ['TRIM_SUL'],
             'removables': ['TRIM_LMTD', 'TRIM_SE'],
             'exteriorModel': {
                 'trimModel': 'Ioniq6_SEL_Exterior_Trim',
@@ -712,7 +712,7 @@ const cars = {
             'threesixty': 'ioniq6_LMTD',
             'image': 'Limited6',
             'description': 'The premium electric trim that treats you with high end features',
-            'additions': 'TRIM_LMTD',
+            'additions': ['TRIM_LMTD'],
             'removables': ['TRIM_SE', 'TRIM_SUL'],
             'exteriorModel': {
                 'trimModel': 'Ioniq6_Limited_Exterior_Trim',

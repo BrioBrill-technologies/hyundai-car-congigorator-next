@@ -400,10 +400,20 @@ export default function Page({ params }) {
             audioRef.current.currentTime = 0
             setIsAudioPlaying(false)
             if (trim === 'D100PlatinumEdition') setIsNatureDisplayActive(false)
-        } else if (hotspotTitle === 'Premium front LED accent lighting' || hotspotTitle === 'Disney Badge') {
+        } else if (hotspotTitle === 'Premium front LED accent lighting') {
             setTimeout(() => {
                 setIsBloomActive(showHotspot)
             }, 1200)
+        } else if (hotspotTitle === 'Disney Badge') {
+            if (showHotspot) {
+                setTimeout(() => {
+                    setIsBloomActive(showHotspot)
+                }, 1500)
+            } else {
+                setTimeout(() => {
+                    setIsBloomActive(showHotspot)
+                }, 600)
+            }
         } else if (hotspotTitle === 'D100PlatinumEdition') {
             setIsBloomActive(showHotspot)
         } else if (hotspotTitle === 'D100 Edition') {
@@ -587,14 +597,8 @@ export default function Page({ params }) {
                             scale={[7, 25, 20]}
                             visible={showHotspot && hotspotTitle === 'Power tilt-and-slide wide sunroof'}
                             videoUrl="/Sun_Ray.mp4"
+                            opacityValue={car === 'IONIQ5' ? 0.55 : 0.8}
                         />
-                        {/* <ConeVideo
-                            position={[15, 20, 0]}
-                            rotation={[0, 0, 0]}
-                            scale={[20, 25, 20]}
-                            visible={showHotspot && hotspotTitle === 'Power tilt-and-slide wide sunroof'}
-                            videoUrl="/Sun_Ray.mp4"
-                        /> */}
 
                         {trim !== 'SE' && (
                             <Hotspot
