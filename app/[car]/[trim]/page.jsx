@@ -183,7 +183,7 @@ export default function Page({ params }) {
                 }, 1200)
             }
         }
-    }, [showHotspot, hotspotTitle, ioniq5TailLightTextureOff, ioniq5TailLightTextureOn]);
+    }, [showHotspot, hotspotTitle, car]);
 
     const audioRef = useRef(null)
 

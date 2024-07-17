@@ -9,6 +9,7 @@ import { cars } from '@/data/cars.js'
 import * as THREE from 'three'
 import LoaderScreen from './loader'
 import PostProcess from '@/templates/hooks/usePostprocess'
+import Image from 'next/image'
 
 // Configure DRACOLoader for useGLTF
 const configureDRACOLoader = loader => {
@@ -54,7 +55,13 @@ export const Logo = ({ route = '/trim', car, ...props }) => {
       title={`Select ${car}`}>
       <p className='absolute left-4 top-4 text-2xl'>{car === 'IONIQ5' ? 'IONIQ 5' : 'IONIQ 6'}</p>
       <div className='flex flex-col justify-center'>
-        <img src={`/${cars[car].image}.png`} alt={car} className='mx-auto w-10/12 rounded-3xl pt-10' />
+        <Image
+          src={`/${cars[car].image}.png`}
+          alt={car}
+          width={250}
+          height={200}
+          className='mx-auto w-10/12 rounded-lg pt-10'
+        />
         <div className='mt-5 w-full border border-black py-2 text-center font-[HyundaiSansHead-Regular]'>
           Select {car === 'IONIQ5' ? 'IONIQ 5' : 'IONIQ 6'}
           <span className='absolute right-5'>
