@@ -369,7 +369,7 @@ export default function Page({ params }) {
             audioRef.current.currentTime = 0
             setIsAudioPlaying(false)
             if (trim === 'D100PlatinumEdition') setIsNatureDisplayActive(false)
-        } else if (hotspotTitle === 'Premium front LED accent lighting' || hotspotTitle === 'Micky Badge' || hotspotTitle === 'Disney Badge') {
+        } else if (hotspotTitle === 'Premium front LED accent lighting' || hotspotTitle === 'Disney Badge') {
             setTimeout(() => {
                 setIsBloomActive(showHotspot)
             }, 1200)
