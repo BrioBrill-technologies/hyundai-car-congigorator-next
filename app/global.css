@@ -17,3 +17,84 @@
     overflow: hidden;
   }
 }
+
+@layer base {
+  @font-face {
+    font-family: 'HyundaiSansHead-Bold';
+    src: url(/fonts/HyundaiSansHead-Bold.otf) format('opentype');
+  }
+
+  @font-face {
+    font-family: 'HyundaiSansHead-Light';
+    src: url(/fonts/HyundaiSansHead-Light.otf) format('opentype');
+  }
+
+  @font-face {
+    font-family: 'HyundaiSansHead-Medium';
+    src: url(/fonts/HyundaiSansHead-Medium.ttf) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'HyundaiSansHead-Regular';
+    src: url(/fonts/HyundaiSansHead-Regular.otf) format('opentype');
+    src: url(/fonts/HyundaiSansHead-Regular.ttf) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'HyundaiSansText-Regular';
+    src: url(/fonts/HyundaiSansText-Regular.otf) format('opentype');
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation: fadeOut 2s ease-in-out forwards;
+  pointer-events: none;
+}
+
+.fade-out-load {
+  animation: fadeOut 2s ease-in-out forwards;
+  animation-delay: 5s;
+  pointer-events: none;
+}
+
+.fade-out-trim-load {
+  animation: fadeOut 2s ease-in-out forwards;
+  animation-delay: 2s;
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out forwards;
+  animation-delay: 1.5s;
+  pointer-events: auto;
+}
+
+body {
+  background-color: #dfdfdf;
+  font-family: 'HyundaiSansHead-Bold';
+}
+
+#v360-menu-btns{
+  display: none !important;
+}

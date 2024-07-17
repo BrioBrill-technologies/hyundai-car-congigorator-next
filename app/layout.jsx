@@ -1,10 +1,7 @@
 import { Layout } from '@/components/dom/Layout'
 import '@/global.css'
-
-export const metadata = {
-  title: 'Next.js + Three.js',
-  description: 'A minimal starter for Nextjs + React-three-fiber and Threejs.',
-}
+import Image from 'next/image'
+import Head from './head'
 
 export default function RootLayout({ children }) {
   return (
@@ -13,10 +10,20 @@ export default function RootLayout({ children }) {
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-      <head />
+      <link rel="icon" href="/icons/favicon.ico" sizes="any" />
+      <Head />
       <body>
-        {/* To avoid FOUT with styled-components wrap Layout with StyledComponentsRegistry https://beta.nextjs.org/docs/styling/css-in-js#styled-components */}
-        <Layout>{children}</Layout>
+        <div className='mx-auto flex h-screen w-full flex-col gap-2 overflow-y-scroll'>
+          <Image 
+            src='/logo.png'
+            alt='logo' 
+            width={75}
+            height={75}
+            className='mx-auto mt-2'
+          />
+          {/* To avoid FOUT with styled-components wrap Layout with StyledComponentsRegistry https://beta.nextjs.org/docs/styling/css-in-js#styled-components */}
+          <Layout>{children}</Layout>
+        </div>
       </body>
     </html>
   )
