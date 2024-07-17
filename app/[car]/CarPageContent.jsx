@@ -43,16 +43,18 @@ export default function Page({ car }) {
               {trim === 'image' ? null : (
                 <div className='mx-auto mt-5 h-fit min-w-72 cursor-pointer items-center rounded-lg bg-gradient-to-br from-gray-200/40
                   to-transparent bg-clip-padding py-5 text-black backdrop-blur-sm'>
-                    <video
-                      className='size-full rounded-lg object-cover'
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      thumbnail={`/${car}/${trim}.png`}
-                    >
-                      <source src={`/${car}/${trim}.mp4`} type='video/mp4' />
-                    </video>
+                  <video
+                    className='size-full rounded-lg object-cover'
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    type='video/mp4'
+                    preload='auto'
+                    poster={`/${car}/${trim}.png`}
+                  >
+                    <source src={`/${car}/${trim}.mp4`} type='video/mp4' />
+                  </video>
                   {/* <ThreeSixty
                     amount={40}
                     imagePath={`/${cars[car][trim].threesixty}/`}
