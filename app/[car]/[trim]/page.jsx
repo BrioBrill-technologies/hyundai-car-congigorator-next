@@ -52,7 +52,7 @@ const generatePlanes = () => {
         position: [
             (Math.random() - 0.5) * 20, // Adjusted range for x coordinate
             (Math.random() - 0.5) * 10, // Adjusted range for y coordinate
-            (Math.random() - 0.5) * 30, // Adjusted range for z coordinate
+            (Math.random() - 0.5) * 25, // Adjusted range for z coordinate
         ],
         shouldTwinkle: Math.random() < 0.5, // Randomly determine if the plane should twinkle
         shouldMove: Math.random() < 0.3, // Randomly determine if the plane should move
