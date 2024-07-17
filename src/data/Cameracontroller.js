@@ -16,14 +16,9 @@ const CameraController = ({ targetPosition = [0, 0, 0], lookAtPosition = [0, 0, 
     useEffect(() => {
         if (Array.isArray(targetPosition) && targetPosition.length === 3) {
             targetRef.current.set(...targetPosition);
-        } else {
-            console.error('targetPosition must be an array of three numbers');
         }
-
         if (Array.isArray(lookAtPosition) && lookAtPosition.length === 3) {
             lookAtRef.current.set(...lookAtPosition);
-        } else {
-            console.error('lookAtPosition must be an array of three numbers');
         }
 
         initialPosition.current.copy(camera.position);
