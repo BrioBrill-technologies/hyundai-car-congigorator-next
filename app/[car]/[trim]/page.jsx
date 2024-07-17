@@ -206,7 +206,7 @@ export default function Page({ params }) {
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(true)
             setEnableAutoRotate(false)
-        } else if(!interiorColor){
+        } else if (!interiorColor) {
             setShowExteriorHotspots(false)
             setShowInteriorHotspots(false)
             setCameraPosition([-50, 0, 0]);
@@ -219,14 +219,14 @@ export default function Page({ params }) {
             ttq.track("ClickButton",
                 {
                     contents: [
-                    {
-                        content_id: `${car}-${trim}-${color}-interior-trim-selection`, //Dynamic value reflecting user selection
-                        content_name: `IONIQ5 Limited Trim Selection`, //Dynamic value reflecting user selection
-                        content_type: "product", //Hard coded
-                        content_category: "3d configurator", //Hard coded
-                        quantity: 1, //Hard coded
-                        price: 50000, //Dynamic value reflecting user selection
-                    },
+                        {
+                            content_id: `${car}-${trim}-${color}-interior-trim-selection`, //Dynamic value reflecting user selection
+                            content_name: `IONIQ5 Limited Trim Selection`, //Dynamic value reflecting user selection
+                            content_type: "product", //Hard coded
+                            content_category: "3d configurator", //Hard coded
+                            quantity: 1, //Hard coded
+                            price: 50000, //Dynamic value reflecting user selection
+                        },
                     ],
                     value: 50000, //Dynamic value reflecting user selection
                     currency: "USD",
@@ -234,20 +234,20 @@ export default function Page({ params }) {
             );
         } else {
             window.ttq.track("InitiateCheckout",
-            {
-                contents: [
                 {
-                    content_id: `${car}-${trim}}`, //Dynamic value reflecting user selection
-                    content_name: `${car} ${trim} Abyss Ex ${exteriorColor} Int ${interiorColor}`, //Dynamic value reflecting user selection
-                    content_type: "product", //Hard coded
-                    content_category: "3d configurator", //Hard coded
-                    quantity: 1, //Hard coded
-                    price: 53000, //Dynamic value reflecting user selection
-                },
-                ],
-                value: 53000, //Dynamic value reflecting user selection
-                currency: "USD", //Hard coded
-            }
+                    contents: [
+                        {
+                            content_id: `${car}-${trim}}`, //Dynamic value reflecting user selection
+                            content_name: `${car} ${trim} Abyss Ex ${exteriorColor} Int ${interiorColor}`, //Dynamic value reflecting user selection
+                            content_type: "product", //Hard coded
+                            content_category: "3d configurator", //Hard coded
+                            quantity: 1, //Hard coded
+                            price: 53000, //Dynamic value reflecting user selection
+                        },
+                    ],
+                    value: 53000, //Dynamic value reflecting user selection
+                    currency: "USD", //Hard coded
+                }
             );
         }
     }
@@ -560,7 +560,7 @@ export default function Page({ params }) {
                         {showNebula && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
                         {/* Interior Hotspots */}
                         <Hotspot
-                            position={[-8, 0, -0.9]}
+                            position={[-10, 0, -0.9]}
                             rotation={[0, 5, 0]}
                             scale={[0.8, 0.8, 0.8]}
                             visible={showInteriorHotspots && !showHotspot}
@@ -609,7 +609,7 @@ export default function Page({ params }) {
                         )}
                         {trim === 'D100PlatinumEdition' && (
                             <Hotspot
-                                position={[-9, 0, 1.3]}
+                                position={[-10, 0, 1.3]}
                                 rotation={[0, 5, 0]}
                                 scale={[0.8, 0.8, 0.8]}
                                 visible={showInteriorHotspots && !showHotspot}
