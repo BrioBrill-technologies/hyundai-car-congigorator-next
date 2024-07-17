@@ -10,6 +10,7 @@ import * as THREE from 'three'
 import LoaderScreen from './loader'
 import PostProcess from '@/templates/hooks/usePostprocess'
 import Image from 'next/image'
+import { ContactShadows } from '@react-three/drei'
 
 // Configure DRACOLoader for useGLTF
 const configureDRACOLoader = loader => {
@@ -347,6 +348,7 @@ export function ExteriorModel({
       <group ref={modelRef}>
         <primitive object={scene} {...props} />
       </group>
+      {(interiorColor || !exteriorColor) && <ContactShadows renderOrder={2} frames={10} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />}
     </Suspense>
   );
 }

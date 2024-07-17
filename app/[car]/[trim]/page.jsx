@@ -11,7 +11,6 @@ import NebulaComponent from '@/components/Three/Nebula'
 import { useLoader, useFrame } from '@react-three/fiber'
 import Cone from '@/components/Three/Cone'
 import { NormalBlending, TextureLoader } from 'three'
-import { ContactShadows } from '@react-three/drei'
 import AnimatedCylinder from '@/components/Three/AnimatedCylinder'
 import LoaderScreen from '@/components/canvas/loader'
 import { Plane } from '@/components/Three/disney-particles'
@@ -703,7 +702,7 @@ export default function Page({ params }) {
                             shouldMove={plane.shouldMove}
                         />
                     ))}
-                    {(interiorColor || !exteriorColor) && <ContactShadows renderOrder={2} frames={2} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />}
+                
                     <Exterior
                         color={exteriorColor ? cars[car][trim].exteriorColors[exteriorColor].color : cars[car][trim].exteriorColors[selectedColor].color}
                         cameraPosition={cameraPosition}
