@@ -25,7 +25,6 @@ export const Logo = ({ route = '/trim', car, ...props }) => {
     <div onClick={() => {
         const trackClick = () => {
           if (typeof window.ttq !== 'undefined') {
-            console.log('Tracking page view');
             window.ttq.track("AddToCart",
             {
               contents: [
