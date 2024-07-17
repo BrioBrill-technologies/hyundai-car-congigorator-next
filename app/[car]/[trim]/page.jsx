@@ -47,12 +47,12 @@ const ioniq6CenterTailLightTextureOn = loadTexture('/img/Tail_Light_On_Center_Io
 const ioniq6CenterTailLightTextureOff = loadTexture('/img/Tail_Light_Off_Center_Ioniq6.jpg');
 
 const generatePlanes = () => {
-    return new Array(60).fill().map((_, i) => ({
+    return new Array(45).fill().map((_, i) => ({
         id: i,
         position: [
             (Math.random() - 0.5) * 20, // Adjusted range for x coordinate
             (Math.random() - 0.5) * 10, // Adjusted range for y coordinate
-            (Math.random() - 0.5) * 20, // Adjusted range for z coordinate
+            (Math.random() - 0.5) * 30, // Adjusted range for z coordinate
         ],
         shouldTwinkle: Math.random() < 0.5, // Randomly determine if the plane should twinkle
         shouldMove: Math.random() < 0.3, // Randomly determine if the plane should move
