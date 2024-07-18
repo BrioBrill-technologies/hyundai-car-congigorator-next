@@ -26,7 +26,8 @@ export default function Page() {
               quantity: 1
             },
           ],
-          currency: "USD"
+          value: 50000, //Dynamic value reflecting user selection
+          currency: "USD",
         });
       }
     };

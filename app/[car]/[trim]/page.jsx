@@ -215,7 +215,7 @@ export default function Page({ params }) {
             setMaxPolar([Math.PI / 2.5])
             setActivateD100(false)
             setEnableAutoRotate(true)
-            ttq.track("ClickButton",
+            window.ttq.track("ClickButton",
                 {
                     contents: [
                         {
@@ -288,6 +288,22 @@ export default function Page({ params }) {
             setHotspotDescription(cars[car][trim].hotspots.exterior['LED Projector headlights'].description)
         }
         setShowHotspot(true)
+        window.ttq.track("ClickButton",
+            {
+                contents: [
+                    {
+                        content_id: `${car}-${trim}-head-Light-selection`, //Dynamic value reflecting user selection
+                        content_name: `${car} ${trim} Head Light Selection`, //Dynamic value reflecting user selection
+                        content_type: "product", //Hard coded
+                        content_category: "3d configurator", //Hard coded
+                        quantity: 1, //Hard coded
+                        price: 50000, //Dynamic value reflecting user selection
+                    },
+                ],
+                value: 50000, //Dynamic value reflecting user selection
+                currency: "USD",
+            }
+        );
     };
 
     const handleHotspotCharging = () => {
@@ -303,24 +319,88 @@ export default function Page({ params }) {
         setTimeout(() => {
             setShowNebula(false);
         }, 4700);
+        window.ttq.track("ClickButton",
+            {
+                contents: [
+                    {
+                        content_id: `${car}-${trim}-charging-selection`, //Dynamic value reflecting user selection
+                        content_name: `${car} ${trim} Charging Selection`, //Dynamic value reflecting user selection
+                        content_type: "product", //Hard coded
+                        content_category: "3d configurator", //Hard coded
+                        quantity: 1, //Hard coded
+                        price: 50000, //Dynamic value reflecting user selection
+                    },
+                ],
+                value: 50000, //Dynamic value reflecting user selection
+                currency: "USD",
+            }
+        );
     };
 
     const handleHotspotTailLight = () => {
         setHotspotTitle('LED Tail Lights')
         setHotspotDescription(cars[car][trim].hotspots.exterior['LED Tail Lights'].description)
         setShowHotspot(true)
+        window.ttq.track("ClickButton",
+            {
+                contents: [
+                    {
+                        content_id: `${car}-${trim}-Tail-Light-selection`, //Dynamic value reflecting user selection
+                        content_name: `${car} ${trim} Tail-Light Selection`, //Dynamic value reflecting user selection
+                        content_type: "product", //Hard coded
+                        content_category: "3d configurator", //Hard coded
+                        quantity: 1, //Hard coded
+                        price: 50000, //Dynamic value reflecting user selection
+                    },
+                ],
+                value: 50000, //Dynamic value reflecting user selection
+                currency: "USD",
+            }
+        );
     };
 
     const handleHotspotDisneyBadge = () => {
         setHotspotTitle('Disney Badge')
         setHotspotDescription(cars[car][trim].hotspots.exterior['Disney Badge'].description)
         setShowHotspot(true)
+        window.ttq.track("ClickButton",
+            {
+                contents: [
+                    {
+                        content_id: `${car}-${trim}-Disney-Badge-selection`, //Dynamic value reflecting user selection
+                        content_name: `${car} ${trim} Disney Badge Selection`, //Dynamic value reflecting user selection
+                        content_type: "product", //Hard coded
+                        content_category: "3d configurator", //Hard coded
+                        quantity: 1, //Hard coded
+                        price: 50000, //Dynamic value reflecting user selection
+                    },
+                ],
+                value: 50000, //Dynamic value reflecting user selection
+                currency: "USD",
+            }
+        );
     };
 
     const handleHotspotMickyBadge = () => {
         setHotspotTitle('Micky Badge')
         setHotspotDescription(cars[car][trim].hotspots.exterior['Micky Badge'].description)
         setShowHotspot(true)
+        window.ttq.track("ClickButton",
+            {
+                contents: [
+                    {
+                        content_id: `${car}-${trim}-Mickey-Badge-selection`, //Dynamic value reflecting user selection
+                        content_name: `${car} ${trim} Mickey badge Selection`, //Dynamic value reflecting user selection
+                        content_type: "product", //Hard coded
+                        content_category: "3d configurator", //Hard coded
+                        quantity: 1, //Hard coded
+                        price: 50000, //Dynamic value reflecting user selection
+                    },
+                ],
+                value: 50000, //Dynamic value reflecting user selection
+                currency: "USD",
+            }
+        );
     };
 
     const handleHotspotMirror = () => {
@@ -328,6 +408,22 @@ export default function Page({ params }) {
         setHotspotDescription(cars[car][trim].hotspots.exterior['Blind Spot View Monitor'].description)
         showHotspot ? setShowHotspot(false) : setShowHotspot(true)
         setShowCone(true)
+        window.ttq.track("ClickButton",
+            {
+                contents: [
+                    {
+                        content_id: `${car}-${trim}-Mirror-selection`, //Dynamic value reflecting user selection
+                        content_name: `${car} ${trim} Mirror Selection`, //Dynamic value reflecting user selection
+                        content_type: "product", //Hard coded
+                        content_category: "3d configurator", //Hard coded
+                        quantity: 1, //Hard coded
+                        price: 50000, //Dynamic value reflecting user selection
+                    },
+                ],
+                value: 50000, //Dynamic value reflecting user selection
+                currency: "USD",
+            }
+        );
     };
 
     // Interior Hotspots 
@@ -351,6 +447,22 @@ export default function Page({ params }) {
         setHotspotDescription(cars[car][trim].hotspots.interior['Interactive touch screen with sounds'].description)
         setShowHotspot(true)
         if (trim === 'D100PlatinumEdition') setIsNatureDisplayActive(true)
+        window.ttq.track("ClickButton",
+            {
+                contents: [
+                    {
+                        content_id: `${car}-${trim}-touch-screen-selection`, //Dynamic value reflecting user selection
+                        content_name: `${car} ${trim} Touch Screen Selection`, //Dynamic value reflecting user selection
+                        content_type: "product", //Hard coded
+                        content_category: "3d configurator", //Hard coded
+                        quantity: 1, //Hard coded
+                        price: 50000, //Dynamic value reflecting user selection
+                    },
+                ],
+                value: 50000, //Dynamic value reflecting user selection
+                currency: "USD",
+            }
+        );
     }
 
     const handleHotspotVisionRoof = () => {
@@ -360,6 +472,22 @@ export default function Page({ params }) {
         setTimeout(() => {
             setPlayOpenAnimation(true)
         }, 1500)
+        window.ttq.track("ClickButton",
+            {
+                contents: [
+                    {
+                        content_id: `${car}-${trim}-sunroof-selection`, //Dynamic value reflecting user selection
+                        content_name: `${car} ${trim} Sunroof Selection`, //Dynamic value reflecting user selection
+                        content_type: "product", //Hard coded
+                        content_category: "3d configurator", //Hard coded
+                        quantity: 1, //Hard coded
+                        price: 50000, //Dynamic value reflecting user selection
+                    },
+                ],
+                value: 50000, //Dynamic value reflecting user selection
+                currency: "USD",
+            }
+        );
     }
 
 
@@ -371,12 +499,44 @@ export default function Page({ params }) {
         setActivateD100(false)
         setActivateD100(true)
         toggleActivateD100(setActivateD100);
+        window.ttq.track("ClickButton",
+            {
+                contents: [
+                    {
+                        content_id: `${car}-${trim}-d-startup-selection`, //Dynamic value reflecting user selection
+                        content_name: `${car} ${trim} D Startup Selection`, //Dynamic value reflecting user selection
+                        content_type: "product", //Hard coded
+                        content_category: "3d configurator", //Hard coded
+                        quantity: 1, //Hard coded
+                        price: 50000, //Dynamic value reflecting user selection
+                    },
+                ],
+                value: 50000, //Dynamic value reflecting user selection
+                currency: "USD",
+            }
+        );
     }
 
     const handleHotspotDisneyBubbles = () => {
         setHotspotTitle('D100 Edition')
         setHotspotDescription(cars[car][trim].hotspots.interior['D100 Edition'].description)
         setShowHotspot(true)
+        window.ttq.track("ClickButton",
+            {
+                contents: [
+                    {
+                        content_id: `${car}-${trim}-d-bubbles-selection`, //Dynamic value reflecting user selection
+                        content_name: `${car} ${trim} D Bubbles Selection`, //Dynamic value reflecting user selection
+                        content_type: "product", //Hard coded
+                        content_category: "3d configurator", //Hard coded
+                        quantity: 1, //Hard coded
+                        price: 50000, //Dynamic value reflecting user selection
+                    },
+                ],
+                value: 50000, //Dynamic value reflecting user selection
+                currency: "USD",
+            }
+        );
     }
 
     const handleHotspotAmbientLight = () => {
@@ -384,6 +544,22 @@ export default function Page({ params }) {
         setHotspotDescription(cars[car][trim].hotspots.interior['Ambient Lighting'].description)
         setShowHotspot(true)
         setIsBloomActive(true)
+        window.ttq.track("ClickButton",
+            {
+                contents: [
+                    {
+                        content_id: `${car}-${trim}-ambient-selection`, //Dynamic value reflecting user selection
+                        content_name: `${car} ${trim} Ambient Selection`, //Dynamic value reflecting user selection
+                        content_type: "product", //Hard coded
+                        content_category: "3d configurator", //Hard coded
+                        quantity: 1, //Hard coded
+                        price: 50000, //Dynamic value reflecting user selection
+                    },
+                ],
+                value: 50000, //Dynamic value reflecting user selection
+                currency: "USD",
+            }
+        );
     }
 
     useEffect(() => {
@@ -685,14 +861,6 @@ export default function Page({ params }) {
                             decay={0.2}
                             visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
                         />
-                        {/* <pointLight
-                            position={[-4, -2, 0]}
-                            color={cars[car][trim].ambientLight[selectedAmbientColor]?.color2 || '#ffffff'}
-                            intensity={3}
-                            distance={500}
-                            decay={0.2}
-                            visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
-                        /> */}
                     </group>
                     {hotspotTitle === 'D100PlatinumEdition' && showHotspot && planes.map((plane) => (
                         <Plane
@@ -702,7 +870,7 @@ export default function Page({ params }) {
                             shouldMove={plane.shouldMove}
                         />
                     ))}
-                
+
                     <Exterior
                         color={exteriorColor ? cars[car][trim].exteriorColors[exteriorColor].color : cars[car][trim].exteriorColors[selectedColor].color}
                         cameraPosition={cameraPosition}
@@ -725,16 +893,28 @@ export default function Page({ params }) {
                                 alt={color}
                                 width={25}
                                 height={25}
-                                onClick={() => setSelectedColor(color)}
+                                onClick={() => {
+                                    setSelectedColor(color)
+                                    window.ttq.track(`${color}_ColorClick`,
+                                        {
+                                            contents: [
+                                                {
+                                                    content_id: `${car}-${trim}-${color}-color-selection`, //Dynamic value reflecting user selection
+                                                    content_name: `${car} ${trim} ${color} Color Selection`, //Dynamic value reflecting user selection
+                                                    content_type: "product", //Hard coded
+                                                    content_category: "3d configurator", //Hard coded
+                                                    quantity: 1, //Hard coded
+                                                    price: 50000, //Dynamic value reflecting user selection
+                                                },
+                                            ],
+                                            value: 50000, //Dynamic value reflecting user selection
+                                            currency: "USD",
+                                        }
+                                    );
+                                }
+                                }
                                 className={`${selectedColor === color ? 'rounded-full border-2 border-white' : ''}`}
                             />
-                            // <img
-                            //     key={color}
-                            //     alt={color}
-                            //     onClick={() => setSelectedColor(color)}
-                            //     src={`/colors/${cars[car][trim].exteriorColors[color].image}.png`}
-                            //     className={`w-1/12 lg:w-1/12 ${selectedColor === color ? 'rounded-full border-2 border-white' : ''}`}
-                            // />
                         ))}
                     </div>
                 )}
@@ -749,16 +929,28 @@ export default function Page({ params }) {
                                         alt={color}
                                         width={25}
                                         height={25}
-                                        onClick={() => setSelectedColor(color)}
+                                        onClick={() => {
+                                            setSelectedColor(color)
+                                            window.ttq.track(`${color}_ColorClick`,
+                                                {
+                                                    contents: [
+                                                        {
+                                                            content_id: `${car}-${trim}-${color}-color-selection`, //Dynamic value reflecting user selection
+                                                            content_name: `${car} ${trim} ${color} Color Selection`, //Dynamic value reflecting user selection
+                                                            content_type: "product", //Hard coded
+                                                            content_category: "3d configurator", //Hard coded
+                                                            quantity: 1, //Hard coded
+                                                            price: 50000, //Dynamic value reflecting user selection
+                                                        },
+                                                    ],
+                                                    value: 50000, //Dynamic value reflecting user selection
+                                                    currency: "USD",
+                                                }
+                                            );
+                                        }
+                                        }
                                         className={`${selectedColor === color ? 'rounded-full border-2 border-white' : ''}`}
                                     />
-                                    // <img
-                                    //     key={color}
-                                    //     alt={color}
-                                    //     onClick={() => setSelectedColor(color)}
-                                    //     src={`/colors/${cars[car][trim].interiorColors[color].image}.png`}
-                                    //     className={`w-1/12 lg:w-1/12 ${selectedColor === color ? 'rounded-full border-2 border-white' : ''}`}
-                                    // />
                                 ))}
                             </>
                         )}
@@ -771,16 +963,28 @@ export default function Page({ params }) {
                                         alt={color}
                                         width={25}
                                         height={25}
-                                        onClick={() => setSelectedAmbientColor(color)}
+                                        onClick={() => {
+                                            setSelectedAmbientColor(color)
+                                            window.ttq.track(`${color}_AmbientColorClick`,
+                                                {
+                                                    contents: [
+                                                        {
+                                                            content_id: `${car}-${trim}-${color}-ambient-selection`, //Dynamic value reflecting user selection
+                                                            content_name: `${car} ${trim} ${color} Ambient Selection`, //Dynamic value reflecting user selection
+                                                            content_type: "product", //Hard coded
+                                                            content_category: "3d configurator", //Hard coded
+                                                            quantity: 1, //Hard coded
+                                                            price: 50000, //Dynamic value reflecting user selection
+                                                        },
+                                                    ],
+                                                    value: 50000, //Dynamic value reflecting user selection
+                                                    currency: "USD",
+                                                }
+                                            );
+                                        }
+                                        }
                                         className={`${selectedAmbientColor === color ? 'rounded-full border-2 border-white' : ''}`}
                                     />
-                                    // <img
-                                    //     key={color}
-                                    //     alt={color}
-                                    //     onClick={() => setSelectedAmbientColor(color)}
-                                    //     src={`/colors/ambient/${cars[car][trim].ambientLight[color].image}.png`}
-                                    //     className={`w-1/12 lg:w-1/12 ${selectedAmbientColor === color ? 'rounded-full border-2 border-white' : ''}`}
-                                    // />
                                 ))}
                             </>
                         )}
@@ -796,11 +1000,6 @@ export default function Page({ params }) {
                             width={50}
                             height={50}
                         />
-                        {/* <img
-                            src={`/colors/${cars[car][trim].exteriorColors[exteriorColor].image}.png`}
-                            className="w-2/12"
-                            alt="Exterior color"
-                        /> */}
                         <div className="flex flex-col">
                             <p>Exterior</p>
                             <p>{exteriorColor}</p>
@@ -813,11 +1012,6 @@ export default function Page({ params }) {
                             width={50}
                             height={50}
                         />
-                        {/* <img
-                            src={`/colors/${cars[car][trim].interiorColors[interiorColor].image}.png`}
-                            className="w-2/12"
-                            alt="Interior color"
-                        /> */}
                         <div className="flex flex-col">
                             <p>Interior</p>
                             <p>{interiorColor}</p>
