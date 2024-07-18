@@ -11,7 +11,6 @@ export default function Header() {
           height={75}
           className="mx-auto mt-2"
         />
-        {/* <img src={logo} alt="logo" className="w-2/12"/> */}
       </a>
     </div>
   );

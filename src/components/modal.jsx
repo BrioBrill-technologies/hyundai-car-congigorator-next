@@ -47,14 +47,6 @@ export const Modal = ({ visible, setVisibility, title, description }) => {
             aria-label="Close"
           />
         </div>
-
-        {/* <img
-          src="/icons/X_Icon.png"
-          alt="Close"
-          className="pointer-events-auto mx-auto size-6 cursor-pointer"
-          onClick={handleXClick}
-          aria-label="Close"
-        /> */}
       </div>
     </div>
   );

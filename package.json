@@ -1,8 +1,8 @@
 {
-  "name": "react-three-next",
+  "name": "hyundai-car-configurator",
   "version": "2.0.0",
   "authors": [
-    "Renaud ROHLINGER <https://twitter.com/onirenaud>"
+    "BrioBrill Technologies <https://briobrill.com/>"
   ],
   "license": "MIT",
   "private": true,
@@ -27,7 +27,6 @@
     "next": "^14.2.4",
     "postprocessing": "^6.35.5",
     "react": "^18.2.0",
-    "react-360-view": "^0.1.3",
     "react-dom": "^18.2.0",
     "react-spring": "^9.7.3",
     "three": "^0.160.1",
