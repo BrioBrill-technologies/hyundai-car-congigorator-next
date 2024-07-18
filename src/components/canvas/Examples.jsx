@@ -178,7 +178,7 @@ export function ExteriorModel({
       playOpenAnimation ? playOpenAnimations() : playCloseAnimations();
       setIsOpen(playOpenAnimation);
     }
-  }, [playOpenAnimation]);
+  }, [playOpenAnimation, isOpen]);
 
   useEffect(() => {
     if (activateD100) {
@@ -348,7 +348,7 @@ export function ExteriorModel({
       <group ref={modelRef}>
         <primitive object={scene} {...props} />
       </group>
-      {(interiorColor || !exteriorColor) && <ContactShadows renderOrder={2} frames={10} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />}
+      {(!interior) && <ContactShadows renderOrder={2} frames={10} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />}
     </Suspense>
   );
 }
@@ -401,7 +401,7 @@ export function InteriorModel({ model, playOpenAnimation, color, ...props }) {
       }
       setIsOpen(playOpenAnimation)
     }
-  }, [playOpenAnimation])
+  }, [playOpenAnimation, isOpen])
 
   useFrame((state, delta) => {
     if (mixerRef.current) {
