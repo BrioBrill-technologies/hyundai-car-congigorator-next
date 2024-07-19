@@ -768,9 +768,9 @@ export default function Page({ params }) {
                         )}
 
                         <ConeVideo
-                            position={[2, 15, 0]}
+                            position={[2.8, 15, 0]}
                             rotation={[0, 0, 0]}
-                            scale={[7, 25, 20]}
+                            scale={[9, 30, 20]}
                             visible={showHotspot && hotspotTitle === 'Power tilt-and-slide wide sunroof'}
                             videoUrl="/Sun_Ray.mp4"
                             opacityValue={car === 'IONIQ5' ? 0.57 : 0.83}
