@@ -660,6 +660,7 @@ export default function Page({ params }) {
                             showNatureDisplay={isNatureDisplayActive}
                             isBubbleHotspotActive={showHotspot && hotspotTitle === 'D100 Edition'}
                             enableMickyBadge={showHotspot && hotspotTitle === 'Micky Badge'}
+                            activateInterior={showInteriorHotspots}
                         />
                         <ExplosionConfetti isExploding={isenableAutoRotate} />
                         <group position={cars[car][trim].hotspots.exterior['LED Projector headlights'].position}>
@@ -772,7 +773,7 @@ export default function Page({ params }) {
                             scale={[7, 25, 20]}
                             visible={showHotspot && hotspotTitle === 'Power tilt-and-slide wide sunroof'}
                             videoUrl="/Sun_Ray.mp4"
-                            opacityValue={car === 'IONIQ5' ? 0.55 : 0.8}
+                            opacityValue={car === 'IONIQ5' ? 0.57 : 0.83}
                         />
 
                         {trim !== 'SE' && (

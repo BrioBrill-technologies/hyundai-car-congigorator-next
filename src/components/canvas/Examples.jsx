@@ -98,6 +98,7 @@ export function ExteriorModel({
   isBubbleHotspotActive,
   showNatureDisplay,
   enableMickyBadge,
+  activateInterior = false,
   ...props
 }) {
   const { scene, animations } = useGLTF(`/models/${model}.glb`);
@@ -131,6 +132,26 @@ export function ExteriorModel({
     if (scene) {
       scene.traverse((child) => {
         if (child.isMesh || child.isGroup || child.isObject3D) {
+          if (activateInterior === true) {
+            if (child.name === 'D_sunroof' || child.name === 'L_sunroof') {
+              child.visible = false;
+            }
+          } else {
+            // Then set visibility based on the trim
+            if (additions.includes('TRIM_D100')) {
+              if (child.name === 'D_sunroof') {
+                child.visible = true;
+              }
+            } else if (additions.includes('TRIM_LIMITED') || additions.includes('TRIM_LMTD')) {
+              if (child.name === 'L_sunroof') {
+                child.visible = true;
+              }
+            } else if (additions.includes('TRIM_SE')) {
+              if (child.name === 'D_sunroof' || child.name === 'L_sunroof') {
+                child.visible = activateInterior;
+              }
+            }
+          }
           if (trim === 'IONIQ6' && interior) {
             handleInterior(child);
           } else {
@@ -157,6 +178,7 @@ export function ExteriorModel({
     ambientLedColor1,
     ambientLedColor2,
     isBloomActive,
+    activateInterior,
   ]);
 
   useEffect(() => {
