@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation'
 import { cars } from '@/data/cars'
 import { Hotspot } from '@/components/canvas/Hotspot'
 import { Modal } from '@/components/modal'
-import NebulaComponent from '@/components/Three/Nebula'
 import { useLoader, useFrame } from '@react-three/fiber'
 import Cone from '@/components/Three/Cone'
 import { NormalBlending, TextureLoader } from 'three'
@@ -15,6 +14,7 @@ import AnimatedCylinder from '@/components/Three/AnimatedCylinder'
 import LoaderScreen from '@/components/canvas/loader'
 import { Plane } from '@/components/Three/disney-particles'
 import ConeVideo from '@/components/Three/ConeVideo'
+import PlaneVideo from '@/components/Three/PlaneVideo'
 import ExplosionConfetti from '@/components/Three/Confetti'
 import Image from 'next/image'
 
@@ -742,11 +742,11 @@ export default function Page({ params }) {
                             />
                         )}
 
-                        {showNebula && <NebulaComponent position={[0, 0, 0]} />}
-                        {showNebula && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
+                        {/* {showNebula && <NebulaComponent position={[0, 0, 0]} />} */}
+                        {showHotspot && hotspotTitle === 'Ultra-fast charging' && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
                         {/* Interior Hotspots */}
                         <Hotspot
-                            position={[-10, 0, -0.9]}
+                            position={[-10, 0, -0.9]}v
                             rotation={[0, 5, 0]}
                             scale={[0.8, 0.8, 0.8]}
                             visible={showInteriorHotspots && !showHotspot}
@@ -774,6 +774,14 @@ export default function Page({ params }) {
                             visible={showHotspot && hotspotTitle === 'Power tilt-and-slide wide sunroof'}
                             videoUrl="/Sun_Ray.mp4"
                             opacityValue={car === 'IONIQ5' ? 0.57 : 0.83}
+                        />
+
+                        <PlaneVideo
+                            position={car === 'IONIQ5' ? [17, 9.7, -14] : [17, 10.3, -16] }
+                            rotation={[0, 5, 0]}
+                            scale={[10, 10, 0.8]}
+                            visible={showHotspot && hotspotTitle === 'Ultra-fast charging'}
+                            videoUrl="/TestBolt.mp4"
                         />
 
                         {trim !== 'SE' && (

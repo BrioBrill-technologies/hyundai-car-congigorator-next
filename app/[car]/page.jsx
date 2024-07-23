@@ -43,27 +43,12 @@ export default function Page({ params }) {
               {trim === 'image' ? null : (
                 <div className='mx-auto mt-5 h-fit min-w-72 cursor-pointer items-center rounded-lg bg-gradient-to-br from-gray-200/40
                   to-transparent bg-clip-padding py-5 text-black backdrop-blur-sm'>
-                  <video
+                  <img
                     className='size-full rounded-lg object-cover'
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    type='video/mp4'
+                    src={`/${car}/${trim}.gif`}
+                    alt={`${trim} trim`}
                     preload='auto'
-                    poster={`/${car}/${trim}.png`}
-                  >
-                    <source src={`/${car}/${trim}.mp4`} type='video/mp4' />
-                  </video>
-                  {/* <ThreeSixty
-                    amount={40}
-                    imagePath={`/${cars[car][trim].threesixty}/`}
-                    fileName={`${cars[car][trim].threesixty}_00{index}.png`}
-                    autoplay='40'
-                    loop='true'
-                    paddingIndex='true'
-                    style={{ backgroundColor: '#c5c5c5' }}
-                  /> */}
+                  />
                   <div>
                     <p className='mt-5 text-center'>{trim === 'D100PlatinumEdition' ? 'D100 Platinum Edition' : trim}</p>
                     <p className='text-center font-[HyundaiSansHead-Light] text-xs'>{cars[car][trim].description}</p>
