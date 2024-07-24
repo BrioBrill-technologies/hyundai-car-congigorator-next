@@ -31,7 +31,6 @@ const AnimatedCylinder = ({ position = [22, 10, -10.5] }) => {
                 transparent={true} // Enable transparency
             />
             <Glow scale={2.5} near={-10} color="#3E8EDE" />
-            <Sparkles count={6} scale={2.5} size={7} speed={2} />
         </mesh>
     );
 };
