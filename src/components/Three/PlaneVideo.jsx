@@ -28,6 +28,8 @@ const PlaneVideo = ({ position, rotation, scale, visible, videoUrl, width, heigh
         if (videoRef.current) {
             if (visible) {
                 videoRef.current.currentTime = 1;
+                videoRef.current.play();
+                videoRef.current.pause();
             } else {
                 videoRef.current.pause();
             }
