@@ -47,7 +47,7 @@ export default function Page({ params }) {
           video.play()
         }
       })
-      setPlaybackRate(0.7) // Slow down the videos to half speed
+      setPlaybackRate(0.85) // Slow down the videos to half speed
     }
   }
 
