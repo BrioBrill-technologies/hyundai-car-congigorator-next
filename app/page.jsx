@@ -47,6 +47,8 @@ export default function Page() {
           autoPlay
           muted
           playsInline
+          poster='/video/Animation_Intro.png'
+          preload='auto'
           onEnded={() => setEnded(true)}>
           <source src='/video/Animation_Intro.mp4' type='video/mp4' />
         </video>
