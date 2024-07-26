@@ -62,17 +62,13 @@ const planes = generatePlanes();
 
 const View = dynamic(
     () => import('@/components/canvas/View').then((mod) => mod.View),
-    {
-        ssr: false,
-        loading: () => (
-            <div className='fixed inset-0 z-50 flex flex-col items-center justify-center bg-white'>
-                Loading...
-            </div>
-        ),
-    }
+    { ssr: false }
 );
 
-const Exterior = dynamic(() => import('@/components/canvas/View').then((mod) => mod.Exterior), { ssr: false })
+const Exterior = dynamic(
+    () => import('@/components/canvas/View').then((mod) => mod.Exterior),
+    { ssr: false }
+);
 
 const ImagePlane = ({ imageUrl, position, rotation, scale, visible, animate = false }) => {
     const texture = useLoader(TextureLoader, imageUrl);
