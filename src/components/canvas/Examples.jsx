@@ -7,7 +7,6 @@ import { Suspense, useRef, useEffect, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { cars } from '@/data/cars.js'
 import * as THREE from 'three'
-import LoaderScreen from './loader'
 import PostProcess from '@/templates/hooks/usePostprocess'
 import Image from 'next/image'
 import { ContactShadows } from '@react-three/drei'
@@ -101,7 +100,7 @@ export function ExteriorModel({
   activateInterior = false,
   ...props
 }) {
-  const { scene, animations } = useGLTF(`/models/${model}.glb`);
+  const { scene, animations } = useGLTF(`/models/${model}.glb`, configureDRACOLoader);
   const mixerRef = useRef();
   const actionsRef = useRef({});
   const [isOpen, setIsOpen] = useState(false);
@@ -358,7 +357,7 @@ export function ExteriorModel({
   };
 
   return (
-    <Suspense fallback={<LoaderScreen />}>
+    <Suspense>
       {isBloomActive && (
         <PostProcess
           isBloomActive={isBloomActive}
@@ -373,146 +372,4 @@ export function ExteriorModel({
       {(!interior) && <ContactShadows renderOrder={2} frames={10} resolution={1024} scale={120} blur={2} opacity={0.8} far={70} />}
     </Suspense>
   );
-}
-
-
-
-export function InteriorModel({ model, playOpenAnimation, color, ...props }) {
-  const { scene } = useGLTF(`/models/${model}.glb`, configureDRACOLoader)
-  const { animations } = useGLTF(`/models/${model}.glb`)
-  const mixerRef = useRef()
-  const [isOpen, setIsOpen] = useState(false)
-  const actionsRef = useRef({})
-
-  if (color) {
-    scene.traverse((child) => {
-      if (child.isMesh) {
-        if (child.name.includes('Ambient')) {
-          child.material.color = color
-          child.material.emissive = color
-          child.material.emissiveIntensity = 7;
-        }
-      }
-    })
-  }
-
-  useEffect(() => {
-    if (scene) {
-      const mixer = new THREE.AnimationMixer(scene)
-      mixerRef.current = mixer
-
-      // Initialize actions
-      animations.forEach(clip => {
-        const action = mixer.clipAction(clip)
-        action.clampWhenFinished = true
-        action.setLoop(THREE.LoopOnce)
-        actionsRef.current[clip.name] = action
-      })
-
-      // Play initial close animations
-      playCloseAnimations()
-    }
-  }, [scene, animations])
-
-  useEffect(() => {
-    if (playOpenAnimation !== isOpen) {
-      if (playOpenAnimation) {
-        playOpenAnimations()
-      } else {
-        playCloseAnimations()
-      }
-      setIsOpen(playOpenAnimation)
-    }
-  }, [playOpenAnimation, isOpen])
-
-  useFrame((state, delta) => {
-    if (mixerRef.current) {
-      mixerRef.current.update(delta)
-    }
-  })
-
-  const playCloseAnimations = () => {
-    stopAllAnimations()
-    playAnimation('Back_close')
-    playAnimation('Front_close')
-  }
-
-  const playOpenAnimations = () => {
-    stopAllAnimations()
-    playAnimation('Back_open')
-    playAnimation('Front_open')
-  }
-
-  const stopAllAnimations = () => {
-    Object.values(actionsRef.current).forEach(action => {
-      action.stop()
-    })
-  }
-
-  const playAnimation = (clipName) => {
-    const action = actionsRef.current[clipName]
-    if (action) {
-      action.reset().play()
-    }
-  }
-
-  return (
-    <Suspense fallback={null}>
-      <primitive object={scene} {...props} />
-    </Suspense>
-  )
-}
-
-export function SummaryModel({ model, color, ...props }) {
-  const { scene } = useGLTF(`/models/${model}.glb`, configureDRACOLoader)
-
-  useEffect(() => {
-    if (scene) {
-      // Apply color to all meshes
-      scene.traverse((child) => {
-        if (child.isMesh) {
-          if ((child.name.includes('Paint') || child.name === 'Roof_SE' || child.name === 'Left_Mirror' || child.name === 'Right_Mirror' || child.name === 'Right_Mirrorless_Panel' || child.name === 'Left_Mirrorless_Panel')) {
-            child.material = new THREE.MeshStandardMaterial({
-              color,
-              metalness: 0.3,
-              roughness: 0.15,
-            })
-          }
-        }
-      })
-    }
-  }, [scene, color])
-
-  return (
-    <Suspense fallback={null}>
-      <primitive object={scene} {...props} />
-    </Suspense>
-  )
-}
-
-export function Sunray({ ...props }) {
-  const { scene } = useGLTF(`/models/Sunray.glb`, configureDRACOLoader)
-
-  useEffect(() => {
-    if (scene) {
-      // Apply color to all meshes
-      scene.traverse((child) => {
-        if (child.isMesh) {
-          if ((child.name === 'Cube')) {
-            // child.material = new THREE.MeshStandardMaterial({
-            //   color,
-            //   metalness: 0.3,
-            //   roughness: 0.15,
-            // })
-          }
-        }
-      })
-    }
-  }, [scene])
-
-  return (
-    <Suspense fallback={null}>
-      <primitive object={scene} {...props} />
-    </Suspense>
-  )
 }

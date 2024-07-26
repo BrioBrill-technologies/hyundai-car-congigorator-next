@@ -11,7 +11,6 @@ import { useLoader, useFrame } from '@react-three/fiber'
 import Cone from '@/components/Three/Cone'
 import { NormalBlending, TextureLoader } from 'three'
 import AnimatedCylinder from '@/components/Three/AnimatedCylinder'
-import LoaderScreen from '@/components/canvas/loader'
 import { Plane } from '@/components/Three/disney-particles'
 import ConeVideo from '@/components/Three/ConeVideo'
 import PlaneVideo from '@/components/Three/PlaneVideo'
@@ -627,7 +626,7 @@ export default function Page({ params }) {
             )}
             <Modal visible={showHotspot} setVisibility={setShowHotspot} title={hotspotTitle} description={hotspotDescription} />
             <View className={`w-full ${exteriorColor && interiorColor ? 'h-72 sm:h-48' : 'h-96'}`}>
-                <Suspense fallback={<LoaderScreen />}>
+                <Suspense>
                     <group position={[0, 0, 0]}>
                         <ExteriorModel
                             scale={12}
