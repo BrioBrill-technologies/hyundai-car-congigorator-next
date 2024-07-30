@@ -2,6 +2,8 @@ const cars = {
     'IONIQ5': {
         'image': 'ioniq5',
         'SE': {
+            'trimCode': '01',
+            'driveTrainCode': '2C',
             'threesixty': 'ioniq5_SE',
             'image': 'SE',
             'description': 'The balanced trim with plenty of must-have features',
@@ -23,27 +25,32 @@ const cars = {
                 'Atlas White': {
                     'image': 'atlas-white',
                     'name': 'Atlas White',
-                    'color': '#BCBDBE'
+                    'color': '#BCBDBE',
+                    'code': '5U',
                 },
                 'Abyss Black': {
                     'image': 'abyss-black',
                     'name': 'Abyss Black',
-                    'color': '#000000'
+                    'color': '#000000',
+                    'code': '6G',
                 },
                 'Cyber Gray': {
                     'image': 'cyber-gray',
                     'name': 'Cyber Gray',
-                    'color': '#707172'
+                    'color': '#707172',
+                    'code': '5T',
                 },
                 'Digital Teal': {
                     'image': 'digital-teal',
                     'name': 'Digital Teal',
-                    'color': '#1E3639'
+                    'color': '#1E3639',
+                    'code': '6L',
                 },
                 'Lucid Blue': {
                     'image': 'lucid-blue',
                     'name': 'Lucid Blue',
-                    'color': '#354450'
+                    'color': '#354450',
+                    'code': '6M',
                 }
             },
             'interiorColors': {
@@ -53,7 +60,8 @@ const cars = {
                     'color': {
                         'visibleMesh': ['SE_BLACK', 'BLACK_COMMON'],
                         'invisibleMesh': ['D100', 'LIMITED_BLACK', 'LIMITED_GREY']
-                    }
+                    },
+                    'code': '0N',
                 },
 
             },
@@ -141,6 +149,8 @@ const cars = {
             }
         },
         'Limited': {
+            'trimCode': '06',
+            'driveTrainCode': '2N',
             'threesixty': 'ioniq5_LMTD',
             'image': 'limited',
             'description': 'The premium trim that treats you with high-end features',
@@ -163,37 +173,44 @@ const cars = {
                 'Abyss Black': {
                     'image': 'abyss-black',
                     'name': 'Abyss Black',
-                    'color': '#000000'
+                    'color': '#000000',
+                    'code': '6G',
                 },
                 'Shooting Star Matte': {
                     'image': 'shooting-star-matte',
                     'name': 'Shooting Star Matte',
-                    'color': '#434449'
+                    'color': '#434449',
+                    'code': '6N',
                 },
                 'Lucid Blue': {
                     'image': 'lucid-blue',
                     'name': 'Lucid Blue',
-                    'color': '#354450'
+                    'color': '#354450',
+                    'code': '6M',
                 },
                 'Digital Teal': {
                     'image': 'digital-teal',
                     'name': 'Digital Teal',
-                    'color': '#1E3639'
+                    'color': '#1E3639',
+                    'code': '6L',
                 },
                 'Gravity Gold Matte': {
                     'image': 'gravity-gold-matte',
                     'name': 'Gravity Gold Matte',
-                    'color': '#aca6a2'
+                    'color': '#aca6a2',
+                    'code': '6T',
                 },
                 'Cyber Gray': {
                     'image': 'cyber-gray',
                     'name': 'Cyber Gray',
-                    'color': '#707172'
+                    'color': '#707172',
+                    'code': '5T',
                 },
                 'Atlas White': {
                     'image': 'atlas-white',
                     'name': 'Atlas White',
-                    'color': '#BCBDBE'
+                    'color': '#BCBDBE',
+                    'code': '5U',
                 }
             },
             'interiorColors': {
@@ -203,7 +220,8 @@ const cars = {
                     'color': {
                         'visibleMesh': ['LIMITED_BLACK', 'BLACK_COMMON', 'limited'],
                         'invisibleMesh': ['D100', 'SE_BLACK', 'LIMITED_GREY', 'BLACK_COMMON']
-                    }
+                    },
+                    'code': '0N',
                 },
                 'Gray Green 2 Tone': {
                     'image': 'gray-green',
@@ -211,7 +229,8 @@ const cars = {
                     'color': {
                         'visibleMesh': ['LIMITED_GREY', 'limited'],
                         'invisibleMesh': ['D100', 'SE_BLACK', 'LIMITED_BLACK', 'BLACK_COMMON']
-                    }
+                    },
+                    'code': '4B',
                 }
             },
             "hotspots": {
@@ -303,6 +322,8 @@ const cars = {
             }
         },
         'D100PlatinumEdition': {
+            'trimCode': '09',
+            'driveTrainCode': '1N',
             'threesixty': 'ioniq5_D100',
             'image': 'D100PlatinumEdition',
             'description': 'Available in extremely limited quantities',
@@ -324,7 +345,8 @@ const cars = {
                 'Gravity Gold Matte': {
                     'image': 'gravity-gold-matte',
                     'name': 'Gravity Gold Matte',
-                    'color': '#aca6a2'
+                    'color': '#aca6a2',
+                    'code': '6T',
                 },
             },
             'interiorColors': {
@@ -334,7 +356,8 @@ const cars = {
                     'color': {
                         'visibleMesh': ['D100'],
                         'invisibleMesh': ['LIMITED_BLACK', 'SE_BLACK', 'LIMITED_GREY', 'BLACK_COMMON']
-                    }
+                    },
+                    'code': '4C',
                 }
             },
             "hotspots": {
@@ -449,6 +472,8 @@ const cars = {
     'IONIQ6': {
         'image': 'ioniq6',
         'SE': {
+            'trimCode': '51',
+            'driveTrainCode': '2C',
             'threesixty': 'ioniq6_SE',
             'image': 'SE6',
             'description': 'The standard trim with lots of great features',
@@ -469,32 +494,38 @@ const cars = {
                 'Onyx Black': {
                     'image': 'onyx-black',
                     'name': 'Onyx Black',
-                    'color': '#151617'
+                    'color': '#151617',
+                    'code': '6G',
                 },
                 'Digital Green': {
                     'image': 'digital-green',
                     'name': 'Digital Green',
-                    'color': '#1C1E1B'
+                    'color': '#1C1E1B',
+                    'code': '6Y',
                 },
                 'Curated Silver': {
                     'image': 'curated-silver',
                     'name': 'Curated Silver',
-                    'color': '#868888'
+                    'color': '#868888',
+                    'code': '6S',
                 },
                 'Ulitmate Red': {
                     'image': 'ultimate-red',
                     'name': 'Ulitmate Red',
-                    'color': '#5B0F13'
+                    'color': '#5B0F13',
+                    'code': '6R',
                 },
                 'Serenity White': {
                     'image': 'serenity-white',
                     'name': 'Serenity White',
-                    'color': '#C3C5C5'
+                    'color': '#C3C5C5',
+                    'code': '6P',
                 },
                 'Transmission Blue': {
                     'image': 'transmission-blue',
                     'name': 'Transmission Blue',
-                    'color': '#5C5F66'
+                    'color': '#5C5F66',
+                    'code': '6X',
                 },
             },
             'interiorColors': {
@@ -504,7 +535,8 @@ const cars = {
                     'color': {
                         'visibleMesh': ['SE_B', 'BLACK_COMMON'],
                         'invisibleMesh': ['SUL_B', 'SUL_G', 'LIMITED_B', 'LIMITED_G', 'GREY_COMMON']
-                    }
+                    },
+                    'code': '0N',
                 },
             },
             "hotspots": {
@@ -571,6 +603,8 @@ const cars = {
             }
         },
         'SEL': {
+            'trimCode': '54',
+            'driveTrainCode': '2N',
             'threesixty': 'ioniq6_SEL',
             'image': 'SEL6',
             'description': 'The balance trim with plenty of must-have featuress',
@@ -592,37 +626,44 @@ const cars = {
                 'Onyx Black': {
                     'image': 'onyx-black',
                     'name': 'Onyx Black',
-                    'color': '#151617'
+                    'color': '#151617',
+                    'code': '6G',
                 },
                 'Digital Green': {
                     'image': 'digital-green',
                     'name': 'Digital Green',
-                    'color': '#1C1E1B'
+                    'color': '#1C1E1B',
+                    'code': '6Y',
                 },
                 'Curated Silver': {
                     'image': 'curated-silver',
                     'name': 'Curated Silver',
-                    'color': '#868888'
+                    'color': '#868888',
+                    'code': '6S',
                 },
                 'Ulitmate Red': {
                     'image': 'ultimate-red',
                     'name': 'Ulitmate Red',
-                    'color': '#5B0F13'
+                    'color': '#5B0F13',
+                    'code': '6R',
                 },
                 'Serenity White': {
                     'image': 'serenity-white',
                     'name': 'Serenity White',
-                    'color': '#C3C5C5'
+                    'color': '#C3C5C5',
+                    'code': '6P',
                 },
                 'Transmission Blue': {
                     'image': 'transmission-blue',
                     'name': 'Transmission Blue',
-                    'color': '#5C5F66'
+                    'color': '#5C5F66',
+                    'code': '6X',
                 },
                 'Gravity Gold Matte': {
                     'image': 'gravity-gold-matte',
                     'name': 'Gravity Gold Matte',
-                    'color': '#aca6a2'
+                    'color': '#aca6a2',
+                    'code': '6T',
                 },
 
             },
@@ -633,7 +674,8 @@ const cars = {
                     'color': {
                         'visibleMesh': ['SUL_B', 'BLACK_COMMON'],
                         'invisibleMesh': ['SUL_G', 'SE_B', 'LIMITED_B', 'LIMITED_G', 'GREY_COMMON']
-                    }
+                    },
+                    'code': '0N',
                 },
                 'Gray': {
                     'image': 'Limited-Gray',
@@ -641,7 +683,8 @@ const cars = {
                     'color': {
                         'visibleMesh': ['SUL_G', 'GREY_COMMON'],
                         'invisibleMesh': ['SUL_B', 'SE_B', 'LIMITED_B', 'LIMITED_G', 'BLACK_COMMON']
-                    }
+                    },
+                    'code': '3V',
                 }
             },
             "hotspots": {
@@ -709,6 +752,8 @@ const cars = {
             }
         },
         'Limited': {
+            'trimCode': '56',
+            'driveTrainCode': '2N',
             'threesixty': 'ioniq6_LMTD',
             'image': 'Limited6',
             'description': 'The premium electric trim that treats you with high end features',
@@ -730,37 +775,44 @@ const cars = {
                 'Onyx Black': {
                     'image': 'onyx-black',
                     'name': 'Onyx Black',
-                    'color': '#151617'
+                    'color': '#151617',
+                    'code': '6G',
                 },
                 'Digital Green': {
                     'image': 'digital-green',
                     'name': 'Digital Green',
-                    'color': '#1C1E1B'
+                    'color': '#1C1E1B',
+                    'code': '6Y',
                 },
                 'Curated Silver': {
                     'image': 'curated-silver',
                     'name': 'Curated Silver',
-                    'color': '#868888'
+                    'color': '#868888',
+                    'code': '6S',
                 },
                 'Ulitmate Red': {
                     'image': 'ultimate-red',
                     'name': 'Ulitmate Red',
-                    'color': '#5B0F13'
+                    'color': '#5B0F13',
+                    'code': '6R',
                 },
                 'Serenity White': {
                     'image': 'serenity-white',
                     'name': 'Serenity White',
-                    'color': '#C3C5C5'
+                    'color': '#C3C5C5',
+                    'code': '6P',
                 },
                 'Transmission Blue': {
                     'image': 'transmission-blue',
                     'name': 'Transmission Blue',
-                    'color': '#5C5F66'
+                    'color': '#5C5F66',
+                    'code': '6X',
                 },
                 'Gravity Gold Matte': {
                     'image': 'gravity-gold-matte',
                     'name': 'Gravity Gold Matte',
-                    'color': '#aca6a2'
+                    'color': '#aca6a2',
+                    'code': '6T',
                 },
 
             },
@@ -771,7 +823,8 @@ const cars = {
                     'color': {
                         'visibleMesh': ['LIMITED_B', 'BLACK_COMMON'],
                         'invisibleMesh': ['LIMITED_G', 'SE_B', 'SUL_B', 'SUL_G', 'GREY_COMMON']
-                    }
+                    },
+                    'code': '0N',
                 },
                 'Gray': {
                     'image': 'Limited-Gray',
@@ -779,7 +832,8 @@ const cars = {
                     'color': {
                         'visibleMesh': ['LIMITED_G', 'GREY_COMMON'],
                         'invisibleMesh': ['LIMITED_B', 'SE_B', 'SUL_B', 'SUL_G', 'BLACK_COMMON']
-                    }
+                    },
+                    'code': '3V',
                 }
             },
             "hotspots": {

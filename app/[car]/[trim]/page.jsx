@@ -227,6 +227,12 @@ export default function Page({ params }) {
                 }
             );
         } else {
+            let carCode
+            if (car === 'IONIQ5') carCode = '51'
+            else if (car === 'IONIQ6') carCode = '49'
+            console.log(car, trim, exteriorColor, interiorColor)
+            const finalCode = `${carCode}${cars[car][trim].trimCode}${cars[car][trim].driveTrainCode}${cars[car][trim].exteriorColors[exteriorColor].code}${cars[car][trim].interiorColors[interiorColor].code}0`;
+            const redirectUrl = `https://www.hyundaiusa.com/us/en/build/summary/#/${finalCode}`;
             window.ttq.track("InitiateCheckout",
                 {
                     contents: [
@@ -243,6 +249,7 @@ export default function Page({ params }) {
                     currency: "USD", //Hard coded
                 }
             );
+            window.location.href = redirectUrl
         }
     }
 
@@ -741,7 +748,7 @@ export default function Page({ params }) {
                         {showHotspot && hotspotTitle === 'Ultra-fast charging' && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
                         {/* Interior Hotspots */}
                         <Hotspot
-                            position={[-10, 0, -0.9]}v
+                            position={[-10, 0, -0.9]} v
                             rotation={[0, 5, 0]}
                             scale={[0.8, 0.8, 0.8]}
                             visible={showInteriorHotspots && !showHotspot}
@@ -772,7 +779,7 @@ export default function Page({ params }) {
                         />
 
                         <PlaneVideo
-                            position={car === 'IONIQ5' ? [17, 9.7, -14] : [17, 10.3, -16] }
+                            position={car === 'IONIQ5' ? [17, 9.7, -14] : [17, 10.3, -16]}
                             rotation={[0, 5, 0]}
                             scale={[10, 10, 0.8]}
                             visible={showHotspot && hotspotTitle === 'Ultra-fast charging'}
