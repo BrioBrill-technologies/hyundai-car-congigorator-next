@@ -170,11 +170,11 @@ const cars = {
                 'material': 'Leather',
             },
             'exteriorColors': {
-                'Abyss Black': {
-                    'image': 'abyss-black',
-                    'name': 'Abyss Black',
-                    'color': '#000000',
-                    'code': '6G',
+                'Gravity Gold Matte': {
+                    'image': 'gravity-gold-matte',
+                    'name': 'Gravity Gold Matte',
+                    'color': '#aca6a2',
+                    'code': '6T',
                 },
                 'Shooting Star Matte': {
                     'image': 'shooting-star-matte',
@@ -182,23 +182,23 @@ const cars = {
                     'color': '#434449',
                     'code': '6N',
                 },
-                'Lucid Blue': {
-                    'image': 'lucid-blue',
-                    'name': 'Lucid Blue',
-                    'color': '#354450',
-                    'code': '6M',
-                },
                 'Digital Teal': {
                     'image': 'digital-teal',
                     'name': 'Digital Teal',
                     'color': '#1E3639',
                     'code': '6L',
                 },
-                'Gravity Gold Matte': {
-                    'image': 'gravity-gold-matte',
-                    'name': 'Gravity Gold Matte',
-                    'color': '#aca6a2',
-                    'code': '6T',
+                'Abyss Black': {
+                    'image': 'abyss-black',
+                    'name': 'Abyss Black',
+                    'color': '#000000',
+                    'code': '6G',
+                },
+                'Lucid Blue': {
+                    'image': 'lucid-blue',
+                    'name': 'Lucid Blue',
+                    'color': '#354450',
+                    'code': '6M',
                 },
                 'Cyber Gray': {
                     'image': 'cyber-gray',
