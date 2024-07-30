@@ -933,7 +933,12 @@ export default function Page({ params }) {
                     <div className='mx-auto flex w-11/12 flex-row justify-evenly gap-5 overflow-x-auto rounded-full bg-gray-100/70 px-2 py-1'>
                         {!showAmbient && (
                             <>
-                                {Object.keys(cars[car][trim].interiorColors).map((color) => (
+                                {Object.keys(cars[car][trim].interiorColors).filter((color) => {
+                                    if (cars[car][trim].exteriorColors[exteriorColor].enableTwoInt === 'true') {
+                                        return true;
+                                    }
+                                    return color === 'Black';
+                                }).map((color) => (
                                     <Image
                                         key={color}
                                         src={`/colors/${cars[car][trim].interiorColors[color].image}.png`}
@@ -941,25 +946,22 @@ export default function Page({ params }) {
                                         width={25}
                                         height={25}
                                         onClick={() => {
-                                            setSelectedColor(color)
-                                            window.ttq.track(`${color}_ColorClick`,
-                                                {
-                                                    contents: [
-                                                        {
-                                                            content_id: `${car}-${trim}-${color}-color-selection`, //Dynamic value reflecting user selection
-                                                            content_name: `${car} ${trim} ${color} Color Selection`, //Dynamic value reflecting user selection
-                                                            content_type: "product", //Hard coded
-                                                            content_category: "3d configurator", //Hard coded
-                                                            quantity: 1, //Hard coded
-                                                            price: 50000, //Dynamic value reflecting user selection
-                                                        },
-                                                    ],
-                                                    value: 50000, //Dynamic value reflecting user selection
-                                                    currency: "USD",
-                                                }
-                                            );
-                                        }
-                                        }
+                                            setSelectedColor(color);
+                                            window.ttq.track(`${color}_ColorClick`, {
+                                                contents: [
+                                                    {
+                                                        content_id: `${car}-${trim}-${color}-color-selection`,
+                                                        content_name: `${car} ${trim} ${color} Color Selection`,
+                                                        content_type: "product",
+                                                        content_category: "3d configurator",
+                                                        quantity: 1,
+                                                        price: 50000,
+                                                    },
+                                                ],
+                                                value: 50000,
+                                                currency: "USD",
+                                            });
+                                        }}
                                         className={`${selectedColor === color ? 'rounded-full border-2 border-white' : ''}`}
                                     />
                                 ))}
@@ -975,25 +977,22 @@ export default function Page({ params }) {
                                         width={25}
                                         height={25}
                                         onClick={() => {
-                                            setSelectedAmbientColor(color)
-                                            window.ttq.track(`${color}_AmbientColorClick`,
-                                                {
-                                                    contents: [
-                                                        {
-                                                            content_id: `${car}-${trim}-${color}-ambient-selection`, //Dynamic value reflecting user selection
-                                                            content_name: `${car} ${trim} ${color} Ambient Selection`, //Dynamic value reflecting user selection
-                                                            content_type: "product", //Hard coded
-                                                            content_category: "3d configurator", //Hard coded
-                                                            quantity: 1, //Hard coded
-                                                            price: 50000, //Dynamic value reflecting user selection
-                                                        },
-                                                    ],
-                                                    value: 50000, //Dynamic value reflecting user selection
-                                                    currency: "USD",
-                                                }
-                                            );
-                                        }
-                                        }
+                                            setSelectedAmbientColor(color);
+                                            window.ttq.track(`${color}_AmbientColorClick`, {
+                                                contents: [
+                                                    {
+                                                        content_id: `${car}-${trim}-${color}-ambient-selection`,
+                                                        content_name: `${car} ${trim} ${color} Ambient Selection`,
+                                                        content_type: "product",
+                                                        content_category: "3d configurator",
+                                                        quantity: 1,
+                                                        price: 50000,
+                                                    },
+                                                ],
+                                                value: 50000,
+                                                currency: "USD",
+                                            });
+                                        }}
                                         className={`${selectedAmbientColor === color ? 'rounded-full border-2 border-white' : ''}`}
                                     />
                                 ))}

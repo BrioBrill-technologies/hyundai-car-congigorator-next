@@ -175,42 +175,49 @@ const cars = {
                     'name': 'Gravity Gold Matte',
                     'color': '#aca6a2',
                     'code': '6T',
+                    'enableTwoInt': 'true'
                 },
                 'Shooting Star Matte': {
                     'image': 'shooting-star-matte',
                     'name': 'Shooting Star Matte',
                     'color': '#434449',
                     'code': '6N',
+                    'enableTwoInt': 'true'
                 },
                 'Digital Teal': {
                     'image': 'digital-teal',
                     'name': 'Digital Teal',
                     'color': '#1E3639',
                     'code': '6L',
+                    'enableTwoInt': 'true'
                 },
                 'Abyss Black': {
                     'image': 'abyss-black',
                     'name': 'Abyss Black',
                     'color': '#000000',
                     'code': '6G',
+                    'enableTwoInt': 'false'
                 },
                 'Lucid Blue': {
                     'image': 'lucid-blue',
                     'name': 'Lucid Blue',
                     'color': '#354450',
                     'code': '6M',
+                    'enableTwoInt': 'false'
                 },
                 'Cyber Gray': {
                     'image': 'cyber-gray',
                     'name': 'Cyber Gray',
                     'color': '#707172',
                     'code': '5T',
+                    'enableTwoInt': 'false'
                 },
                 'Atlas White': {
                     'image': 'atlas-white',
                     'name': 'Atlas White',
                     'color': '#BCBDBE',
                     'code': '5U',
+                    'enableTwoInt': 'false'
                 }
             },
             'interiorColors': {
@@ -628,44 +635,50 @@ const cars = {
                     'name': 'Onyx Black',
                     'color': '#151617',
                     'code': '6G',
-                },
-                'Digital Green': {
-                    'image': 'digital-green',
-                    'name': 'Digital Green',
-                    'color': '#1C1E1B',
-                    'code': '6Y',
-                },
-                'Curated Silver': {
-                    'image': 'curated-silver',
-                    'name': 'Curated Silver',
-                    'color': '#868888',
-                    'code': '6S',
-                },
-                'Ulitmate Red': {
-                    'image': 'ultimate-red',
-                    'name': 'Ulitmate Red',
-                    'color': '#5B0F13',
-                    'code': '6R',
+                    'enableTwoInt': 'true'
                 },
                 'Serenity White': {
                     'image': 'serenity-white',
                     'name': 'Serenity White',
                     'color': '#C3C5C5',
                     'code': '6P',
+                    'enableTwoInt': 'true'
                 },
                 'Transmission Blue': {
                     'image': 'transmission-blue',
                     'name': 'Transmission Blue',
                     'color': '#5C5F66',
                     'code': '6X',
+                    'enableTwoInt': 'true'
                 },
                 'Gravity Gold Matte': {
                     'image': 'gravity-gold-matte',
                     'name': 'Gravity Gold Matte',
                     'color': '#aca6a2',
                     'code': '6T',
+                    'enableTwoInt': 'true'
                 },
-
+                'Digital Green': {
+                    'image': 'digital-green',
+                    'name': 'Digital Green',
+                    'color': '#1C1E1B',
+                    'code': '6Y',
+                    'enableTwoInt': 'false'
+                },
+                'Curated Silver': {
+                    'image': 'curated-silver',
+                    'name': 'Curated Silver',
+                    'color': '#868888',
+                    'code': '6S',
+                    'enableTwoInt': 'false'
+                },
+                'Ulitmate Red': {
+                    'image': 'ultimate-red',
+                    'name': 'Ulitmate Red',
+                    'color': '#5B0F13',
+                    'code': '6R',
+                    'enableTwoInt': 'false'
+                },
             },
             'interiorColors': {
                 'Black': {
@@ -777,44 +790,50 @@ const cars = {
                     'name': 'Onyx Black',
                     'color': '#151617',
                     'code': '6G',
-                },
-                'Digital Green': {
-                    'image': 'digital-green',
-                    'name': 'Digital Green',
-                    'color': '#1C1E1B',
-                    'code': '6Y',
-                },
-                'Curated Silver': {
-                    'image': 'curated-silver',
-                    'name': 'Curated Silver',
-                    'color': '#868888',
-                    'code': '6S',
-                },
-                'Ulitmate Red': {
-                    'image': 'ultimate-red',
-                    'name': 'Ulitmate Red',
-                    'color': '#5B0F13',
-                    'code': '6R',
+                    'enableTwoInt': 'true'
                 },
                 'Serenity White': {
                     'image': 'serenity-white',
                     'name': 'Serenity White',
                     'color': '#C3C5C5',
                     'code': '6P',
+                    'enableTwoInt': 'true'
                 },
                 'Transmission Blue': {
                     'image': 'transmission-blue',
                     'name': 'Transmission Blue',
                     'color': '#5C5F66',
                     'code': '6X',
+                    'enableTwoInt': 'true'
                 },
                 'Gravity Gold Matte': {
                     'image': 'gravity-gold-matte',
                     'name': 'Gravity Gold Matte',
                     'color': '#aca6a2',
                     'code': '6T',
+                    'enableTwoInt': 'true'
                 },
-
+                'Digital Green': {
+                    'image': 'digital-green',
+                    'name': 'Digital Green',
+                    'color': '#1C1E1B',
+                    'code': '6Y',
+                    'enableTwoInt': 'false'
+                },
+                'Curated Silver': {
+                    'image': 'curated-silver',
+                    'name': 'Curated Silver',
+                    'color': '#868888',
+                    'code': '6S',
+                    'enableTwoInt': 'false'
+                },
+                'Ulitmate Red': {
+                    'image': 'ultimate-red',
+                    'name': 'Ulitmate Red',
+                    'color': '#5B0F13',
+                    'code': '6R',
+                    'enableTwoInt': 'false'
+                },
             },
             'interiorColors': {
                 'Black': {
