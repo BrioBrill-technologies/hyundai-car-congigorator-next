@@ -516,9 +516,9 @@ const cars = {
                     'color': '#868888',
                     'code': '6S',
                 },
-                'Ulitmate Red': {
+                'Ultimate Red': {
                     'image': 'ultimate-red',
-                    'name': 'Ulitmate Red',
+                    'name': 'Ultimate Red',
                     'color': '#5B0F13',
                     'code': '6R',
                 },
@@ -672,9 +672,9 @@ const cars = {
                     'code': '6S',
                     'enableTwoInt': 'false'
                 },
-                'Ulitmate Red': {
+                'Ultimate Red': {
                     'image': 'ultimate-red',
-                    'name': 'Ulitmate Red',
+                    'name': 'Ultimate Red',
                     'color': '#5B0F13',
                     'code': '6R',
                     'enableTwoInt': 'false'
@@ -827,9 +827,9 @@ const cars = {
                     'code': '6S',
                     'enableTwoInt': 'false'
                 },
-                'Ulitmate Red': {
+                'Ultimate Red': {
                     'image': 'ultimate-red',
-                    'name': 'Ulitmate Red',
+                    'name': 'Ultimate Red',
                     'color': '#5B0F13',
                     'code': '6R',
                     'enableTwoInt': 'false'
