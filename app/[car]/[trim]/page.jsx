@@ -468,13 +468,8 @@ export default function Page({ params }) {
     }
 
     const handleHotspotVisionRoof = () => {
-        if (car === 'IONIQ6') {
-            setHotspotTitle('Power tilt-and-slide wide sunroof')
-            setHotspotDescription(cars[car][trim].hotspots.interior['Power tilt-and-slide wide sunroof'].description)
-        } else {
-            setHotspotTitle('Panoramic Static Vision Sunroof')
-            setHotspotDescription(cars[car][trim].hotspots.interior['Panoramic Static Vision Sunroof'].description)
-        }
+        setHotspotTitle('Panoramic Static Vision Sunroof')
+        setHotspotDescription(cars[car][trim].hotspots.interior['Panoramic Static Vision Sunroof'].description)
         setShowHotspot(true)
         setTimeout(() => {
             setPlayOpenAnimation(true)
