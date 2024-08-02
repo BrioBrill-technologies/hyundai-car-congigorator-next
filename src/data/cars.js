@@ -354,6 +354,7 @@ const cars = {
                     'name': 'Gravity Gold Matte',
                     'color': '#aca6a2',
                     'code': '6T',
+                    'enableTwoInt': 'true'
                 },
             },
             'interiorColors': {
