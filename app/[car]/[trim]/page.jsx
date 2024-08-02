@@ -309,8 +309,8 @@ export default function Page({ params }) {
     };
 
     const handleHotspotCharging = () => {
-        setHotspotTitle('Ultra-fast charging');
-        setHotspotDescription(cars[car][trim].hotspots.exterior['Ultra-fast charging'].description);
+        setHotspotTitle('Ultra-Fast Charging');
+        setHotspotDescription(cars[car][trim].hotspots.exterior['Ultra-Fast Charging'].description);
         setShowHotspot(prev => !prev);
 
         // Show NebulaComponent and remove it after 5 seconds
@@ -678,7 +678,7 @@ export default function Page({ params }) {
 
                         </group>
                         <Hotspot
-                            position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].position}
+                            position={cars[car][trim].hotspots.exterior['Ultra-Fast Charging'].position}
                             rotation={[0, 11, 0]}
                             scale={[2, 2, 2]}
                             visible={showExteriorHotspots && !showHotspot}
@@ -745,7 +745,7 @@ export default function Page({ params }) {
                         )}
 
                         {/* {showNebula && <NebulaComponent position={[0, 0, 0]} />} */}
-                        {showHotspot && hotspotTitle === 'Ultra-fast charging' && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-fast charging'].cylinderPosition} />}
+                        {showHotspot && hotspotTitle === 'Ultra-Fast Charging' && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-Fast Charging'].cylinderPosition} />}
                         {/* Interior Hotspots */}
                         <Hotspot
                             position={[-10, 0, -0.9]} v
@@ -782,7 +782,7 @@ export default function Page({ params }) {
                             position={car === 'IONIQ5' ? [17, 9.7, -14] : [17, 10.3, -16]}
                             rotation={[0, 5, 0]}
                             scale={[10, 10, 0.8]}
-                            visible={showHotspot && hotspotTitle === 'Ultra-fast charging'}
+                            visible={showHotspot && hotspotTitle === 'Ultra-Fast Charging'}
                             videoUrl="/TestBolt.mp4"
                         />
 
