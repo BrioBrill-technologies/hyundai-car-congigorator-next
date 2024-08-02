@@ -85,7 +85,7 @@ const cars = {
                         "cylinderPosition": [19, 10, -11],
                     },
                     "LED Tail Lights": {
-                        "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
+                        "description": "Spanning across the rear, between the headlines and bumper, lighting accents adds a premium touch",
                         "position": [23, 10, 7],
                     },
                 },
@@ -259,7 +259,7 @@ const cars = {
                         "position": [-32.5, 9, 7],
                     },
                     "LED Tail Lights": {
-                        "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
+                        "description": "Spanning across the rear, between the headlines and bumper, lighting accents adds a premium touch",
                         "position": [23, 10, 7],
                     },
                 },
@@ -390,7 +390,7 @@ const cars = {
                         "position": [-32.5, 9, 7],
                     },
                     "LED Tail Lights": {
-                        "description": "Spanning Across the rear, between the headlines and bumper, this lighting accents adds a premium touch",
+                        "description": "Spanning across the rear, between the headlines and bumper, lighting accents adds a premium touch",
                         "position": [23, 10, 7],
                     },
                     "Disney Badge": {
