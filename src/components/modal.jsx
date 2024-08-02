@@ -12,7 +12,7 @@ export const Modal = ({ visible, setVisibility, title, description }) => {
   }, [visible]);
 
   useEffect(() => {
-    if (title === 'Power tilt-and-slide wide sunroof' || title === 'Blind Spot View Monitor' || title === 'Disney Badge') {
+    if (title === 'Power tilt-and-slide wide sunroof' || title === 'Blind Spot View Monitor' || title === 'Disney Badge' || title === 'Panoramic Static Vision Sunroof') {
       setShowBottom(true);
     } else {
       setShowBottom(false);

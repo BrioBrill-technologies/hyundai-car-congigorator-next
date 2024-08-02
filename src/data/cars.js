@@ -267,7 +267,7 @@ const cars = {
                     "Interactive Touch Screen With Sounds": {
                         "description": "Premium Head-up Display (HUD) with Augmented Reality: 12.3 inch infotainment system.",
                     },
-                    "Power tilt-and-slide wide sunroof": {
+                    "Panoramic Static Vision Sunroof": {
                         "description": "This expansive glass panel across the entire ceiling without a beam going across",
                     },
                     "Ambient Lighting": {
@@ -404,7 +404,7 @@ const cars = {
                     "Interactive Touch Screen With Sounds": {
                         "description": "Premium Head-up Display (HUD) with Augmented Reality: 12.3 inch infotainment system.",
                     },
-                    "Power tilt-and-slide wide sunroof": {
+                    "Panoramic Static Vision Sunroof": {
                         "description": "This expansive glass panel across the entire ceiling without a beam going across",
                     },
                     "Ambient Lighting": {
