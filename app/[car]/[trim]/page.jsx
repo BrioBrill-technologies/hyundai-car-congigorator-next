@@ -145,7 +145,7 @@ export default function Page({ params }) {
                 }, 1200)
             }
 
-            if (showHotspot && (hotspotTitle === 'Premium front LED accent lighting' || hotspotTitle === 'LED Projector headlights')) {
+            if (showHotspot && (hotspotTitle === 'Premium Front LED Accent Lighting' || hotspotTitle === 'LED Projector headlights')) {
                 setTimeout(() => {
                     setCurrentHeadLightTexture(prevTexture => prevTexture === ioniq5HeadLightTextureOff ? ioniq5HeadLightTextureOn : ioniq5HeadLightTextureOff);
                 }, 1200);
@@ -283,8 +283,8 @@ export default function Page({ params }) {
 
     const handleHotspotHeadLight = () => {
         if ((trim === 'Limited' || trim === 'D100PlatinumEdition' || trim === 'SEL') && (car === 'IONIQ5')) {
-            setHotspotTitle('Premium front LED accent lighting')
-            setHotspotDescription(cars[car][trim].hotspots.exterior['Premium front LED accent lighting'].description)
+            setHotspotTitle('Premium Front LED Accent Lighting')
+            setHotspotDescription(cars[car][trim].hotspots.exterior['Premium Front LED Accent Lighting'].description)
         } else {
             setHotspotTitle('LED Projector headlights')
             setHotspotDescription(cars[car][trim].hotspots.exterior['LED Projector headlights'].description)
@@ -577,7 +577,7 @@ export default function Page({ params }) {
             audioRef.current.currentTime = 0
             setIsAudioPlaying(false)
             if (trim === 'D100PlatinumEdition') setIsNatureDisplayActive(false)
-        } else if (hotspotTitle === 'Premium front LED accent lighting') {
+        } else if (hotspotTitle === 'Premium Front LED Accent Lighting') {
             setTimeout(() => {
                 setIsBloomActive(showHotspot)
             }, 1200)
