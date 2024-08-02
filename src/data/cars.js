@@ -397,7 +397,7 @@ const cars = {
                         "description": "IONIQ 5 Disney100 Platinum Edition was brought to life with creative input from Walt Disney Imagineering",
                     },
                     "Micky Badge": {
-                        "description": "Disney 100 exclusive 20 inch wheels inspired by the iconic Disney Ear logos",
+                        "description": "Exclusive 20-inch Hidden Mickey Wheels",
                     },
                 },
                 "interior": {
