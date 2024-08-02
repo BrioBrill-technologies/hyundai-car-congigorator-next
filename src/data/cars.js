@@ -90,8 +90,8 @@ const cars = {
                     },
                 },
                 "interior": {
-                    "Interactive touch screen with sounds": {
-                        "description": "The widescreen display dominates the dashboard, seamless integrating with the 12.3 inch digital gauges",
+                    "Interactive Touch Screen With Sounds": {
+                        "description": "Premium Head-up Display (HUD) with Augmented Reality: 12.3 inch infotainment system.",
                     },
                 }
             },
@@ -264,8 +264,8 @@ const cars = {
                     },
                 },
                 "interior": {
-                    "Interactive touch screen with sounds": {
-                        "description": "The widescreen display dominates the dashboard, seamless integrating with the 12.3 inch digital gauges",
+                    "Interactive Touch Screen With Sounds": {
+                        "description": "Premium Head-up Display (HUD) with Augmented Reality: 12.3 inch infotainment system.",
                     },
                     "Power tilt-and-slide wide sunroof": {
                         "description": "This expansive glass panel across the entire ceiling without a beam going across",
@@ -401,8 +401,8 @@ const cars = {
                     },
                 },
                 "interior": {
-                    "Interactive touch screen with sounds": {
-                        "description": "The widescreen display dominates the dashboard, seamless integrating with the 12.3 inch digital gauges",
+                    "Interactive Touch Screen With Sounds": {
+                        "description": "Premium Head-up Display (HUD) with Augmented Reality: 12.3 inch infotainment system.",
                     },
                     "Power tilt-and-slide wide sunroof": {
                         "description": "This expansive glass panel across the entire ceiling without a beam going across",

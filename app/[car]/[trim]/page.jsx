@@ -445,8 +445,8 @@ export default function Page({ params }) {
         audio.addEventListener('ended', handleEnded)
         audio.play()
         setIsAudioPlaying(true)
-        setHotspotTitle('Interactive touch screen with sounds')
-        setHotspotDescription(cars[car][trim].hotspots.interior['Interactive touch screen with sounds'].description)
+        setHotspotTitle('Interactive Touch Screen With Sounds')
+        setHotspotDescription(cars[car][trim].hotspots.interior['Interactive Touch Screen With Sounds'].description)
         setShowHotspot(true)
         if (trim === 'D100PlatinumEdition') setIsNatureDisplayActive(true)
         window.ttq.track("ClickButton",
