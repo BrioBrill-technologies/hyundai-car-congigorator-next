@@ -271,7 +271,7 @@ const cars = {
                         "description": "This expansive glass panel across the entire ceiling without a beam going across",
                     },
                     "Ambient Lighting": {
-                        "description": "Set the mood with more inviting interior with ambient lighting on the door.",
+                        "description": "Create a more inviting and personalized interior with ambient lighting",
                     },
                 }
             },
@@ -408,7 +408,7 @@ const cars = {
                         "description": "This expansive glass panel across the entire ceiling without a beam going across",
                     },
                     "Ambient Lighting": {
-                        "description": "Set the mood with more inviting interior with ambient lighting on the door.",
+                        "description": "Create a more inviting and personalized interior with ambient lighting",
                     },
                     "D100 Platinum Edition": {
                         "description": "",
