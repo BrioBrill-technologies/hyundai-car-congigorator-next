@@ -499,8 +499,8 @@ export default function Page({ params }) {
 
 
     const handleHotspotDisneyStartup = () => {
-        setHotspotTitle('D100PlatinumEdition')
-        setHotspotDescription(cars[car][trim].hotspots.interior['D100PlatinumEdition'].description)
+        setHotspotTitle('D100 Platinum Edition')
+        setHotspotDescription(cars[car][trim].hotspots.interior['D100 Platinum Edition'].description)
         setShowHotspot(true)
         setIsBloomActive(true)
         setActivateD100(false)
@@ -596,7 +596,7 @@ export default function Page({ params }) {
                     setIsBloomActive(showHotspot)
                 }, 600)
             }
-        } else if (hotspotTitle === 'D100PlatinumEdition') {
+        } else if (hotspotTitle === 'D100 Platinum Edition') {
             setIsBloomActive(showHotspot)
         } else if (hotspotTitle === 'D100 Edition') {
             setIsBloomActive(showHotspot)
@@ -878,7 +878,7 @@ export default function Page({ params }) {
                             visible={showHotspot && hotspotTitle === 'Ambient Lighting'}
                         />
                     </group>
-                    {hotspotTitle === 'D100PlatinumEdition' && showHotspot && planes.map((plane) => (
+                    {hotspotTitle === 'D100 Platinum Edition' && showHotspot && planes.map((plane) => (
                         <Plane
                             key={plane.id}
                             position={plane.position}
