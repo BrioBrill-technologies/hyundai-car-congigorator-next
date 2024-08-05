@@ -67,7 +67,7 @@ const cars = {
             },
             "hotspots": {
                 "exterior": {
-                    "LED Projector headlights": {
+                    "LED Projector Headlights": {
                         "description": "",
                         "position": [-32.5, 9, 7],
                         "rotation": [0, 11, 0],
@@ -90,8 +90,8 @@ const cars = {
                     },
                 },
                 "interior": {
-                    "Interactive Touch Screen With Sounds": {
-                        "description": "Premium Head-up Display (HUD) with Augmented Reality: 12.3 inch infotainment system.",
+                    "Interactive Touch Screen With Audio": {
+                        "description": "The widescreen display dominates the dashboard, seamlessy integrating with the 12.3 inch digital gauges",
                     },
                 }
             },
@@ -254,7 +254,7 @@ const cars = {
                         "description": "Spanning across the front of the vehicle, between the headlines and bumper, this lighting accents adds a premium touch",
                         "position": [-32.5, 9, 7],
                     },
-                    "LED Projector headlights": {
+                    "LED Projector Headlights": {
                         "description": "",
                         "position": [-32.5, 9, 7],
                     },
@@ -264,8 +264,8 @@ const cars = {
                     },
                 },
                 "interior": {
-                    "Interactive Touch Screen With Sounds": {
-                        "description": "Premium Head-up Display (HUD) with Augmented Reality: 12.3 inch infotainment system.",
+                    "Interactive Touch Screen With Audio": {
+                        "description": "The widescreen display dominates the dashboard, seamlessy integrating with the 12.3 inch digital gauges",
                     },
                     "Panoramic Static Vision Sunroof": {
                         "description": "This expansive glass panel across the entire ceiling without a beam going across",
@@ -385,7 +385,7 @@ const cars = {
                         "description": "Spanning across the front of the vehicle, between the headlines and bumper, this lighting accents adds a premium touch",
                         "position": [-32.5, 9, 7],
                     },
-                    "LED Projector headlights": {
+                    "LED Projector Headlights": {
                         "description": "",
                         "position": [-32.5, 9, 7],
                     },
@@ -401,8 +401,8 @@ const cars = {
                     },
                 },
                 "interior": {
-                    "Interactive Touch Screen With Sounds": {
-                        "description": "Premium Head-up Display (HUD) with Augmented Reality: 12.3 inch infotainment system.",
+                    "Interactive Touch Screen With Audio": {
+                        "description": "The widescreen display dominates the dashboard, seamlessy integrating with the 12.3 inch digital gauges",
                     },
                     "Panoramic Static Vision Sunroof": {
                         "description": "This expansive glass panel across the entire ceiling without a beam going across",
@@ -549,7 +549,7 @@ const cars = {
             },
             "hotspots": {
                 "exterior": {
-                    "LED Projector headlights": {
+                    "LED Projector Headlights": {
                         "description": "",
                         "position": [-30.5, 9, 7.5],
                         "rotation": [0, 11, 0],
@@ -572,7 +572,7 @@ const cars = {
                     },
                 },
                 "interior": {
-                    "Interactive Touch Screen With Sounds": {
+                    "Interactive Touch Screen With Audio": {
                         "description": "The widescreen display dominates the dashboard, seamlessy integrating with the 12.3 inch digital gauges",
                     },
                 }
@@ -711,7 +711,7 @@ const cars = {
                         "position": [17, 8.9, -12.3],
                         "cylinderPosition": [18.7, 10.5, -12.8],
                     },
-                    "LED Projector headlights": {
+                    "LED Projector Headlights": {
                         "description": "",
                         "position": [-30.5, 9, 7.5],
                     },
@@ -721,7 +721,7 @@ const cars = {
                     },
                 },
                 "interior": {
-                    "Interactive Touch Screen With Sounds": {
+                    "Interactive Touch Screen With Audio": {
                         "description": "The widescreen display dominates the dashboard, seamlessy integrating with the 12.3 inch digital gauges",
                     },
                     "Panoramic Static Vision Sunroof": {
@@ -870,7 +870,7 @@ const cars = {
                         "position": [17, 8.9, -12.3],
                         "cylinderPosition": [18.7, 10.5, -12.8],
                     },
-                    "LED Projector headlights": {
+                    "LED Projector Headlights": {
                         "description": "",
                         "position": [-30.5, 9, 7.5],
                     },
@@ -880,7 +880,7 @@ const cars = {
                     },
                 },
                 "interior": {
-                    "Interactive Touch Screen With Sounds": {
+                    "Interactive Touch Screen With Audio": {
                         "description": "The widescreen display dominates the dashboard, seamlessy integrating with the 12.3 inch digital gauges",
                     },
                     "Panoramic Static Vision Sunroof": {

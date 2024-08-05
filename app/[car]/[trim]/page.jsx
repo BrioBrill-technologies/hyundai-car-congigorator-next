@@ -145,7 +145,7 @@ export default function Page({ params }) {
                 }, 1200)
             }
 
-            if (showHotspot && (hotspotTitle === 'Premium Front LED Accent Lighting' || hotspotTitle === 'LED Projector headlights')) {
+            if (showHotspot && (hotspotTitle === 'Premium Front LED Accent Lighting' || hotspotTitle === 'LED Projector Headlights')) {
                 setTimeout(() => {
                     setCurrentHeadLightTexture(prevTexture => prevTexture === ioniq5HeadLightTextureOff ? ioniq5HeadLightTextureOn : ioniq5HeadLightTextureOff);
                 }, 1200);
@@ -167,7 +167,7 @@ export default function Page({ params }) {
                 }, 1200)
             }
 
-            if (showHotspot && hotspotTitle === 'LED Projector headlights') {
+            if (showHotspot && hotspotTitle === 'LED Projector Headlights') {
                 setTimeout(() => {
                     setCurrentHeadLightTexture(prevTexture => prevTexture === ioniq6HeadLightTextureOff ? ioniq6HeadLightTextureOn : ioniq6HeadLightTextureOff);
                 }, 1200);
@@ -286,8 +286,8 @@ export default function Page({ params }) {
             setHotspotTitle('Premium Front LED Accent Lighting')
             setHotspotDescription(cars[car][trim].hotspots.exterior['Premium Front LED Accent Lighting'].description)
         } else {
-            setHotspotTitle('LED Projector headlights')
-            setHotspotDescription(cars[car][trim].hotspots.exterior['LED Projector headlights'].description)
+            setHotspotTitle('LED Projector Headlights')
+            setHotspotDescription(cars[car][trim].hotspots.exterior['LED Projector Headlights'].description)
         }
         setShowHotspot(true)
         window.ttq.track("ClickButton",
@@ -445,8 +445,8 @@ export default function Page({ params }) {
         audio.addEventListener('ended', handleEnded)
         audio.play()
         setIsAudioPlaying(true)
-        setHotspotTitle('Interactive Touch Screen With Sounds')
-        setHotspotDescription(cars[car][trim].hotspots.interior['Interactive Touch Screen With Sounds'].description)
+        setHotspotTitle('Interactive Touch Screen With Audio')
+        setHotspotDescription(cars[car][trim].hotspots.interior['Interactive Touch Screen With Audio'].description)
         setShowHotspot(true)
         if (trim === 'D100PlatinumEdition') setIsNatureDisplayActive(true)
         window.ttq.track("ClickButton",
@@ -665,7 +665,7 @@ export default function Page({ params }) {
                             activateInterior={showInteriorHotspots}
                         />
                         <ExplosionConfetti isExploding={isenableAutoRotate} />
-                        <group position={cars[car][trim].hotspots.exterior['LED Projector headlights'].position}>
+                        <group position={cars[car][trim].hotspots.exterior['LED Projector Headlights'].position}>
                             <Hotspot
                                 rotation={[0, 15, 0]}
                                 scale={[2, 2, 2]}
