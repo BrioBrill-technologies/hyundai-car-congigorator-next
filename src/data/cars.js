@@ -736,7 +736,7 @@ const cars = {
                         "description": "The widescreen display dominates the dashboard, seamlessy integrating with the 12.3 inch digital gauges",
                     },
                     "Power Tilt-and-Slide Wide Sunroof": {
-                        "description": "This expansive glass panel across the entire ceiling without a beam going across",
+                        "description": "",
                     },
                     "Ambient Lighting": {
                         "description": "Set the mood with more inviting interior with ambient lighting on the door",
@@ -895,7 +895,7 @@ const cars = {
                         "description": "The widescreen display dominates the dashboard, seamlessy integrating with the 12.3 inch digital gauges",
                     },
                     "Power Tilt-and-Slide Wide Sunroof": {
-                        "description": "This expansive glass panel across the entire ceiling without a beam going across",
+                        "description": "",
                     },
                     "Ambient Lighting": {
                         "description": "Set the mood with more inviting interior with ambient lighting on the door",
