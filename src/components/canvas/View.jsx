@@ -62,6 +62,8 @@ const Exterior = ({ color, cameraPosition, minPolar, maxPolar, enableGround, ena
         maxPolarAngle={maxPolar}
         target={[0, 0, 0]}
         autoRotate={enableAutoRotate}
+        enablePan={false}
+        enableRotate={true} // This is true by default
       />
       <Environment1 texture={texture} />
       <Environment
