@@ -56,7 +56,7 @@ const Exterior = ({ color, cameraPosition, minPolar, maxPolar, enableGround, ena
       />
       <OrbitControls
         ref={orbitControlsRef}
-        enableZoom={true}
+        enableZoom={false}
         autoRotateSpeed={3.0}
         minPolarAngle={minPolar}
         maxPolarAngle={maxPolar}

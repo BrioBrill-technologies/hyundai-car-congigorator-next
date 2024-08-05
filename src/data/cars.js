@@ -27,30 +27,35 @@ const cars = {
                     'name': 'Atlas White',
                     'color': '#BCBDBE',
                     'code': '5U',
+                    'enableTwoInt': 'true'
                 },
                 'Abyss Black': {
                     'image': 'abyss-black',
                     'name': 'Abyss Black',
                     'color': '#000000',
                     'code': '6G',
+                    'enableTwoInt': 'true'
                 },
                 'Cyber Gray': {
                     'image': 'cyber-gray',
                     'name': 'Cyber Gray',
                     'color': '#707172',
                     'code': '5T',
+                    'enableTwoInt': 'true'
                 },
                 'Digital Teal': {
                     'image': 'digital-teal',
                     'name': 'Digital Teal',
                     'color': '#1E3639',
                     'code': '6L',
+                    'enableTwoInt': 'true'
                 },
                 'Lucid Blue': {
                     'image': 'lucid-blue',
                     'name': 'Lucid Blue',
                     'color': '#354450',
                     'code': '6M',
+                    'enableTwoInt': 'true'
                 }
             },
             'interiorColors': {
@@ -504,36 +509,42 @@ const cars = {
                     'name': 'Onyx Black',
                     'color': '#151617',
                     'code': '6G',
+                    'enableTwoInt': 'true'
                 },
                 'Digital Green': {
                     'image': 'digital-green',
                     'name': 'Digital Green',
                     'color': '#1C1E1B',
                     'code': '6Y',
+                    'enableTwoInt': 'true'
                 },
                 'Curated Silver': {
                     'image': 'curated-silver',
                     'name': 'Curated Silver',
                     'color': '#868888',
                     'code': '6S',
+                    'enableTwoInt': 'true'
                 },
                 'Ultimate Red': {
                     'image': 'ultimate-red',
                     'name': 'Ultimate Red',
                     'color': '#5B0F13',
                     'code': '6R',
+                    'enableTwoInt': 'true'
                 },
                 'Serenity White': {
                     'image': 'serenity-white',
                     'name': 'Serenity White',
                     'color': '#C3C5C5',
                     'code': '6P',
+                    'enableTwoInt': 'true'
                 },
                 'Transmission Blue': {
                     'image': 'transmission-blue',
                     'name': 'Transmission Blue',
                     'color': '#5C5F66',
                     'code': '6X',
+                    'enableTwoInt': 'true'
                 },
             },
             'interiorColors': {
