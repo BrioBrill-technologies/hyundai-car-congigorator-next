@@ -468,8 +468,13 @@ export default function Page({ params }) {
     }
 
     const handleHotspotVisionRoof = () => {
-        setHotspotTitle('Panoramic Static Vision Sunroof')
-        setHotspotDescription(cars[car][trim].hotspots.interior['Panoramic Static Vision Sunroof'].description)
+        if (car === 'IONIQ5') {
+            setHotspotTitle('Panoramic Static Vision Sunroof')
+            setHotspotDescription(cars[car][trim].hotspots.interior['Panoramic Static Vision Sunroof'].description)
+        } else {
+            setHotspotTitle('Power Tilt-and-Slide Wide Sunroof')
+            setHotspotDescription(cars[car][trim].hotspots.interior['Power Tilt-and-Slide Wide Sunroof'].description)
+        }
         setShowHotspot(true)
         setTimeout(() => {
             setPlayOpenAnimation(true)
@@ -565,7 +570,7 @@ export default function Page({ params }) {
     }
 
     useEffect(() => {
-        if (hotspotTitle === 'Power tilt-and-slide wide sunroof' || hotspotTitle === 'Panoramic Static Vision Sunroof') {
+        if (hotspotTitle === 'Power Tilt-and-Slide Wide Sunroof' || hotspotTitle === 'Panoramic Static Vision Sunroof') {
             setTimeout(() => {
                 setPlayOpenAnimation(showHotspot)
             }, 1200)
@@ -773,7 +778,7 @@ export default function Page({ params }) {
                             position={[2.8, 15, 0]}
                             rotation={[0, 0, 0]}
                             scale={[9, 30, 20]}
-                            visible={showHotspot && (hotspotTitle === 'Power tilt-and-slide wide sunroof' || hotspotTitle === 'Panoramic Static Vision Sunroof')}
+                            visible={showHotspot && (hotspotTitle === 'Power Tilt-and-Slide Wide Sunroof' || hotspotTitle === 'Panoramic Static Vision Sunroof')}
                             videoUrl="/Sun_Ray.mp4"
                             opacityValue={car === 'IONIQ5' ? 0.57 : 0.83}
                         />

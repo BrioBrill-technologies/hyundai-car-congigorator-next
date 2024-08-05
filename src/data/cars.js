@@ -735,7 +735,7 @@ const cars = {
                     "Interactive Touch Screen With Audio": {
                         "description": "The widescreen display dominates the dashboard, seamlessy integrating with the 12.3 inch digital gauges",
                     },
-                    "Panoramic Static Vision Sunroof": {
+                    "Power Tilt-and-Slide Wide Sunroof": {
                         "description": "This expansive glass panel across the entire ceiling without a beam going across",
                     },
                     "Ambient Lighting": {
@@ -894,7 +894,7 @@ const cars = {
                     "Interactive Touch Screen With Audio": {
                         "description": "The widescreen display dominates the dashboard, seamlessy integrating with the 12.3 inch digital gauges",
                     },
-                    "Panoramic Static Vision Sunroof": {
+                    "Power Tilt-and-Slide Wide Sunroof": {
                         "description": "This expansive glass panel across the entire ceiling without a beam going across",
                     },
                     "Ambient Lighting": {

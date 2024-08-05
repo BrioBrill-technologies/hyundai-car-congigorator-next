@@ -12,7 +12,7 @@ export const Modal = ({ visible, setVisibility, title, description }) => {
   }, [visible]);
 
   useEffect(() => {
-    if (title === 'Power tilt-and-slide wide sunroof' || title === 'Blind Spot View Monitor' || title === 'Disney Badge' || title === 'Panoramic Static Vision Sunroof') {
+    if (title === 'Power Tilt-and-Slide Wide Sunroof' || title === 'Blind Spot View Monitor' || title === 'Disney Badge' || title === 'Panoramic Static Vision Sunroof') {
       setShowBottom(true);
     } else {
       setShowBottom(false);
@@ -37,7 +37,7 @@ export const Modal = ({ visible, setVisibility, title, description }) => {
           <p className="text-xs" id="modal-description">{description}</p>
         </div>
         <div onClick={handleXClick}
-        className='pointer-events-auto mx-auto w-fit cursor-pointer'>
+          className='pointer-events-auto mx-auto w-fit cursor-pointer'>
           <Image
             src="/icons/X_Icon.png"
             alt="Close"
