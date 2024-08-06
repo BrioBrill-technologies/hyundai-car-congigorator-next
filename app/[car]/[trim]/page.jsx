@@ -132,8 +132,13 @@ export default function Page({ params }) {
     const [isenableAutoRotate, setEnableAutoRotate] = useState(false);
 
     useEffect(() => {
-        if (showHotspot) setDisable(true)
-        else setDisable(false)
+        if (showHotspot) {
+            setDisable(true);
+        } else {
+            setTimeout(() => {
+                setDisable(false);
+            }, 1200); // 1000 milliseconds = 1 second
+        }
         if (car === 'IONIQ5') {
             if (showHotspot && hotspotTitle === 'LED Tail Lights') {
                 setTimeout(() => {
