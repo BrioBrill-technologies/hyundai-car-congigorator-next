@@ -8,12 +8,19 @@ const Logo = dynamic(() => import('@/components/canvas/Examples').then((mod) => 
 
 export default function Page() {
   const [ended, setEnded] = useState(false);
+  const [showContent, setShowContent] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
 
-  // Check for previous visits outside useEffect
-  const hasVisited = typeof window !== 'undefined' && sessionStorage.getItem('hasVisited');
-
   useEffect(() => {
+    const hasVisited = sessionStorage.getItem('hasVisited');
+
+    if (!hasVisited) {
+      setShowVideo(true);
+      sessionStorage.setItem('hasVisited', 'true');
+    } else {
+      setTimeout(() => setShowContent(true), 20); // Small delay to ensure smooth rendering
+    }
+
     const trackPageView = () => {
       if (typeof window.ttq !== 'undefined') {
         window.ttq.track("ViewContent", {
@@ -26,34 +33,40 @@ export default function Page() {
               quantity: 1
             },
           ],
-          value: 50000, //Dynamic value reflecting user selection
+          value: 50000,
           currency: "USD",
         });
       }
     };
-    setTimeout(trackPageView, 500);
 
-    if (!hasVisited) {
-      setShowVideo(true);
-      sessionStorage.setItem('hasVisited', 'true');
+    const timeoutId = setTimeout(trackPageView, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  useEffect(() => {
+    if (ended) {
+      setShowContent(true);
     }
-  }, [hasVisited]);
+  }, [ended]);
 
   return (
     <div className='mt-2 flex h-full flex-col justify-evenly overflow-y-scroll'>
       {showVideo && (
         <video
-          className={`fixed left-0 top-0 z-10 size-full object-cover ${ended ? 'fade-out' : 'block'}`}
+          className={`fixed left-0 top-0 z-10 w-full h-full object-cover ${ended ? 'fade-out' : 'block'}`}
           autoPlay
           muted
           playsInline
           poster='/video/Animation_Intro.png'
           preload='auto'
-          onEnded={() => setEnded(true)}>
+          onEnded={() => setEnded(true)}
+        >
           <source src='/video/Animation_Intro.mp4' type='video/mp4' />
         </video>
       )}
-      {Object.entries(cars).map(([car]) => (
+
+      {showContent && Object.entries(cars).map(([car]) => (
         <Logo route='/trim' car={car} key={car} />
       ))}
     </div>
