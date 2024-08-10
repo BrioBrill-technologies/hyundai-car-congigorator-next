@@ -29,7 +29,7 @@ function useGLTFWithLoadingState(path, dracoOptions) {
   useEffect(() => {
     if (gltf.scene) {
       setIsLoaded(true)
-      // console.log(`Model ${path} has finished loading`)
+      console.log(`Model ${path} has finished loading`)
     }
   }, [gltf, path])
 
