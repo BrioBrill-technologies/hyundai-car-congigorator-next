@@ -602,7 +602,7 @@ export default function Page({ params }) {
         if (start) {
             setTimeout(() => {
                 setStart(false)
-            }, 10000)
+            }, 13000)
         }
     }, [start])
 
