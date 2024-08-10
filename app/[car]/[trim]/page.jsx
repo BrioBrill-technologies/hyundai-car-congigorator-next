@@ -112,7 +112,6 @@ export default function Page({ params }) {
     const [showHotspot, setShowHotspot] = useState(false)
     const [hotspotTitle, setHotspotTitle] = useState('')
     const [hotspotDescription, setHotspotDescription] = useState('')
-    const [showNebula, setShowNebula] = useState(false);
     const [showAmbient, setShowAmbient] = useState(false)
     const [showCone, setShowCone] = useState(false); // Add state for cone 
     const [cameraPosition, setCameraPosition] = useState([-60, 0, 0])
@@ -317,15 +316,6 @@ export default function Page({ params }) {
         setHotspotTitle('Ultra-Fast Charging');
         setHotspotDescription(cars[car][trim].hotspots.exterior['Ultra-Fast Charging'].description);
         setShowHotspot(prev => !prev);
-
-        // Show NebulaComponent and remove it after 5 seconds
-        setTimeout(() => {
-            setShowNebula(true);
-        }, 1200)
-
-        setTimeout(() => {
-            setShowNebula(false);
-        }, 4700);
         window.ttq.track("ClickButton",
             {
                 contents: [
@@ -764,7 +754,6 @@ export default function Page({ params }) {
                             />
                         )}
 
-                        {/* {showNebula && <NebulaComponent position={[0, 0, 0]} />} */}
                         {showHotspot && hotspotTitle === 'Ultra-Fast Charging' && <AnimatedCylinder position={cars[car][trim].hotspots.exterior['Ultra-Fast Charging'].cylinderPosition} />}
                         {/* Interior Hotspots */}
                         <Hotspot

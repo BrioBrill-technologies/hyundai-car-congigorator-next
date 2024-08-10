@@ -1,15 +1,17 @@
 'use client'
 
-import { forwardRef, Suspense, useImperativeHandle, useRef, useEffect, useState } from 'react'
+import { forwardRef, Suspense, useImperativeHandle, useRef, useEffect, useState, useMemo } from 'react'
 import { OrbitControls, Environment, PerspectiveCamera, View as ViewImpl } from '@react-three/drei'
 import { Three } from '@/helpers/components/Three'
 import { useLoader, useThree } from '@react-three/fiber'
 import { TextureLoader, EquirectangularReflectionMapping } from 'three'
 
-function Environment1({ texture }) {
+const Environment1 = ({ texture }) => {
   const { scene } = useThree()
-  texture.mapping = EquirectangularReflectionMapping
-  scene.background = texture
+  useEffect(() => {
+    texture.mapping = EquirectangularReflectionMapping
+    scene.background = texture
+  }, [texture, scene])
   return null
 }
 
@@ -43,11 +45,16 @@ const Exterior = ({ color, cameraPosition, minPolar, maxPolar, enableGround, ena
     }
   }, [minPolar, maxPolar, enableAutoRotate])
 
+  const lightProps = useMemo(() => ({
+    directional: { intensity: 6, color: 'white', position: [-4, 5, 2] },
+    ambient: { intensity: 2 }
+  }), [])
+
   return (
     <>
       {color && <color attach='background' args={[color]} />}
-      <directionalLight intensity={6} color='white' position={[-4, 5, 2]} />
-      <ambientLight intensity={2} />
+      <directionalLight {...lightProps.directional} />
+      <ambientLight {...lightProps.ambient} />
       <PerspectiveCamera
         ref={cameraRef}
         makeDefault
@@ -63,7 +70,7 @@ const Exterior = ({ color, cameraPosition, minPolar, maxPolar, enableGround, ena
         target={[0, 0, 0]}
         autoRotate={enableAutoRotate}
         enablePan={false}
-        enableRotate={true} // This is true by default
+        enableRotate={true}
       />
       <Environment1 texture={texture} />
       <Environment
@@ -91,4 +98,4 @@ const View = forwardRef(({ children, ...props }, ref) => {
 })
 View.displayName = 'View'
 
-export {View, Exterior }
+export { View, Exterior }
