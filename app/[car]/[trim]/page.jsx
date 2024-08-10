@@ -645,6 +645,16 @@ export default function Page({ params }) {
             <View className={`w-full ${exteriorColor && interiorColor ? 'h-72 sm:h-48' : 'h-96'}`}>
                 <Suspense>
                     <group position={[0, 0, 0]}>
+                        <Exterior
+                            color={exteriorColor ? cars[car][trim].exteriorColors[exteriorColor].color : cars[car][trim].exteriorColors[selectedColor].color}
+                            cameraPosition={cameraPosition}
+                            hasPositionChanged={hasPositionChanged}
+                            setHasPositionChanged={setHasPositionChanged}
+                            minPolar={minPolar}
+                            maxPolar={maxPolar}
+                            enableGround={(interiorColor || !exteriorColor) ? true : false}
+                            enableAutoRotate={isenableAutoRotate}
+                        />
                         <ExteriorModel
                             scale={12}
                             position={(interiorColor || !exteriorColor) ? [0, 10.7, 0] : [2.5, -1, 0]}
@@ -891,17 +901,6 @@ export default function Page({ params }) {
                             shouldMove={plane.shouldMove}
                         />
                     ))}
-
-                    <Exterior
-                        color={exteriorColor ? cars[car][trim].exteriorColors[exteriorColor].color : cars[car][trim].exteriorColors[selectedColor].color}
-                        cameraPosition={cameraPosition}
-                        hasPositionChanged={hasPositionChanged}
-                        setHasPositionChanged={setHasPositionChanged}
-                        minPolar={minPolar}
-                        maxPolar={maxPolar}
-                        enableGround={(interiorColor || !exteriorColor) ? true : false}
-                        enableAutoRotate={isenableAutoRotate}
-                    />
                 </Suspense>
             </View>
             <div className='relative bottom-11 z-10'>

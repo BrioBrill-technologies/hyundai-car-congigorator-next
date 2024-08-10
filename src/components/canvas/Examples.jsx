@@ -22,6 +22,20 @@ const configureDRACOLoader = loader => {
 useGLTF.preload('/models/Ioniq5_Master_Model.glb', configureDRACOLoader)
 useGLTF.preload('/models/Ioniq6_Master_Model.glb', configureDRACOLoader)
 
+function useGLTFWithLoadingState(path, dracoOptions) {
+  const [isLoaded, setIsLoaded] = useState(false)
+  const gltf = useGLTF(path, dracoOptions)
+
+  useEffect(() => {
+    if (gltf.scene) {
+      setIsLoaded(true)
+      // console.log(`Model ${path} has finished loading`)
+    }
+  }, [gltf, path])
+
+  return { ...gltf, isLoaded }
+}
+
 export const Logo = ({ route = '/trim', car, ...props }) => {
   const router = useRouter()
 
@@ -104,7 +118,7 @@ export function ExteriorModel({
   activateInterior = false,
   ...props
 }) {
-  const { scene, animations } = useGLTF(`/models/${model}.glb`, configureDRACOLoader);
+  const { scene, animations, isLoadedModel } = useGLTFWithLoadingState(`/models/${model}.glb`, configureDRACOLoader)
   const mixerRef = useRef();
   const actionsRef = useRef({});
   const [isOpen, setIsOpen] = useState(false);
@@ -114,6 +128,12 @@ export function ExteriorModel({
   const modelRef = useRef();
   const targetPosition = useRef(new THREE.Vector3(2.5, -1, 0));
   const clock = useRef(new THREE.Clock());
+
+  useEffect(() => {
+    if (isLoadedModel) {
+      console.log(`Model ${model} is ready to be rendered`)
+    }
+  }, [isLoadedModel, model])
 
   useEffect(() => {
     const video = document.createElement('video');
