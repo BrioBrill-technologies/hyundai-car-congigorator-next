@@ -11,12 +11,16 @@ import PostProcess from '@/templates/hooks/usePostprocess'
 import Image from 'next/image'
 import { ContactShadows } from '@react-three/drei'
 
+
 // Configure DRACOLoader for useGLTF
 const configureDRACOLoader = loader => {
   const dracoLoader = new DRACOLoader()
   dracoLoader.setDecoderPath('/draco/gltf/')
   loader.setDRACOLoader(dracoLoader)
 }
+// Preload the model
+useGLTF.preload('/models/Ioniq5_Master_Model.glb', configureDRACOLoader)
+useGLTF.preload('/models/Ioniq6_Master_Model.glb', configureDRACOLoader)
 
 export const Logo = ({ route = '/trim', car, ...props }) => {
   const router = useRouter()
