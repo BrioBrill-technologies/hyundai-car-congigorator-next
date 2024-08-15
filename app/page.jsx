@@ -2,9 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { cars } from '@/data/cars.js';
-import UAParser from 'ua-parser-js';
 
 const Logo = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Logo), { ssr: false });
 
@@ -12,7 +10,6 @@ export default function Page() {
   const [ended, setEnded] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
-  const [showBrowserButton, setShowBrowserButton] = useState(false);
 
   useEffect(() => {
     const hasVisited = sessionStorage.getItem('hasVisited');
@@ -24,7 +21,6 @@ export default function Page() {
       setTimeout(() => setShowContent(true), 20); // Small delay to ensure smooth rendering
     }
 
-    // Track page view
     const trackPageView = () => {
       if (typeof window.ttq !== 'undefined') {
         window.ttq.track("ViewContent", {
@@ -44,17 +40,6 @@ export default function Page() {
     };
 
     const timeoutId = setTimeout(trackPageView, 500);
-
-    // Get and log browser information
-    const parser = new UAParser();
-    const result = parser.getResult();
-    console.log(`Running on browser: ${result.browser.name}`);
-
-    // Conditionally show button based on browser type
-    const browsersToShowButton = ['TikTok', 'Instagram', 'Edge', 'Android Browser', 'Android'];
-    if (browsersToShowButton.includes(result.browser.name)) {
-      setShowBrowserButton(true);
-    }
 
     return () => clearTimeout(timeoutId);
   }, []);
@@ -84,26 +69,6 @@ export default function Page() {
       {showContent && Object.entries(cars).map(([car]) => (
         <Logo route='/trim' car={car} key={car} />
       ))}
-
-      {showBrowserButton && (
-        <div className="fixed inset-0 flex items-center justify-center bg-white z-20">
-          <div className="text-center">
-            <Image
-              src='/logo.png'
-              alt="logo"
-              width={75}
-              height={75}
-              className="mx-auto mt-2"
-            />
-            <button
-              onClick={() => window.open('https://hyundai-3dconfigurator.com/', '_blank')}
-              className="mt-4 bg-blue-600 px-4 py-2 rounded text-white animate-pulse"
-            >
-              Tap to Open Configurator
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
