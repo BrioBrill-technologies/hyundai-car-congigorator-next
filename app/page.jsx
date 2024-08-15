@@ -2,7 +2,9 @@
 
 import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { cars } from '@/data/cars.js';
+import UAParser from 'ua-parser-js';
 
 const Logo = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Logo), { ssr: false });
 
@@ -10,6 +12,9 @@ export default function Page() {
   const [ended, setEnded] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
+  const [showBrowserButton, setShowBrowserButton] = useState(false);
+  const [browserName, setBrowserName] = useState('');
+  const [osName, setOsName] = useState('');
 
   useEffect(() => {
     const hasVisited = sessionStorage.getItem('hasVisited');
@@ -18,7 +23,7 @@ export default function Page() {
       setShowVideo(true);
       sessionStorage.setItem('hasVisited', 'true');
     } else {
-      setTimeout(() => setShowContent(true), 20); // Small delay to ensure smooth rendering
+      setTimeout(() => setShowContent(true), 20);
     }
 
     const trackPageView = () => {
@@ -41,6 +46,18 @@ export default function Page() {
 
     const timeoutId = setTimeout(trackPageView, 500);
 
+    const parser = new UAParser();
+    const result = parser.getResult();
+    console.log(`Running on browser: ${result.browser.name}, OS: ${result.os.name}`);
+
+    setBrowserName(result.browser.name);
+    setOsName(result.os.name);
+
+    const browsersToShowButton = ['TikTok', 'Instagram', 'Edge', 'Android Browser', 'Android'];
+    if (browsersToShowButton.includes(result.browser.name)) {
+      setShowBrowserButton(true);
+    }
+
     return () => clearTimeout(timeoutId);
   }, []);
 
@@ -49,6 +66,19 @@ export default function Page() {
       setShowContent(true);
     }
   }, [ended]);
+
+  const openInDefaultBrowser = () => {
+    const url = 'https://hyundai-3dconfigurator.com/';
+
+    if (osName === 'Android') {
+      const intentUrl = `intent://${url.replace(/^https?:\/\//, '')}#Intent;scheme=https;action=android.intent.action.VIEW;end;`;
+      window.location.href = intentUrl;
+    } else if (osName === 'iOS') {
+      window.location.href = url;
+    } else {
+      window.open(url, '_blank');
+    }
+  };
 
   return (
     <div className='mt-2 flex h-full flex-col justify-evenly overflow-y-scroll'>
@@ -69,6 +99,26 @@ export default function Page() {
       {showContent && Object.entries(cars).map(([car]) => (
         <Logo route='/trim' car={car} key={car} />
       ))}
+
+      {showBrowserButton && (
+        <div className="fixed inset-0 flex items-center justify-center bg-white z-20">
+          <div className="text-center">
+            <Image
+              src='/logo.png'
+              alt="logo"
+              width={75}
+              height={75}
+              className="mx-auto mt-2"
+            />
+            <button
+              onClick={openInDefaultBrowser}
+              className="mt-4 bg-blue-600 px-4 py-2 rounded text-white animate-pulse"
+            >
+              Tap to Open Configurator
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
