@@ -73,8 +73,6 @@ export default function Page() {
     if (osName === 'Android') {
       const intentUrl = `intent://${url.replace(/^https?:\/\//, '')}#Intent;scheme=https;action=android.intent.action.VIEW;end;`;
       window.location.href = intentUrl;
-    } else if (osName === 'iOS') {
-      window.location.href = url;
     } else {
       window.open(url, '_blank');
     }
