@@ -60,7 +60,7 @@ export default function Page() {
     } else {
       const browsersToShowButton = ['TikTok', 'Instagram', 'Edge', 'Android Browser', 'Android'];
       if (browsersToShowButton.includes(result.browser.name) && result.os.name === 'Android') {
-        setShowBrowserButton(true);
+        setShowBrowserButton(true)
       }
     }
 
