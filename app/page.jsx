@@ -96,7 +96,7 @@ export default function Page() {
       <h1 className="text-2xl mb-4 text-center">
         For the best experience, please open this website on a mobile phone.
         You can then either<br /> scan the QR code below
-        or click the "Share Link" button to access the configurator.
+        or click the &quot;Share Link&quot; button to access the configurator.
       </h1>
       <Image
         src='/QR.png'
@@ -113,9 +113,6 @@ export default function Page() {
       </button>
     </div>
   );
-
-
-
 
   const BrowserButton = () => (
     <div className="fixed inset-0 flex items-center justify-center bg-white z-20">
