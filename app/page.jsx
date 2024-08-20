@@ -60,7 +60,7 @@ export default function Page() {
     } else {
       const browsersToShowButton = ['TikTok', 'Instagram', 'Edge', 'Android Browser', 'Android'];
       if (browsersToShowButton.includes(result.browser.name) && result.os.name === 'Android') {
-        setShowBrowserButton(true)
+        setShowBrowserButton(true);
       }
     }
 
@@ -91,53 +91,29 @@ export default function Page() {
     }
   };
 
-  const DesktopLanding = () => (
-    <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50 p-4">
-      <h1 className="text-2xl mb-4 text-center">
-        For the best experience, please open this website on a mobile phone.
-        You can then either<br /> scan the QR code below
-        or click the &quot;Share Link&quot; button to access the configurator.
-      </h1>
-      <Image
-        src='/QR.png'
-        alt='QR Code'
-        width={350} // Increased size
-        height={350} // Increased size
-        className='my-4'
-      />
-      <button
-        onClick={shareLink}
-        className="bg-blue-600 px-14 py-4 rounded text-white animate-pulse text-lg" // Increased padding and text size
-      >
-        Share Link
-      </button>
-    </div>
-  );
-
-  const BrowserButton = () => (
-    <div className="fixed inset-0 flex items-center justify-center bg-white z-20">
-      <div className="text-center">
-        <Image
-          src='/logo.png'
-          alt="logo"
-          width={75}
-          height={75}
-          className="mx-auto mt-2"
-        />
-        <button
-          onClick={openInDefaultBrowser}
-          className="mt-4 bg-blue-600 px-4 py-2 rounded text-white animate-pulse"
-        >
-          Tap to Open Configurator
-        </button>
-      </div>
-    </div>
-  );
-
   return (
     <div className='mt-2 flex h-full flex-col justify-evenly'>
       {showDesktopLanding ? (
-        <DesktopLanding />
+        <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50 p-4">
+          <h1 className="text-2xl mb-4 text-center">
+            For the best experience, please open this website on a mobile phone.
+            You can then either<br /> scan the QR code below
+            or click the &quot;Share Link&quot; button to access the configurator.
+          </h1>
+          <Image
+            src='/QR.png'
+            alt='QR Code'
+            width={350} // Increased size
+            height={350} // Increased size
+            className='my-4'
+          />
+          <button
+            onClick={shareLink}
+            className="bg-blue-600 px-14 py-4 rounded text-white animate-pulse text-lg" // Increased padding and text size
+          >
+            Share Link
+          </button>
+        </div>
       ) : (
         <>
           {showVideo && (
@@ -158,7 +134,25 @@ export default function Page() {
             <Logo route='/trim' car={car} key={car} />
           ))}
 
-          {showBrowserButton && <BrowserButton />}
+          {showBrowserButton && (
+            <div className="fixed inset-0 flex items-center justify-center bg-white z-20">
+              <div className="text-center">
+                <Image
+                  src='/logo.png'
+                  alt="logo"
+                  width={75}
+                  height={75}
+                  className="mx-auto mt-2"
+                />
+                <button
+                  onClick={openInDefaultBrowser}
+                  className="mt-4 bg-blue-600 px-4 py-2 rounded text-white animate-pulse"
+                >
+                  Tap to Open Configurator
+                </button>
+              </div>
+            </div>
+          )}
         </>
       )}
     </div>
