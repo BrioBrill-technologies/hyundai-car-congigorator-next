@@ -141,7 +141,7 @@ export default function Page() {
         <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50 p-4">
           <h1 className="text-2xl mb-4 text-center">
             For the best experience, please open this website on a mobile phone. You can then either<br />
-            scan the QR code below or click the "Share Link" button to access the configurator.
+            scan the QR code below or click the &quot;Share Link&quot; button to access the configurator.
           </h1>
           <Image src='/QR.png' alt='QR Code' width={350} height={350} className='my-4' />
           <button onClick={shareLink} className="bg-blue-600 px-14 py-4 rounded text-white animate-pulse text-lg">
