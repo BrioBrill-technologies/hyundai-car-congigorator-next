@@ -13,6 +13,7 @@ export default function Page() {
   const [showContent, setShowContent] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [showBrowserButton, setShowBrowserButton] = useState(false);
+  const [showDesktopMessage, setShowDesktopMessage] = useState(false);
   const [browserName, setBrowserName] = useState('');
   const [osName, setOsName] = useState('');
 
@@ -48,7 +49,8 @@ export default function Page() {
 
     const parser = new UAParser();
     const result = parser.getResult();
-    console.log(`Running on browser: ${result.browser.name}, OS: ${result.os.name}`);
+    const isDesktop = result.device.type === undefined || result.device.type === 'desktop';
+    console.log(`Running on browser: ${result.browser.name}, OS: ${result.os.name}, Device: ${result.device.type}`);
 
     setBrowserName(result.browser.name);
     setOsName(result.os.name);
@@ -56,6 +58,8 @@ export default function Page() {
     const browsersToShowButton = ['TikTok', 'Instagram', 'Edge', 'Android Browser', 'Android'];
     if (browsersToShowButton.includes(result.browser.name)) {
       setShowBrowserButton(true);
+    } else {
+      setShowDesktopMessage(isDesktop);
     }
 
     return () => clearTimeout(timeoutId);
@@ -77,6 +81,19 @@ export default function Page() {
       window.location.href = url;
     } else {
       window.open(url, '_blank');
+    }
+  };
+
+  const shareLink = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Hyundai Configurator',
+        text: 'Check out the Hyundai 3D Configurator!',
+        url: 'https://hyundai-3dconfigurator.com/',
+      });
+    } else {
+      // Fallback for browsers that don't support the Web Share API
+      window.open('https://hyundai-3dconfigurator.com/', '_blank');
     }
   };
 
@@ -117,6 +134,19 @@ export default function Page() {
               Tap to Open Configurator
             </button>
           </div>
+        </div>
+      )}
+
+      {showDesktopMessage && (
+        <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50 p-4">
+          <h1 className="text-2xl mb-4 text-center">
+            For the best experience, please open this website on a mobile phone. You can then either<br />
+            scan the QR code below or click the "Share Link" button to access the configurator.
+          </h1>
+          <Image src='/QR.png' alt='QR Code' width={350} height={350} className='my-4' />
+          <button onClick={shareLink} className="bg-blue-600 px-14 py-4 rounded text-white animate-pulse text-lg">
+            Share Link
+          </button>
         </div>
       )}
     </div>
