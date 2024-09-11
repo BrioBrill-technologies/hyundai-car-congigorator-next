@@ -55,7 +55,7 @@ export default function Page() {
     setBrowserName(result.browser.name);
     setOsName(result.os.name);
 
-    const browsersToShowButton = ['TikTok', 'Instagram', 'Edge', 'Android Browser', 'Android'];
+    const browsersToShowButton = ['TikTok', 'Edge'];
     if (browsersToShowButton.includes(result.browser.name)) {
       setShowBrowserButton(true);
     } else {
