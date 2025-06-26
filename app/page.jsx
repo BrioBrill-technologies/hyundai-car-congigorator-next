@@ -137,7 +137,7 @@ export default function Page() {
         </div>
       )}
 
-      {showDesktopMessage && (
+      {/* {showDesktopMessage && (
         <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50 p-4">
           <h1 className="text-2xl mb-4 text-center">
             For the best experience, please open this website on a mobile phone. You can then either<br />
@@ -148,7 +148,7 @@ export default function Page() {
             Share Link
           </button>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
